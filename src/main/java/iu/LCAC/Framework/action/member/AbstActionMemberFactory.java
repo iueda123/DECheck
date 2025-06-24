@@ -4,21 +4,6 @@ package iu.LCAC.Framework.action.member;
 
 public abstract class AbstActionMemberFactory {
 
-    public static AbstActionMemberFactory getActionFactory(String action_name) {
-        System.out.println(action_name);
-        AbstActionMemberFactory action_factory = null;
-        try {
-            action_factory = (AbstActionMemberFactory) Class.forName(action_name).getDeclaredConstructor().newInstance();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        //action_factory.setActionName(action_name);
-
-        return action_factory;
-    }
 
     /**
      * e.g. this.ActionName = "change_color_of_center";
