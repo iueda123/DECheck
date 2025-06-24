@@ -19,7 +19,9 @@ public class CheckboxPanelHolder extends AbstCHolderMember {
 
     JCheckBox SampleCheckBox = new JCheckBox("Change Color");
 
-    public CheckboxPanelHolder() {
+    public CheckboxPanelHolder(String cholder_name, String short_name)
+    {
+        super(cholder_name, short_name);
 
         SampleCheckBox.addActionListener(new SampleSelectionChangeListener());
         SampleCheckBox.addPropertyChangeListener(new SamplePropertyChangeListener());

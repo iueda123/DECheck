@@ -9,9 +9,9 @@ public class MainWindowHolderFactory extends AbstCHolderMemberFactory {
 
 
     @Override
-    protected AbstCHolderMember createInstace( ) {
+    protected AbstCHolderMember createInstace(String cholder_name, String short_name) {
         if (mainWindow == null) {
-            mainWindow = new MainWindowHolder();
+            mainWindow = new MainWindowHolder(cholder_name, short_name);
         }
         return mainWindow;
     }

@@ -10,12 +10,11 @@ public abstract class AbstCHolderMemberFactory {
      * then initialized here.
      */
     public AbstCHolderMember createCHolder(String cholder_name, String short_name) {
-        AbstCHolderMember component_holder = createInstace();
-        component_holder.setName(cholder_name);
+        AbstCHolderMember component_holder = createInstace(cholder_name, short_name);
         component_holder.postInitialize();
         return component_holder;
     }
 
-    protected abstract AbstCHolderMember createInstace();
+    protected abstract AbstCHolderMember createInstace(String cholder_name, String short_name);
 
 }
