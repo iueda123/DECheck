@@ -6,6 +6,7 @@ import iu.LCAC.Framework.componentholder.member.AbstCHolderMember;
 import iu.LCAC.Framework.action.member.ActionMemberIntrfc;
 import iu.LCAC.Framework.componentholder.member.AbstCHolderMemberFactory;
 import iu.LCAC.Framework.componentholder.member.CHolderMemberIntrfc;
+import iu.LCAC.Framework.factory.FactoryLoader;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -33,25 +34,33 @@ public class CHolderMediator implements CHolderMediatorIntrfc {
 
         AbstCHolderMemberFactory chMemberFactory;
         //AbstCHolderMember mainWindowHolder = new MainWindowHolderFactory().create("main_window_holder");
-        chMemberFactory = AbstCHolderMemberFactory.getCHolderMemberFactory("iu.LCAC.ComponentHolders.core.mainwindow.MainWindowHolderFactory");
+        chMemberFactory = FactoryLoader.loadFactory(
+                "iu.LCAC.ComponentHolders.core.mainwindow.MainWindowHolderFactory",
+                AbstCHolderMemberFactory.class);
         AbstCHolderMember mainWindowHolder = chMemberFactory.createCHolder("main_window_holder", "main window");
         mainWindowHolder.setCHMediator(this);
         mainWindowHolder.initialize();
         registerMemberToMap(mainWindowHolder);
 
-        chMemberFactory = AbstCHolderMemberFactory.getCHolderMemberFactory("iu.LCAC.ComponentHolders.demos.ButtonPanel.ButtonPanelHolderFactory");
+        chMemberFactory = FactoryLoader.loadFactory(
+                "iu.LCAC.ComponentHolders.demos.ButtonPanel.ButtonPanelHolderFactory",
+                AbstCHolderMemberFactory.class);
         AbstCHolderMember buttonPanelHolder = chMemberFactory.createCHolder("button_panel_holder", "Button Penel Holder");
         buttonPanelHolder.setCHMediator(this);
         buttonPanelHolder.initialize();
         registerMemberToMap(buttonPanelHolder);
 
-        chMemberFactory = AbstCHolderMemberFactory.getCHolderMemberFactory("iu.LCAC.ComponentHolders.demos.CheckboxPanel.CheckboxPanelHolderFactory");
+        chMemberFactory = FactoryLoader.loadFactory(
+                "iu.LCAC.ComponentHolders.demos.CheckboxPanel.CheckboxPanelHolderFactory",
+                AbstCHolderMemberFactory.class);
         AbstCHolderMember checkboxPanelHolder = chMemberFactory.createCHolder("checkbox_panel_holder", "Checkbox Penel Holder");
         checkboxPanelHolder.setCHMediator(this);
         checkboxPanelHolder.initialize();
         registerMemberToMap(checkboxPanelHolder);
 
-        chMemberFactory = AbstCHolderMemberFactory.getCHolderMemberFactory("iu.LCAC.ComponentHolders.demos.TextField.TextFieldPanelHolderFactory");
+        chMemberFactory = FactoryLoader.loadFactory(
+                "iu.LCAC.ComponentHolders.demos.TextField.TextFieldPanelHolderFactory",
+                AbstCHolderMemberFactory.class);
         AbstCHolderMember textFieldPanelHolder = chMemberFactory.createCHolder("text_field_panel_holder", "Checkbox Penel Holder");
         textFieldPanelHolder.setCHMediator(this);
         textFieldPanelHolder.initialize();
