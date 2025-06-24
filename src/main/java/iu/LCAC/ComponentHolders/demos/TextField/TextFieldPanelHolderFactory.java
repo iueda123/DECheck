@@ -10,9 +10,9 @@ public class TextFieldPanelHolderFactory extends AbstCHolderMemberFactory {
 
 
     @Override
-    protected AbstCHolderMember createInstace() {
+    protected AbstCHolderMember createInstace(String cholder_name, String short_name) {
         if (this.textFieldPanelHolder == null) {
-            this.textFieldPanelHolder = new TextFieldPanelHolder();
+            this.textFieldPanelHolder = new TextFieldPanelHolder(cholder_name, short_name);
         }
         return textFieldPanelHolder;
     }

@@ -10,9 +10,9 @@ public class ButtonPanelHolderFactory extends AbstCHolderMemberFactory {
 
 
     @Override
-    protected AbstCHolderMember createInstace() {
+    protected AbstCHolderMember createInstace(String cholder_name, String short_name) {
         if (this.buttonPanelHolder == null) {
-            this.buttonPanelHolder = new ButtonPanelHolder();
+            this.buttonPanelHolder = new ButtonPanelHolder(cholder_name, short_name);
         }
         return buttonPanelHolder;
     }

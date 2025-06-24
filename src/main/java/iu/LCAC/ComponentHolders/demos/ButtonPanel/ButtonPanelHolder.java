@@ -17,7 +17,9 @@ public class ButtonPanelHolder extends AbstCHolderMember {
 
     JButton sampleButton = new JButton("Button");
 
-    public ButtonPanelHolder() {
+    public ButtonPanelHolder(String cholder_name, String short_name)
+    {
+        super(cholder_name, short_name);
 
         sampleButton.addActionListener(new AbstractAction() {
             @Override

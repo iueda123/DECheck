@@ -18,7 +18,9 @@ public class TextFieldPanelHolder extends AbstCHolderMember {
     JPanel panel = new JPanel();
     JTextField SampleTextField = new JTextField("please write something.");
 
-    public TextFieldPanelHolder() {
+    public TextFieldPanelHolder(String cholder_name, String short_name)
+    {
+        super(cholder_name, short_name);
         panel.add(SampleTextField);
         SampleTextField.addPropertyChangeListener(new SamplePropertyChangeListener());
     }

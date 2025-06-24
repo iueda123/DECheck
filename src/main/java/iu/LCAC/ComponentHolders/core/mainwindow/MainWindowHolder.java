@@ -17,7 +17,8 @@ public class MainWindowHolder extends AbstCHolderMember {
 
     private JFrame mainWindow = new JFrame();
 
-    public MainWindowHolder() throws HeadlessException {
+    public MainWindowHolder(String cholder_name, String short_name) throws HeadlessException {
+        super(cholder_name, short_name);
         mainWindow.addWindowListener(new WindowAdapter() {
 
             @Override
