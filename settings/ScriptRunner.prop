@@ -1,0 +1,9 @@
+#no comment.
+#Fri Jul 12 01:06:27 JST 2024
+SCRIPT_ENGINE_LOCATION=/bin/bash
+ARGUMENT_FILE_NAME=arguments.txt
+CHECK_POINT_FILE_NAMES=Check_Point_1.txt Check_Point_2.txt Check_Point_3.txt
+SCRIPT_NAME=starter.sh
+LOG_FILE_NAME=starter.log
+SCRIPT_FOLDER_NAME=test_script
+SCRIPTS_ROOT_PATH=./settings/ScriptRunnerApp

@@ -1,0 +1,13 @@
+AbstCHolderMember.java の finalize() の役割の確認
+Singletonであるべきということの確認
+Singleton機構の位置
+Action　と ComponentHolder の共通部分と相違部分の整理
+パーツテストをやりやすくする機構
+
+XXXActionFactory#createAction()を
+XXXHolderFactory#createCHolder()のように
+createSingleton();
+setName(cholder_name);
+finalize();
+を基本とするのはどうだろうか？⇒だめかなぁ。ComponentHolderとActionの根本的な違いに関わる。
+

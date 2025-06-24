@@ -1,0 +1,4 @@
+code_file_path=/home/iu/Dropbox/NetbeansProjects_xps14z/IuTools/data/bash/01_PrepForFs.sh
+default_dicom_folder_root_path=<NIfTI FILE or DICOM FOLDER>
+default_project_root_path=<PROJECT_ROOT_FOLDER>
+default_subject_id=<Subject ID>
