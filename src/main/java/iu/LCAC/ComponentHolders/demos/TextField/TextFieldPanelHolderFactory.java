@@ -10,7 +10,7 @@ public class TextFieldPanelHolderFactory extends AbstCHolderMemberFactory {
 
 
     @Override
-    protected AbstCHolderMember createSingleton() {
+    protected AbstCHolderMember createInstace() {
         if (this.textFieldPanelHolder == null) {
             this.textFieldPanelHolder = new TextFieldPanelHolder();
         }

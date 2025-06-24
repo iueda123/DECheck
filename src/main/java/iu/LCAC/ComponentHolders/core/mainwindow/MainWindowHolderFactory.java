@@ -9,7 +9,7 @@ public class MainWindowHolderFactory extends AbstCHolderMemberFactory {
 
 
     @Override
-    protected AbstCHolderMember createSingleton( ) {
+    protected AbstCHolderMember createInstace( ) {
         if (mainWindow == null) {
             mainWindow = new MainWindowHolder();
         }

@@ -8,7 +8,7 @@ public class InitializeTextFieldPanelActionFactory extends AbstActionMemberFacto
     private InitializeTextFieldPanelAction action;
 
     @Override
-    protected AbstActionMember createSingleton(String action_name, String short_name) {
+    protected AbstActionMember createInstance(String action_name, String short_name) {
         if (action == null) {
             action = new InitializeTextFieldPanelAction(action_name, short_name);
         }

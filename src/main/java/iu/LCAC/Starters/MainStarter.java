@@ -50,7 +50,6 @@ public class MainStarter {
                 /* **** Component を配置する **** */
                 base_panel.add(((AbstCHolderMember) cholderMediator.getInstanceOfAMember("button_panel_holder")).getBaseComponent(), BorderLayout.WEST);
                 base_panel.add(((AbstCHolderMember) cholderMediator.getInstanceOfAMember("checkbox_panel_holder")).getBaseComponent(), BorderLayout.CENTER);
-                //base_panel.add(((AbstCHolderMember) cholderMediator.getInstanceOfAMember("mindmap_panel_holder")).getBaseComponent(), BorderLayout.CENTER);
                 base_panel.add(((AbstCHolderMember) cholderMediator.getInstanceOfAMember("text_field_panel_holder")).getBaseComponent(), BorderLayout.EAST);
 
                 /* **** メニューバー を作り、はめ込む **** */

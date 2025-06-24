@@ -9,7 +9,7 @@ public class ChangeWestColorActionFactory extends AbstActionMemberFactory {
     private ChangeWestColorAction action;
 
     @Override
-    protected AbstActionMember createSingleton(String action_name, String short_name) {
+    protected AbstActionMember createInstance(String action_name, String short_name) {
         if (action == null) {
             action = new ChangeWestColorAction(action_name, short_name);
         }

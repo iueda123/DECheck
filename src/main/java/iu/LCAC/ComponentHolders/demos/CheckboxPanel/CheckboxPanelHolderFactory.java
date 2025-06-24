@@ -11,7 +11,7 @@ public class CheckboxPanelHolderFactory extends AbstCHolderMemberFactory {
 
 
     @Override
-    protected AbstCHolderMember createSingleton() {
+    protected AbstCHolderMember createInstace() {
         if (this.checkboxPanelHolder == null) {
             this.checkboxPanelHolder = new CheckboxPanelHolder();
         }

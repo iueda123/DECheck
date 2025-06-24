@@ -9,7 +9,7 @@ public class SetAcceleratorOnNextClickActionFactory extends AbstActionMemberFact
     private SetAcceleratorOnNextClickAction action;
 
     @Override
-    protected AbstActionMember createSingleton(String action_name, String short_name) {
+    protected AbstActionMember createInstance(String action_name, String short_name) {
         if (action == null) {
             action = new SetAcceleratorOnNextClickAction(action_name, short_name);
         }

@@ -22,11 +22,11 @@ public abstract class AbstActionMemberFactory {
 
     /**
      * Create or return an action instance. Subclasses normally only need to
-     * implement {@link #createSingleton(String, String)} which performs the
+     * implement {@link #createInstance(String, String)} which performs the
      * actual instantiation and caching.
      */
     public AbstActionMember createAction(String action_name, String short_name) {
-        return createSingleton(action_name, short_name);
+        return createInstance(action_name, short_name);
     }
 
     /**
@@ -42,7 +42,7 @@ public abstract class AbstActionMemberFactory {
      * @param short_name  the label shown in the menu
      * @return singleton instance of the action
      */
-    protected abstract AbstActionMember createSingleton(String action_name, String short_name);
+    protected abstract AbstActionMember createInstance(String action_name, String short_name);
 
 }
 

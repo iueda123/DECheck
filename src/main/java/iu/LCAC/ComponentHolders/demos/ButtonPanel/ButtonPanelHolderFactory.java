@@ -10,7 +10,7 @@ public class ButtonPanelHolderFactory extends AbstCHolderMemberFactory {
 
 
     @Override
-    protected AbstCHolderMember createSingleton() {
+    protected AbstCHolderMember createInstace() {
         if (this.buttonPanelHolder == null) {
             this.buttonPanelHolder = new ButtonPanelHolder();
         }
