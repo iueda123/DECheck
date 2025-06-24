@@ -21,12 +21,12 @@ dependencies {
 
 application {
     //mainClass = 'iu.IuMindMap.v1_1_0.Starter'
-    mainClass = 'iu.accf/Starters/MainStarter'
+    mainClass = 'iu.LCAC.Starters.MainStarter'
 }
 
 jar{
     manifest{
-        attributes 'Main-Class' : 'iu.IuMindMap.v1_1_0.Starter'
+        attributes 'Main-Class': 'iu.LCAC.Starters.MainStarter'
     }
 }
 
