@@ -2,8 +2,8 @@ package iu.LCAC.CoreActions.SetAcceleratorOnNextClick;
 
 
 
-import iu.LCAC.Framework.action.member.AbstActionMember;
-import iu.LCAC.Framework.action.mediator.ActionMediator;
+import iu.LCAC.Framework.Member.action.AbstActionMember;
+import iu.LCAC.Framework.Mediator.action.ActionMediator;
 
 import javax.swing.*;
 import java.awt.*;

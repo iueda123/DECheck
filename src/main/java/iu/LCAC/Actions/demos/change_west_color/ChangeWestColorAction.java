@@ -1,13 +1,11 @@
 package iu.LCAC.Actions.demos.change_west_color;
 
-import iu.LCAC.Framework.componentholder.mediator.CHolderMediator;
-import iu.LCAC.Framework.action.member.AbstActionMember;
+import iu.LCAC.Framework.Mediator.componentholder.CHolderMediator;
+import iu.LCAC.Framework.Member.action.AbstActionMember;
 import iu.LCAC.ComponentHolders.demos.ButtonPanel.ButtonPanelHolder;
 import iu.LCAC.ComponentHolders.demos.TextField.TextFieldPanelHolder;
-import iu.LCAC.Framework.componentholder.mediator.CHolderMediatorIntrfc;
 import iu.LCAC.ComponentHolders.demos.CheckboxPanel.CheckboxPanelHolder;
-import iu.LCAC.Framework.action.mediator.ActionMediatorIntrfc;
-import iu.LCAC.Framework.action.mediator.ActionMediator;
+import iu.LCAC.Framework.Mediator.action.ActionMediator;
 
 import javax.swing.*;
 import java.awt.*;
@@ -62,13 +60,13 @@ public class ChangeWestColorAction extends AbstActionMember {
     }
 
     @Override
-    public void setActnMediator(ActionMediatorIntrfc actionMediatorIntrfc) {
-        this.actionMediator = (ActionMediator) actionMediatorIntrfc;
+    public void setCHolderMediator(CHolderMediator cHolderMediator) {
+        this.cholderMediator =  cHolderMediator;
     }
 
     @Override
-    public void doWorkAsActnMember() {
-
+    public void setActionMediator(ActionMediator actionMediator) {
+        this.actionMediator =  actionMediator;
     }
 
     @Override
@@ -77,12 +75,7 @@ public class ChangeWestColorAction extends AbstActionMember {
     }
 
     @Override
-    public void setCHMediator(CHolderMediatorIntrfc CHolderMediatorIntrfc) {
-        this.cholderMediator = (CHolderMediator) CHolderMediatorIntrfc;
-    }
-
-    @Override
-    public void doWorkAsCHMember() {
+    public void doWorkAsMember() {
 
     }
 

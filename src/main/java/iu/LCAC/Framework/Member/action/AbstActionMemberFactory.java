@@ -1,6 +1,8 @@
-package iu.LCAC.Framework.action.member;
+package iu.LCAC.Framework.Member.action;
 
 // Factoryではabstractクラスしか使ってないところがポイント。フィールドもない。
+
+import iu.LCAC.Framework.Member.componentholder.AbstCHolderMemberFactory;
 
 public abstract class AbstActionMemberFactory {
 
@@ -34,7 +36,7 @@ public abstract class AbstActionMemberFactory {
      * <p>
      * Actions normally receive their name and a short description when
      * instantiated.  In order to support a singleton style similar to
-     * {@link iu.LCAC.Framework.componentholder.member.AbstCHolderMemberFactory},
+     * {@link AbstCHolderMemberFactory},
      * subclasses can cache the created instance and return it on subsequent
      * calls.
      *

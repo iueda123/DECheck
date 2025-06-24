@@ -1,6 +1,6 @@
 package iu.LCAC.MenuBar;
 
-import iu.LCAC.Framework.action.mediator.ActionMediator;
+import iu.LCAC.Framework.Mediator.action.ActionMediator;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;

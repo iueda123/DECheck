@@ -1,4 +1,4 @@
-package iu.LCAC.Framework.componentholder.mediator;
+package iu.LCAC.Framework.Mediator.componentholder;
 
 public class CHolderMediatorFactory {
 

@@ -1,7 +1,7 @@
 package iu.LCAC.CoreActions.SetAcceleratorOnNextClick;
 
 
-import iu.LCAC.Framework.action.mediator.ActionMediator;
+import iu.LCAC.Framework.Mediator.action.ActionMediator;
 
 public class AcceleratorSetupWindowFactory  {
 

@@ -1,8 +1,8 @@
 package iu.LCAC.ComponentHolders.core.mainwindow;
 
 
-import iu.LCAC.Framework.componentholder.member.AbstCHolderMember;
-import iu.LCAC.Framework.componentholder.member.AbstCHolderMemberFactory;
+import iu.LCAC.Framework.Member.componentholder.AbstCHolderMember;
+import iu.LCAC.Framework.Member.componentholder.AbstCHolderMemberFactory;
 
 public class MainWindowHolderFactory extends AbstCHolderMemberFactory {
     static AbstCHolderMember mainWindow;

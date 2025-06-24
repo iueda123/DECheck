@@ -1,7 +1,7 @@
 package iu.LCAC.tests;
 
-import iu.LCAC.Framework.action.mediator.ActionMediator;
-import iu.LCAC.Framework.action.member.ActionMemberIntrfc;
+import iu.LCAC.Framework.Mediator.action.ActionMediator;
+import iu.LCAC.Framework.Member.MemberIntrfc;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
@@ -13,7 +13,7 @@ public class ActionMediatorTest {
     @Test
     public void createActnMembersRegistersExpectedActions() {
         ActionMediator mediator = new ActionMediator();
-        Map<String, ActionMemberIntrfc> map = mediator.getMemberMap();
+        Map<String, MemberIntrfc> map = mediator.getMemberMap();
 
         assertEquals(8, map.size(), "Unexpected number of actions registered");
         assertTrue(map.containsKey("change_color_of_west"));

@@ -1,12 +1,12 @@
-package iu.LCAC.Framework.componentholder.mediator;
+package iu.LCAC.Framework.Mediator.componentholder;
 
 
-import iu.LCAC.Framework.action.mediator.ActionMediatorIntrfc;
-import iu.LCAC.Framework.componentholder.member.AbstCHolderMember;
-import iu.LCAC.Framework.action.member.ActionMemberIntrfc;
-import iu.LCAC.Framework.componentholder.member.AbstCHolderMemberFactory;
-import iu.LCAC.Framework.componentholder.member.CHolderMemberIntrfc;
-import iu.LCAC.Framework.factory.FactoryLoader;
+import iu.LCAC.Framework.Mediator.MediatorIntrfc;
+import iu.LCAC.Framework.Mediator.action.ActionMediator;
+import iu.LCAC.Framework.Member.MemberIntrfc;
+import iu.LCAC.Framework.Member.componentholder.AbstCHolderMember;
+import iu.LCAC.Framework.Member.componentholder.AbstCHolderMemberFactory;
+import iu.LCAC.Framework.FactoryLoader.MemberFactoryLoader;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -19,50 +19,50 @@ import java.util.Iterator;
  * もしショートカット再設定モードに入っているならば、
  * 呼び出されたAction_A Classのサブクラスのperform()を抑制するという機能。
  */
-public class CHolderMediator implements CHolderMediatorIntrfc {
+public class CHolderMediator implements MediatorIntrfc {
 
     // これは文字列からComponentのインスタンスを取り出すために必要
-    private final HashMap<String, CHolderMemberIntrfc> memberMap = new HashMap<>();
+    private final HashMap<String, MemberIntrfc> memberMap = new HashMap<>();
 
 
     public CHolderMediator() {
-        createCHMembers();
+        createMembers();
     }
 
     @Override
-    public void createCHMembers() {
+    public void createMembers() {
 
         AbstCHolderMemberFactory chMemberFactory;
         //AbstCHolderMember mainWindowHolder = new MainWindowHolderFactory().create("main_window_holder");
-        chMemberFactory = FactoryLoader.loadFactory(
+        chMemberFactory = MemberFactoryLoader.loadFactory(
                 "iu.LCAC.ComponentHolders.core.mainwindow.MainWindowHolderFactory",
                 AbstCHolderMemberFactory.class);
         AbstCHolderMember mainWindowHolder = chMemberFactory.createCHolder("main_window_holder", "main window");
-        mainWindowHolder.setCHMediator(this);
+        mainWindowHolder.setCHolderMediator(this);
         mainWindowHolder.initialize();
         registerMemberToMap(mainWindowHolder);
 
-        chMemberFactory = FactoryLoader.loadFactory(
+        chMemberFactory = MemberFactoryLoader.loadFactory(
                 "iu.LCAC.ComponentHolders.demos.ButtonPanel.ButtonPanelHolderFactory",
                 AbstCHolderMemberFactory.class);
         AbstCHolderMember buttonPanelHolder = chMemberFactory.createCHolder("button_panel_holder", "Button Penel Holder");
-        buttonPanelHolder.setCHMediator(this);
+        buttonPanelHolder.setCHolderMediator(this);
         buttonPanelHolder.initialize();
         registerMemberToMap(buttonPanelHolder);
 
-        chMemberFactory = FactoryLoader.loadFactory(
+        chMemberFactory = MemberFactoryLoader.loadFactory(
                 "iu.LCAC.ComponentHolders.demos.CheckboxPanel.CheckboxPanelHolderFactory",
                 AbstCHolderMemberFactory.class);
         AbstCHolderMember checkboxPanelHolder = chMemberFactory.createCHolder("checkbox_panel_holder", "Checkbox Penel Holder");
-        checkboxPanelHolder.setCHMediator(this);
+        checkboxPanelHolder.setCHolderMediator(this);
         checkboxPanelHolder.initialize();
         registerMemberToMap(checkboxPanelHolder);
 
-        chMemberFactory = FactoryLoader.loadFactory(
+        chMemberFactory = MemberFactoryLoader.loadFactory(
                 "iu.LCAC.ComponentHolders.demos.TextField.TextFieldPanelHolderFactory",
                 AbstCHolderMemberFactory.class);
         AbstCHolderMember textFieldPanelHolder = chMemberFactory.createCHolder("text_field_panel_holder", "Checkbox Penel Holder");
-        textFieldPanelHolder.setCHMediator(this);
+        textFieldPanelHolder.setCHolderMediator(this);
         textFieldPanelHolder.initialize();
         registerMemberToMap(textFieldPanelHolder);
 
@@ -83,11 +83,12 @@ public class CHolderMediator implements CHolderMediatorIntrfc {
     }
 
     @Override
-    public void requestFromACHMember() {
+    public void requestFromMember() {
 
     }
 
-    public HashMap<String, CHolderMemberIntrfc> getMemberMap() {
+    @Override
+    public HashMap<String, MemberIntrfc> getMemberMap() {
         return memberMap;
     }
 
@@ -96,12 +97,12 @@ public class CHolderMediator implements CHolderMediatorIntrfc {
     }
 
 
-    public void registerActionMediatorToEachMember(ActionMediatorIntrfc actionMediatorIntrfc) {
+    public void registerActionMediatorToEachMember(ActionMediator actionMediator) {
         Iterator<String> it = memberMap.keySet().iterator();
         String key = null;
         while (it.hasNext()) {
             key = it.next();
-            ((ActionMemberIntrfc) (memberMap.get(key))).setActnMediator(actionMediatorIntrfc);
+            memberMap.get(key).setActionMediator(actionMediator);
         }
     }
 

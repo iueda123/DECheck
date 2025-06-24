@@ -2,12 +2,10 @@ package iu.LCAC.CoreActions.Save_and_Load;
 
 
 
-import iu.LCAC.Framework.action.member.AbstActionMember;
-import iu.LCAC.Framework.action.mediator.ActionMediator;
-import iu.LCAC.Framework.componentholder.mediator.CHolderMediatorIntrfc;
-import iu.LCAC.Framework.componentholder.mediator.CHolderMediator;
+import iu.LCAC.Framework.Member.action.AbstActionMember;
+import iu.LCAC.Framework.Mediator.action.ActionMediator;
+import iu.LCAC.Framework.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Tools.PropertyManager_v5;
-import iu.LCAC.Framework.action.mediator.ActionMediatorIntrfc;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -118,13 +116,13 @@ public class LoadAcceleratorSettingsAction extends AbstActionMember {
     }
 
     @Override
-    public void setActnMediator(ActionMediatorIntrfc actionMediatorIntrfc) {
-        super.actionMediator = (ActionMediator) actionMediatorIntrfc;
+    public void setCHolderMediator(CHolderMediator cHolderMediator) {
+        this.cholderMediator =  cHolderMediator;
     }
 
     @Override
-    public void doWorkAsActnMember() {
-
+    public void setActionMediator(ActionMediator actionMediator) {
+        super.actionMediator =  actionMediator;
     }
 
     @Override
@@ -133,13 +131,7 @@ public class LoadAcceleratorSettingsAction extends AbstActionMember {
     }
 
     @Override
-    public void setCHMediator(CHolderMediatorIntrfc CHolderMediatorIntrfc) {
-        this.cholderMediator = (CHolderMediator) CHolderMediatorIntrfc;
-
-    }
-
-    @Override
-    public void doWorkAsCHMember() {
+    public void doWorkAsMember() {
 
     }
 

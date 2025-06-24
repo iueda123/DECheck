@@ -2,11 +2,9 @@ package iu.LCAC.ComponentHolders.core.mainwindow;
 
 
 
-import iu.LCAC.Framework.componentholder.mediator.CHolderMediator;
-import iu.LCAC.Framework.componentholder.member.AbstCHolderMember;
-import iu.LCAC.Framework.componentholder.mediator.CHolderMediatorIntrfc;
-import iu.LCAC.Framework.action.mediator.ActionMediatorIntrfc;
-import iu.LCAC.Framework.action.mediator.ActionMediator;
+import iu.LCAC.Framework.Mediator.componentholder.CHolderMediator;
+import iu.LCAC.Framework.Member.componentholder.AbstCHolderMember;
+import iu.LCAC.Framework.Mediator.action.ActionMediator;
 
 import javax.swing.*;
 import java.awt.*;
@@ -99,18 +97,13 @@ public class MainWindowHolder extends AbstCHolderMember {
     }
 
     @Override
-    public void setActnMediator(ActionMediatorIntrfc actionMediatorIntrfc) {
-        this.actionMediator = (ActionMediator) actionMediatorIntrfc;
+    public void setCHolderMediator(CHolderMediator cHolderMediator) {
+        this.cholderMediator =  cHolderMediator;
     }
 
     @Override
-    public void doWorkAsActnMember() {
-
-    }
-
-    @Override
-    public void setCHMediator(CHolderMediatorIntrfc CHolderMediatorIntrfc) {
-        this.cholderMediator = (CHolderMediator) CHolderMediatorIntrfc;
+    public void setActionMediator(ActionMediator actionMediator) {
+        this.actionMediator = actionMediator;
     }
 
     @Override
@@ -119,9 +112,10 @@ public class MainWindowHolder extends AbstCHolderMember {
     }
 
     @Override
-    public void doWorkAsCHMember() {
+    public void doWorkAsMember() {
 
     }
+
 
 }
 

@@ -1,23 +1,23 @@
-package iu.LCAC.Framework.action.mediator;
+package iu.LCAC.Framework.Mediator.action;
 
-import iu.LCAC.Framework.componentholder.mediator.CHolderMediatorIntrfc;
-import iu.LCAC.Framework.action.member.AbstActionMember;
-import iu.LCAC.Framework.action.member.AbstActionMemberFactory;
-import iu.LCAC.Framework.factory.FactoryLoader;
-import iu.LCAC.Framework.action.member.ActionMemberIntrfc;
-import iu.LCAC.Framework.componentholder.member.CHolderMemberIntrfc;
+import iu.LCAC.Framework.Mediator.MediatorIntrfc;
+import iu.LCAC.Framework.Mediator.componentholder.CHolderMediator;
+import iu.LCAC.Framework.Member.MemberIntrfc;
+import iu.LCAC.Framework.Member.action.AbstActionMember;
+import iu.LCAC.Framework.Member.action.AbstActionMemberFactory;
+import iu.LCAC.Framework.FactoryLoader.MemberFactoryLoader;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public class ActionMediator implements ActionListener, ActionMediatorIntrfc {
+public class ActionMediator implements ActionListener, MediatorIntrfc {
 
-    public HashMap<String, ActionMemberIntrfc> memberMap = new HashMap<>();
+    public HashMap<String, MemberIntrfc> memberMap = new HashMap<>();
 
     public ActionMediator() {
-        this.createActnMembers();
+        this.createMembers();
     }
 
     /* *** Variables and Methods for AcceleratorSetupMode *** */
@@ -51,73 +51,73 @@ public class ActionMediator implements ActionListener, ActionMediatorIntrfc {
 
 
     @Override
-    public void createActnMembers() {
+    public void createMembers() {
         /* *** children of main_menu_1 *** */
         AbstActionMemberFactory actionMemberFactory;
 
-        actionMemberFactory = FactoryLoader.loadFactory(
+        actionMemberFactory = MemberFactoryLoader.loadFactory(
                 "iu.LCAC.Actions.demos.change_west_color.ChangeWestColorActionFactory",
                 AbstActionMemberFactory.class);
         AbstActionMember changeWestColorAction = actionMemberFactory.createAction("change_color_of_west", "blue west");
         //changeWestColorAction.setActionListenerToMenuItem((ActionListener) this);
-        changeWestColorAction.setActnMediator(this);
+        changeWestColorAction.setActionMediator(this);
         changeWestColorAction.initialize();
         registerMemberToMap(changeWestColorAction);
 
 
-        actionMemberFactory = FactoryLoader.loadFactory(
+        actionMemberFactory = MemberFactoryLoader.loadFactory(
                 "iu.LCAC.Actions.demos.change_center_color.ChangeCenterColorActionFactory",
                 AbstActionMemberFactory.class);
         AbstActionMember changeCenterColorAction = actionMemberFactory.createAction("change_color_of_center", "blue center");
-        changeCenterColorAction.setActnMediator(this);
+        changeCenterColorAction.setActionMediator(this);
         changeCenterColorAction.initialize();
         registerMemberToMap(changeCenterColorAction);
 
-        actionMemberFactory = FactoryLoader.loadFactory(
+        actionMemberFactory = MemberFactoryLoader.loadFactory(
                 "iu.LCAC.Actions.demos.change_east_color.ChangeEastColorActionFactory",
                 AbstActionMemberFactory.class);
         AbstActionMember changeEastColorAction = actionMemberFactory.createAction("change_color_of_east", "blue east");
-        changeEastColorAction.setActnMediator(this);
+        changeEastColorAction.setActionMediator(this);
         changeEastColorAction.initialize();
         registerMemberToMap(changeEastColorAction);
 
-        actionMemberFactory = FactoryLoader.loadFactory(
+        actionMemberFactory = MemberFactoryLoader.loadFactory(
                 "iu.LCAC.Actions.demos.change_text_of_button_panel.ChangeTextOfButtonPanelActionFactory",
                 AbstActionMemberFactory.class);
         AbstActionMember changeTextOfButtonPanelAction = actionMemberFactory.createAction("change_text", "change text");
-        changeTextOfButtonPanelAction.setActnMediator(this);
+        changeTextOfButtonPanelAction.setActionMediator(this);
         changeTextOfButtonPanelAction.initialize();
         registerMemberToMap(changeTextOfButtonPanelAction);
 
-        actionMemberFactory = FactoryLoader.loadFactory(
+        actionMemberFactory = MemberFactoryLoader.loadFactory(
                 "iu.LCAC.Actions.demos.initialize_textfield_panel.InitializeTextFieldPanelActionFactory",
                 AbstActionMemberFactory.class);
         AbstActionMember initializeTextFieldPanelAction = actionMemberFactory.createAction("initialize_sample_text_field", "initialize textfield");
-        initializeTextFieldPanelAction.setActnMediator(this);
+        initializeTextFieldPanelAction.setActionMediator(this);
         initializeTextFieldPanelAction.initialize();
         registerMemberToMap(initializeTextFieldPanelAction);
 
-        actionMemberFactory = FactoryLoader.loadFactory(
+        actionMemberFactory = MemberFactoryLoader.loadFactory(
                 "iu.LCAC.CoreActions.Save_and_Load.LoadAcceleratorSettingsActionFactory",
                 AbstActionMemberFactory.class);
         AbstActionMember loadAcceleratorSettingsAction = actionMemberFactory.createAction("load_accelerator_settings", "Load Accelerator");
-        loadAcceleratorSettingsAction.setActnMediator(this);
+        loadAcceleratorSettingsAction.setActionMediator(this);
         loadAcceleratorSettingsAction.initialize();
         registerMemberToMap(loadAcceleratorSettingsAction);
 
-        actionMemberFactory = FactoryLoader.loadFactory(
+        actionMemberFactory = MemberFactoryLoader.loadFactory(
                 "iu.LCAC.CoreActions.Save_and_Load.SaveAcceleratorSettingsActionFactory",
                 AbstActionMemberFactory.class);
         AbstActionMember saveAcceleratorSettingsAction = actionMemberFactory.createAction("save_accelerator_settings", "Save Accelerator");
-        saveAcceleratorSettingsAction.setActnMediator(this);
+        saveAcceleratorSettingsAction.setActionMediator(this);
         saveAcceleratorSettingsAction.initialize();
         registerMemberToMap(saveAcceleratorSettingsAction);
 
-        actionMemberFactory = FactoryLoader.loadFactory(
+        actionMemberFactory = MemberFactoryLoader.loadFactory(
                 "iu.LCAC.CoreActions.SetAcceleratorOnNextClick.SetAcceleratorOnNextClickActionFactory",
                 AbstActionMemberFactory.class);
         AbstActionMember setAcceleratorOnNextClickAction = actionMemberFactory.createAction("set_acceleration_on_next_click", "Setup Accelerator");
-        setAcceleratorOnNextClickAction.setActnMediator(this);
+        setAcceleratorOnNextClickAction.setActionMediator(this);
         setAcceleratorOnNextClickAction.initialize();
         registerMemberToMap(setAcceleratorOnNextClickAction);
 
@@ -128,11 +128,12 @@ public class ActionMediator implements ActionListener, ActionMediatorIntrfc {
     }
 
     @Override
-    public void requestFromAnAcMember() {
+    public void requestFromMember() {
 
     }
 
-    public HashMap<String, ActionMemberIntrfc> getMemberMap() {
+    @Override
+    public HashMap<String, MemberIntrfc> getMemberMap() {
         return memberMap;
     }
 
@@ -140,12 +141,12 @@ public class ActionMediator implements ActionListener, ActionMediatorIntrfc {
         return (AbstActionMember) memberMap.get(member_name);
     }
 
-    public void registerCHolderMediatorToEachMember(CHolderMediatorIntrfc CHolderMediatorIntrfc) {
+    public void registerCHolderMediatorToEachMember(CHolderMediator cHolderMediator) {
         Iterator<String> it = memberMap.keySet().iterator();
         String key = null;
         while (it.hasNext()) {
             key = it.next();
-            ((CHolderMemberIntrfc) memberMap.get(key)).setCHMediator(CHolderMediatorIntrfc);
+            memberMap.get(key).setCHolderMediator(cHolderMediator);
         }
     }
 

@@ -1,9 +1,9 @@
-package iu.LCAC.Framework.action.member;
+package iu.LCAC.Framework.Member.action;
 
 
-import iu.LCAC.Framework.action.mediator.ActionMediator;
-import iu.LCAC.Framework.componentholder.mediator.CHolderMediator;
-import iu.LCAC.Framework.componentholder.member.CHolderMemberIntrfc;
+import iu.LCAC.Framework.Mediator.action.ActionMediator;
+import iu.LCAC.Framework.Mediator.componentholder.CHolderMediator;
+import iu.LCAC.Framework.Member.MemberIntrfc;
 import iu.LCAC.Tools.PropertyManager_v5;
 
 import javax.swing.*;
@@ -12,7 +12,7 @@ import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public abstract class AbstActionMember implements ActionMemberIntrfc, CHolderMemberIntrfc {
+public abstract class AbstActionMember implements MemberIntrfc {
 
     protected ActionMediator actionMediator;
     protected CHolderMediator cholderMediator;

@@ -1,7 +1,7 @@
 package iu.LCAC.CoreActions.Save_and_Load;
 
-import iu.LCAC.Framework.action.member.AbstActionMemberFactory;
-import iu.LCAC.Framework.action.member.AbstActionMember;
+import iu.LCAC.Framework.Member.action.AbstActionMemberFactory;
+import iu.LCAC.Framework.Member.action.AbstActionMember;
 
 public class LoadAcceleratorSettingsActionFactory extends AbstActionMemberFactory {
 

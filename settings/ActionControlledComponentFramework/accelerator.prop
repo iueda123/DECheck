@@ -1,0 +1,8 @@
+#no comment.
+#Wed Jun 25 01:44:06 JST 2025
+save_accelerator_settings=shift ctrl alt pressed S
+change_color_of_east=ctrl pressed E
+load_accelerator_settings=shift ctrl alt pressed L
+set_acceleration_on_next_click=shift ctrl alt pressed A
+change_color_of_center=ctrl pressed C
+change_color_of_west=ctrl pressed B

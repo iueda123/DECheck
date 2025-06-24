@@ -1,11 +1,11 @@
-package iu.LCAC.Framework.factory;
+package iu.LCAC.Framework.FactoryLoader;
 
 /**
  * Utility class to instantiate factory classes via reflection.
  */
-public final class FactoryLoader {
+public final class MemberFactoryLoader {
 
-    private FactoryLoader() {
+    private MemberFactoryLoader() {
         // utility class
     }
 

@@ -1,8 +1,8 @@
 package iu.LCAC.Actions.demos.change_west_color;
 
 
-import iu.LCAC.Framework.action.member.AbstActionMemberFactory;
-import iu.LCAC.Framework.action.member.AbstActionMember;
+import iu.LCAC.Framework.Member.action.AbstActionMemberFactory;
+import iu.LCAC.Framework.Member.action.AbstActionMember;
 
 public class ChangeWestColorActionFactory extends AbstActionMemberFactory {
 

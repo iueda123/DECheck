@@ -2,11 +2,9 @@ package iu.LCAC.ComponentHolders.demos.ButtonPanel;
 
 
 
-import iu.LCAC.Framework.componentholder.mediator.CHolderMediator;
-import iu.LCAC.Framework.componentholder.member.AbstCHolderMember;
-import iu.LCAC.Framework.componentholder.mediator.CHolderMediatorIntrfc;
-import iu.LCAC.Framework.action.mediator.ActionMediatorIntrfc;
-import iu.LCAC.Framework.action.mediator.ActionMediator;
+import iu.LCAC.Framework.Mediator.componentholder.CHolderMediator;
+import iu.LCAC.Framework.Member.componentholder.AbstCHolderMember;
+import iu.LCAC.Framework.Mediator.action.ActionMediator;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -53,8 +51,13 @@ public class ButtonPanelHolder extends AbstCHolderMember {
 
 
     @Override
-    public void setCHMediator(CHolderMediatorIntrfc CHolderMediatorIntrfc) {
-        this.cholderMediator = (CHolderMediator) CHolderMediatorIntrfc;
+    public void setCHolderMediator(CHolderMediator cHolderMediator) {
+        this.cholderMediator = cHolderMediator;
+    }
+
+    @Override
+    public void setActionMediator(ActionMediator actionMediator) {
+        this.actionMediator =  actionMediator;
     }
 
     @Override
@@ -63,18 +66,8 @@ public class ButtonPanelHolder extends AbstCHolderMember {
     }
 
     @Override
-    public void doWorkAsCHMember() {
+    public void doWorkAsMember() {
 
     }
 
-
-    @Override
-    public void setActnMediator(ActionMediatorIntrfc actionMediatorIntrfc) {
-        this.actionMediator = (ActionMediator) actionMediatorIntrfc;
-    }
-
-    @Override
-    public void doWorkAsActnMember() {
-
-    }
 }

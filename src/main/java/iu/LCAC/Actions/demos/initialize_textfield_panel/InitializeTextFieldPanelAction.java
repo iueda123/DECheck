@@ -1,13 +1,11 @@
 package iu.LCAC.Actions.demos.initialize_textfield_panel;
 
 
-import iu.LCAC.Framework.componentholder.mediator.CHolderMediator;
-import iu.LCAC.Framework.action.member.AbstActionMember;
+import iu.LCAC.Framework.Mediator.componentholder.CHolderMediator;
+import iu.LCAC.Framework.Member.action.AbstActionMember;
 import iu.LCAC.ComponentHolders.demos.TextField.TextFieldPanelHolder;
-import iu.LCAC.Framework.action.mediator.ActionMediator;
-import iu.LCAC.Framework.componentholder.mediator.CHolderMediatorIntrfc;
+import iu.LCAC.Framework.Mediator.action.ActionMediator;
 import iu.LCAC.Tools.PropertyManager_v5;
-import iu.LCAC.Framework.action.mediator.ActionMediatorIntrfc;
 
 import java.awt.event.ActionEvent;
 
@@ -49,13 +47,13 @@ public class InitializeTextFieldPanelAction extends AbstActionMember {
     }
 
     @Override
-    public void setActnMediator(ActionMediatorIntrfc actionMediatorIntrfc) {
-        this.actionMediator = (ActionMediator) actionMediatorIntrfc;
+    public void setCHolderMediator(CHolderMediator cHolderMediator) {
+        this.cholderMediator =  cHolderMediator;
     }
 
     @Override
-    public void doWorkAsActnMember() {
-
+    public void setActionMediator(ActionMediator actionMediator) {
+        this.actionMediator =  actionMediator;
     }
 
     @Override
@@ -64,14 +62,8 @@ public class InitializeTextFieldPanelAction extends AbstActionMember {
     }
 
     @Override
-    public void setCHMediator(CHolderMediatorIntrfc CHolderMediatorIntrfc) {
-        this.cholderMediator = (CHolderMediator) CHolderMediatorIntrfc;
-    }
-
-    @Override
-    public void doWorkAsCHMember() {
+    public void doWorkAsMember() {
 
     }
-
 
 }

@@ -1,13 +1,12 @@
 package iu.LCAC.Starters;
 
 
-import iu.LCAC.Framework.componentholder.mediator.CHolderMediator;
-import iu.LCAC.Framework.componentholder.member.AbstCHolderMember;
+import iu.LCAC.Framework.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.MenuBar.MenuBarCreator;
 import iu.LCAC.ComponentHolders.core.mainwindow.MainWindowHolder;
-import iu.LCAC.Framework.componentholder.mediator.CHolderMediatorFactory;
-import iu.LCAC.Framework.action.mediator.ActionMediator;
-import iu.LCAC.Framework.action.mediator.ActionMediatorFactory;
+import iu.LCAC.Framework.Mediator.componentholder.CHolderMediatorFactory;
+import iu.LCAC.Framework.Mediator.action.ActionMediator;
+import iu.LCAC.Framework.Mediator.action.ActionMediatorFactory;
 
 import javax.swing.*;
 import java.awt.*;

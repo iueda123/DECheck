@@ -1,8 +1,8 @@
 package iu.LCAC.Actions.demos.change_center_color;
 
 
-import iu.LCAC.Framework.action.member.AbstActionMember;
-import iu.LCAC.Framework.action.member.AbstActionMemberFactory;
+import iu.LCAC.Framework.Member.action.AbstActionMember;
+import iu.LCAC.Framework.Member.action.AbstActionMemberFactory;
 
 public class ChangeCenterColorActionFactory extends AbstActionMemberFactory {
 

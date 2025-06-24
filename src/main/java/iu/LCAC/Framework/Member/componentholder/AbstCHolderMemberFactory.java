@@ -1,4 +1,4 @@
-package iu.LCAC.Framework.componentholder.member;
+package iu.LCAC.Framework.Member.componentholder;
 
 
 public abstract class AbstCHolderMemberFactory {

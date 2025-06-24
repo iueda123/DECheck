@@ -1,8 +1,8 @@
 package iu.LCAC.CoreActions.SetAcceleratorOnNextClick;
 
 
-import iu.LCAC.Framework.action.member.AbstActionMemberFactory;
-import iu.LCAC.Framework.action.member.AbstActionMember;
+import iu.LCAC.Framework.Member.action.AbstActionMemberFactory;
+import iu.LCAC.Framework.Member.action.AbstActionMember;
 
 public class SetAcceleratorOnNextClickActionFactory extends AbstActionMemberFactory {
 

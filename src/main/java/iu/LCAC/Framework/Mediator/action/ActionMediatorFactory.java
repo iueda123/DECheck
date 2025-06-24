@@ -1,4 +1,4 @@
-package iu.LCAC.Framework.action.mediator;
+package iu.LCAC.Framework.Mediator.action;
 
 public class ActionMediatorFactory {
 
