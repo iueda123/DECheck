@@ -79,7 +79,7 @@ public class CHolderMediator implements CHolderMediatorIntrfc {
     }
 
     private void registerMemberToMap(AbstCHolderMember member) {
-        memberMap.put(member.getName(), member);
+        memberMap.put(member.getMemberName(), member);
     }
 
     @Override

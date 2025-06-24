@@ -88,9 +88,5 @@ public class ChangeEastColorAction extends AbstActionMember {
 
     }
 
-    @Override
-    public String getName() {
-        return null;
-    }
 
 }

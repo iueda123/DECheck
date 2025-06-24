@@ -86,9 +86,5 @@ public class ChangeWestColorAction extends AbstActionMember {
 
     }
 
-    @Override
-    public String getName() {
-        return null;
-    }
 
 }

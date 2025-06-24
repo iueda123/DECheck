@@ -10,5 +10,5 @@ public interface CHolderMemberIntrfc {
 
     public abstract void doWorkAsCHMember();
 
-    public abstract String getName();
+    public abstract String getMemberName();
 }

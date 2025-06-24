@@ -71,9 +71,5 @@ public class ChangeTextOfButtonPanelAction extends AbstActionMember {
 
     }
 
-    @Override
-    public String getName() {
-        return null;
-    }
 
 }

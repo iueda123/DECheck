@@ -73,9 +73,5 @@ public class InitializeTextFieldPanelAction extends AbstActionMember {
 
     }
 
-    @Override
-    public String getName() {
-        return null;
-    }
 
 }

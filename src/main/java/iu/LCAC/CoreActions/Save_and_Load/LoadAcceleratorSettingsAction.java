@@ -60,7 +60,7 @@ public class LoadAcceleratorSettingsAction extends AbstActionMember {
             System.out.println(property_name + " -> " + loaded_accelerator);
 
             action = this.actionMediator.getInstanceOfAMember(property_name);
-            System.out.println("action_name: " + action.getActionName());
+            System.out.println("action_name: " + action.getMemberName());
 
             loaded_accelerator_key_stroke = KeyStroke.getKeyStroke(loaded_accelerator);
             //System.out.println("loaded_accelerator_key_stroke: " + loaded_accelerator_key_stroke);
@@ -141,11 +141,6 @@ public class LoadAcceleratorSettingsAction extends AbstActionMember {
     @Override
     public void doWorkAsCHMember() {
 
-    }
-
-    @Override
-    public String getName() {
-        return null;
     }
 
 }

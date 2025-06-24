@@ -124,7 +124,7 @@ public class ActionMediator implements ActionListener, ActionMediatorIntrfc {
     }
 
     private void registerMemberToMap(AbstActionMember action) {
-        memberMap.put(action.getActionName(), action);
+        memberMap.put(action.getMemberName(), action);
     }
 
     @Override

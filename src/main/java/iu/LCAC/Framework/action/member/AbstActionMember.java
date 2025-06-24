@@ -28,7 +28,7 @@ public abstract class AbstActionMember implements ActionMemberIntrfc, CHolderMem
         this.actionName = action_name;
     }
 
-    public String getActionName() {
+    public String getMemberName() {
         return this.actionName;
     }
 
@@ -37,7 +37,7 @@ public abstract class AbstActionMember implements ActionMemberIntrfc, CHolderMem
 
         if (menuItem == null) {
             menuItem = new JMenuItem(this.shortName);
-            menuItem.setActionCommand(getActionName());// 結びつけるアクションの名前。表示名とは独立しており、ActionListenerがアクションの種類を特定するのに使う。
+            menuItem.setActionCommand(getMemberName());// 結びつけるアクションの名前。表示名とは独立しており、ActionListenerがアクションの種類を特定するのに使う。
             menuItem.addActionListener(actionMediator);
             setAcceleratorKeyStroke();
         }

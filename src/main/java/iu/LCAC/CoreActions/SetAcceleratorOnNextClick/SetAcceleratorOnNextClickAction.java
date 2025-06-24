@@ -76,9 +76,4 @@ public class SetAcceleratorOnNextClickAction extends AbstActionMember {
 
     }
 
-    @Override
-    public String getName() {
-        return null;
-    }
-
 }

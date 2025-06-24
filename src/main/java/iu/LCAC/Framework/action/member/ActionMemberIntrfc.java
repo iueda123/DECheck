@@ -9,4 +9,5 @@ public interface ActionMemberIntrfc {
 
     public abstract void initialize();
 
+    public abstract String getMemberName();
 }

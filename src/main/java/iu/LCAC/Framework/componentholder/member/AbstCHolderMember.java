@@ -16,25 +16,20 @@ public abstract class AbstCHolderMember implements CHolderMemberIntrfc, ActionMe
 
     protected CHolderMediator cholderMediator;
 
-    protected String componentName;
+    protected String cholderName;
     protected String shortName;
 
-    public AbstCHolderMember(String componentName, String shortName) {
-        this.componentName = componentName;
+    public AbstCHolderMember(String cholderName, String shortName) {
+        this.cholderName = cholderName;
         this.shortName = shortName;
     }
 
-    public String getShortName() {
+    final public String getShortName() {
         return shortName;
     }
 
-
-    final public void setName(String componentName){
-        this.componentName = componentName;
-    };
-
-    final public String getName(){
-        return this.componentName;
+    final public String getMemberName(){
+        return this.cholderName;
     }
 
     public abstract JComponent getBaseComponent();

@@ -86,9 +86,5 @@ public class ChangeCenterColorAction extends AbstActionMember {
 
     }
 
-    @Override
-    public String getName() {
-        return null;
-    }
 
 }
