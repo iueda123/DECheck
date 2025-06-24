@@ -13,7 +13,7 @@ public class TextFieldPanelHolderFactory extends AbstCHolderMemberFactory {
         AbstCHolderMember component_holder = createSingleton();
         //registerComponent(component_holder);
         component_holder.setName(cholder_name);
-        component_holder.finalize();
+        component_holder.postInitialize();
         return component_holder;
     }
 

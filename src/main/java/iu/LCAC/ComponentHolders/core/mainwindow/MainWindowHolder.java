@@ -23,7 +23,7 @@ public class MainWindowHolder extends AbstCHolderMember {
             @Override
             public void windowClosing(WindowEvent e) {
                 System.out.println("The main window is Closing...");
-                //mainWindow.finalize();
+                //mainWindow.postInitialize();
             }
 
             @Override
@@ -40,7 +40,7 @@ public class MainWindowHolder extends AbstCHolderMember {
     }
 
     @Override
-    public void finalize() {
+    public void postInitialize() {
 
     }
 

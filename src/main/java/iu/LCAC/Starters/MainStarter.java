@@ -65,7 +65,7 @@ public class MainStarter {
                 ((MainWindowHolder) cholderMediator.getInstanceOfAMember("main_window_holder")).displayAndInitialize();
 
                 /* **** 表示後の初期化 **** */
-                cholderMediator.finalizeEachMember();
+                cholderMediator.postInitializeEachMember();
 
             }
 }

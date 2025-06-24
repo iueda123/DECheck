@@ -13,7 +13,7 @@ public class ButtonPanelHolderFactory extends AbstCHolderMemberFactory {
 
         AbstCHolderMember component_holder = createSingleton();
         component_holder.setName(cholder_name);
-        component_holder.finalize();
+        component_holder.postInitialize();
         return component_holder;
 
     }

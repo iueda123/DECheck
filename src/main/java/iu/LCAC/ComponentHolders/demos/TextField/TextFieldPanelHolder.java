@@ -32,7 +32,7 @@ public class TextFieldPanelHolder extends AbstCHolderMember {
 
 
     @Override
-    public void finalize() {
+    public void postInitialize() {
 
     }
 

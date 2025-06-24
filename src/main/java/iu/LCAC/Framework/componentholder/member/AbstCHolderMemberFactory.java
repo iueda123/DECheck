@@ -26,7 +26,7 @@ public abstract class AbstCHolderMemberFactory {
 
         //registerComponent(component_holder);
         component_holder.setName(componentName);
-        component_holder.finalize();
+        component_holder.postInitialize();
         return component_holder;
     }
     */
