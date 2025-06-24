@@ -29,19 +29,6 @@ public abstract class AbstCHolderMemberFactory {
         return component_holder;
     }
 
-
-    /*
-    public final AbstCHolderMember create(String componentName) {
-        AbstCHolderMember component_holder = createSingleton();
-
-        //registerComponent(component_holder);
-        component_holder.setName(componentName);
-        component_holder.postInitialize();
-        return component_holder;
-    }
-    */
-
     protected abstract AbstCHolderMember createSingleton();
-    //protected abstract void registerComponent(ACComponentHolder_A component_holder);
 
 }
