@@ -36,6 +36,21 @@ public abstract class AbstActionMemberFactory {
     //public abstract AbstActionMember createAction(String action_name, String short_name, ActionMediator actionMediator, CHolderMediator CHolderMediator);
     public abstract AbstActionMember createAction(String action_name, String short_name);
 
+    /**
+     * Create or return a singleton instance of the action.
+     * <p>
+     * Actions normally receive their name and a short description when
+     * instantiated.  In order to support a singleton style similar to
+     * {@link iu.LCAC.Framework.componentholder.member.AbstCHolderMemberFactory},
+     * subclasses can cache the created instance and return it on subsequent
+     * calls.
+     *
+     * @param action_name the identifier of the action
+     * @param short_name  the label shown in the menu
+     * @return singleton instance of the action
+     */
+    protected abstract AbstActionMember createSingleton(String action_name, String short_name);
+
 }
 
 
