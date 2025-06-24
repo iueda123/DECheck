@@ -17,7 +17,17 @@ public abstract class AbstCHolderMemberFactory {
         return cholder_factory;
     }
 
-    public abstract AbstCHolderMember createCHolder(String cholder_name, String short_name);
+    /**
+     * Create or return a component holder instance. Subclasses implement
+     * {@link #createSingleton()} to provide the actual holder instance which is
+     * then initialized here.
+     */
+    public AbstCHolderMember createCHolder(String cholder_name, String short_name) {
+        AbstCHolderMember component_holder = createSingleton();
+        component_holder.setName(cholder_name);
+        component_holder.postInitialize();
+        return component_holder;
+    }
 
 
     /*

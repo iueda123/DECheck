@@ -8,15 +8,6 @@ public class ButtonPanelHolderFactory extends AbstCHolderMemberFactory {
 
     private ButtonPanelHolder buttonPanelHolder;
 
-    @Override
-    public AbstCHolderMember createCHolder(String cholder_name, String short_name) {
-
-        AbstCHolderMember component_holder = createSingleton();
-        component_holder.setName(cholder_name);
-        component_holder.postInitialize();
-        return component_holder;
-
-    }
 
     @Override
     protected AbstCHolderMember createSingleton() {

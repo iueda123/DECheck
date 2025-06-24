@@ -9,11 +9,6 @@ public class ChangeTextOfButtonPanelActionFactory extends AbstActionMemberFactor
     private ChangeTextOfButtonPanelAction action;
 
     @Override
-    public AbstActionMember createAction(String action_name, String short_name) {
-        return createSingleton(action_name, short_name);
-    }
-
-    @Override
     protected AbstActionMember createSingleton(String action_name, String short_name) {
         if (action == null) {
             action = new ChangeTextOfButtonPanelAction(action_name, short_name);

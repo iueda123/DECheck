@@ -34,7 +34,15 @@ public abstract class AbstActionMemberFactory {
 
 
     //public abstract AbstActionMember createAction(String action_name, String short_name, ActionMediator actionMediator, CHolderMediator CHolderMediator);
-    public abstract AbstActionMember createAction(String action_name, String short_name);
+
+    /**
+     * Create or return an action instance. Subclasses normally only need to
+     * implement {@link #createSingleton(String, String)} which performs the
+     * actual instantiation and caching.
+     */
+    public AbstActionMember createAction(String action_name, String short_name) {
+        return createSingleton(action_name, short_name);
+    }
 
     /**
      * Create or return a singleton instance of the action.
