@@ -48,9 +48,9 @@ public class MainStarter {
                 base_panel.setLayout(new BorderLayout());
 
                 /* **** Component を配置する **** */
-                base_panel.add(((AbstCHolderMember) cholderMediator.getInstanceOfAMember("button_panel_holder")).getBaseComponent(), BorderLayout.WEST);
-                base_panel.add(((AbstCHolderMember) cholderMediator.getInstanceOfAMember("checkbox_panel_holder")).getBaseComponent(), BorderLayout.CENTER);
-                base_panel.add(((AbstCHolderMember) cholderMediator.getInstanceOfAMember("text_field_panel_holder")).getBaseComponent(), BorderLayout.EAST);
+                base_panel.add(( cholderMediator.getInstanceOfAMember("button_panel_holder")).getBaseComponent(), BorderLayout.WEST);
+                base_panel.add(( cholderMediator.getInstanceOfAMember("checkbox_panel_holder")).getBaseComponent(), BorderLayout.CENTER);
+                base_panel.add(( cholderMediator.getInstanceOfAMember("text_field_panel_holder")).getBaseComponent(), BorderLayout.EAST);
 
                 /* **** メニューバー を作り、はめ込む **** */
                 MenuBarCreator menuBarCreator = new MenuBarCreator(actionMediator);
