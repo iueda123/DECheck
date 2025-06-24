@@ -36,7 +36,7 @@ public class ButtonPanelHolder extends AbstCHolderMember {
 
 
     @Override
-    public void finalize() {
+    public void postInitialize() {
 
     }
 

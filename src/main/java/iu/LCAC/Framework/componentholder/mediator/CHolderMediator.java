@@ -96,12 +96,12 @@ public class CHolderMediator implements CHolderMediatorIntrfc {
         }
     }
 
-    public void finalizeEachMember(){
+    public void postInitializeEachMember(){
         Iterator<String> it = memberMap.keySet().iterator();
         String key = null;
         while (it.hasNext()) {
             key = it.next();
-            ((AbstCHolderMember) memberMap.get(key)).finalize();
+            ((AbstCHolderMember) memberMap.get(key)).postInitialize();
         }
     }
 

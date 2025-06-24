@@ -34,9 +34,9 @@ public abstract class AbstCHolderMember implements CHolderMemberIntrfc, ActionMe
     public abstract JComponent getBaseComponent();
 
     /**
-     * Component表示後の初期化
+     * Post initialization after the component is displayed
      */
-    public abstract  void finalize();
+    public abstract void postInitialize();
 
 
     public PropertyManager_v5 propManager;
