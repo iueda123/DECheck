@@ -9,11 +9,6 @@ public class ChangeEastColorActionFactory extends AbstActionMemberFactory {
     private ChangeEastColorAction action;
 
     @Override
-    public AbstActionMember createAction(String action_name, String short_name ) {
-        return createSingleton(action_name, short_name);
-    }
-
-    @Override
     protected AbstActionMember createSingleton(String action_name, String short_name) {
         if (action == null) {
             action = new ChangeEastColorAction(action_name, short_name);
