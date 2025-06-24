@@ -24,3 +24,7 @@ The `run` task executes `MainStarter`, showing the demo window.
 Each action implements business logic in a subclass of `AbstActionMember` and is managed by the `ActionMediator`. 
 UI components such as panels or windows are wrapped in subclasses of `AbstCHolderMember` and registered in the `CHolderMediator`. 
 Both mediators know about each other so when a user performs an action, the mediator can notify the appropriate component holder to update the UI.
+
+## License
+This project is licensed under the terms of the MIT License. See [LICENSE](LICENSE) for details.
+

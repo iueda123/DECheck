@@ -1,3 +1,8 @@
 build/
 .gradle/
 .class
+
+# Ignore build artifacts
+bin/
+*.class
+*.zip
