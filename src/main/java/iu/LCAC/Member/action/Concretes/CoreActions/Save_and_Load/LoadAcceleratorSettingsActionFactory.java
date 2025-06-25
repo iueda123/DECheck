@@ -5,7 +5,7 @@ import iu.LCAC.Member.action.Abstract.AbstActionMember;
 
 public class LoadAcceleratorSettingsActionFactory extends AbstActionMemberFactory {
 
-    private LoadAcceleratorSettingsAction action;
+    private AbstActionMember action;
 
     @Override
     protected AbstActionMember createInstance(String action_name, String short_name) {

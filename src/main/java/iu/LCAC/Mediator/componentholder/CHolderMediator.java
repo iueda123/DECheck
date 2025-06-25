@@ -45,7 +45,7 @@ public class CHolderMediator implements MediatorIntrfc {
         chMemberFactory = MemberFactoryLoader.loadFactory(
                 "iu.LCAC.Member.componentholder.Concretes.ButtonPanel.ButtonPanelHolderFactory",
                 AbstCHolderMemberFactory.class);
-        AbstCHolderMember buttonPanelHolder = chMemberFactory.createCHolder("button_panel_holder", "Button Penel Holder");
+        AbstCHolderMember buttonPanelHolder = chMemberFactory.createCHolder("button_panel_holder", "Button Panel Holder");
         buttonPanelHolder.setCHolderMediator(this);
         buttonPanelHolder.initialize();
         registerMemberToMap(buttonPanelHolder);
@@ -53,7 +53,7 @@ public class CHolderMediator implements MediatorIntrfc {
         chMemberFactory = MemberFactoryLoader.loadFactory(
                 "iu.LCAC.Member.componentholder.Concretes.CheckboxPanel.CheckboxPanelHolderFactory",
                 AbstCHolderMemberFactory.class);
-        AbstCHolderMember checkboxPanelHolder = chMemberFactory.createCHolder("checkbox_panel_holder", "Checkbox Penel Holder");
+        AbstCHolderMember checkboxPanelHolder = chMemberFactory.createCHolder("checkbox_panel_holder", "Checkbox Panel Holder");
         checkboxPanelHolder.setCHolderMediator(this);
         checkboxPanelHolder.initialize();
         registerMemberToMap(checkboxPanelHolder);
@@ -61,7 +61,7 @@ public class CHolderMediator implements MediatorIntrfc {
         chMemberFactory = MemberFactoryLoader.loadFactory(
                 "iu.LCAC.Member.componentholder.Concretes.TextField.TextFieldPanelHolderFactory",
                 AbstCHolderMemberFactory.class);
-        AbstCHolderMember textFieldPanelHolder = chMemberFactory.createCHolder("text_field_panel_holder", "Checkbox Penel Holder");
+        AbstCHolderMember textFieldPanelHolder = chMemberFactory.createCHolder("text_field_panel_holder", "Checkbox Panel Holder");
         textFieldPanelHolder.setCHolderMediator(this);
         textFieldPanelHolder.initialize();
         registerMemberToMap(textFieldPanelHolder);

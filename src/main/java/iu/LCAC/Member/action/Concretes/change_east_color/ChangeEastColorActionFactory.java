@@ -6,7 +6,7 @@ import iu.LCAC.Member.action.Abstract.AbstActionMemberFactory;
 
 public class ChangeEastColorActionFactory extends AbstActionMemberFactory {
 
-    private ChangeEastColorAction action;
+    private AbstActionMember action;
 
     @Override
     protected AbstActionMember createInstance(String action_name, String short_name) {

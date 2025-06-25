@@ -6,7 +6,7 @@ import iu.LCAC.Member.action.Abstract.AbstActionMember;
 
 public class SetAcceleratorOnNextClickActionFactory extends AbstActionMemberFactory {
 
-    private SetAcceleratorOnNextClickAction action;
+    private AbstActionMember action;
 
     @Override
     protected AbstActionMember createInstance(String action_name, String short_name) {

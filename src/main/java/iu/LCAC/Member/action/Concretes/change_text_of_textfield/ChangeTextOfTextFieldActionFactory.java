@@ -7,12 +7,12 @@ import iu.LCAC.Member.action.Concretes.change_text_of_button_panel.ChangeTextOfB
 
 public class ChangeTextOfTextFieldActionFactory extends AbstActionMemberFactory {
 
-    private ChangeTextOfButtonPanelAction action;
+    private AbstActionMember action;
 
     @Override
     protected AbstActionMember createInstance(String action_name, String short_name) {
         if (action == null) {
-            action = new ChangeTextOfButtonPanelAction(action_name, short_name);
+            action = new ChangeTextOfTextFieldAction(action_name, short_name);
         }
         return action;
     }

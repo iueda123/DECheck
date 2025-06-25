@@ -12,4 +12,6 @@ finalize();
 を基本とするのはどうだろうか？⇒だめかなぁ。ComponentHolderとActionの根本的な違いに関わる。
 
 登録しようとしたショートカットが既に別のActionに紐付けられている時に、上書きするかどうかの確認ポップアップを表示する。
+ComponentHolder から short_name を廃止。
+
 

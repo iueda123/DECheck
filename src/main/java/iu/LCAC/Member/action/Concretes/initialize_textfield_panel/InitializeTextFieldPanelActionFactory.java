@@ -5,7 +5,7 @@ import iu.LCAC.Member.action.Abstract.AbstActionMember;
 
 public class InitializeTextFieldPanelActionFactory extends AbstActionMemberFactory {
 
-    private InitializeTextFieldPanelAction action;
+    private AbstActionMember action;
 
     @Override
     protected AbstActionMember createInstance(String action_name, String short_name) {

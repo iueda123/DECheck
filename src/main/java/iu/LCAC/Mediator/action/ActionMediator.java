@@ -36,10 +36,10 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
     @Override
     public void actionPerformed(ActionEvent action_event) {
         String action_command = action_event.getActionCommand();
-        System.out.println("==== ActionMediator has called an action_command: " + action_command + " ====");
+        System.out.println("==== ActionMediator has called an action_command: \"" + action_command + "\" ====");
 
         if (SetupAcceleratorMode) {
-            System.out.println("AcceleratorSerupMode has turned ON.");
+            System.out.println("AcceleratorSetupMode has turned ON.");
             //System.out.print("ただいま呼び出されたActionのショートカットを書き換えます。");
             //System.out.print("ただいま呼び出されたActionの名前は '" + action_command + "' です。");
             ((AbstActionMember) memberMap.get("set_acceleration_on_next_click")).perform(action_event);

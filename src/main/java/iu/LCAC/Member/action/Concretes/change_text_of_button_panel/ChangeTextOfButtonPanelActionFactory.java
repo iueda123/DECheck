@@ -6,7 +6,7 @@ import iu.LCAC.Member.action.Abstract.AbstActionMember;
 
 public class ChangeTextOfButtonPanelActionFactory extends AbstActionMemberFactory {
 
-    private ChangeTextOfButtonPanelAction action;
+    private AbstActionMember action;
 
     @Override
     protected AbstActionMember createInstance(String action_name, String short_name) {
