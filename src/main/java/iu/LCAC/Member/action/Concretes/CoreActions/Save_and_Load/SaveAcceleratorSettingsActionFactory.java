@@ -1,0 +1,18 @@
+package iu.LCAC.Member.action.Concretes.CoreActions.Save_and_Load;
+
+
+import iu.LCAC.Member.action.Abstract.AbstActionMemberFactory;
+import iu.LCAC.Member.action.Abstract.AbstActionMember;
+
+public class SaveAcceleratorSettingsActionFactory extends AbstActionMemberFactory {
+
+    private SaveAcceleratorSettingsAction action;
+
+    @Override
+    protected AbstActionMember createInstance(String action_name, String short_name) {
+        if (action == null) {
+            action = new SaveAcceleratorSettingsAction(action_name, short_name);
+        }
+        return action;
+    }
+}

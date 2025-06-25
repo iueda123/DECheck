@@ -1,15 +1,13 @@
 package iu.LCAC.Starters;
 
 
-import iu.LCAC.Framework.Mediator.componentholder.CHolderMediator;
-import iu.LCAC.MenuBar.MenuBarCreator;
-import iu.LCAC.ComponentHolders.core.mainwindow.MainWindowHolder;
-import iu.LCAC.Framework.Mediator.componentholder.CHolderMediatorFactory;
-import iu.LCAC.Framework.Mediator.action.ActionMediator;
-import iu.LCAC.Framework.Mediator.action.ActionMediatorFactory;
-
-import javax.swing.*;
-import java.awt.*;
+import iu.LCAC.Starters.BasePane.BasePaneCreator;
+import iu.LCAC.Mediator.componentholder.CHolderMediator;
+import iu.LCAC.Starters.MenuBar.MenuBarCreator;
+import iu.LCAC.Member.componentholder.Concretes.MainWindow.MainWindowHolder;
+import iu.LCAC.Mediator.componentholder.CHolderMediatorFactory;
+import iu.LCAC.Mediator.action.ActionMediator;
+import iu.LCAC.Mediator.action.ActionMediatorFactory;
 
 public class MainStarter {
     /**
@@ -25,45 +23,35 @@ public class MainStarter {
      */
     public static void main(String[] args) {
 
-                /* **** 新しい ActionMediator を作る **** */
-                ActionMediator actionMediator = ActionMediatorFactory.create();
-                // Actionの生成と登録はここで完了している。
+        /* **** 新しい ActionMediator を作る **** */
+        ActionMediator actionMediator = ActionMediatorFactory.create();
+        // Actionの生成と登録はここで完了している。
 
-                /* **** CHolderMediator を作る **** */
-                CHolderMediator cholderMediator = CHolderMediatorFactory.create();
-                // Componentの生成と登録はここで完了している。
-
-
-                /* **** Component-holders と Actions を連携させる **** */
-                actionMediator.registerCHolderMediatorToEachMember(cholderMediator);
-                cholderMediator.registerActionMediatorToEachMember(actionMediator);
+        /* **** CHolderMediator を作る **** */
+        CHolderMediator cholderMediator = CHolderMediatorFactory.create();
+        // Componentの生成と登録はここで完了している。
 
 
-                /* **** Widowを作る **** */
+        /* **** Component-holders と Actions を連携させる **** */
+        actionMediator.registerCHolderMediatorToEachMember(cholderMediator);
+        cholderMediator.registerActionMediatorToEachMember(actionMediator);
 
-                /* **** Panels を作る **** */
-                // Factory を介して各パネル（Panel_Aのサブクラス）を生成し、配置。
-                JPanel base_panel = new JPanel();
-                base_panel.setLayout(new BorderLayout());
 
-                /* **** Component を配置する **** */
-                base_panel.add(( cholderMediator.getInstanceOfAMember("button_panel_holder")).getBaseComponent(), BorderLayout.WEST);
-                base_panel.add(( cholderMediator.getInstanceOfAMember("checkbox_panel_holder")).getBaseComponent(), BorderLayout.CENTER);
-                base_panel.add(( cholderMediator.getInstanceOfAMember("text_field_panel_holder")).getBaseComponent(), BorderLayout.EAST);
+        /* **** Widowを作る **** */
 
-                /* **** メニューバー を作り、はめ込む **** */
-                MenuBarCreator menuBarCreator = new MenuBarCreator(actionMediator);
-                ((MainWindowHolder) cholderMediator.getInstanceOfAMember("main_window_holder")).getMainWindow().setJMenuBar(menuBarCreator.createMenuBar());
+        /* **** 各種コンポーネントをMainWindowに埋め込む **** */
+        BasePaneCreator basePaneCreator = new BasePaneCreator(cholderMediator);
+        basePaneCreator.addBasePaneToMainFrame();
 
-                /* **** 土台パネルをメインパネルに埋め込む **** */
-                // このとき各サブパネルに登録されているPropertyChangeListenerにシグナルが送られる。
-                ((MainWindowHolder) cholderMediator.getInstanceOfAMember("main_window_holder")).addPanelToCenter(base_panel);
+        /* **** メニューバー を作り、MainWindowにはめ込む **** */
+        MenuBarCreator menuBarCreator = new MenuBarCreator(actionMediator, cholderMediator);
+        menuBarCreator.addMenuBarToMainFrame();
 
-                /* **** 表示 **** */
-                ((MainWindowHolder) cholderMediator.getInstanceOfAMember("main_window_holder")).displayAndInitialize();
+        /* **** 表示 **** */
+        ((MainWindowHolder) cholderMediator.getInstanceOfAMember("main_window_holder")).displayAndInitialize();
 
-                /* **** 表示後の初期化 **** */
-                cholderMediator.postInitializeEachMember();
+        /* **** 表示後の初期化 **** */
+        cholderMediator.postInitializeEachMember();
 
-            }
+    }
 }

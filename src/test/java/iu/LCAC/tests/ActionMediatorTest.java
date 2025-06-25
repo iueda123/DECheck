@@ -1,7 +1,7 @@
 package iu.LCAC.tests;
 
-import iu.LCAC.Framework.Mediator.action.ActionMediator;
-import iu.LCAC.Framework.Member.MemberIntrfc;
+import iu.LCAC.Mediator.action.ActionMediator;
+import iu.LCAC.Member.MemberIntrfc;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
