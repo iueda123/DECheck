@@ -1,4 +1,4 @@
-package iu.LCAC.Starters.MenuBar;
+package iu.LCAC.Startup.MenuBar;
 
 import iu.LCAC.Member.componentholder.Concretes.MainWindow.MainWindowHolder;
 import iu.LCAC.Mediator.action.ActionMediator;

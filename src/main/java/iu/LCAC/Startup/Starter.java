@@ -1,15 +1,15 @@
-package iu.LCAC.Starters;
+package iu.LCAC.Startup;
 
 
-import iu.LCAC.Starters.BasePane.BasePaneCreator;
+import iu.LCAC.Startup.BasePane.BasePaneCreator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
-import iu.LCAC.Starters.MenuBar.MenuBarCreator;
+import iu.LCAC.Startup.MenuBar.MenuBarCreator;
 import iu.LCAC.Member.componentholder.Concretes.MainWindow.MainWindowHolder;
 import iu.LCAC.Mediator.componentholder.CHolderMediatorFactory;
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.action.ActionMediatorFactory;
 
-public class MainStarter {
+public class Starter {
     /**
      * ショートカット制御機構を備えたメニューバー付きSwingFrameWork
      * <p>

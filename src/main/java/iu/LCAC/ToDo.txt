@@ -1,17 +1,13 @@
-AbstCHolderMember.java の finalize() の役割の確認
-Singletonであるべきということの確認
-Singleton機構の位置
-Action　と ComponentHolder の共通部分と相違部分の整理
-パーツテストをやりやすくする機構
+## ToDo List
 
-XXXActionFactory#createAction()を
-XXXHolderFactory#createCHolder()のように
-createSingleton();
-setName(cholder_name);
-finalize();
-を基本とするのはどうだろうか？⇒だめかなぁ。ComponentHolderとActionの根本的な違いに関わる。
+Yet
+  * 最小限のMemberだけで挙動のテストができる仕組みが欲しい。パーツテストをやりやすくする機構はなんだろうか？
+  * 登録しようとしたショートカットが既に別のActionに紐付けられている時に、上書きするかどうかの確認ポップアップを表示する。
+  * ComponentHolder から short_name を廃止。
 
-登録しようとしたショートカットが既に別のActionに紐付けられている時に、上書きするかどうかの確認ポップアップを表示する。
-ComponentHolder から short_name を廃止。
-
+Done
+  * AbstCHolderMember.java の finalize() の役割の確認
+  * Singletonであるべきということの確認
+  * Singleton機構の位置
+  * Action　と ComponentHolder の共通部分と相違部分の整理
 
