@@ -1,7 +1,11 @@
 ## ToDo List
 
 Yet
-  * 最小限のMemberだけで挙動のテストができる仕組みが欲しい。パーツテストをやりやすくする機構はなんだろうか？
+  * CmdExecutorCreator を作る
+  *　src/main/java/iu/IuMindMap/v1_2_0 をLCACへ融合させる。
+  * 最小限のMemberだけで挙動のテストができる仕組みが欲しい。
+    * パーツテストをやりやすくする機構はなんだろうか？MindMap開発をしながら考えたい。
+    * 様々なStarterパターンjを作りながら開発を進めるのはどうだろうか？
   * 登録しようとしたショートカットが既に別のActionに紐付けられている時に、上書きするかどうかの確認ポップアップを表示する。
   * ComponentHolder から short_name を廃止。
 
@@ -10,4 +14,16 @@ Done
   * Singletonであるべきということの確認
   * Singleton機構の位置
   * Action　と ComponentHolder の共通部分と相違部分の整理
+
+C&P
+D&D
+Z&Y
+
+開発ステップ。手足の生えた単体コンポーネントを作る。この時点で既に使える道具として。
+
+コンポーネントが安定したら、
+LCACにはめ込む。componentはcomponentholderに
+手足を使った各種メソッドを用意。この時AbstActionMember を継承。
+デバック用、本番用など各種状況に合わせたStarterを用意してゆく。
+コンポーネント同士を連携させる。
 

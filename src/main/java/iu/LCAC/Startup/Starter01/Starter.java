@@ -1,9 +1,10 @@
-package iu.LCAC.Startup;
+package iu.LCAC.Startup.Starter01;
 
 
-import iu.LCAC.Startup.BasePane.BasePaneCreator;
+import iu.LCAC.Startup.Starter01.BasePaneCreator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
-import iu.LCAC.Startup.MenuBar.MenuBarCreator;
+import iu.LCAC.Startup.Starter01.CmdExecutorCreator;
+import iu.LCAC.Startup.Starter01.MenuBarCreator;
 import iu.LCAC.Member.componentholder.Concretes.MainWindow.MainWindowHolder;
 import iu.LCAC.Mediator.componentholder.CHolderMediatorFactory;
 import iu.LCAC.Mediator.action.ActionMediator;
@@ -46,6 +47,10 @@ public class Starter {
         /* **** メニューバー を作り、MainWindowにはめ込む **** */
         MenuBarCreator menuBarCreator = new MenuBarCreator(actionMediator, cholderMediator);
         menuBarCreator.addMenuBarToMainFrame();
+
+        /* **** Command Executor を作り MainWindowにはめ込む **** */
+        CmdExecutorCreator cmdExecutorCreator = new CmdExecutorCreator(actionMediator, cholderMediator);
+        cmdExecutorCreator.addCmdExecutorToMainFrame();
 
         /* **** 表示 **** */
         ((MainWindowHolder) cholderMediator.getInstanceOfAMember("main_window_holder")).displayAndInitialize();
