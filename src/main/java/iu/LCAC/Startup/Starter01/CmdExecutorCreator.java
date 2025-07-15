@@ -3,6 +3,7 @@ package iu.LCAC.Startup.Starter01;
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Concretes.MainWindow.MainWindowHolder;
+import iu.LCAC.Tools.AutoCompleteComboBox2;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,8 +24,14 @@ public class CmdExecutorCreator {
     }
 
     private JPanel createCmdExecutor(){
-        JPanel basePane = new JPanel();
+        JPanel basePane = new JPanel(new BorderLayout());
         basePane.setBackground(Color.ORANGE);
+
+        String[] commands = actionMediator.getMemberMap()
+                .keySet().toArray(new String[0]);
+        AutoCompleteComboBox2 cmdBox = new AutoCompleteComboBox2(commands);
+        basePane.add(cmdBox, BorderLayout.CENTER);
+
         return basePane;
     }
 }
