@@ -30,6 +30,7 @@ public class CmdExecutorCreator {
         String[] commands = actionMediator.getMemberMap()
                 .keySet().toArray(new String[0]);
         AutoCompleteComboBox2 cmdBox = new AutoCompleteComboBox2(commands);
+        cmdBox.setEnterKeyListener(actionMediator);
         basePane.add(cmdBox, BorderLayout.CENTER);
 
         return basePane;

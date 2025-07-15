@@ -5,6 +5,7 @@ import javax.swing.*;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -38,6 +39,9 @@ public class AutoCompleteComboBox2 extends JComboBox<String> {
     private Vector<String> suggestionList = new Vector<>();
     // 初期候補リスト（コンボボックス作成時の候補）
     private Vector<String> defaultList = new Vector<>();
+
+    // ENTERキー押下時に呼び出されるアクションリスナー
+    private ActionListener enterKeyListener;
 
     /**
      * 文字列の配列から候補を初期化するコンストラクタ
@@ -88,6 +92,15 @@ public class AutoCompleteComboBox2 extends JComboBox<String> {
         for (int i = 0; i < getModel().getSize(); i++) {
             defaultList.add(getItemAt(i));
         }
+    }
+
+    /**
+     * ENTERキー押下時に呼び出すアクションリスナーを設定します。
+     *
+     * @param listener アクションリスナー
+     */
+    public void setEnterKeyListener(ActionListener listener) {
+        this.enterKeyListener = listener;
     }
 
     /**
@@ -246,6 +259,10 @@ public class AutoCompleteComboBox2 extends JComboBox<String> {
                     if (!defaultList.contains(text)) {
                         defaultList.add(text);
                         Collections.sort(defaultList);
+                    }
+                    if (enterKeyListener != null) {
+                        enterKeyListener.actionPerformed(
+                                new ActionEvent(comboBox, ActionEvent.ACTION_PERFORMED, text));
                     }
                     shouldHide = true;
                     break;
