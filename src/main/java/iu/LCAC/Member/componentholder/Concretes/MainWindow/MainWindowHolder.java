@@ -1,122 +1,107 @@
 package iu.LCAC.Member.componentholder.Concretes.MainWindow;
 
-
-
+import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
-import iu.LCAC.Mediator.action.ActionMediator;
-
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.*;
 
 public class MainWindowHolder extends AbstCHolderMember {
 
-    private JFrame mainWindow = new JFrame();
+  private JFrame mainWindow = new JFrame();
 
-    public MainWindowHolder(String cholder_name, String short_name) throws HeadlessException {
-        super(cholder_name, short_name);
-        mainWindow.addWindowListener(new WindowAdapter() {
+  public MainWindowHolder(String cholder_name, String short_name) throws HeadlessException {
+    super(cholder_name, short_name);
+    mainWindow.addWindowListener(
+        new WindowAdapter() {
 
-            @Override
-            public void windowClosing(WindowEvent e) {
-                System.out.println("The main window is Closing...");
-                //mainWindow.postInitialize();
-            }
+          @Override
+          public void windowClosing(WindowEvent e) {
+            System.out.println("The main window is Closing...");
+            // mainWindow.postInitialize();
+          }
 
-            @Override
-            public void windowClosed(WindowEvent e) {
-                System.out.println("The main window Closed.");
-                System.exit(0);
-            }
+          @Override
+          public void windowClosed(WindowEvent e) {
+            System.out.println("The main window Closed.");
+            System.exit(0);
+          }
         });
-    }
+  }
 
-    @Override
-    public JComponent getBaseComponent() {
-        return null;
-    }
+  @Override
+  public JComponent getBaseComponent() {
+    return null;
+  }
 
-    @Override
-    public void postInitialize() {
+  @Override
+  public void postInitialize() {}
 
-    }
+  public JFrame getMainWindow() {
+    return this.mainWindow;
+  }
 
-    public JFrame getMainWindow() {
-        return this.mainWindow;
-    }
+  public void addPanelToCenter(JComponent panel) {
+    mainWindow.getContentPane().add(panel, BorderLayout.CENTER);
+  }
 
+  public void addPanelToSouth(JComponent panel) {
+    mainWindow.getContentPane().add(panel, BorderLayout.SOUTH);
+  }
 
-    public void addPanelToCenter(JComponent panel) {
-        mainWindow.getContentPane().add(panel, BorderLayout.CENTER);
-    }
+  public void addPanelToNorth(JComponent panel) {
+    mainWindow.getContentPane().add(panel, BorderLayout.NORTH);
+  }
 
-    public void addPanelToSouth(JComponent panel) {
-        mainWindow.getContentPane().add(panel, BorderLayout.SOUTH);
-    }
+  public void addPanelToWest(JComponent panel) {
+    mainWindow.getContentPane().add(panel, BorderLayout.WEST);
+  }
 
-    public void addPanelToNorth(JComponent panel) {
-        mainWindow.getContentPane().add(panel, BorderLayout.NORTH);
-    }
+  public void addPanelToEast(JComponent panel) {
+    mainWindow.getContentPane().add(panel, BorderLayout.EAST);
+  }
 
-    public void addPanelToWest(JComponent panel) {
-        mainWindow.getContentPane().add(panel, BorderLayout.WEST);
-    }
+  public void displayAndInitialize() {
 
-    public void addPanelToEast(JComponent panel) {
-        mainWindow.getContentPane().add(panel, BorderLayout.EAST);
-    }
+    // System.out.println("displayAndInitialize()");
 
-    public void displayAndInitialize() {
+    EventQueue.invokeLater(
+        new Runnable() {
 
-        //System.out.println("displayAndInitialize()");
+          @Override
+          public void run() {
 
-        EventQueue.invokeLater(new Runnable() {
+            mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            @Override
-            public void run() {
-
-                mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-                try {
-                    //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                    UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                mainWindow.pack();
-                mainWindow.setVisible(true);
-
-                mainWindow.setLocationRelativeTo(null);
-
+            try {
+              // UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+              UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+            } catch (Exception e) {
+              e.printStackTrace();
             }
+            mainWindow.pack();
+            mainWindow.setVisible(true);
 
+            mainWindow.setLocationRelativeTo(null);
+          }
         });
+  }
 
-    }
+  @Override
+  public void setCHolderMediator(CHolderMediator cHolderMediator) {
+    this.cholderMediator = cHolderMediator;
+  }
 
-    @Override
-    public void setCHolderMediator(CHolderMediator cHolderMediator) {
-        this.cholderMediator =  cHolderMediator;
-    }
+  @Override
+  public void setActionMediator(ActionMediator actionMediator) {
+    this.actionMediator = actionMediator;
+  }
 
-    @Override
-    public void setActionMediator(ActionMediator actionMediator) {
-        this.actionMediator = actionMediator;
-    }
+  @Override
+  public void initialize() {}
 
-    @Override
-    public void initialize() {
-
-    }
-
-    @Override
-    public void doWorkAsMember() {
-
-    }
-
-
+  @Override
+  public void doWorkAsMember() {}
 }
-
-

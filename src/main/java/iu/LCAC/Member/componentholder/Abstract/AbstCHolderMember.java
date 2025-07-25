@@ -4,59 +4,53 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.MemberIntrfc;
 import iu.LCAC.Tools.PropertyManager_v5;
-
-import javax.swing.*;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import javax.swing.*;
 
 public abstract class AbstCHolderMember implements MemberIntrfc {
 
-    protected ActionMediator actionMediator;
+  protected ActionMediator actionMediator;
 
-    protected CHolderMediator cholderMediator;
+  protected CHolderMediator cholderMediator;
 
-    protected String cholderName;
-    protected String shortName;
+  protected String cholderName;
+  protected String shortName;
 
-    public AbstCHolderMember(String cholderName, String shortName) {
-        this.cholderName = cholderName;
-        this.shortName = shortName;
+  public AbstCHolderMember(String cholderName, String shortName) {
+    this.cholderName = cholderName;
+    this.shortName = shortName;
+  }
+
+  public final String getShortName() {
+    return shortName;
+  }
+
+  public final String getMemberName() {
+    return this.cholderName;
+  }
+
+  public abstract JComponent getBaseComponent();
+
+  /** Post initialization after the component is displayed */
+  public abstract void postInitialize();
+
+  public PropertyManager_v5 propManager;
+
+  protected PropertyManager_v5 createPropertyManager(String property_file_path) {
+    System.out.println("A property file '" + property_file_path + "' is about to load.");
+    Path setting_file_path = Paths.get(property_file_path);
+
+    if (propManager == null) {
+      propManager = new PropertyManager_v5(new File(property_file_path));
     }
 
-    final public String getShortName() {
-        return shortName;
-    }
+    System.out.println("    Properties file '" + setting_file_path.getFileName() + "' was loaded.");
 
-    final public String getMemberName(){
-        return this.cholderName;
-    }
+    // List up
+    propManager.listUpProperty();
 
-    public abstract JComponent getBaseComponent();
-
-    /**
-     * Post initialization after the component is displayed
-     */
-    public abstract void postInitialize();
-
-
-    public PropertyManager_v5 propManager;
-
-    protected PropertyManager_v5 createPropertyManager(String property_file_path) {
-        System.out.println("A property file '" + property_file_path + "' is about to load.");
-        Path setting_file_path = Paths.get(property_file_path);
-
-        if (propManager == null) {
-            propManager = new PropertyManager_v5(new File(property_file_path));
-        }
-
-        System.out.println("    Properties file '" + setting_file_path.getFileName() + "' was loaded.");
-
-        //List up
-        propManager.listUpProperty();
-
-        return propManager;
-    }
-
-
+    return propManager;
+  }
 }
