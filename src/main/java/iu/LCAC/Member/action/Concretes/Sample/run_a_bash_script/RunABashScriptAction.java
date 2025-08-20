@@ -14,6 +14,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RunABashScriptAction extends AbstActionMember {
@@ -40,25 +41,16 @@ public class RunABashScriptAction extends AbstActionMember {
         // Load Properties
         PropertyManager_v5 prop_manager = createPropertyManager(SettingPropertyFilePath);
 
-
-       onRun();
-
-
         // Preparation of Components
         TextFieldPanelHolder text_field_panel_holder =
                 (TextFieldPanelHolder) this.cholderMediator.getInstanceOfAMember("text_field_panel_holder");
 
         // Core
-        if (text_field_panel_holder != null) {
             if (cmd_and_args.length > 1) {
-
-                text_field_panel_holder.setText(cmd_and_args[1]);
-
+                onRun(cmd_and_args);
+            }else{
+                onRun(new String[0]);
             }
-        } else {
-            System.err.println("text_field_panel_holder is null.");
-        }
-
     }
 
     @Override
@@ -87,7 +79,8 @@ public class RunABashScriptAction extends AbstActionMember {
     private final JProgressBar progressBar = new JProgressBar();
     private ScriptWorker worker; // SwingWorker への参照
 
-    private void onRun() {
+    private void onRun(String[] args) {
+
         if (worker != null && !worker.isDone()) return; // 二重起動防止
 
         outputArea.setText("");
@@ -98,7 +91,7 @@ public class RunABashScriptAction extends AbstActionMember {
 
         //String script = scriptPathField.getText().trim();
         String script = "src/main/java/iu/LCAC/Member/action/Concretes/Sample/run_a_bash_script/show_popup.sh";
-        worker = new ScriptWorker(script);
+        worker = new ScriptWorker(script,  args);
         worker.execute();
     }
 
@@ -115,13 +108,16 @@ public class RunABashScriptAction extends AbstActionMember {
         private Process process;
         private volatile boolean destroyed = false;
 
-        ScriptWorker(String scriptPath) {
+        String[] args;
+
+        ScriptWorker(String scriptPath, String[] args) {
             this.scriptPath = scriptPath;
+            this.args = args;
         }
 
         @Override
         protected Integer doInBackground() {
-            ProcessBuilder pb = new ProcessBuilder("/bin/bash", scriptPath);
+            ProcessBuilder pb = new ProcessBuilder("/bin/bash", scriptPath, args[1]);
             pb.redirectErrorStream(true); // stderr を stdout に統合
 
             try {

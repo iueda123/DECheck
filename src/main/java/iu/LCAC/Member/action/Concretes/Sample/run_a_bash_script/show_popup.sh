@@ -1,1 +1,1 @@
-zenity --info --text="This is a message via Java."
+zenity --info --text="This is a message: $1."
