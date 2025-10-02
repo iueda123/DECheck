@@ -16,6 +16,8 @@ public class DEResultPane extends JPanel {
 
     JButton loadButton = new JButton("Load");
     JButton saveButton = new JButton("Save");
+    JButton moveUpButton = new JButton("↑");
+    JButton moveDownButton = new JButton("↓");
 
     JTextField tField_jsonName = new JTextField("jsonName");
     JTextArea tArea_Answer = new JTextArea("Answer");
@@ -30,6 +32,9 @@ public class DEResultPane extends JPanel {
         this.jsonName = jsonName;
         this.sectionName = sectionName;
         this.subSectionName = subSectionName;
+
+        tArea_Answer.setLineWrap(true);
+        tArea_Answer.setWrapStyleWord(true);
 
         tArea_Reason.setLineWrap(true);
         tArea_Reason.setWrapStyleWord(true);
@@ -60,8 +65,12 @@ public class DEResultPane extends JPanel {
 
         Box northBox = Box.createVerticalBox();
         Box northSubBox1 = Box.createHorizontalBox();
-        northSubBox1.setPreferredSize(new Dimension(600,50));
-        northSubBox1.add(tArea_Answer);
+        northSubBox1.setPreferredSize(new Dimension(600,75));
+
+        JScrollPane scrollPane_Answer = new JScrollPane(tArea_Answer);
+        scrollPane_Answer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane_Answer.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        northSubBox1.add(scrollPane_Answer);
         northBox.add(northSubBox1);
         Box northSubBox2 = Box.createHorizontalBox();
         northSubBox2.add(tFiled_ConfidenceRating);
