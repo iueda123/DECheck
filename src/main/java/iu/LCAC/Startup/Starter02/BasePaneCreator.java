@@ -1,7 +1,7 @@
 package iu.LCAC.Startup.Starter02;
 
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.DEResultPane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.DEResultPanes;
 import iu.LCAC.Member.componentholder.Concretes.MainWindow.MainWindowHolder;
 
 import javax.swing.*;
@@ -39,7 +39,7 @@ public class BasePaneCreator {
     if (jsonFiles != null) {
       for (File jsonFile : jsonFiles) {
         String jsonFileName = jsonFile.getName();
-        DEResultPane pane = new DEResultPane(jsonFileName, "reference_cohort_and_imaging", "dataset_name");
+        DEResultPanes pane = new DEResultPanes(jsonFileName, "reference_cohort_and_imaging", "dataset_name");
         pane.setMaximumSize(new Dimension(Integer.MAX_VALUE, 400));
         pane.setAlignmentX(Component.LEFT_ALIGNMENT);
         containerPanel.add(pane);

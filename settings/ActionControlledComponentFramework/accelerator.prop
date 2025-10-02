@@ -1,8 +1,11 @@
 #no comment.
-#Wed Jun 25 03:09:43 JST 2025
+#Fri Oct 03 02:20:53 JST 2025
 save_accelerator_settings=shift ctrl alt pressed S
+change_text_of_textfield=ctrl pressed T
+run_a_bash_script=ctrl pressed T
 change_color_of_east=ctrl pressed E
 load_accelerator_settings=shift ctrl alt pressed L
 set_acceleration_on_next_click=shift ctrl alt pressed A
 change_color_of_center=ctrl pressed C
-change_color_of_west=ctrl pressed B
+save_pane_order=shift ctrl alt pressed S
+change_color_of_west=ctrl pressed W
