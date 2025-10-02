@@ -1,15 +1,19 @@
-package iu.LCAC.Member.componentholder.Concretes.ResultPanels.AResultPane;
+package iu.LCAC.Member.componentholder.Concretes.DEResult;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
-public class AResultPane extends JPanel {
+public class DEResultPane extends JPanel {
 
     final String jsonName;
-    JPanel panel = new JPanel();
+    final String sectionName;
+    final String subSectionName;
 
-    JButton sampleButton = new JButton("Button");
+    JButton loadButton = new JButton("Load");
+    JButton saveButton = new JButton("Save");
 
     JTextField tField_jsonName = new JTextField("jsonName");
     JTextArea tArea_Answer = new JTextArea("Answer");
@@ -20,8 +24,10 @@ public class AResultPane extends JPanel {
     JTextArea tArea_SupportingText = new JTextArea("Supporting Text");
     JTextArea tArea_PageLine = new JTextArea("Page Line");
 
-    public AResultPane(String jsonName) {
+    public DEResultPane(String jsonName, String sectionName, String subSectionName) {
         this.jsonName = jsonName;
+        this.sectionName = sectionName;
+        this.subSectionName = subSectionName;
 
         tArea_Reason.setLineWrap(true);
         tArea_Reason.setWrapStyleWord(true);
@@ -32,15 +38,19 @@ public class AResultPane extends JPanel {
         tArea_PageLine.setLineWrap(true);
         tArea_PageLine.setWrapStyleWord(true);
 
-        sampleButton.addActionListener(
+        saveButton.addActionListener(
                 new AbstractAction() {
                     @Override
                     public void actionPerformed(ActionEvent actionEvent) {
-                        //if (actionMediator != null) {
-                        //    actionMediator.getInstanceOfAMember("change_color_of_center").perform(actionEvent);
-                        //} else {
-                        //    System.err.println("Action Starter is null! @ " + this.getClass().toString());
-                        //}
+                        Path jsonFilePath = Paths.get("/" + jsonName);
+                        String answerText = tArea_Answer.getText();
+                        String confidenceRatingText = tFiled_ConfidenceRating.getText();
+                        String negativeAnswerCategoryText = tField_NegativeAnswerCategory.getText();
+                        String reasonText = tArea_Reason.getText();
+                        String supportingText = tArea_SupportingText.getText();
+                        String pageLineText = tArea_PageLine.getText();
+
+                        // JSONへ書き込み
                     }
                 });
 
@@ -52,6 +62,8 @@ public class AResultPane extends JPanel {
         northBox.add(tArea_Answer);
         northBox.add(tFiled_ConfidenceRating);
         northBox.add(tField_NegativeAnswerCategory);
+        northBox.add(loadButton);
+        northBox.add(saveButton);
 
         // JTextAreaをJScrollPaneでラップしてスクロールバーを追加
         JScrollPane scrollPane_Reason = new JScrollPane(tArea_Reason);
@@ -82,7 +94,7 @@ public class AResultPane extends JPanel {
     }
 
     public void setTextToTheButton(String text) {
-        this.sampleButton.setText(text);
+        this.saveButton.setText(text);
     }
     public void setValTo_JsonName(String value) {
         tField_jsonName.setText(value);
@@ -115,5 +127,13 @@ public class AResultPane extends JPanel {
 
     public String getJsonName() {
         return jsonName;
+    }
+
+    public String getSubSectionName() {
+        return subSectionName;
+    }
+
+    public String getSectionName() {
+        return sectionName;
     }
 }

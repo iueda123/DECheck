@@ -29,9 +29,13 @@ public class BasePaneCreator {
     //basePane.add(
     //    (cHolderMediator.getInstanceOfAMember("button_panel_holder")).getBaseComponent(),
     //    BorderLayout.WEST);
-    basePane.add(
-        (cHolderMediator.getInstanceOfAMember("a_result_pane_holder")).getBaseComponent(),
-        BorderLayout.CENTER);
+
+    JTabbedPane tabbedPane = new JTabbedPane();
+    tabbedPane.add("Reference Cohort and Imaging", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
+
+    basePane.add(tabbedPane, BorderLayout.CENTER);
+
+
     //basePane.add(
     //    (cHolderMediator.getInstanceOfAMember("text_field_panel_holder")).getBaseComponent(),
     //    BorderLayout.EAST);

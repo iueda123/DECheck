@@ -75,10 +75,10 @@ public class CHolderMediator implements MediatorIntrfc {
 
     chMemberFactory =
             MemberFactoryLoader.loadFactory(
-                    "iu.LCAC.Member.componentholder.Concretes.ResultPanels.AResultPane.AResultPaneHolderFactory",
+                    "iu.LCAC.Member.componentholder.Concretes.DEResult.DEResultPaneHolderFactory",
                     AbstCHolderMemberFactory.class);
     AbstCHolderMember aResultPaneHolder =
-            chMemberFactory.createCHolder("a_result_pane_holder", "A Reuslt Pane Holder");
+            chMemberFactory.createCHolder("tab_of_reference_cohort_and_imaging_holder", "tab_of_reference_cohort_and_imaging_holder");
     aResultPaneHolder.setCHolderMediator(this);
     aResultPaneHolder.initialize();
     registerMemberToMap(aResultPaneHolder);

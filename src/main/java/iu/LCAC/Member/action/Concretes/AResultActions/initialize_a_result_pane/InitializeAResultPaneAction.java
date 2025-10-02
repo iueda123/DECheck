@@ -3,12 +3,13 @@ package iu.LCAC.Member.action.Concretes.AResultActions.initialize_a_result_pane;
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
-import iu.LCAC.Member.componentholder.Concretes.ResultPanels.AResultPane.AResultPane;
-import iu.LCAC.Member.componentholder.Concretes.ResultPanels.AResultPane.AResultPaneHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.DEResultPane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.DEResultPaneHolder;
 import iu.LCAC.Tools.JsonManager;
 
 import java.awt.event.ActionEvent;
-import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class InitializeAResultPaneAction extends AbstActionMember {
 
@@ -28,49 +29,55 @@ public class InitializeAResultPaneAction extends AbstActionMember {
         System.out.println("perform() in " + this.getClass().toString() + " was called.");
 
         String jsonFileName = SettingPropertyFilePath;
+        String sectionName = "";
+        String subSectionName = "";
         String[] cmd_and_args = getActionCommandAndArgs(action_event, false);
-        if (cmd_and_args.length > 1) {
+        if (cmd_and_args.length > 3) {
             // 引数からjsonNameを取得
-            jsonFileName = "./json/" + cmd_and_args[1];
-            System.out.println("Loading JSON file: " + jsonFileName);
+            jsonFileName = cmd_and_args[1];
+            Path jsonFilePath = Paths.get("./json/" + jsonFileName);
+            if (!jsonFilePath.toFile().exists()) {
+                System.err.println(jsonFilePath.toFile().getAbsolutePath() + " does not exist.");
+                return;
+            }
+            sectionName = cmd_and_args[2];
+            subSectionName = cmd_and_args[3];
+            System.out.println("Loading JSON file: " + jsonFilePath.toFile().getAbsolutePath());
+            System.out.println("     Section Name: " + sectionName);
+            System.out.println("  Subsection Name: " + subSectionName);
 
             // Load Properties
-            JsonManager jsonManager = new JsonManager(jsonFileName);
+            JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
 
-            String answer = jsonManager.getValue("reference_cohort_and_imaging/dataset_name/Answer");
+            String answer = jsonManager.getValue(sectionName + "/" + subSectionName + "/Answer");
             //System.out.println(answer);
-            String confidenceRating = jsonManager.getValue("reference_cohort_and_imaging/dataset_name/Confidence\\ Rating");
+            String confidenceRating = jsonManager.getValue(sectionName + "/" + subSectionName + "/Confidence\\ Rating");
             //System.out.println(confidenceRating);
-            String negativeAnswerCategory = jsonManager.getValue("reference_cohort_and_imaging/dataset_name/Negative\\ Answer\\ Category");
+            String negativeAnswerCategory = jsonManager.getValue(sectionName + "/" + subSectionName + "/Negative\\ Answer\\ Category");
             //System.out.println(negativeAnswerCategory);
-            String reason = jsonManager.getValue("reference_cohort_and_imaging/dataset_name/Reason");
+            String reason = jsonManager.getValue(sectionName + "/" + subSectionName + "/Reason");
             //System.out.println(reason);
-            String supportingText = jsonManager.getValue("reference_cohort_and_imaging/dataset_name/Supporting\\ Text");
+            String supportingText = jsonManager.getValue(sectionName + "/" + subSectionName + "/Supporting\\ Text");
             //System.out.println(supportingText);
-            String pageLine = jsonManager.getValue("reference_cohort_and_imaging/dataset_name/Page\\/Line");
+            String pageLine = jsonManager.getValue(sectionName + "/" + subSectionName + "/Page\\/Line");
             //System.out.println(pageLine);
 
             // Preparation of Component
-            AResultPaneHolder aResultPaneHolder =
-                    (AResultPaneHolder) this.cholderMediator.getInstanceOfAMember("a_result_pane_holder");
+            DEResultPaneHolder DEResultPaneHolder =
+                    (DEResultPaneHolder) this.cholderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder");
 
             // Initialization Core
-            if (aResultPaneHolder != null) {
-                String targetJsonName = new File(jsonFileName).getName();
+            if (DEResultPaneHolder != null) {
 
-                for (AResultPane resultPane : aResultPaneHolder.getResultPanes()) {
-                    // このresultPaneのjsonNameと一致する場合のみ更新
-                    if (resultPane.getJsonName().equals(targetJsonName)) {
-                        resultPane.setValTo_JsonName(targetJsonName);
-                        resultPane.setValTo_Answer(answer);
-                        resultPane.setValTo_ConfidenceRating(confidenceRating);
-                        resultPane.setValTo_NegativeAnswerCategory(negativeAnswerCategory);
-                        resultPane.setValTo_Reason(reason);
-                        resultPane.setValTo_SupportingText(supportingText);
-                        resultPane.setValTo_PageLine(pageLine);
-                        break; // 該当するパネルを更新したらループを抜ける
-                    }
-                }
+                DEResultPane trtgResultPane = DEResultPaneHolder.getResultPane(jsonFileName, sectionName, subSectionName);
+                trtgResultPane.setValTo_JsonName(jsonFileName);
+                trtgResultPane.setValTo_Answer(answer);
+                trtgResultPane.setValTo_ConfidenceRating(confidenceRating);
+                trtgResultPane.setValTo_NegativeAnswerCategory(negativeAnswerCategory);
+                trtgResultPane.setValTo_Reason(reason);
+                trtgResultPane.setValTo_SupportingText(supportingText);
+                trtgResultPane.setValTo_PageLine(pageLine);
+
             } else {
                 System.err.println("aResultPaneHolder is null.");
             }
