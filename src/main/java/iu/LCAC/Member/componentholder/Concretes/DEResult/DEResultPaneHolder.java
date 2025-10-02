@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class DEResultPaneHolder extends AbstCHolderMember {
 
-    JPanel panel = new JPanel();
+    JPanel panel = new JPanel(new BorderLayout());
     JTabbedPane baseTabPane = new JTabbedPane();
 
     // Reference Cohort and Imaging
@@ -234,7 +234,7 @@ public class DEResultPaneHolder extends AbstCHolderMember {
         //scrollPane_SiteEffectDetail.setPreferredSize(new Dimension(600, 600));
         baseTabPane.add("Site Effect Detail", scrollPane_SiteEffectDetail);
 
-        panel.add(baseTabPane);
+        panel.add(baseTabPane, BorderLayout.CENTER);
 
     }
 
