@@ -221,18 +221,122 @@ public class DEResultPane extends JPanel {
             moveDownButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-
+                    movePaneDown();
                 }
             });
 
             moveUpButton.addActionListener(new AbstractAction() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-
+                    movePaneUp();
                 }
             });
         }
 
+
+        private void movePaneUp() {
+            Container parent = DEResultPane.this.getParent();
+            if (parent == null) {
+                return;
+            }
+
+            Component[] components = parent.getComponents();
+            int paneIndex = -1;
+            for (int i = 0; i < components.length; i++) {
+                if (components[i] == DEResultPane.this) {
+                    paneIndex = i;
+                    break;
+                }
+            }
+
+            if (paneIndex == -1) {
+                return;
+            }
+
+            Component previousPane = null;
+            for (int i = paneIndex - 1; i >= 0; i--) {
+                if (components[i] instanceof DEResultPane) {
+                    previousPane = components[i];
+                    break;
+                }
+            }
+
+            if (previousPane == null) {
+                return;
+            }
+
+            JLabel spacerBefore = null;
+            if (paneIndex > 0 && components[paneIndex - 1] instanceof JLabel) {
+                spacerBefore = (JLabel) components[paneIndex - 1];
+            }
+
+            if (spacerBefore != null) {
+                parent.remove(spacerBefore);
+            }
+            parent.remove(DEResultPane.this);
+
+            int insertionIndex = parent.getComponentZOrder(previousPane);
+            if (spacerBefore != null) {
+                parent.add(spacerBefore, insertionIndex);
+                insertionIndex++;
+            }
+            parent.add(DEResultPane.this, insertionIndex);
+
+            parent.revalidate();
+            parent.repaint();
+        }
+
+        private void movePaneDown() {
+            Container parent = DEResultPane.this.getParent();
+            if (parent == null) {
+                return;
+            }
+
+            Component[] components = parent.getComponents();
+            int paneIndex = -1;
+            for (int i = 0; i < components.length; i++) {
+                if (components[i] == DEResultPane.this) {
+                    paneIndex = i;
+                    break;
+                }
+            }
+
+            if (paneIndex == -1) {
+                return;
+            }
+
+            Component nextPane = null;
+            for (int i = paneIndex + 1; i < components.length; i++) {
+                if (components[i] instanceof DEResultPane) {
+                    nextPane = components[i];
+                    break;
+                }
+            }
+
+            if (nextPane == null) {
+                return;
+            }
+
+            JLabel spacerBefore = null;
+            if (paneIndex > 0 && components[paneIndex - 1] instanceof JLabel) {
+                spacerBefore = (JLabel) components[paneIndex - 1];
+            }
+
+            if (spacerBefore != null) {
+                parent.remove(spacerBefore);
+            }
+            parent.remove(DEResultPane.this);
+
+            int insertionIndex = parent.getComponentZOrder(nextPane) + 1;
+            if (spacerBefore != null) {
+                parent.add(spacerBefore, insertionIndex);
+                insertionIndex++;
+            }
+            parent.add(DEResultPane.this, insertionIndex);
+
+            parent.revalidate();
+            parent.repaint();
+        }
 
     }
 }
