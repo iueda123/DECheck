@@ -26,15 +26,15 @@ public class BasePaneCreator {
     // Factory を介して各パネル（Panel_Aのサブクラス）を生成し、配置。
 
     /* **** Component を配置する **** */
+    //basePane.add(
+    //    (cHolderMediator.getInstanceOfAMember("button_panel_holder")).getBaseComponent(),
+    //    BorderLayout.WEST);
     basePane.add(
-        (cHolderMediator.getInstanceOfAMember("button_panel_holder")).getBaseComponent(),
-        BorderLayout.WEST);
-    basePane.add(
-        (cHolderMediator.getInstanceOfAMember("checkbox_panel_holder")).getBaseComponent(),
+        (cHolderMediator.getInstanceOfAMember("a_result_pane_holder")).getBaseComponent(),
         BorderLayout.CENTER);
-    basePane.add(
-        (cHolderMediator.getInstanceOfAMember("text_field_panel_holder")).getBaseComponent(),
-        BorderLayout.EAST);
+    //basePane.add(
+    //    (cHolderMediator.getInstanceOfAMember("text_field_panel_holder")).getBaseComponent(),
+    //    BorderLayout.EAST);
 
     return basePane;
   }
