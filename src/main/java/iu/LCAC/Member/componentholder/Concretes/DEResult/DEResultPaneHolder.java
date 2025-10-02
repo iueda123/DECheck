@@ -5,6 +5,7 @@ import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.util.ArrayList;
@@ -12,35 +13,47 @@ import java.util.ArrayList;
 public class DEResultPaneHolder extends AbstCHolderMember {
 
     JPanel panel = new JPanel();
-
     JTabbedPane baseTabPane = new JTabbedPane();
 
     // Reference Cohort and Imaging
-    Box subTab_DatasetName = Box.createVerticalBox();
+    JPanel paneForSubTab_DatasetName = new JPanel();
     ArrayList<DEResultPane> paneArray_DatasetName = new ArrayList<>();
-    Box subTab_HC_N = Box.createVerticalBox();
+    JPanel paneForSubTab_HC_N = new JPanel();
     ArrayList<DEResultPane> paneArray_HC_N = new ArrayList<>();
-    Box subTab_HC_Age = Box.createVerticalBox();
+    JPanel paneForSubTab_HC_Age = new JPanel();
     ArrayList<DEResultPane> paneArray_HC_Age = new ArrayList<>();
-    Box subTab_HC_Sex = Box.createVerticalBox();
+    JPanel paneForSubTab_HC_Sex = new JPanel();
     ArrayList<DEResultPane> paneArray_HC_Sex = new ArrayList<>();
-    Box subTab_ImagingModality = Box.createVerticalBox();
+    JPanel paneForSubTab_ImagingModality = new JPanel();
     ArrayList<DEResultPane> paneArray_ImagingModality = new ArrayList<>();
-    Box subTab_AnalysisLevel = Box.createVerticalBox();
+    JPanel paneForSubTab_AnalysisLevel = new JPanel();
     ArrayList<DEResultPane> paneArray_AnalysisLevel = new ArrayList<>();
-    Box subTab_PreprocessingPipeline = Box.createVerticalBox();
+    JPanel paneForSubTab_PreprocessingPipeline = new JPanel();
     ArrayList<DEResultPane> paneArray_PreprocessingPipeline = new ArrayList<>();
-    Box subTab_QualityChecking = Box.createVerticalBox();
+    JPanel paneForSubTab_QualityChecking = new JPanel();
     ArrayList<DEResultPane> paneArray_QualityChecking = new ArrayList<>();
-    Box subTab_QualityCheckingDetail = Box.createVerticalBox();
+    JPanel paneForSubTab_QualityCheckingDetail = new JPanel();
     ArrayList<DEResultPane> paneArray_QualityCheckingDetail = new ArrayList<>();
-    Box subTab_SiteEffectHandling = Box.createVerticalBox();
+    JPanel paneForSubTab_SiteEffectHandling = new JPanel();
     ArrayList<DEResultPane> paneArray_SiteEffectHandling = new ArrayList<>();
-    Box subTab_SiteEffectDetail = Box.createVerticalBox();
+    JPanel paneForSubTab_SiteEffectDetail = new JPanel(new BorderLayout());
     ArrayList<DEResultPane> paneArray_SiteEffectDetail = new ArrayList<>();
 
     public DEResultPaneHolder(String cholder_name, String short_name) {
         super(cholder_name, short_name);
+
+        // 各パネルのレイアウトを設定
+        paneForSubTab_DatasetName.setLayout(new BoxLayout(paneForSubTab_DatasetName, BoxLayout.Y_AXIS));
+        paneForSubTab_HC_N.setLayout(new BoxLayout(paneForSubTab_HC_N, BoxLayout.Y_AXIS));
+        paneForSubTab_HC_Age.setLayout(new BoxLayout(paneForSubTab_HC_Age, BoxLayout.Y_AXIS));
+        paneForSubTab_HC_Sex.setLayout(new BoxLayout(paneForSubTab_HC_Sex, BoxLayout.Y_AXIS));
+        paneForSubTab_ImagingModality.setLayout(new BoxLayout(paneForSubTab_ImagingModality, BoxLayout.Y_AXIS));
+        paneForSubTab_AnalysisLevel.setLayout(new BoxLayout(paneForSubTab_AnalysisLevel, BoxLayout.Y_AXIS));
+        paneForSubTab_PreprocessingPipeline.setLayout(new BoxLayout(paneForSubTab_PreprocessingPipeline, BoxLayout.Y_AXIS));
+        paneForSubTab_QualityChecking.setLayout(new BoxLayout(paneForSubTab_QualityChecking, BoxLayout.Y_AXIS));
+        paneForSubTab_QualityCheckingDetail.setLayout(new BoxLayout(paneForSubTab_QualityCheckingDetail, BoxLayout.Y_AXIS));
+        paneForSubTab_SiteEffectHandling.setLayout(new BoxLayout(paneForSubTab_SiteEffectHandling, BoxLayout.Y_AXIS));
+        paneForSubTab_SiteEffectDetail.setLayout(new BoxLayout(paneForSubTab_SiteEffectDetail, BoxLayout.Y_AXIS));
 
         // ./json下のすべてのJSONファイルを取得
         File jsonDir = new File("./json");
@@ -65,59 +78,161 @@ public class DEResultPaneHolder extends AbstCHolderMember {
         }
 
         for (DEResultPane pane : paneArray_DatasetName) {
-            subTab_DatasetName.add(pane);
+            pane.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, pane.getPreferredSize().height));
+            pane.setAlignmentX(java.awt.Component.LEFT_ALIGNMENT);
+            paneForSubTab_DatasetName.add(pane);
         }
-        baseTabPane.add("Dataset Name", subTab_DatasetName);
+        // パネル全体のPreferredSizeを明示的に計算
+        int totalHeight = paneArray_DatasetName.stream().mapToInt(p -> p.getPreferredSize().height).sum();
+        paneForSubTab_DatasetName.setPreferredSize(new java.awt.Dimension(600, totalHeight));
+        JScrollPane scrollPane_DatasetName = new JScrollPane(paneForSubTab_DatasetName,
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane_DatasetName.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane_DatasetName.getViewport().setScrollMode(JViewport.SIMPLE_SCROLL_MODE);
+        baseTabPane.add("Dataset Name", scrollPane_DatasetName);
 
         for (DEResultPane pane : paneArray_HC_N) {
-            subTab_HC_N.add(pane);
+            pane.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, pane.getPreferredSize().height));
+            pane.setAlignmentX(java.awt.Component.LEFT_ALIGNMENT);
+            paneForSubTab_HC_N.add(pane);
         }
-        baseTabPane.add("HC N", subTab_HC_N);
+        totalHeight = paneArray_HC_N.stream().mapToInt(p -> p.getPreferredSize().height).sum();
+        paneForSubTab_HC_N.setPreferredSize(new java.awt.Dimension(600, totalHeight));
+        JScrollPane scrollPane_HC_N = new JScrollPane(paneForSubTab_HC_N,
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane_HC_N.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane_HC_N.getViewport().setScrollMode(JViewport.SIMPLE_SCROLL_MODE);
+        baseTabPane.add("HC N", scrollPane_HC_N);
 
         for (DEResultPane pane : paneArray_HC_Age) {
-            subTab_HC_Age.add(pane);
+            pane.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, pane.getPreferredSize().height));
+            pane.setAlignmentX(java.awt.Component.LEFT_ALIGNMENT);
+            paneForSubTab_HC_Age.add(pane);
         }
-        baseTabPane.add("HC Age", subTab_HC_Age);
+        totalHeight = paneArray_HC_Age.stream().mapToInt(p -> p.getPreferredSize().height).sum();
+        paneForSubTab_HC_Age.setPreferredSize(new java.awt.Dimension(600, totalHeight));
+        JScrollPane scrollPane_HC_Age = new JScrollPane(paneForSubTab_HC_Age,
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane_HC_Age.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane_HC_Age.getViewport().setScrollMode(JViewport.SIMPLE_SCROLL_MODE);
+        baseTabPane.add("HC Age", scrollPane_HC_Age);
 
         for (DEResultPane pane : paneArray_HC_Sex) {
-            subTab_HC_Sex.add(pane);
+            pane.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, pane.getPreferredSize().height));
+            pane.setAlignmentX(java.awt.Component.LEFT_ALIGNMENT);
+            paneForSubTab_HC_Sex.add(pane);
         }
-        baseTabPane.add("HC Sex", subTab_HC_Sex);
+        totalHeight = paneArray_HC_Sex.stream().mapToInt(p -> p.getPreferredSize().height).sum();
+        paneForSubTab_HC_Sex.setPreferredSize(new java.awt.Dimension(600, totalHeight));
+        JScrollPane scrollPane_HC_Sex = new JScrollPane(paneForSubTab_HC_Sex,
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane_HC_Sex.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane_HC_Sex.getViewport().setScrollMode(JViewport.SIMPLE_SCROLL_MODE);
+        baseTabPane.add("HC Sex", scrollPane_HC_Sex);
 
         for (DEResultPane pane : paneArray_ImagingModality) {
-            subTab_ImagingModality.add(pane);
+            pane.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, pane.getPreferredSize().height));
+            pane.setAlignmentX(java.awt.Component.LEFT_ALIGNMENT);
+            paneForSubTab_ImagingModality.add(pane);
         }
-        baseTabPane.add("Imaging Modality", subTab_ImagingModality);
+        totalHeight = paneArray_ImagingModality.stream().mapToInt(p -> p.getPreferredSize().height).sum();
+        paneForSubTab_ImagingModality.setPreferredSize(new java.awt.Dimension(600, totalHeight));
+        JScrollPane scrollPane_ImagingModality = new JScrollPane(paneForSubTab_ImagingModality,
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane_ImagingModality.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane_ImagingModality.getViewport().setScrollMode(JViewport.SIMPLE_SCROLL_MODE);
+        baseTabPane.add("Imaging Modality", scrollPane_ImagingModality);
 
         for (DEResultPane pane : paneArray_AnalysisLevel) {
-            subTab_AnalysisLevel.add(pane);
+            pane.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, pane.getPreferredSize().height));
+            pane.setAlignmentX(java.awt.Component.LEFT_ALIGNMENT);
+            paneForSubTab_AnalysisLevel.add(pane);
         }
-        baseTabPane.add("Analysis Level", subTab_AnalysisLevel);
+        totalHeight = paneArray_AnalysisLevel.stream().mapToInt(p -> p.getPreferredSize().height).sum();
+        paneForSubTab_AnalysisLevel.setPreferredSize(new java.awt.Dimension(600, totalHeight));
+        JScrollPane scrollPane_AnalysisLevel = new JScrollPane(paneForSubTab_AnalysisLevel,
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane_AnalysisLevel.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane_AnalysisLevel.getViewport().setScrollMode(JViewport.SIMPLE_SCROLL_MODE);
+        baseTabPane.add("Analysis Level", scrollPane_AnalysisLevel);
 
         for (DEResultPane pane : paneArray_PreprocessingPipeline) {
-            subTab_PreprocessingPipeline.add(pane);
+            pane.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, pane.getPreferredSize().height));
+            pane.setAlignmentX(java.awt.Component.LEFT_ALIGNMENT);
+            paneForSubTab_PreprocessingPipeline.add(pane);
         }
-        baseTabPane.add("Preprocessing Pipeline", subTab_PreprocessingPipeline);
+        totalHeight = paneArray_PreprocessingPipeline.stream().mapToInt(p -> p.getPreferredSize().height).sum();
+        paneForSubTab_PreprocessingPipeline.setPreferredSize(new java.awt.Dimension(600, totalHeight));
+        JScrollPane scrollPane_PreprocessingPipeline = new JScrollPane(paneForSubTab_PreprocessingPipeline,
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane_PreprocessingPipeline.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane_PreprocessingPipeline.getViewport().setScrollMode(JViewport.SIMPLE_SCROLL_MODE);
+        baseTabPane.add("Preprocessing Pipeline", scrollPane_PreprocessingPipeline);
 
         for (DEResultPane pane : paneArray_QualityChecking) {
-            subTab_QualityChecking.add(pane);
+            pane.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, pane.getPreferredSize().height));
+            pane.setAlignmentX(java.awt.Component.LEFT_ALIGNMENT);
+            paneForSubTab_QualityChecking.add(pane);
         }
-        baseTabPane.add("Quality Checking", subTab_QualityChecking);
+        totalHeight = paneArray_QualityChecking.stream().mapToInt(p -> p.getPreferredSize().height).sum();
+        paneForSubTab_QualityChecking.setPreferredSize(new java.awt.Dimension(600, totalHeight));
+        JScrollPane scrollPane_QualityChecking = new JScrollPane(paneForSubTab_QualityChecking,
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane_QualityChecking.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane_QualityChecking.getViewport().setScrollMode(JViewport.SIMPLE_SCROLL_MODE);
+        baseTabPane.add("Quality Checking", scrollPane_QualityChecking);
 
         for (DEResultPane pane : paneArray_QualityCheckingDetail) {
-            subTab_QualityCheckingDetail.add(pane);
+            pane.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, pane.getPreferredSize().height));
+            pane.setAlignmentX(java.awt.Component.LEFT_ALIGNMENT);
+            paneForSubTab_QualityCheckingDetail.add(pane);
         }
-        baseTabPane.add("Quality Checking Detail", subTab_QualityCheckingDetail);
+        totalHeight = paneArray_QualityCheckingDetail.stream().mapToInt(p -> p.getPreferredSize().height).sum();
+        paneForSubTab_QualityCheckingDetail.setPreferredSize(new java.awt.Dimension(600, totalHeight));
+        JScrollPane scrollPane_QualityCheckingDetail = new JScrollPane(paneForSubTab_QualityCheckingDetail,
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane_QualityCheckingDetail.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane_QualityCheckingDetail.getViewport().setScrollMode(JViewport.SIMPLE_SCROLL_MODE);
+        baseTabPane.add("Quality Checking Detail", scrollPane_QualityCheckingDetail);
 
         for (DEResultPane pane : paneArray_SiteEffectHandling) {
-            subTab_SiteEffectHandling.add(pane);
+            pane.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, pane.getPreferredSize().height));
+            pane.setAlignmentX(java.awt.Component.LEFT_ALIGNMENT);
+            paneForSubTab_SiteEffectHandling.add(pane);
         }
-        baseTabPane.add("Site Effect Handling", subTab_SiteEffectHandling);
+        totalHeight = paneArray_SiteEffectHandling.stream().mapToInt(p -> p.getPreferredSize().height).sum();
+        paneForSubTab_SiteEffectHandling.setPreferredSize(new java.awt.Dimension(600, totalHeight));
+        JScrollPane scrollPane_SiteEffectHandling = new JScrollPane(paneForSubTab_SiteEffectHandling,
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane_SiteEffectHandling.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane_SiteEffectHandling.getViewport().setScrollMode(JViewport.SIMPLE_SCROLL_MODE);
+        baseTabPane.add("Site Effect Handling", scrollPane_SiteEffectHandling);
+
 
         for (DEResultPane pane : paneArray_SiteEffectDetail) {
-            subTab_SiteEffectDetail.add(pane);
+            pane.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, pane.getPreferredSize().height));
+            pane.setAlignmentX(java.awt.Component.LEFT_ALIGNMENT);
+            paneForSubTab_SiteEffectDetail.add(pane, BorderLayout.CENTER);
         }
-        baseTabPane.add("Site Effect Detail", subTab_SiteEffectDetail);
+        totalHeight = paneArray_SiteEffectDetail.stream().mapToInt(p -> p.getPreferredSize().height).sum();
+        //paneForSubTab_SiteEffectDetail.setPreferredSize(new java.awt.Dimension(600, totalHeight));
+        JScrollPane scrollPane_SiteEffectDetail = new JScrollPane(paneForSubTab_SiteEffectDetail,
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        //scrollPane_SiteEffectDetail.getVerticalScrollBar().setUnitIncrement(16);
+        //scrollPane_SiteEffectDetail.getViewport().setScrollMode(JViewport.SIMPLE_SCROLL_MODE);
+        //scrollPane_SiteEffectDetail.setPreferredSize(new Dimension(600, 600));
+        baseTabPane.add("Site Effect Detail", scrollPane_SiteEffectDetail);
 
         panel.add(baseTabPane);
 

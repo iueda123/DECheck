@@ -2,6 +2,8 @@ package iu.LCAC.Startup.Starter01;
 
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Concretes.MainWindow.MainWindowHolder;
+import iu.LCAC.Tools.VerticalTextTabbedPane;
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -30,7 +32,7 @@ public class BasePaneCreator {
     //    (cHolderMediator.getInstanceOfAMember("button_panel_holder")).getBaseComponent(),
     //    BorderLayout.WEST);
 
-    JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
+    VerticalTextTabbedPane tabbedPane = new VerticalTextTabbedPane(JTabbedPane.LEFT);
     tabbedPane.add("Reference Cohort and Imaging", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
 
     basePane.add(tabbedPane, BorderLayout.CENTER);

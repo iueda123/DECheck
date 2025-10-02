@@ -58,13 +58,17 @@ public class DEResultPane extends JPanel {
         JPanel basePane = new JPanel();
         basePane.setLayout(new BoxLayout(basePane, BoxLayout.Y_AXIS));
 
-        Box northBox = Box.createHorizontalBox();
-        //northBox.add(tField_jsonName);
-        northBox.add(tArea_Answer);
-        northBox.add(tFiled_ConfidenceRating);
-        northBox.add(tField_NegativeAnswerCategory);
-        northBox.add(loadButton);
-        northBox.add(saveButton);
+        Box northBox = Box.createVerticalBox();
+        Box northSubBox1 = Box.createHorizontalBox();
+        northSubBox1.setPreferredSize(new Dimension(600,50));
+        northSubBox1.add(tArea_Answer);
+        northBox.add(northSubBox1);
+        Box northSubBox2 = Box.createHorizontalBox();
+        northSubBox2.add(tFiled_ConfidenceRating);
+        northSubBox2.add(tField_NegativeAnswerCategory);
+        northSubBox2.add(loadButton);
+        northSubBox2.add(saveButton);
+        northBox.add(northSubBox2);
 
         // JTextAreaをJScrollPaneでラップしてスクロールバーを追加
         JScrollPane scrollPane_Reason = new JScrollPane(tArea_Reason);
@@ -90,8 +94,9 @@ public class DEResultPane extends JPanel {
 
         setBorder(BorderFactory.createTitledBorder("A Result Panel"));
 
-        setPreferredSize(new Dimension(600, 300));
-
+        // BoxLayoutで適切にスクロールするために、固定の高さを設定
+        setPreferredSize(new Dimension(600, 400));
+        setMaximumSize(new Dimension(Integer.MAX_VALUE, 400));
     }
 
 
