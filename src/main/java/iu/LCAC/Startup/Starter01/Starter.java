@@ -6,6 +6,11 @@ import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediatorFactory;
 import iu.LCAC.Member.componentholder.Concretes.MainWindow.MainWindowHolder;
 
+import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
+import java.awt.*;
+import java.util.Enumeration;
+
 public class Starter {
   /**
    * ショートカット制御機構を備えたメニューバー付きSwingFrameWork
@@ -15,6 +20,9 @@ public class Starter {
    * @param args
    */
   public static void main(String[] args) {
+
+    /* **** フォントサイズを1.25倍に設定 **** */
+    setUIFont(new FontUIResource("SansSerif", Font.PLAIN, 15)); // 標準12pt → 15pt (1.25倍)
 
     /* **** 新しい ActionMediator を作る **** */
     ActionMediator actionMediator = ActionMediatorFactory.create();
@@ -48,5 +56,16 @@ public class Starter {
 
     /* **** 表示後の初期化 **** */
     cholderMediator.postInitializeEachMember();
+  }
+
+  private static void setUIFont(FontUIResource font) {
+    Enumeration<Object> keys = UIManager.getDefaults().keys();
+    while (keys.hasMoreElements()) {
+      Object key = keys.nextElement();
+      Object value = UIManager.get(key);
+      if (value instanceof FontUIResource) {
+        UIManager.put(key, font);
+      }
+    }
   }
 }

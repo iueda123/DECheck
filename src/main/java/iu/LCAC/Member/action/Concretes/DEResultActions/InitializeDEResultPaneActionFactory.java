@@ -1,16 +1,16 @@
-package iu.LCAC.Member.action.Concretes.AResultActions.initialize_a_result_pane;
+package iu.LCAC.Member.action.Concretes.DEResultActions;
 
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.action.Abstract.AbstActionMemberFactory;
 
-public class InitializeAResultPaneActionFactory extends AbstActionMemberFactory {
+public class InitializeDEResultPaneActionFactory extends AbstActionMemberFactory {
 
   private AbstActionMember action;
 
   @Override
   protected AbstActionMember createInstance(String action_name, String short_name) {
     if (action == null) {
-      action = new InitializeAResultPaneAction(action_name, short_name);
+      action = new InitializeDEResultPaneAction(action_name, short_name);
     }
     return action;
   }

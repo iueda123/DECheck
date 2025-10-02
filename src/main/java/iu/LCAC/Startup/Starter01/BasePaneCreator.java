@@ -30,7 +30,7 @@ public class BasePaneCreator {
     //    (cHolderMediator.getInstanceOfAMember("button_panel_holder")).getBaseComponent(),
     //    BorderLayout.WEST);
 
-    JTabbedPane tabbedPane = new JTabbedPane();
+    JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
     tabbedPane.add("Reference Cohort and Imaging", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
 
     basePane.add(tabbedPane, BorderLayout.CENTER);

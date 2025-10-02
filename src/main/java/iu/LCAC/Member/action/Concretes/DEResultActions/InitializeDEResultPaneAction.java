@@ -1,4 +1,4 @@
-package iu.LCAC.Member.action.Concretes.AResultActions.initialize_a_result_pane;
+package iu.LCAC.Member.action.Concretes.DEResultActions;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
@@ -11,12 +11,12 @@ import java.awt.event.ActionEvent;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class InitializeAResultPaneAction extends AbstActionMember {
+public class InitializeDEResultPaneAction extends AbstActionMember {
 
     static final String SettingPropertyFilePath =
             "./json/Example9997.json";
 
-    public InitializeAResultPaneAction(String action_name, String short_name) {
+    public InitializeDEResultPaneAction(String action_name, String short_name) {
         super(action_name, short_name);
     }
 

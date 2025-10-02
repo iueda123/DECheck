@@ -1,5 +1,7 @@
 package iu.LCAC.Member.componentholder.Concretes.DEResult;
 
+import iu.LCAC.Tools.JsonManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -42,17 +44,16 @@ public class DEResultPane extends JPanel {
                 new AbstractAction() {
                     @Override
                     public void actionPerformed(ActionEvent actionEvent) {
-                        Path jsonFilePath = Paths.get("/" + jsonName);
-                        String answerText = tArea_Answer.getText();
-                        String confidenceRatingText = tFiled_ConfidenceRating.getText();
-                        String negativeAnswerCategoryText = tField_NegativeAnswerCategory.getText();
-                        String reasonText = tArea_Reason.getText();
-                        String supportingText = tArea_SupportingText.getText();
-                        String pageLineText = tArea_PageLine.getText();
-
-                        // JSONへ書き込み
+                        saveJson();
                     }
                 });
+
+        loadButton.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loadJson();
+            }
+        });
 
         JPanel basePane = new JPanel();
         basePane.setLayout(new BoxLayout(basePane, BoxLayout.Y_AXIS));
@@ -93,9 +94,11 @@ public class DEResultPane extends JPanel {
 
     }
 
+
     public void setTextToTheButton(String text) {
         this.saveButton.setText(text);
     }
+
     public void setValTo_JsonName(String value) {
         tField_jsonName.setText(value);
         setBorder(BorderFactory.createTitledBorder(value));
@@ -136,4 +139,59 @@ public class DEResultPane extends JPanel {
     public String getSectionName() {
         return sectionName;
     }
+
+    private void loadJson() {
+        Path jsonFilePath = Paths.get("./json/" + jsonName);
+
+        if (!jsonFilePath.toFile().exists()) {
+            System.err.println("JSON file not found: " + jsonFilePath.toFile().getAbsolutePath());
+            return;
+        }
+
+        // JSONから読み込み
+        JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
+        String answer = jsonManager.getValue(sectionName + "/" + subSectionName + "/Answer");
+        String confidenceRating = jsonManager.getValue(sectionName + "/" + subSectionName + "/Confidence\\ Rating");
+        String negativeAnswerCategory = jsonManager.getValue(sectionName + "/" + subSectionName + "/Negative\\ Answer\\ Category");
+        String reason = jsonManager.getValue(sectionName + "/" + subSectionName + "/Reason");
+        String supportingText = jsonManager.getValue(sectionName + "/" + subSectionName + "/Supporting\\ Text");
+        String pageLine = jsonManager.getValue(sectionName + "/" + subSectionName + "/Page\\/Line");
+
+        // 各フィールドに値を設定
+        if (answer != null) tArea_Answer.setText(answer);
+        if (confidenceRating != null) tFiled_ConfidenceRating.setText(confidenceRating);
+        if (negativeAnswerCategory != null) tField_NegativeAnswerCategory.setText(negativeAnswerCategory);
+        if (reason != null) tArea_Reason.setText(reason);
+        if (supportingText != null) tArea_SupportingText.setText(supportingText);
+        if (pageLine != null) tArea_PageLine.setText(pageLine);
+
+        System.out.println("Successfully loaded from " + jsonFilePath.toFile().getAbsolutePath());
+    }
+
+    private void saveJson() {
+        Path jsonFilePath = Paths.get("./json/" + jsonName);
+        String answerText = tArea_Answer.getText();
+        String confidenceRatingText = tFiled_ConfidenceRating.getText();
+        String negativeAnswerCategoryText = tField_NegativeAnswerCategory.getText();
+        String reasonText = tArea_Reason.getText();
+        String supportingText = tArea_SupportingText.getText();
+        String pageLineText = tArea_PageLine.getText();
+
+        // JSONへ書き込み
+        JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
+        jsonManager.setValue(sectionName + "/" + subSectionName + "/Answer", answerText);
+        jsonManager.setValue(sectionName + "/" + subSectionName + "/Confidence\\ Rating", confidenceRatingText);
+        jsonManager.setValue(sectionName + "/" + subSectionName + "/Negative\\ Answer\\ Category", negativeAnswerCategoryText);
+        jsonManager.setValue(sectionName + "/" + subSectionName + "/Reason", reasonText);
+        jsonManager.setValue(sectionName + "/" + subSectionName + "/Supporting\\ Text", supportingText);
+        jsonManager.setValue(sectionName + "/" + subSectionName + "/Page\\/Line", pageLineText);
+
+        boolean success = jsonManager.writeoutJson();
+        if (success) {
+            System.out.println("Successfully saved to " + jsonFilePath.toFile().getAbsolutePath());
+        } else {
+            System.err.println("Failed to save to " + jsonFilePath.toFile().getAbsolutePath());
+        }
+    }
+
 }
