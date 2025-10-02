@@ -10,7 +10,7 @@ public class InitializeAResultPaneActionFactory extends AbstActionMemberFactory 
   @Override
   protected AbstActionMember createInstance(String action_name, String short_name) {
     if (action == null) {
-      action = new InitializeTextFieldPanelAction(action_name, short_name);
+      action = new InitializeAResultPaneAction(action_name, short_name);
     }
     return action;
   }

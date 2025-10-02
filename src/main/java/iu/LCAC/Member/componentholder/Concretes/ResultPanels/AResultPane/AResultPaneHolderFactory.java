@@ -1,4 +1,4 @@
-package iu.LCAC.Member.componentholder.Concretes.AResultPane;
+package iu.LCAC.Member.componentholder.Concretes.ResultPanels.AResultPane;
 
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMemberFactory;
