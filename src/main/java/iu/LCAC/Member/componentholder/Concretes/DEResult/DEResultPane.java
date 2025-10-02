@@ -5,6 +5,7 @@ import iu.LCAC.Tools.JsonManager;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -16,8 +17,6 @@ public class DEResultPane extends JPanel {
 
     JButton loadButton = new JButton("Load");
     JButton saveButton = new JButton("Save");
-    JButton moveUpButton = new JButton("↑");
-    JButton moveDownButton = new JButton("↓");
 
     JTextField tField_jsonName = new JTextField("jsonName");
     JTextArea tArea_Answer = new JTextArea("Answer");
@@ -60,26 +59,30 @@ public class DEResultPane extends JPanel {
             }
         });
 
-        JPanel basePane = new JPanel();
-        basePane.setLayout(new BoxLayout(basePane, BoxLayout.Y_AXIS));
+        setLayout(new BorderLayout());
 
+        /* North Area */
         Box northBox = Box.createVerticalBox();
-        Box northSubBox1 = Box.createHorizontalBox();
-        northSubBox1.setPreferredSize(new Dimension(600,75));
+
+        JPanel northSubPane1 = new JPanel(new BorderLayout());
+        northSubPane1.setPreferredSize(new Dimension(600, 75));
 
         JScrollPane scrollPane_Answer = new JScrollPane(tArea_Answer);
         scrollPane_Answer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane_Answer.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        northSubBox1.add(scrollPane_Answer);
-        northBox.add(northSubBox1);
+        northSubPane1.add(scrollPane_Answer, BorderLayout.CENTER);
+        northSubPane1.add(new panelMoverPane(), BorderLayout.EAST);
+        northBox.add(northSubPane1);
+
         Box northSubBox2 = Box.createHorizontalBox();
         northSubBox2.add(tFiled_ConfidenceRating);
         northSubBox2.add(tField_NegativeAnswerCategory);
         northSubBox2.add(loadButton);
         northSubBox2.add(saveButton);
         northBox.add(northSubBox2);
+        add(northBox, BorderLayout.NORTH);
 
-        // JTextAreaをJScrollPaneでラップしてスクロールバーを追加
+        /* Center Area */
         JScrollPane scrollPane_Reason = new JScrollPane(tArea_Reason);
         scrollPane_Reason.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane_Reason.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -97,12 +100,10 @@ public class DEResultPane extends JPanel {
         centerBox.add(scrollPane_SupportingText);
         centerBox.add(scrollPane_PageLine);
 
-        setLayout(new BorderLayout());
-        add(northBox, BorderLayout.NORTH);
         add(centerBox, BorderLayout.CENTER);
 
+        /* Finalization */
         setBorder(BorderFactory.createTitledBorder("A Result Panel"));
-
         // BoxLayoutで適切にスクロールするために、固定の高さを設定
         setPreferredSize(new Dimension(600, 400));
         setMaximumSize(new Dimension(Integer.MAX_VALUE, 400));
@@ -208,4 +209,30 @@ public class DEResultPane extends JPanel {
         }
     }
 
+    private class panelMoverPane extends JPanel {
+
+        JButton moveUpButton = new JButton("↑");
+        JButton moveDownButton = new JButton("↓");
+
+        panelMoverPane() {
+            setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+            add(moveUpButton);
+            add(moveDownButton);
+            moveDownButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                }
+            });
+
+            moveUpButton.addActionListener(new AbstractAction() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                }
+            });
+        }
+
+
+    }
 }
