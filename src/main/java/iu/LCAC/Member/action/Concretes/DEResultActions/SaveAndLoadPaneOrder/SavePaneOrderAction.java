@@ -62,7 +62,7 @@ public class SavePaneOrderAction extends AbstActionMember {
         for (ManagerOfSubTabBasePane_RCAI managerOfSubTabBasePaneRCAI : arrayList_of_managerOfSubTabBasePaneRCAI) {
             String subSectionName = managerOfSubTabBasePaneRCAI.getSubSectionName();
             //System.out.println("subSectionName: " + subSectionName);
-            JPanel subSectionPanel = managerOfSubTabBasePaneRCAI.getBasePanel();
+            JPanel subSectionPanel = managerOfSubTabBasePaneRCAI.getBasePaneForDEResultPanes();
             components = subSectionPanel.getComponents();
             for (int i = 0; i < components.length; i++) {
                 Object component = components[i];
@@ -97,7 +97,7 @@ public class SavePaneOrderAction extends AbstActionMember {
         for (ManagerOfSubTabBasePane_NM managerOfSubTabBasePaneNM : arrayList_of_managerOfSubTabBasePaneNMRCAI) {
             String subSectionName = managerOfSubTabBasePaneNM.getSubSectionName();
             System.out.println("subSectionName: " + subSectionName);
-            JPanel subSectionPanel = managerOfSubTabBasePaneNM.getBasePanel();
+            JPanel subSectionPanel = managerOfSubTabBasePaneNM.getBasePaneForDEResultPanes();
             components = subSectionPanel.getComponents();
             for (int i = 0; i < components.length; i++) {
                 Object component = components[i];

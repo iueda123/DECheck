@@ -68,7 +68,7 @@ public class LoadPaneOrderAction extends AbstActionMember {
         for (ManagerOfSubTabBasePane_RCAI managerOfSubTabBasePane : arrayList_of_managerOfSubTabBasePane) {
             String subSectionName = managerOfSubTabBasePane.getSubSectionName();
 
-            JPanel subSectionPanel = managerOfSubTabBasePane.getBasePanel();
+            JPanel subSectionPanel = managerOfSubTabBasePane.getBasePaneForDEResultPanes();
             components = subSectionPanel.getComponents();
 
             // リストに変換して任意の順序付け
@@ -140,7 +140,7 @@ public class LoadPaneOrderAction extends AbstActionMember {
         for (ManagerOfSubTabBasePane_NM managerOfSubTabBasePane : arrayList_of_managerOfSubTabBasePane) {
             String subSectionName = managerOfSubTabBasePane.getSubSectionName();
 
-            JPanel subSectionPanel = managerOfSubTabBasePane.getBasePanel();
+            JPanel subSectionPanel = managerOfSubTabBasePane.getBasePaneForDEResultPanes();
             components = subSectionPanel.getComponents();
 
             // リストに変換して任意の順序付け

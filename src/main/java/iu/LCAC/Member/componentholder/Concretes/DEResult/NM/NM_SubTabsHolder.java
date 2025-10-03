@@ -24,7 +24,7 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
     static String subSection_6_Name = "predictor_variables";
     static String subSection_7_Name = "predictor_effects";
     static String subSection_8_Name = "nm_vldtn_handle_ns";
-    static String subSection_9_Name = "normative_modeling";
+    static String subSection_9_Name = "nm_vldtn_same_domain_nonindep";
     static String subSection_10_Name = "nm_vldtn_same_domain_indep";
     static String subSection_11_Name = "nm_vldtn_diff_domain";
 
