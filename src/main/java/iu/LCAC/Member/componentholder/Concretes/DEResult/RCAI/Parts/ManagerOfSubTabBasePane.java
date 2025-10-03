@@ -3,13 +3,16 @@ package iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts;
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class constructorOfSubTabBasePane {
+public class ManagerOfSubTabBasePane {
+
+    final String tabName;
 
     ArrayList<One_DEResultPane> dePaneArray = new ArrayList<>();
 
     JPanel basePanel = new JPanel();
 
-    public constructorOfSubTabBasePane() {
+    public ManagerOfSubTabBasePane(String tabName) {
+        this.tabName = tabName;
         basePanel.setLayout(new BoxLayout(basePanel, BoxLayout.Y_AXIS));
     }
 
@@ -19,7 +22,7 @@ public class constructorOfSubTabBasePane {
 
     public JScrollPane constructBasePaneOfSubTab() {
         for (int i = 0; i < dePaneArray.size(); i++) {
-            basePanel.add(new JLabel(" ")); // Separator
+            //basePanel.add(new JLabel(" ")); // Separator
             One_DEResultPane pane = dePaneArray.get(i);
             pane.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, pane.getPreferredSize().height));
             pane.setAlignmentX(java.awt.Component.LEFT_ALIGNMENT);
@@ -40,5 +43,13 @@ public class constructorOfSubTabBasePane {
 
     public ArrayList<One_DEResultPane> getDePaneArray(){
         return dePaneArray;
+    }
+
+    public String getTabName() {
+        return this.tabName;
+    }
+
+    public JPanel getBasePanel(){
+        return basePanel;
     }
 }

@@ -64,6 +64,7 @@ public class One_DEResultPane extends JPanel {
         /* North Area */
         Box northBox = Box.createVerticalBox();
 
+
         JPanel northSubPane1 = new JPanel(new BorderLayout());
         northSubPane1.setPreferredSize(new Dimension(600, 75));
 
@@ -101,6 +102,12 @@ public class One_DEResultPane extends JPanel {
         centerBox.add(scrollPane_PageLine);
 
         add(centerBox, BorderLayout.CENTER);
+
+        /* South Area */
+        Box southBox = Box.createHorizontalBox();
+        southBox.add(new JLabel(" "));
+
+        add(southBox, BorderLayout.SOUTH);
 
         /* Finalization */
         setBorder(BorderFactory.createTitledBorder("A Result Panel"));
