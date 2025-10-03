@@ -1,0 +1,165 @@
+package iu.LCAC.Member.action.Concretes.DEResultActions;
+
+import iu.LCAC.Mediator.action.ActionMediator;
+import iu.LCAC.Mediator.componentholder.CHolderMediator;
+import iu.LCAC.Member.action.Abstract.AbstActionMember;
+import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.DEResultSubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.ManagerOfSubTabBasePane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.One_DEResultPane;
+import iu.LCAC.Tools.PropertyManager_v5;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
+
+public class LoadPaneOrderAction extends AbstActionMember {
+
+    String deresultpane_order_setting_file_path_str = "settings/RCAI.prop";
+
+    public LoadPaneOrderAction(String action_name, String short_name) {
+        super(action_name, short_name);
+    }
+
+    @Override
+    protected void setAcceleratorKeyStroke() {
+        this.getMenuItem()
+                .setAccelerator(
+                        KeyStroke.getKeyStroke(
+                                KeyEvent.VK_L,
+                                InputEvent.CTRL_DOWN_MASK + InputEvent.SHIFT_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
+    }
+
+    @Override
+    public void perform(ActionEvent action_event) {
+        System.out.println("perform() in " + this.getClass().toString() + " was called.");
+
+        AbstCHolderMember member = this.cholderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder");
+        DEResultSubTabsHolder deResultSubTabsHolder = (DEResultSubTabsHolder) member;
+        String sectionName = deResultSubTabsHolder.getSectionName();
+        ArrayList<ManagerOfSubTabBasePane> arrayList_of_managerOfSubTabBasePane = deResultSubTabsHolder.getArrayList_of_ManagerOfSubTabBasePane();
+
+        deresultpane_order_setting_file_path_str = "./settings/" + sectionName + ".prop";
+        PropertyManager_v5 prop_manager = null;
+         prop_manager = createPropertyManager(deresultpane_order_setting_file_path_str);
+
+        prop_manager.listUpProperty();
+
+        System.out.println(
+                "Properties file '"
+                        + deresultpane_order_setting_file_path_str
+                        + "' was loaded.");
+
+        Set<String> property_names = prop_manager.stringPropertyNames();
+
+        String loaded_order = "";
+        AbstActionMember action = null;
+        KeyStroke loaded_accelerator_key_stroke = null;
+        System.out.println("================================");
+        System.out.println("property_name -> accelerator key");
+        System.out.println("--------------------------------");
+        for (String property_name : property_names) {
+            loaded_order = (String) prop_manager.getValueOrCreateNew(property_name);
+            System.out.println(property_name + " -> " + loaded_order);
+        }
+        System.out.println("================================");
+
+        Component[] components = null;
+        One_DEResultPane one_deResultPane = null;
+        ArrayList<String> arrayList_PanelOrder = new ArrayList<>();
+        prop_manager = createPropertyManager("./settings/" + sectionName + ".prop");
+        for (ManagerOfSubTabBasePane managerOfSubTabBasePane : arrayList_of_managerOfSubTabBasePane) {
+            String subSectionName = managerOfSubTabBasePane.getSubSectionName();
+
+            JPanel subSectionPanel = managerOfSubTabBasePane.getBasePanel();
+            components = subSectionPanel.getComponents();
+
+            // リストに変換してシャッフル（または任意の順序付け）
+            ArrayList<Component> currentComponentArray = new ArrayList();
+            Collections.addAll(currentComponentArray, components);
+
+            HashMap<String, Component> componentHashMap = new HashMap<>();
+            for (Component comp : components) {
+                componentHashMap.put(((One_DEResultPane) comp).getJsonName(), comp);
+            }
+
+            for (String property_name : property_names) {
+                loaded_order = (String) prop_manager.getValueOrCreateNew(property_name);
+                //System.out.println(property_name + " -> " + loaded_order);
+                if (property_name.equals(subSectionName)) break;
+            }
+            System.out.println("Loaded Order of " + subSectionName + ": " + loaded_order);
+            ArrayList<String> newlyOrderedJsonNameArray = splitToArrayList(loaded_order);
+
+            //並び替え
+            //Collections.shuffle(currentComponentArray); // ランダム順
+            ArrayList<Component> newlyOrderedComponents = new ArrayList<>();
+
+            //for(int i =0; i < newOrderArray.size(); i++) {
+            for (int i = 0; i < newlyOrderedJsonNameArray.size(); i++) {
+                for (Component comp : currentComponentArray) {
+                    One_DEResultPane one_deResultPane1 = (One_DEResultPane) comp;
+                    String jsonName_of_checking_comp = one_deResultPane1.getJsonName();
+                    System.out.println("  Now checking '" + jsonName_of_checking_comp + "'");
+                    if (jsonName_of_checking_comp.equals(newlyOrderedJsonNameArray.get(i))) {
+                        System.out.println("    it was added to newlyOrderedComponents!");
+                        newlyOrderedComponents.add(comp);
+                        break;
+                    }
+                }
+                System.out.println(" ");
+            }
+
+            //差分からPropertyに定義されていないComponent (One_DEResultPane) を把握
+            ArrayList<Component> undefinedInPropComponents = new ArrayList<>(currentComponentArray);
+            undefinedInPropComponents.removeAll(newlyOrderedComponents);
+
+            //newlyOrderedComponents の後ろに undefinedInPropComponents を結合
+            newlyOrderedComponents.addAll(undefinedInPropComponents);
+
+            // パネルをクリアして再配置
+            subSectionPanel.removeAll();
+            for (Component comp : newlyOrderedComponents) {
+                subSectionPanel.add(comp);
+            }
+
+            // 再描画
+            subSectionPanel.revalidate();
+            subSectionPanel.repaint();
+
+        }
+        prop_manager = null; //Propの外部更新時のため（毎回新しいPropを呼ぶため）dispose
+
+    }
+
+    @Override
+    public void setCHolderMediator(CHolderMediator cHolderMediator) {
+        this.cholderMediator = cHolderMediator;
+    }
+
+    @Override
+    public void setActionMediator(ActionMediator actionMediator) {
+        super.actionMediator = actionMediator;
+    }
+
+    @Override
+    public void initialize() {
+    }
+
+    @Override
+    public void doWorkAsMember() {
+    }
+
+    public static ArrayList<String> splitToArrayList(String input) {
+        if (input == null || input.isEmpty()) {
+            return new ArrayList<>();
+        }
+        // ";" で分割して ArrayList に変換
+        return new ArrayList<>(Arrays.asList(input.split(";")));
+    }
+}

@@ -18,8 +18,7 @@ import java.util.ArrayList;
 
 public class SavePaneOrderAction extends AbstActionMember {
 
-    static final String deresultpane_order_setting_file_path_str =
-            "settings/RCAI.prop";
+    static final String deresultpane_order_setting_file_path_str = "settings/RCAI.prop";
 
     public SavePaneOrderAction(String action_name, String short_name) {
         super(action_name, short_name);

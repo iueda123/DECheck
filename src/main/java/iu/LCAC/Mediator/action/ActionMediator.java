@@ -180,6 +180,16 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
         savePaneOrderAction.initialize();
         registerMemberToMap(savePaneOrderAction);
 
+        actionMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.action.Concretes.DEResultActions.LoadPaneOrderActionFactory",
+                        AbstActionMemberFactory.class);
+        AbstActionMember loadPaneOrderAction =
+                actionMemberFactory.createAction("load_pane_order", "load pane order");
+        loadPaneOrderAction.setActionMediator(this);
+        loadPaneOrderAction.initialize();
+        registerMemberToMap(loadPaneOrderAction);
+
     }
 
     private void registerMemberToMap(AbstActionMember action) {
