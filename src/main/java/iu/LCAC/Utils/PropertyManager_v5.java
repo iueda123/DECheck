@@ -1,4 +1,4 @@
-package iu.LCAC.Tools;
+package iu.LCAC.Utils;
 
 /** UTF-8 エンコーディングされたプロパティファイルを取り扱う方法 http://blog.k11i.biz/2014/09/java-utf-8.html */
 import java.io.*;

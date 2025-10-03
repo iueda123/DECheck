@@ -1,4 +1,4 @@
-package iu.LCAC.Tools;
+package iu.LCAC.Utils;
 
 /** https://mkyong.com/java/how-to-detect-os-in-java-systemgetpropertyosname/ */
 public class OsValidator {

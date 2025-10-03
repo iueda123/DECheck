@@ -7,15 +7,12 @@ import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.DEResultSubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.ManagerOfSubTabBasePane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.One_DEResultPane;
-import iu.LCAC.Tools.PropertyManager_v5;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 
 public class LoadPaneOrderAction extends AbstActionMember {
@@ -32,7 +29,7 @@ public class LoadPaneOrderAction extends AbstActionMember {
                 .setAccelerator(
                         KeyStroke.getKeyStroke(
                                 KeyEvent.VK_L,
-                                InputEvent.CTRL_DOWN_MASK + InputEvent.SHIFT_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
+                                InputEvent.CTRL_DOWN_MASK));
     }
 
     @Override
@@ -71,11 +68,6 @@ public class LoadPaneOrderAction extends AbstActionMember {
             ArrayList<Component> currentComponentArray = new ArrayList();
             Collections.addAll(currentComponentArray, components);
 
-            HashMap<String, Component> componentHashMap = new HashMap<>();
-            for (Component comp : components) {
-                componentHashMap.put(((One_DEResultPane) comp).getJsonName(), comp);
-            }
-
             for (String property_name : property_names) {
                 loaded_order = (String) propManager.getValueOrCreateNew(property_name);
                 //System.out.println(property_name + " -> " + loaded_order);
@@ -91,7 +83,8 @@ public class LoadPaneOrderAction extends AbstActionMember {
                     One_DEResultPane one_deResultPane1 = (One_DEResultPane) comp;
                     String jsonName_of_checking_comp = one_deResultPane1.getJsonName();
                     //System.out.println("  Now checking '" + jsonName_of_checking_comp + "'");
-                    if (jsonName_of_checking_comp.equals(newlyOrderedJsonNameArray.get(i))) {
+                    //if (jsonName_of_checking_comp.equals(newlyOrderedJsonNameArray.get(i))) {
+                    if (newlyOrderedJsonNameArray.get(i).equals(jsonName_of_checking_comp)) {
                         //System.out.println("    This was added to newlyOrderedComponents!");
                         newlyOrderedComponents.add(comp);
                         break;

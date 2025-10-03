@@ -33,10 +33,10 @@ public class DEResultSubTabsHolder extends AbstCHolderMember {
     ManagerOfSubTabBasePane mngrOfSubTabBasePane_SITE_EFFECT_HANDLING_DETAIL = new ManagerOfSubTabBasePane("Site Effect Handling Detail", "site_effect_handling_detail");
 
     ArrayList<ManagerOfSubTabBasePane> arrayList_of_ManagerOfSubTabBasePane = new ArrayList<>();
-    
+
     public DEResultSubTabsHolder(String cholder_name, String short_name) {
         super(cholder_name, short_name);
-        
+
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_DATASET_NAME);
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_HC_N);
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_HC_AGE);
@@ -69,17 +69,19 @@ public class DEResultSubTabsHolder extends AbstCHolderMember {
                 mngrOfSubTabBasePane_SITE_EFFECT_HANDLING_DETAIL.addToTheDePaneArray(new One_DEResultPane(jsonFileName, "reference_cohort_and_imaging", "site_effect_detail"));
             }
         }
-        
-        for(ManagerOfSubTabBasePane managerOfSubTabBasePane : arrayList_of_ManagerOfSubTabBasePane) {
+
+        for (ManagerOfSubTabBasePane managerOfSubTabBasePane : arrayList_of_ManagerOfSubTabBasePane) {
             baseTabPane.add(managerOfSubTabBasePane.getTabName(), managerOfSubTabBasePane.constructBasePaneOfSubTab());
         }
-        
+
         panel.add(baseTabPane, BorderLayout.CENTER);
     }
 
     @Override
     public void postInitialize() {
         if (actionMediator != null) {
+
+            /* 値を流し込む */
 
             for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_DATASET_NAME.getDePaneArray()) {
                 String jsonName = One_DEResultPane.getJsonName();
@@ -189,6 +191,12 @@ public class DEResultSubTabsHolder extends AbstCHolderMember {
                         "initialize_de_result_pane " + jsonName + " " + sectionName + " " + subSectionName);
                 actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
             }
+
+
+            /* パネル順序のロード */
+            actionMediator
+                    .getInstanceOfAMember("load_pane_order")
+                    .perform(new ActionEvent(this, 0, "Load Panel Order."));
 
         } else {
             System.err.println("actionMediator is null in postInitialize() @ " + this.getClass());
@@ -332,12 +340,12 @@ public class DEResultSubTabsHolder extends AbstCHolderMember {
 
     }
 
-    public ArrayList<ManagerOfSubTabBasePane> getArrayList_of_ManagerOfSubTabBasePane(){
+    public ArrayList<ManagerOfSubTabBasePane> getArrayList_of_ManagerOfSubTabBasePane() {
         return arrayList_of_ManagerOfSubTabBasePane;
     }
 
-    public String getSectionName(){
+    public String getSectionName() {
         return sectionName;
     }
-    
+
 }

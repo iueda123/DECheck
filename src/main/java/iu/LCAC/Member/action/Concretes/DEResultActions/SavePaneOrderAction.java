@@ -7,7 +7,7 @@ import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.DEResultSubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.ManagerOfSubTabBasePane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.One_DEResultPane;
-import iu.LCAC.Tools.PropertyManager_v5;
+import iu.LCAC.Utils.PropertyManager_v5;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,7 +30,7 @@ public class SavePaneOrderAction extends AbstActionMember {
                 .setAccelerator(
                         KeyStroke.getKeyStroke(
                                 KeyEvent.VK_S,
-                                InputEvent.CTRL_DOWN_MASK + InputEvent.SHIFT_DOWN_MASK + InputEvent.ALT_DOWN_MASK));
+                                InputEvent.CTRL_DOWN_MASK));
     }
 
     @Override

@@ -1,6 +1,8 @@
 package iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts;
 
-import iu.LCAC.Tools.JsonManager;
+import iu.LCAC.Utils.ColorChangeableTextArea;
+import iu.LCAC.Utils.ColorChangeableTextField;
+import iu.LCAC.Utils.JsonManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,14 +20,14 @@ public class One_DEResultPane extends JPanel {
     JButton loadButton = new JButton("Load");
     JButton saveButton = new JButton("Save");
 
-    JTextField tField_jsonName = new JTextField("jsonName");
-    JTextArea tArea_Answer = new JTextArea("Answer");
-    JTextField tFiled_ConfidenceRating = new JTextField("Confidence Rating");
-    JTextField tField_NegativeAnswerCategory = new JTextField("Negative Answer Category");
+    ColorChangeableTextField tField_jsonName = new ColorChangeableTextField("jsonName");
+    ColorChangeableTextArea tArea_Answer = new ColorChangeableTextArea("Answer");
+    ColorChangeableTextField tFiled_ConfidenceRating = new ColorChangeableTextField("Confidence Rating");
+    ColorChangeableTextField tField_NegativeAnswerCategory = new ColorChangeableTextField("Negative Answer Category");
 
-    JTextArea tArea_Reason = new JTextArea("Reason");
-    JTextArea tArea_SupportingText = new JTextArea("Supporting Text");
-    JTextArea tArea_PageLine = new JTextArea("Page Line");
+    ColorChangeableTextArea tArea_Reason = new ColorChangeableTextArea("Reason");
+    ColorChangeableTextArea tArea_SupportingText = new ColorChangeableTextArea("Supporting Text");
+    ColorChangeableTextArea tArea_PageLine = new ColorChangeableTextArea("Page Line");
 
     public One_DEResultPane(String jsonName, String sectionName, String subSectionName) {
         this.jsonName = jsonName;
@@ -187,6 +189,8 @@ public class One_DEResultPane extends JPanel {
         if (supportingText != null) tArea_SupportingText.setText(supportingText);
         if (pageLine != null) tArea_PageLine.setText(pageLine);
 
+        resetBackgroundColorOfTAreasTFields();
+
         System.out.println("Successfully loaded from " + jsonFilePath.toFile().getAbsolutePath());
     }
 
@@ -211,9 +215,27 @@ public class One_DEResultPane extends JPanel {
         boolean success = jsonManager.writeoutJson();
         if (success) {
             System.out.println("Successfully saved to " + jsonFilePath.toFile().getAbsolutePath());
+            resetBackgroundColorOfTAreasTFields();
         } else {
             System.err.println("Failed to save to " + jsonFilePath.toFile().getAbsolutePath());
         }
+    }
+
+    public void resetBackgroundColorOfTAreasTFields() {
+        tField_jsonName.resetBackgroundColor();
+        tField_jsonName.updateDefaultValue();
+        tField_NegativeAnswerCategory.resetBackgroundColor();
+        tField_NegativeAnswerCategory.updateDefaultValue();
+        tFiled_ConfidenceRating.resetBackgroundColor();
+        tFiled_ConfidenceRating.updateDefaultValue();
+        tArea_Answer.resetBackgroundColor();
+        tArea_Answer.updateDefaultValue();
+        tArea_Reason.resetBackgroundColor();
+        tArea_Reason.updateDefaultValue();
+        tArea_SupportingText.resetBackgroundColor();
+        tArea_SupportingText.updateDefaultValue();
+        tArea_PageLine.resetBackgroundColor();
+        tArea_PageLine.updateDefaultValue();
     }
 
     private class panelMoverPane extends JPanel {

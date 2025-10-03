@@ -1,4 +1,4 @@
-package iu.LCAC.Tools;
+package iu.LCAC.Utils;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

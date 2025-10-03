@@ -1,4 +1,4 @@
-package iu.LCAC.GuiParts;
+package iu.LCAC.Utils;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;

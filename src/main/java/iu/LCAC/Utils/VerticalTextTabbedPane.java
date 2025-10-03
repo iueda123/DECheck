@@ -1,4 +1,4 @@
-package iu.LCAC.Tools;
+package iu.LCAC.Utils;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;

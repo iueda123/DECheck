@@ -5,7 +5,7 @@ import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.One_DEResultPane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.DEResultSubTabsHolder;
-import iu.LCAC.Tools.JsonManager;
+import iu.LCAC.Utils.JsonManager;
 
 import java.awt.event.ActionEvent;
 import java.nio.file.Path;
@@ -77,6 +77,8 @@ public class InitializeDEResultPaneAction extends AbstActionMember {
                 trtgDEResultPane.setValTo_Reason(reason);
                 trtgDEResultPane.setValTo_SupportingText(supportingText);
                 trtgDEResultPane.setValTo_PageLine(pageLine);
+
+                trtgDEResultPane.resetBackgroundColorOfTAreasTFields();
 
             } else {
                 System.err.println("aResultPaneHolder is null.");

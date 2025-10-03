@@ -4,7 +4,7 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Concretes.Sample.TextField.TextFieldPanelHolder;
-import iu.LCAC.Tools.PropertyManager_v5;
+import iu.LCAC.Utils.PropertyManager_v5;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,7 +14,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.List;
 
 public class RunABashScriptAction extends AbstActionMember {

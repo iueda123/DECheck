@@ -2,7 +2,7 @@ package iu.LCAC.Startup.Starter01;
 
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Concretes.MainWindow.MainWindowHolder;
-import iu.LCAC.Tools.VerticalTextTabbedPane;
+import iu.LCAC.Utils.VerticalTextTabbedPane;
 
 import java.awt.*;
 import javax.swing.*;

@@ -4,7 +4,7 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Concretes.Sample.ButtonPanel.ButtonPanelHolder;
-import iu.LCAC.Tools.PropertyManager_v5;
+import iu.LCAC.Utils.PropertyManager_v5;
 import java.awt.event.ActionEvent;
 
 public class ChangeTextOfButtonPanelAction extends AbstActionMember {
