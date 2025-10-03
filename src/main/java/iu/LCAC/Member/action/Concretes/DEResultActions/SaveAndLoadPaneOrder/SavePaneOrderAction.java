@@ -4,12 +4,10 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.ManagerOfSubTabBasePane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.Parts.ManagerOfSubTabBasePane_NM;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.Parts.NM_OneDEResultPane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.OneDEResultPane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.ManagerOfSubTabBasePane_RCAI;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.RCAI_OneDEResultPane;
 
 import javax.swing.*;
 import java.awt.*;
@@ -48,7 +46,7 @@ public class SavePaneOrderAction extends AbstActionMember {
     private void savePaneOrderOf_RCAI_Tab() {
         AbstCHolderMember member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI");
         RCAI_SubTabsHolder RCAISubTabsHolder = (RCAI_SubTabsHolder) member;
-        ArrayList<ManagerOfSubTabBasePane_RCAI> arrayList_of_managerOfSubTabBasePaneRCAI = RCAISubTabsHolder.getArrayList_of_ManagerOfSubTabBasePane();
+        ArrayList<ManagerOfSubTabBasePane> arrayList_of_managerOfSubTabBasePaneRCAI = RCAISubTabsHolder.getArrayList_of_ManagerOfSubTabBasePane();
 
         String sectionName = RCAISubTabsHolder.getSectionName();
         String prop_file_path_str = "./settings/" + sectionName + ".prop";
@@ -56,18 +54,18 @@ public class SavePaneOrderAction extends AbstActionMember {
 
         // 全タブ（SubSectionに相当）配置されているコンポーネントの順番を把握し、propertyへ書き込む
         Component[] components = null;
-        RCAI_OneDEResultPane RCAIOne_deResultPane = null;
+        OneDEResultPane RCAIOne_deResultPane = null;
         ArrayList<String> arrayList_PanelOrder = new ArrayList<>();
         propManager = createPropertyManager(prop_file_path_str);
-        for (ManagerOfSubTabBasePane_RCAI managerOfSubTabBasePaneRCAI : arrayList_of_managerOfSubTabBasePaneRCAI) {
+        for (ManagerOfSubTabBasePane managerOfSubTabBasePaneRCAI : arrayList_of_managerOfSubTabBasePaneRCAI) {
             String subSectionName = managerOfSubTabBasePaneRCAI.getSubSectionName();
             //System.out.println("subSectionName: " + subSectionName);
             JPanel subSectionPanel = managerOfSubTabBasePaneRCAI.getBasePaneForDEResultPanes();
             components = subSectionPanel.getComponents();
             for (int i = 0; i < components.length; i++) {
                 Object component = components[i];
-                if (component instanceof RCAI_OneDEResultPane) {
-                    RCAIOne_deResultPane = ((RCAI_OneDEResultPane) components[i]);
+                if (component instanceof OneDEResultPane) {
+                    RCAIOne_deResultPane = ((OneDEResultPane) components[i]);
                     String jsonName = RCAIOne_deResultPane.getJsonName();
                     //System.out.println("  DEResultPane No. " + i + ": " + jsonName);
                     arrayList_PanelOrder.add(jsonName);
@@ -83,7 +81,7 @@ public class SavePaneOrderAction extends AbstActionMember {
     private void savePaneOrderOf_NM_Tab() {
         AbstCHolderMember member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_NM");
         NM_SubTabsHolder subTabsHolder = (NM_SubTabsHolder) member;
-        ArrayList<ManagerOfSubTabBasePane_NM> arrayList_of_managerOfSubTabBasePaneNMRCAI = subTabsHolder.getArrayList_of_ManagerOfSubTabBasePane();
+        ArrayList<ManagerOfSubTabBasePane> arrayList_of_managerOfSubTabBasePaneNMRCAI = subTabsHolder.getArrayList_of_ManagerOfSubTabBasePane();
 
         String sectionName = subTabsHolder.getSectionName();
         String prop_file_path_str = "./settings/" + sectionName + ".prop";
@@ -91,18 +89,18 @@ public class SavePaneOrderAction extends AbstActionMember {
 
         // 全タブ（SubSectionに相当）配置されているコンポーネントの順番を把握し、propertyへ書き込む
         Component[] components = null;
-        NM_OneDEResultPane oneDEResultPane = null;
+        OneDEResultPane oneDEResultPane = null;
         ArrayList<String> arrayList_PanelOrder = new ArrayList<>();
         propManager = createPropertyManager(prop_file_path_str);
-        for (ManagerOfSubTabBasePane_NM managerOfSubTabBasePaneNM : arrayList_of_managerOfSubTabBasePaneNMRCAI) {
+        for (ManagerOfSubTabBasePane managerOfSubTabBasePaneNM : arrayList_of_managerOfSubTabBasePaneNMRCAI) {
             String subSectionName = managerOfSubTabBasePaneNM.getSubSectionName();
             System.out.println("subSectionName: " + subSectionName);
             JPanel subSectionPanel = managerOfSubTabBasePaneNM.getBasePaneForDEResultPanes();
             components = subSectionPanel.getComponents();
             for (int i = 0; i < components.length; i++) {
                 Object component = components[i];
-                if (component instanceof NM_OneDEResultPane) {
-                    oneDEResultPane = ((NM_OneDEResultPane) components[i]);
+                if (component instanceof OneDEResultPane) {
+                    oneDEResultPane = ((OneDEResultPane) components[i]);
                     String jsonName = oneDEResultPane.getJsonName();
                     System.out.println("  DEResultPane No. " + i + ": " + jsonName);
                     arrayList_PanelOrder.add(jsonName);

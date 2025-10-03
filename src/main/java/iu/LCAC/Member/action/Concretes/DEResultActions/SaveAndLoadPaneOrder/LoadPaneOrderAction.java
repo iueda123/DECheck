@@ -4,12 +4,10 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.ManagerOfSubTabBasePane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.Parts.ManagerOfSubTabBasePane_NM;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.Parts.NM_OneDEResultPane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.OneDEResultPane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.ManagerOfSubTabBasePane_RCAI;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.RCAI_OneDEResultPane;
 
 import javax.swing.*;
 import java.awt.*;
@@ -53,7 +51,7 @@ public class LoadPaneOrderAction extends AbstActionMember {
     private void loadPaneOrderOf_RCAI_Tab() {
         AbstCHolderMember member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI");
         RCAI_SubTabsHolder subTabsHolder = (RCAI_SubTabsHolder) member;
-        ArrayList<ManagerOfSubTabBasePane_RCAI> arrayList_of_managerOfSubTabBasePane = subTabsHolder.getArrayList_of_ManagerOfSubTabBasePane();
+        ArrayList<ManagerOfSubTabBasePane> arrayList_of_managerOfSubTabBasePane = subTabsHolder.getArrayList_of_ManagerOfSubTabBasePane();
 
         String sectionName = subTabsHolder.getSectionName();
         prop_file_path_str = "./settings/" + sectionName + ".prop";
@@ -65,7 +63,7 @@ public class LoadPaneOrderAction extends AbstActionMember {
 
         String loaded_order = "";
         Component[] components = null;
-        for (ManagerOfSubTabBasePane_RCAI managerOfSubTabBasePane : arrayList_of_managerOfSubTabBasePane) {
+        for (ManagerOfSubTabBasePane managerOfSubTabBasePane : arrayList_of_managerOfSubTabBasePane) {
             String subSectionName = managerOfSubTabBasePane.getSubSectionName();
 
             JPanel subSectionPanel = managerOfSubTabBasePane.getBasePaneForDEResultPanes();
@@ -87,7 +85,7 @@ public class LoadPaneOrderAction extends AbstActionMember {
             ArrayList<Component> newlyOrderedComponents = new ArrayList<>();
             for (int i = 0; i < newlyOrderedJsonNameArray.size(); i++) {
                 for (Component comp : currentComponentArray) {
-                    RCAI_OneDEResultPane oneDEResultPanel = (RCAI_OneDEResultPane) comp;
+                    OneDEResultPane oneDEResultPanel = (OneDEResultPane) comp;
                     String jsonName_of_checking_comp = oneDEResultPanel.getJsonName();
                     //System.out.println("  Now checking '" + jsonName_of_checking_comp + "'");
                     //if (jsonName_of_checking_comp.equals(newlyOrderedJsonNameArray.get(i))) {
@@ -125,7 +123,7 @@ public class LoadPaneOrderAction extends AbstActionMember {
     private void loadPaneOrderOf_NM_Tab() {
         AbstCHolderMember member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_NM");
         NM_SubTabsHolder subTabsHolder = (NM_SubTabsHolder) member;
-        ArrayList<ManagerOfSubTabBasePane_NM> arrayList_of_managerOfSubTabBasePane = subTabsHolder.getArrayList_of_ManagerOfSubTabBasePane();
+        ArrayList<ManagerOfSubTabBasePane> arrayList_of_managerOfSubTabBasePane = subTabsHolder.getArrayList_of_ManagerOfSubTabBasePane();
 
         String sectionName = subTabsHolder.getSectionName();
         prop_file_path_str = "./settings/" + sectionName + ".prop";
@@ -137,7 +135,7 @@ public class LoadPaneOrderAction extends AbstActionMember {
 
         String loaded_order = "";
         Component[] components = null;
-        for (ManagerOfSubTabBasePane_NM managerOfSubTabBasePane : arrayList_of_managerOfSubTabBasePane) {
+        for (ManagerOfSubTabBasePane managerOfSubTabBasePane : arrayList_of_managerOfSubTabBasePane) {
             String subSectionName = managerOfSubTabBasePane.getSubSectionName();
 
             JPanel subSectionPanel = managerOfSubTabBasePane.getBasePaneForDEResultPanes();
@@ -159,7 +157,7 @@ public class LoadPaneOrderAction extends AbstActionMember {
             ArrayList<Component> newlyOrderedComponents = new ArrayList<>();
             for (int i = 0; i < newlyOrderedJsonNameArray.size(); i++) {
                 for (Component comp : currentComponentArray) {
-                    NM_OneDEResultPane oneDEResultPane1 = (NM_OneDEResultPane) comp;
+                    OneDEResultPane oneDEResultPane1 = (OneDEResultPane) comp;
                     String jsonName_of_checking_comp = oneDEResultPane1.getJsonName();
                     //System.out.println("  Now checking '" + jsonName_of_checking_comp + "'");
                     //if (jsonName_of_checking_comp.equals(newlyOrderedJsonNameArray.get(i))) {

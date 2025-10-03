@@ -3,8 +3,8 @@ package iu.LCAC.Member.componentholder.Concretes.DEResult.NM;
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.Parts.ManagerOfSubTabBasePane_NM;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.Parts.NM_OneDEResultPane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.ManagerOfSubTabBasePane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.OneDEResultPane;
 
 import javax.swing.*;
 import java.awt.*;
@@ -44,34 +44,34 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
     JTabbedPane baseTabPane = new JTabbedPane();
 
     // Reference Cohort and Imaging
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_1 = new ManagerOfSubTabBasePane_NM(subSection_1_TabName, subSection_1_Name, baseTabPane);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_2 = new ManagerOfSubTabBasePane_NM(subSection_2_TabName, subSection_2_Name, baseTabPane);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_3 = new ManagerOfSubTabBasePane_NM(subSection_3_TabName,  subSection_3_Name, baseTabPane);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_4 = new ManagerOfSubTabBasePane_NM(subSection_4_TabName, subSection_4_Name, baseTabPane);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_5 = new ManagerOfSubTabBasePane_NM(subSection_5_TabName, subSection_5_Name, baseTabPane);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_6 = new ManagerOfSubTabBasePane_NM(subSection_6_TabName, subSection_6_Name, baseTabPane);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_7 = new ManagerOfSubTabBasePane_NM(subSection_7_TabName, subSection_7_Name, baseTabPane);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_8 = new ManagerOfSubTabBasePane_NM(subSection_8_TabName, subSection_8_Name, baseTabPane);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_9 = new ManagerOfSubTabBasePane_NM(subSection_9_TabName, subSection_9_Name, baseTabPane);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_10 = new ManagerOfSubTabBasePane_NM(subSection_10_TabName, subSection_10_Name, baseTabPane);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_11 = new ManagerOfSubTabBasePane_NM(subSection_11_TabName, subSection_11_Name, baseTabPane);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_1 = new ManagerOfSubTabBasePane(subSection_1_TabName, sectionName, subSection_1_Name, baseTabPane);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_2 = new ManagerOfSubTabBasePane(subSection_2_TabName, subSection_2_Name, subSection_1_Name, baseTabPane);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_3 = new ManagerOfSubTabBasePane(subSection_3_TabName,  subSection_3_Name, subSection_1_Name, baseTabPane);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_4 = new ManagerOfSubTabBasePane(subSection_4_TabName, subSection_4_Name, subSection_1_Name, baseTabPane);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_5 = new ManagerOfSubTabBasePane(subSection_5_TabName, subSection_5_Name, subSection_1_Name, baseTabPane);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_6 = new ManagerOfSubTabBasePane(subSection_6_TabName, subSection_6_Name, subSection_1_Name, baseTabPane);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_7 = new ManagerOfSubTabBasePane(subSection_7_TabName, subSection_7_Name, subSection_1_Name, baseTabPane);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_8 = new ManagerOfSubTabBasePane(subSection_8_TabName, subSection_8_Name, subSection_1_Name, baseTabPane);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_9 = new ManagerOfSubTabBasePane(subSection_9_TabName, subSection_9_Name, subSection_1_Name, baseTabPane);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_10 = new ManagerOfSubTabBasePane(subSection_10_TabName, subSection_10_Name, subSection_1_Name, baseTabPane);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_11 = new ManagerOfSubTabBasePane(subSection_11_TabName, subSection_11_Name, subSection_1_Name, baseTabPane);
 
-    ArrayList<ManagerOfSubTabBasePane_NM> arrayList_of_ManagerOfSubTabBasePaneNM = new ArrayList<>();
+    ArrayList<ManagerOfSubTabBasePane> arrayList_of_ManagerOfSubTabBasePane = new ArrayList<>();
 
     public NM_SubTabsHolder(String cholder_name, String short_name) {
         super(cholder_name, short_name);
 
-        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_1);
-        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_2);
-        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_3);
-        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_4);
-        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_5);
-        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_6);
-        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_7);
-        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_8);
-        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_9);
-        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_10);
-        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_11);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_1);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_2);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_3);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_4);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_5);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_6);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_7);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_8);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_9);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_10);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_11);
 
         // ./json下のすべてのJSONファイルを取得
         File jsonDir = new File("./json");
@@ -92,21 +92,21 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
         if (jsonFiles != null) {
             for (File jsonFile : jsonFiles) {
                 String jsonFileName = jsonFile.getName();
-                mngrOfSubTabBasePane_1.addToTheDePaneArray(new NM_OneDEResultPane(jsonFileName, sectionName,subSection_1_Name));
-                mngrOfSubTabBasePane_2.addToTheDePaneArray(new NM_OneDEResultPane(jsonFileName, sectionName, subSection_2_Name));
-                mngrOfSubTabBasePane_3.addToTheDePaneArray(new NM_OneDEResultPane(jsonFileName, sectionName, subSection_3_Name));
-                mngrOfSubTabBasePane_4.addToTheDePaneArray(new NM_OneDEResultPane(jsonFileName, sectionName, subSection_4_Name));
-                mngrOfSubTabBasePane_5.addToTheDePaneArray(new NM_OneDEResultPane(jsonFileName, sectionName, subSection_5_Name));
-                mngrOfSubTabBasePane_6.addToTheDePaneArray(new NM_OneDEResultPane(jsonFileName, sectionName, subSection_6_Name));
-                mngrOfSubTabBasePane_7.addToTheDePaneArray(new NM_OneDEResultPane(jsonFileName, sectionName, subSection_7_Name));
-                mngrOfSubTabBasePane_8.addToTheDePaneArray(new NM_OneDEResultPane(jsonFileName, sectionName, subSection_8_Name));
-                mngrOfSubTabBasePane_9.addToTheDePaneArray(new NM_OneDEResultPane(jsonFileName, sectionName, subSection_9_Name));
-                mngrOfSubTabBasePane_10.addToTheDePaneArray(new NM_OneDEResultPane(jsonFileName, sectionName, subSection_10_Name));
-                mngrOfSubTabBasePane_11.addToTheDePaneArray(new NM_OneDEResultPane(jsonFileName, sectionName, subSection_11_Name));
+                mngrOfSubTabBasePane_1.addToTheDePaneArray(new OneDEResultPane(jsonFileName, sectionName,subSection_1_Name));
+                mngrOfSubTabBasePane_2.addToTheDePaneArray(new OneDEResultPane(jsonFileName, sectionName, subSection_2_Name));
+                mngrOfSubTabBasePane_3.addToTheDePaneArray(new OneDEResultPane(jsonFileName, sectionName, subSection_3_Name));
+                mngrOfSubTabBasePane_4.addToTheDePaneArray(new OneDEResultPane(jsonFileName, sectionName, subSection_4_Name));
+                mngrOfSubTabBasePane_5.addToTheDePaneArray(new OneDEResultPane(jsonFileName, sectionName, subSection_5_Name));
+                mngrOfSubTabBasePane_6.addToTheDePaneArray(new OneDEResultPane(jsonFileName, sectionName, subSection_6_Name));
+                mngrOfSubTabBasePane_7.addToTheDePaneArray(new OneDEResultPane(jsonFileName, sectionName, subSection_7_Name));
+                mngrOfSubTabBasePane_8.addToTheDePaneArray(new OneDEResultPane(jsonFileName, sectionName, subSection_8_Name));
+                mngrOfSubTabBasePane_9.addToTheDePaneArray(new OneDEResultPane(jsonFileName, sectionName, subSection_9_Name));
+                mngrOfSubTabBasePane_10.addToTheDePaneArray(new OneDEResultPane(jsonFileName, sectionName, subSection_10_Name));
+                mngrOfSubTabBasePane_11.addToTheDePaneArray(new OneDEResultPane(jsonFileName, sectionName, subSection_11_Name));
             }
         }
 
-        for (ManagerOfSubTabBasePane_NM managerOfSubTabBasePaneNM : arrayList_of_ManagerOfSubTabBasePaneNM) {
+        for (ManagerOfSubTabBasePane managerOfSubTabBasePaneNM : arrayList_of_ManagerOfSubTabBasePane) {
             baseTabPane.add(managerOfSubTabBasePaneNM.getTabName(), managerOfSubTabBasePaneNM.constructBasePaneOfSubTab());
         }
 
@@ -119,10 +119,10 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
 
             /* 値を流し込む */
 
-            for (NM_OneDEResultPane NM_OneDEResultPane : mngrOfSubTabBasePane_1.getDePaneArray()) {
-                String jsonName = NM_OneDEResultPane.getJsonName();
-                String sectionName = NM_OneDEResultPane.getSectionName();
-                String subSectionName = NM_OneDEResultPane.getSubSectionName();
+            for (OneDEResultPane oneDEResultPane : mngrOfSubTabBasePane_1.getDePaneArray()) {
+                String jsonName = oneDEResultPane.getJsonName();
+                String sectionName = oneDEResultPane.getSectionName();
+                String subSectionName = oneDEResultPane.getSubSectionName();
 
                 // jsonNameを引数として渡すためにActionEventを作成
                 ActionEvent customEvent = new ActionEvent(
@@ -133,10 +133,10 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
                 actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
             }
 
-            for (NM_OneDEResultPane NM_OneDEResultPane : mngrOfSubTabBasePane_2.getDePaneArray()) {
-                String jsonName = NM_OneDEResultPane.getJsonName();
-                String sectionName = NM_OneDEResultPane.getSectionName();
-                String subSectionName = NM_OneDEResultPane.getSubSectionName();
+            for (OneDEResultPane oneDEResultPane : mngrOfSubTabBasePane_2.getDePaneArray()) {
+                String jsonName = oneDEResultPane.getJsonName();
+                String sectionName = oneDEResultPane.getSectionName();
+                String subSectionName = oneDEResultPane.getSubSectionName();
 
                 // jsonNameを引数として渡すためにActionEventを作成
                 ActionEvent customEvent = new ActionEvent(
@@ -147,82 +147,82 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
                 actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
             }
 
-            for (NM_OneDEResultPane NM_OneDEResultPane : mngrOfSubTabBasePane_3.getDePaneArray()) {
-                String jsonName = NM_OneDEResultPane.getJsonName();
-                String sectionName = NM_OneDEResultPane.getSectionName();
-                String subSectionName = NM_OneDEResultPane.getSubSectionName();
+            for (OneDEResultPane oneDEResultPane : mngrOfSubTabBasePane_3.getDePaneArray()) {
+                String jsonName = oneDEResultPane.getJsonName();
+                String sectionName = oneDEResultPane.getSectionName();
+                String subSectionName = oneDEResultPane.getSubSectionName();
                 ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
                         "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
                 actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
             }
 
-            for (NM_OneDEResultPane NM_OneDEResultPane : mngrOfSubTabBasePane_4.getDePaneArray()) {
-                String jsonName = NM_OneDEResultPane.getJsonName();
-                String sectionName = NM_OneDEResultPane.getSectionName();
-                String subSectionName = NM_OneDEResultPane.getSubSectionName();
+            for (OneDEResultPane oneDEResultPane : mngrOfSubTabBasePane_4.getDePaneArray()) {
+                String jsonName = oneDEResultPane.getJsonName();
+                String sectionName = oneDEResultPane.getSectionName();
+                String subSectionName = oneDEResultPane.getSubSectionName();
                 ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
                         "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
                 actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
             }
 
-            for (NM_OneDEResultPane NM_OneDEResultPane : mngrOfSubTabBasePane_5.getDePaneArray()) {
-                String jsonName = NM_OneDEResultPane.getJsonName();
-                String sectionName = NM_OneDEResultPane.getSectionName();
-                String subSectionName = NM_OneDEResultPane.getSubSectionName();
+            for (OneDEResultPane oneDEResultPane : mngrOfSubTabBasePane_5.getDePaneArray()) {
+                String jsonName = oneDEResultPane.getJsonName();
+                String sectionName = oneDEResultPane.getSectionName();
+                String subSectionName = oneDEResultPane.getSubSectionName();
                 ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
                         "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
                 actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
             }
 
-            for (NM_OneDEResultPane NM_OneDEResultPane : mngrOfSubTabBasePane_6.getDePaneArray()) {
-                String jsonName = NM_OneDEResultPane.getJsonName();
-                String sectionName = NM_OneDEResultPane.getSectionName();
-                String subSectionName = NM_OneDEResultPane.getSubSectionName();
+            for (OneDEResultPane oneDEResultPane : mngrOfSubTabBasePane_6.getDePaneArray()) {
+                String jsonName = oneDEResultPane.getJsonName();
+                String sectionName = oneDEResultPane.getSectionName();
+                String subSectionName = oneDEResultPane.getSubSectionName();
                 ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
                         "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
                 actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
             }
 
-            for (NM_OneDEResultPane NM_OneDEResultPane : mngrOfSubTabBasePane_7.getDePaneArray()) {
-                String jsonName = NM_OneDEResultPane.getJsonName();
-                String sectionName = NM_OneDEResultPane.getSectionName();
-                String subSectionName = NM_OneDEResultPane.getSubSectionName();
+            for (OneDEResultPane oneDEResultPane : mngrOfSubTabBasePane_7.getDePaneArray()) {
+                String jsonName = oneDEResultPane.getJsonName();
+                String sectionName = oneDEResultPane.getSectionName();
+                String subSectionName = oneDEResultPane.getSubSectionName();
                 ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
                         "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
                 actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
             }
 
-            for (NM_OneDEResultPane NM_OneDEResultPane : mngrOfSubTabBasePane_8.getDePaneArray()) {
-                String jsonName = NM_OneDEResultPane.getJsonName();
-                String sectionName = NM_OneDEResultPane.getSectionName();
-                String subSectionName = NM_OneDEResultPane.getSubSectionName();
+            for (OneDEResultPane oneDEResultPane : mngrOfSubTabBasePane_8.getDePaneArray()) {
+                String jsonName = oneDEResultPane.getJsonName();
+                String sectionName = oneDEResultPane.getSectionName();
+                String subSectionName = oneDEResultPane.getSubSectionName();
                 ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
                         "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
                 actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
             }
 
-            for (NM_OneDEResultPane NM_OneDEResultPane : mngrOfSubTabBasePane_9.getDePaneArray()) {
-                String jsonName = NM_OneDEResultPane.getJsonName();
-                String sectionName = NM_OneDEResultPane.getSectionName();
-                String subSectionName = NM_OneDEResultPane.getSubSectionName();
+            for (OneDEResultPane oneDEResultPane : mngrOfSubTabBasePane_9.getDePaneArray()) {
+                String jsonName = oneDEResultPane.getJsonName();
+                String sectionName = oneDEResultPane.getSectionName();
+                String subSectionName = oneDEResultPane.getSubSectionName();
                 ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
                         "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
                 actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
             }
 
-            for (NM_OneDEResultPane NM_OneDEResultPane : mngrOfSubTabBasePane_10.getDePaneArray()) {
-                String jsonName = NM_OneDEResultPane.getJsonName();
-                String sectionName = NM_OneDEResultPane.getSectionName();
-                String subSectionName = NM_OneDEResultPane.getSubSectionName();
+            for (OneDEResultPane oneDEResultPane : mngrOfSubTabBasePane_10.getDePaneArray()) {
+                String jsonName = oneDEResultPane.getJsonName();
+                String sectionName = oneDEResultPane.getSectionName();
+                String subSectionName = oneDEResultPane.getSubSectionName();
                 ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
                         "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
                 actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
             }
 
-            for (NM_OneDEResultPane NM_OneDEResultPane : mngrOfSubTabBasePane_11.getDePaneArray()) {
-                String jsonName = NM_OneDEResultPane.getJsonName();
-                String sectionName = NM_OneDEResultPane.getSectionName();
-                String subSectionName = NM_OneDEResultPane.getSubSectionName();
+            for (OneDEResultPane oneDEResultPane : mngrOfSubTabBasePane_11.getDePaneArray()) {
+                String jsonName = oneDEResultPane.getJsonName();
+                String sectionName = oneDEResultPane.getSectionName();
+                String subSectionName = oneDEResultPane.getSubSectionName();
                 ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
                         "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
                 actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
@@ -268,7 +268,7 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
      * すべての paneArray の要素の中から、
      * jsonName, sectionName, subSectionName が一致するものを返す。
      */
-    public NM_OneDEResultPane getResultPane(String jsonName, String sectionName, String subSectionName) {
+    public OneDEResultPane getResultPane(String jsonName, String sectionName, String subSectionName) {
         //System.out.println("Start searching the DEResultPane with following: ");
         //System.out.println("  JSON Name: " + jsonName);
         //System.out.println("  Section Name: " + sectionName);
@@ -276,7 +276,7 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
 
         //System.out.println(mngrOfSubTabBasePane_MODEL_ORIGIN.getDePaneArray().size());
 
-        for (NM_OneDEResultPane pane : mngrOfSubTabBasePane_1.getDePaneArray()) {
+        for (OneDEResultPane pane : mngrOfSubTabBasePane_1.getDePaneArray()) {
             //System.out.println("Candidate Info: ");
             //System.out.println("  JSON Name: " + pane.getJsonName());
             //System.out.println("  Section Name: " + pane.getSectionName());
@@ -288,7 +288,7 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (NM_OneDEResultPane pane : mngrOfSubTabBasePane_2.getDePaneArray()) {
+        for (OneDEResultPane pane : mngrOfSubTabBasePane_2.getDePaneArray()) {
             //System.out.println("Candidate Info: ");
             //System.out.println("  JSON Name: " + pane.getJsonName());
             //System.out.println("  Section Name: " + pane.getSectionName());
@@ -300,7 +300,7 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (NM_OneDEResultPane pane : mngrOfSubTabBasePane_3.getDePaneArray()) {
+        for (OneDEResultPane pane : mngrOfSubTabBasePane_3.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -308,7 +308,7 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (NM_OneDEResultPane pane : mngrOfSubTabBasePane_4.getDePaneArray()) {
+        for (OneDEResultPane pane : mngrOfSubTabBasePane_4.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -316,7 +316,7 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (NM_OneDEResultPane pane : mngrOfSubTabBasePane_5.getDePaneArray()) {
+        for (OneDEResultPane pane : mngrOfSubTabBasePane_5.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -324,7 +324,7 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (NM_OneDEResultPane pane : mngrOfSubTabBasePane_6.getDePaneArray()) {
+        for (OneDEResultPane pane : mngrOfSubTabBasePane_6.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -332,7 +332,7 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (NM_OneDEResultPane pane : mngrOfSubTabBasePane_7.getDePaneArray()) {
+        for (OneDEResultPane pane : mngrOfSubTabBasePane_7.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -340,7 +340,7 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (NM_OneDEResultPane pane : mngrOfSubTabBasePane_8.getDePaneArray()) {
+        for (OneDEResultPane pane : mngrOfSubTabBasePane_8.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -348,7 +348,7 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (NM_OneDEResultPane pane : mngrOfSubTabBasePane_9.getDePaneArray()) {
+        for (OneDEResultPane pane : mngrOfSubTabBasePane_9.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -356,7 +356,7 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (NM_OneDEResultPane pane : mngrOfSubTabBasePane_10.getDePaneArray()) {
+        for (OneDEResultPane pane : mngrOfSubTabBasePane_10.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -364,7 +364,7 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (NM_OneDEResultPane pane : mngrOfSubTabBasePane_11.getDePaneArray()) {
+        for (OneDEResultPane pane : mngrOfSubTabBasePane_11.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -376,8 +376,8 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
 
     }
 
-    public ArrayList<ManagerOfSubTabBasePane_NM> getArrayList_of_ManagerOfSubTabBasePane() {
-        return arrayList_of_ManagerOfSubTabBasePaneNM;
+    public ArrayList<ManagerOfSubTabBasePane> getArrayList_of_ManagerOfSubTabBasePane() {
+        return arrayList_of_ManagerOfSubTabBasePane;
     }
 
     public String getSectionName() {

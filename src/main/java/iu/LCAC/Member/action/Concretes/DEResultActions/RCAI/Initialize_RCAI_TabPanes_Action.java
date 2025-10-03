@@ -3,7 +3,7 @@ package iu.LCAC.Member.action.Concretes.DEResultActions.RCAI;
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.RCAI_OneDEResultPane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.OneDEResultPane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
 import iu.LCAC.Utils.JsonManager;
 
@@ -69,7 +69,7 @@ public class Initialize_RCAI_TabPanes_Action extends AbstActionMember {
             // Initialization Core
             if (subTabsHolder != null) {
 
-                RCAI_OneDEResultPane trtgDEResultPane = subTabsHolder.getResultPane(jsonFileName, sectionName, subSectionName);
+                OneDEResultPane trtgDEResultPane = subTabsHolder.getResultPane(jsonFileName, sectionName, subSectionName);
                 trtgDEResultPane.setValTo_JsonName(jsonFileName);
                 trtgDEResultPane.setValTo_Answer(answer);
                 trtgDEResultPane.setValTo_ConfidenceRating(confidenceRating);
