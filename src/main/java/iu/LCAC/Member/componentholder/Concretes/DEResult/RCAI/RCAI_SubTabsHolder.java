@@ -16,38 +16,62 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
 
     static String sectionName = "reference_cohort_and_imaging";
 
+    static String subSection_1_Name = "dataset_name";
+    static String subSection_2_Name = "hc_n";
+    static String subSection_3_Name = "hc_age";
+    static String subSection_4_Name = "hc_sex";
+    static String subSection_5_Name = "imaging_modality";
+    static String subSection_6_Name = "analysis_level";
+    static String subSection_7_Name = "preprocessing_pipeline";
+    static String subSection_8_Name = "quality_checking";
+    static String subSection_9_Name = "quality_checking_detail";
+    static String subSection_10_Name = "site_effect_handling";
+    static String subSection_11_Name = "site_effect_handling_detail";
+
+    static String subSection_1_TabName = "Dataset Name";
+    static String subSection_2_TabName = "HC N";
+    static String subSection_3_TabName = "HC Age";
+    static String subSection_4_TabName = "HC Sex";
+    static String subSection_5_TabName = "Imaging Modality";
+    static String subSection_6_TabName = "Analysis Level";
+    static String subSection_7_TabName = "Preprocessing Pipeline";
+    static String subSection_8_TabName = "Quality Checking";
+    static String subSection_9_TabName = "Quality Checking Detail";
+    static String subSection_10_TabName = "Site Effect Handling";
+    static String subSection_11_TabName = "Site Effect Handling Detail";
+
     JPanel panel = new JPanel(new BorderLayout());
     JTabbedPane baseTabPane = new JTabbedPane();
 
     // Reference Cohort and Imaging
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_DATASET_NAME = new ManagerOfSubTabBasePane("Dataset Name", "dataset_name");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_HC_N = new ManagerOfSubTabBasePane("HC N", "hc_n");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_HC_AGE = new ManagerOfSubTabBasePane("HC Age", "hc_age");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_HC_SEX = new ManagerOfSubTabBasePane("HC Sex", "hc_sex");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_IMAGING_MODALITY = new ManagerOfSubTabBasePane("Imaging Modality", "imaging_modality");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_ANALYSIS_LEVEL = new ManagerOfSubTabBasePane("Analysis Level", "analysis_level");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_PREPROCESSING_PIPELINE = new ManagerOfSubTabBasePane("Preprocessing Pipeline", "preprocessing_pipeline");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_QUALITY_CHECKING = new ManagerOfSubTabBasePane("Quality Checking", "quality_checking");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_QUALITY_CHECKING_DETAIL = new ManagerOfSubTabBasePane("Quality Checking Detail", "quality_checking_detail");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_SITE_EFFECT_HANDLING = new ManagerOfSubTabBasePane("Site Effect Handling", "site_effect_handling");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_SITE_EFFECT_HANDLING_DETAIL = new ManagerOfSubTabBasePane("Site Effect Handling Detail", "site_effect_handling_detail");
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_1 = new ManagerOfSubTabBasePane(subSection_1_TabName, subSection_1_Name);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_2 = new ManagerOfSubTabBasePane(subSection_2_TabName, subSection_2_Name);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_3 = new ManagerOfSubTabBasePane(subSection_3_TabName, subSection_3_Name);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_4 = new ManagerOfSubTabBasePane(subSection_4_TabName, subSection_4_Name);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_5 = new ManagerOfSubTabBasePane(subSection_5_TabName, subSection_5_Name);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_6 = new ManagerOfSubTabBasePane(subSection_6_TabName, subSection_6_Name);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_7 = new ManagerOfSubTabBasePane(subSection_7_TabName, subSection_7_Name);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_8 = new ManagerOfSubTabBasePane(subSection_8_TabName, subSection_8_Name);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_9 = new ManagerOfSubTabBasePane(subSection_9_TabName, subSection_9_Name);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_10 = new ManagerOfSubTabBasePane(subSection_10_TabName, subSection_10_Name);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_11 = new ManagerOfSubTabBasePane(subSection_11_TabName, subSection_11_Name);
 
     ArrayList<ManagerOfSubTabBasePane> arrayList_of_ManagerOfSubTabBasePane = new ArrayList<>();
 
     public RCAI_SubTabsHolder(String cholder_name, String short_name) {
         super(cholder_name, short_name);
 
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_DATASET_NAME);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_HC_N);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_HC_AGE);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_HC_SEX);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_IMAGING_MODALITY);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_ANALYSIS_LEVEL);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_PREPROCESSING_PIPELINE);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_QUALITY_CHECKING);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_QUALITY_CHECKING_DETAIL);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_SITE_EFFECT_HANDLING);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_SITE_EFFECT_HANDLING_DETAIL);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_1);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_2);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_3);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_4);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_5);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_6);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_7);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_8);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_9);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_10);
+        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_11);
 
         // ./json下のすべてのJSONファイルを取得
         File jsonDir = new File("./json");
@@ -56,17 +80,17 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
         if (jsonFiles != null) {
             for (File jsonFile : jsonFiles) {
                 String jsonFileName = jsonFile.getName();
-                mngrOfSubTabBasePane_DATASET_NAME.addToTheDePaneArray(new One_DEResultPane(jsonFileName, "reference_cohort_and_imaging", "dataset_name"));
-                mngrOfSubTabBasePane_HC_N.addToTheDePaneArray(new One_DEResultPane(jsonFileName, "reference_cohort_and_imaging", "hc_n"));
-                mngrOfSubTabBasePane_HC_AGE.addToTheDePaneArray(new One_DEResultPane(jsonFileName, "reference_cohort_and_imaging", "hc_age"));
-                mngrOfSubTabBasePane_HC_SEX.addToTheDePaneArray(new One_DEResultPane(jsonFileName, "reference_cohort_and_imaging", "hc_sex"));
-                mngrOfSubTabBasePane_IMAGING_MODALITY.addToTheDePaneArray(new One_DEResultPane(jsonFileName, "reference_cohort_and_imaging", "imaging_modality"));
-                mngrOfSubTabBasePane_ANALYSIS_LEVEL.addToTheDePaneArray(new One_DEResultPane(jsonFileName, "reference_cohort_and_imaging", "analysis_level"));
-                mngrOfSubTabBasePane_PREPROCESSING_PIPELINE.addToTheDePaneArray(new One_DEResultPane(jsonFileName, "reference_cohort_and_imaging", "preprocessing_pipeline"));
-                mngrOfSubTabBasePane_QUALITY_CHECKING.addToTheDePaneArray(new One_DEResultPane(jsonFileName, "reference_cohort_and_imaging", "quality_checking"));
-                mngrOfSubTabBasePane_QUALITY_CHECKING_DETAIL.addToTheDePaneArray(new One_DEResultPane(jsonFileName, "reference_cohort_and_imaging", "quality_checking_detail"));
-                mngrOfSubTabBasePane_SITE_EFFECT_HANDLING.addToTheDePaneArray(new One_DEResultPane(jsonFileName, "reference_cohort_and_imaging", "site_effect_handling"));
-                mngrOfSubTabBasePane_SITE_EFFECT_HANDLING_DETAIL.addToTheDePaneArray(new One_DEResultPane(jsonFileName, "reference_cohort_and_imaging", "site_effect_detail"));
+                mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_1_Name));
+                mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_2_Name));
+                mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_3_Name));
+                mngrOfSubTabBasePane_4.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_4_Name));
+                mngrOfSubTabBasePane_5.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_5_Name));
+                mngrOfSubTabBasePane_6.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_6_Name));
+                mngrOfSubTabBasePane_7.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_7_Name));
+                mngrOfSubTabBasePane_8.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_8_Name));
+                mngrOfSubTabBasePane_9.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_9_Name));
+                mngrOfSubTabBasePane_10.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_10_Name));
+                mngrOfSubTabBasePane_11.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_11_Name));
             }
         }
 
@@ -83,7 +107,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
 
             /* 値を流し込む */
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_DATASET_NAME.getDePaneArray()) {
+            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_1.getDePaneArray()) {
                 String jsonName = One_DEResultPane.getJsonName();
                 String sectionName = One_DEResultPane.getSectionName();
                 String subSectionName = One_DEResultPane.getSubSectionName();
@@ -97,7 +121,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
                 actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_HC_N.getDePaneArray()) {
+            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_2.getDePaneArray()) {
                 String jsonName = One_DEResultPane.getJsonName();
                 String sectionName = One_DEResultPane.getSectionName();
                 String subSectionName = One_DEResultPane.getSubSectionName();
@@ -111,7 +135,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
                 actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_HC_AGE.getDePaneArray()) {
+            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_3.getDePaneArray()) {
                 String jsonName = One_DEResultPane.getJsonName();
                 String sectionName = One_DEResultPane.getSectionName();
                 String subSectionName = One_DEResultPane.getSubSectionName();
@@ -120,7 +144,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
                 actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_HC_SEX.getDePaneArray()) {
+            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_4.getDePaneArray()) {
                 String jsonName = One_DEResultPane.getJsonName();
                 String sectionName = One_DEResultPane.getSectionName();
                 String subSectionName = One_DEResultPane.getSubSectionName();
@@ -129,7 +153,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
                 actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_IMAGING_MODALITY.getDePaneArray()) {
+            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_5.getDePaneArray()) {
                 String jsonName = One_DEResultPane.getJsonName();
                 String sectionName = One_DEResultPane.getSectionName();
                 String subSectionName = One_DEResultPane.getSubSectionName();
@@ -138,7 +162,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
                 actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_ANALYSIS_LEVEL.getDePaneArray()) {
+            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_6.getDePaneArray()) {
                 String jsonName = One_DEResultPane.getJsonName();
                 String sectionName = One_DEResultPane.getSectionName();
                 String subSectionName = One_DEResultPane.getSubSectionName();
@@ -147,7 +171,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
                 actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_PREPROCESSING_PIPELINE.getDePaneArray()) {
+            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_7.getDePaneArray()) {
                 String jsonName = One_DEResultPane.getJsonName();
                 String sectionName = One_DEResultPane.getSectionName();
                 String subSectionName = One_DEResultPane.getSubSectionName();
@@ -156,7 +180,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
                 actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_QUALITY_CHECKING.getDePaneArray()) {
+            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_8.getDePaneArray()) {
                 String jsonName = One_DEResultPane.getJsonName();
                 String sectionName = One_DEResultPane.getSectionName();
                 String subSectionName = One_DEResultPane.getSubSectionName();
@@ -165,7 +189,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
                 actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_QUALITY_CHECKING_DETAIL.getDePaneArray()) {
+            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_9.getDePaneArray()) {
                 String jsonName = One_DEResultPane.getJsonName();
                 String sectionName = One_DEResultPane.getSectionName();
                 String subSectionName = One_DEResultPane.getSubSectionName();
@@ -174,7 +198,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
                 actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_SITE_EFFECT_HANDLING.getDePaneArray()) {
+            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_10.getDePaneArray()) {
                 String jsonName = One_DEResultPane.getJsonName();
                 String sectionName = One_DEResultPane.getSectionName();
                 String subSectionName = One_DEResultPane.getSubSectionName();
@@ -183,7 +207,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
                 actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_SITE_EFFECT_HANDLING_DETAIL.getDePaneArray()) {
+            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_11.getDePaneArray()) {
                 String jsonName = One_DEResultPane.getJsonName();
                 String sectionName = One_DEResultPane.getSectionName();
                 String subSectionName = One_DEResultPane.getSubSectionName();
@@ -238,9 +262,9 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
         //System.out.println("  Section Name: " + sectionName);
         //System.out.println("  Subsection Name: " + subSectionName);
 
-        //System.out.println(mngrOfSubTabBasePane_DATASET_NAME.getDePaneArray().size());
+        //System.out.println(mngrOfSubTabBasePane_1.getDePaneArray().size());
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_DATASET_NAME.getDePaneArray()) {
+        for (One_DEResultPane pane : mngrOfSubTabBasePane_1.getDePaneArray()) {
             //System.out.println("Candidate Info: ");
             //System.out.println("  JSON Name: " + pane.getJsonName());
             //System.out.println("  Section Name: " + pane.getSectionName());
@@ -252,7 +276,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_HC_N.getDePaneArray()) {
+        for (One_DEResultPane pane : mngrOfSubTabBasePane_2.getDePaneArray()) {
             //System.out.println("Candidate Info: ");
             //System.out.println("  JSON Name: " + pane.getJsonName());
             //System.out.println("  Section Name: " + pane.getSectionName());
@@ -264,7 +288,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_HC_AGE.getDePaneArray()) {
+        for (One_DEResultPane pane : mngrOfSubTabBasePane_3.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -272,7 +296,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_HC_SEX.getDePaneArray()) {
+        for (One_DEResultPane pane : mngrOfSubTabBasePane_4.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -280,7 +304,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_IMAGING_MODALITY.getDePaneArray()) {
+        for (One_DEResultPane pane : mngrOfSubTabBasePane_5.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -288,7 +312,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_ANALYSIS_LEVEL.getDePaneArray()) {
+        for (One_DEResultPane pane : mngrOfSubTabBasePane_6.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -296,7 +320,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_PREPROCESSING_PIPELINE.getDePaneArray()) {
+        for (One_DEResultPane pane : mngrOfSubTabBasePane_7.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -304,7 +328,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_QUALITY_CHECKING.getDePaneArray()) {
+        for (One_DEResultPane pane : mngrOfSubTabBasePane_8.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -312,7 +336,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_QUALITY_CHECKING_DETAIL.getDePaneArray()) {
+        for (One_DEResultPane pane : mngrOfSubTabBasePane_9.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -320,7 +344,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_SITE_EFFECT_HANDLING.getDePaneArray()) {
+        for (One_DEResultPane pane : mngrOfSubTabBasePane_10.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -328,7 +352,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_SITE_EFFECT_HANDLING_DETAIL.getDePaneArray()) {
+        for (One_DEResultPane pane : mngrOfSubTabBasePane_11.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
