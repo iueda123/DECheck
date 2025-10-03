@@ -20,7 +20,7 @@ import java.util.*;
 
 public class LoadPaneOrderAction extends AbstActionMember {
 
-    String deresultpane_order_setting_file_path_str = "settings/RCAI.prop";
+    String deresultpane_order_setting_file_path_str = "";
 
     public LoadPaneOrderAction(String action_name, String short_name) {
         super(action_name, short_name);
@@ -40,6 +40,7 @@ public class LoadPaneOrderAction extends AbstActionMember {
         System.out.println("");
         System.out.println("perform() in " + this.getClass().toString() + " was called.");
 
+        /* REFERENCE COHORT AND IMAGING */
         AbstCHolderMember member = this.cholderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder");
         DEResultSubTabsHolder deResultSubTabsHolder = (DEResultSubTabsHolder) member;
         String sectionName = deResultSubTabsHolder.getSectionName();
@@ -48,30 +49,17 @@ public class LoadPaneOrderAction extends AbstActionMember {
         deresultpane_order_setting_file_path_str = "./settings/" + sectionName + ".prop";
         propManager = createPropertyManager(deresultpane_order_setting_file_path_str);
 
-        propManager.listUpProperty();
-
-        System.out.println(
-                "Properties file '"
-                        + deresultpane_order_setting_file_path_str
-                        + "' was loaded.");
+        //System.out.println("Properties file '" + deresultpane_order_setting_file_path_str + "' was loaded.");
+        //propManager.listUpProperty();
 
         Set<String> property_names = propManager.stringPropertyNames();
 
         String loaded_order = "";
-        AbstActionMember action = null;
-        KeyStroke loaded_accelerator_key_stroke = null;
-        //System.out.println("================================");
-        //System.out.println("property_name -> accelerator key");
-        //System.out.println("--------------------------------");
         for (String property_name : property_names) {
             loaded_order = (String) propManager.getValueOrCreateNew(property_name);
-            //System.out.println(property_name + " -> " + loaded_order);
         }
-        //System.out.println("================================");
 
         Component[] components = null;
-        One_DEResultPane one_deResultPane = null;
-        ArrayList<String> arrayList_PanelOrder = new ArrayList<>();
         propManager = createPropertyManager("./settings/" + sectionName + ".prop");
         for (ManagerOfSubTabBasePane managerOfSubTabBasePane : arrayList_of_managerOfSubTabBasePane) {
             String subSectionName = managerOfSubTabBasePane.getSubSectionName();
@@ -79,7 +67,7 @@ public class LoadPaneOrderAction extends AbstActionMember {
             JPanel subSectionPanel = managerOfSubTabBasePane.getBasePanel();
             components = subSectionPanel.getComponents();
 
-            // リストに変換してシャッフル（または任意の順序付け）
+            // リストに変換して任意の順序付け
             ArrayList<Component> currentComponentArray = new ArrayList();
             Collections.addAll(currentComponentArray, components);
 
@@ -97,10 +85,7 @@ public class LoadPaneOrderAction extends AbstActionMember {
             ArrayList<String> newlyOrderedJsonNameArray = splitToArrayList(loaded_order);
 
             //並び替え
-            //Collections.shuffle(currentComponentArray); // ランダム順
             ArrayList<Component> newlyOrderedComponents = new ArrayList<>();
-
-            //for(int i =0; i < newOrderArray.size(); i++) {
             for (int i = 0; i < newlyOrderedJsonNameArray.size(); i++) {
                 for (Component comp : currentComponentArray) {
                     One_DEResultPane one_deResultPane1 = (One_DEResultPane) comp;
@@ -134,7 +119,6 @@ public class LoadPaneOrderAction extends AbstActionMember {
 
         }
         propManager = null; //Propの外部更新時のため（毎回新しいPropを呼ぶため）dispose
-
     }
 
     @Override
