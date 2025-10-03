@@ -6,3 +6,6 @@ build/
 bin/
 *.class
 *.zip
+
+dist/*.jar
+

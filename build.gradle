@@ -4,8 +4,8 @@ plugins {
     id 'com.diffplug.spotless' version '5.17.1'
 }
 
-group 'org.example'
-version 'v1_2_0-20240808'
+group 'com.org-he'
+version 'v20251003'
 
 repositories {
     mavenCentral()
@@ -29,6 +29,19 @@ jar{
     manifest{
         attributes 'Main-Class': 'iu.LCAC.Starters.MainStarter'
     }
+}
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'iu.LCAC.Startup.Starter01.Starter'
+    }
+    archiveClassifier = 'all'
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    destinationDirectory = file("./dist")
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    with jar
 }
 
 test {

@@ -15,6 +15,7 @@ public class ManagerOfSubTabBasePane_RCAI {
     JPanel basePanel = new JPanel();
 
     public ManagerOfSubTabBasePane_RCAI(String tabName, String subSectionName) {
+        this.basePanel.setLayout(new BoxLayout(this.basePanel, BoxLayout.Y_AXIS));
         this.tabName = tabName;
         this.subSectionName = subSectionName;
     }

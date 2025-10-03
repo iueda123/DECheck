@@ -75,6 +75,18 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
 
         // ./json下のすべてのJSONファイルを取得
         File jsonDir = new File("./json");
+
+        // jsonディレクトリが存在しない、またはディレクトリではない場合
+        if (!jsonDir.exists() || !jsonDir.isDirectory()) {
+            JOptionPane.showMessageDialog(
+                null,
+                "json/フォルダが見つかりません。\njson/フォルダを作成し、JSONファイルを格納してください。",
+                "エラー",
+                JOptionPane.ERROR_MESSAGE
+            );
+            System.exit(1);
+        }
+
         File[] jsonFiles = jsonDir.listFiles((dir, name) -> name.endsWith(".json"));
 
         if (jsonFiles != null) {
