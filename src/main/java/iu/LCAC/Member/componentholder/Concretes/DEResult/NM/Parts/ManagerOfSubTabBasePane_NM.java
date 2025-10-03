@@ -15,6 +15,7 @@ public class ManagerOfSubTabBasePane_NM {
     JPanel basePanel = new JPanel();
 
     public ManagerOfSubTabBasePane_NM(String tabName, String subSectionName) {
+        this.basePanel.setLayout(new BoxLayout(this.basePanel, BoxLayout.Y_AXIS));
         this.tabName = tabName;
         this.subSectionName = subSectionName;
     }
