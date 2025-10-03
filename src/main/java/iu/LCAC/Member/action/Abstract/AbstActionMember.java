@@ -62,6 +62,8 @@ public abstract class AbstActionMember implements MemberIntrfc {
       System.out.println("    The instance of ProperManager is null. Create it.");
       propManager = new PropertyManager_v5(new File(property_file_path));
       propManager.writeoutProperties();
+    }else{
+      System.out.println("    The instance of ProperManager is not null. Use it.");
     }
 
     System.out.println("    Properties file '" + setting_file_path.toString() + "' was loaded.");
