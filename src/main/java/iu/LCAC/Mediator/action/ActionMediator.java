@@ -185,7 +185,7 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.RCAI.SavePaneOrderActionFactory",
+                        "iu.LCAC.Member.action.Concretes.DEResultActions.SaveAndLoadPaneOrder.SavePaneOrderActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember savePaneOrderAction =
                 actionMemberFactory.createAction("save_pane_order", "save pane order");
@@ -195,7 +195,7 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.RCAI.LoadPaneOrderActionFactory",
+                        "iu.LCAC.Member.action.Concretes.DEResultActions.SaveAndLoadPaneOrder.LoadPaneOrderActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember loadPaneOrderAction =
                 actionMemberFactory.createAction("load_pane_order", "load pane order");

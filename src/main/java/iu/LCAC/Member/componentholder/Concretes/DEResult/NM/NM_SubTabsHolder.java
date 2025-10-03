@@ -3,7 +3,7 @@ package iu.LCAC.Member.componentholder.Concretes.DEResult.NM;
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.Parts.ManagerOfSubTabBasePane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.Parts.ManagerOfSubTabBasePane_NM;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.Parts.NM_OneDEResultPane;
 
 import javax.swing.*;
@@ -44,34 +44,34 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
     JTabbedPane baseTabPane = new JTabbedPane();
 
     // Reference Cohort and Imaging
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_1 = new ManagerOfSubTabBasePane(subSection_1_TabName, subSection_1_Name);
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_2 = new ManagerOfSubTabBasePane(subSection_2_TabName, subSection_2_Name);
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_3 = new ManagerOfSubTabBasePane(subSection_3_TabName,  subSection_3_Name);
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_4 = new ManagerOfSubTabBasePane(subSection_4_TabName, subSection_4_Name);
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_5 = new ManagerOfSubTabBasePane(subSection_5_TabName, subSection_5_Name);
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_6 = new ManagerOfSubTabBasePane(subSection_6_TabName, subSection_6_Name);
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_7 = new ManagerOfSubTabBasePane(subSection_7_TabName, subSection_7_Name);
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_8 = new ManagerOfSubTabBasePane(subSection_8_TabName, subSection_8_Name);
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_9 = new ManagerOfSubTabBasePane(subSection_9_TabName, subSection_9_Name);
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_10 = new ManagerOfSubTabBasePane(subSection_10_TabName, subSection_10_Name);
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_11 = new ManagerOfSubTabBasePane(subSection_11_TabName, subSection_11_Name);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_1 = new ManagerOfSubTabBasePane_NM(subSection_1_TabName, subSection_1_Name);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_2 = new ManagerOfSubTabBasePane_NM(subSection_2_TabName, subSection_2_Name);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_3 = new ManagerOfSubTabBasePane_NM(subSection_3_TabName,  subSection_3_Name);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_4 = new ManagerOfSubTabBasePane_NM(subSection_4_TabName, subSection_4_Name);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_5 = new ManagerOfSubTabBasePane_NM(subSection_5_TabName, subSection_5_Name);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_6 = new ManagerOfSubTabBasePane_NM(subSection_6_TabName, subSection_6_Name);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_7 = new ManagerOfSubTabBasePane_NM(subSection_7_TabName, subSection_7_Name);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_8 = new ManagerOfSubTabBasePane_NM(subSection_8_TabName, subSection_8_Name);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_9 = new ManagerOfSubTabBasePane_NM(subSection_9_TabName, subSection_9_Name);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_10 = new ManagerOfSubTabBasePane_NM(subSection_10_TabName, subSection_10_Name);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_11 = new ManagerOfSubTabBasePane_NM(subSection_11_TabName, subSection_11_Name);
 
-    ArrayList<ManagerOfSubTabBasePane> arrayList_of_ManagerOfSubTabBasePane = new ArrayList<>();
+    ArrayList<ManagerOfSubTabBasePane_NM> arrayList_of_ManagerOfSubTabBasePaneNM = new ArrayList<>();
 
     public NM_SubTabsHolder(String cholder_name, String short_name) {
         super(cholder_name, short_name);
 
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_1);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_2);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_3);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_4);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_5);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_6);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_7);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_8);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_9);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_10);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_11);
+        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_1);
+        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_2);
+        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_3);
+        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_4);
+        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_5);
+        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_6);
+        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_7);
+        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_8);
+        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_9);
+        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_10);
+        arrayList_of_ManagerOfSubTabBasePaneNM.add(mngrOfSubTabBasePane_11);
 
         // ./json下のすべてのJSONファイルを取得
         File jsonDir = new File("./json");
@@ -94,8 +94,8 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (ManagerOfSubTabBasePane managerOfSubTabBasePane : arrayList_of_ManagerOfSubTabBasePane) {
-            baseTabPane.add(managerOfSubTabBasePane.getTabName(), managerOfSubTabBasePane.constructBasePaneOfSubTab());
+        for (ManagerOfSubTabBasePane_NM managerOfSubTabBasePaneNM : arrayList_of_ManagerOfSubTabBasePaneNM) {
+            baseTabPane.add(managerOfSubTabBasePaneNM.getTabName(), managerOfSubTabBasePaneNM.constructBasePaneOfSubTab());
         }
 
         panel.add(baseTabPane, BorderLayout.CENTER);
@@ -364,8 +364,8 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
 
     }
 
-    public ArrayList<ManagerOfSubTabBasePane> getArrayList_of_ManagerOfSubTabBasePane() {
-        return arrayList_of_ManagerOfSubTabBasePane;
+    public ArrayList<ManagerOfSubTabBasePane_NM> getArrayList_of_ManagerOfSubTabBasePane() {
+        return arrayList_of_ManagerOfSubTabBasePaneNM;
     }
 
     public String getSectionName() {

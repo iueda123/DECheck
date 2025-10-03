@@ -1,33 +1,33 @@
-package iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts;
+package iu.LCAC.Member.componentholder.Concretes.DEResult.NM.Parts;
 
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class ManagerOfSubTabBasePane {
+public class ManagerOfSubTabBasePane_NM {
 
     final String sectionName = "reference_cohort_and_imaging";
     final String tabName;
 
     final String subSectionName;
 
-    ArrayList<RCAI_OneDEResultPane> dePaneArray = new ArrayList<>();
+    ArrayList<NM_OneDEResultPane> dePaneArray = new ArrayList<>();
 
     JPanel basePanel = new JPanel();
 
-    public ManagerOfSubTabBasePane(String tabName, String subSectionName) {
+    public ManagerOfSubTabBasePane_NM(String tabName, String subSectionName) {
         this.tabName = tabName;
         this.subSectionName = subSectionName;
     }
 
 
-    public void addToTheDePaneArray(RCAI_OneDEResultPane oneDEResultPane) {
+    public void addToTheDePaneArray(NM_OneDEResultPane oneDEResultPane) {
         this.dePaneArray.add(oneDEResultPane);
     }
 
     public JScrollPane constructBasePaneOfSubTab() {
         for (int i = 0; i < dePaneArray.size(); i++) {
             //basePanel.add(new JLabel(" ")); // Separator
-            RCAI_OneDEResultPane pane = dePaneArray.get(i);
+            NM_OneDEResultPane pane = dePaneArray.get(i);
             pane.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, pane.getPreferredSize().height));
             pane.setAlignmentX(java.awt.Component.LEFT_ALIGNMENT);
             basePanel.add(pane);
@@ -45,7 +45,7 @@ public class ManagerOfSubTabBasePane {
         return (scrollPane);
     }
 
-    public ArrayList<RCAI_OneDEResultPane> getDePaneArray() {
+    public ArrayList<NM_OneDEResultPane> getDePaneArray() {
         return dePaneArray;
     }
 
