@@ -4,7 +4,7 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.DEResultPanesHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.DEResultSubTabsHolder;
 import iu.LCAC.Tools.PropertyManager_v5;
 
 import javax.swing.*;
@@ -36,9 +36,7 @@ public class SavePaneOrderAction extends AbstActionMember {
     System.out.println("perform() in " + this.getClass().toString() + " was called.");
 
     AbstCHolderMember member = this.cholderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder");
-    DEResultPanesHolder deResultPanesHolder = (DEResultPanesHolder) member;
-
-    deResultPanesHolder.getPaneArray_of_DATASET_NAME();
+    DEResultSubTabsHolder deResultSubTabsHolder = (DEResultSubTabsHolder) member;
 
     Set<String> action_commands = this.actionMediator.memberMap.keySet();
 

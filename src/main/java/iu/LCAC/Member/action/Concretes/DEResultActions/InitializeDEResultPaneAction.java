@@ -3,8 +3,8 @@ package iu.LCAC.Member.action.Concretes.DEResultActions;
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.DEResultPanes;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.DEResultPanesHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.One_DEResultPane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.DEResultSubTabsHolder;
 import iu.LCAC.Tools.JsonManager;
 
 import java.awt.event.ActionEvent;
@@ -63,20 +63,20 @@ public class InitializeDEResultPaneAction extends AbstActionMember {
             //System.out.println(pageLine);
 
             // Preparation of Component
-            DEResultPanesHolder DEResultPanesHolder =
-                    (DEResultPanesHolder) this.cholderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder");
+            DEResultSubTabsHolder DEResultSubTabsHolder =
+                    (DEResultSubTabsHolder) this.cholderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder");
 
             // Initialization Core
-            if (DEResultPanesHolder != null) {
+            if (DEResultSubTabsHolder != null) {
 
-                DEResultPanes trtgResultPane = DEResultPanesHolder.getResultPane(jsonFileName, sectionName, subSectionName);
-                trtgResultPane.setValTo_JsonName(jsonFileName);
-                trtgResultPane.setValTo_Answer(answer);
-                trtgResultPane.setValTo_ConfidenceRating(confidenceRating);
-                trtgResultPane.setValTo_NegativeAnswerCategory(negativeAnswerCategory);
-                trtgResultPane.setValTo_Reason(reason);
-                trtgResultPane.setValTo_SupportingText(supportingText);
-                trtgResultPane.setValTo_PageLine(pageLine);
+                One_DEResultPane trtgDEResultPane = DEResultSubTabsHolder.getResultPane(jsonFileName, sectionName, subSectionName);
+                trtgDEResultPane.setValTo_JsonName(jsonFileName);
+                trtgDEResultPane.setValTo_Answer(answer);
+                trtgDEResultPane.setValTo_ConfidenceRating(confidenceRating);
+                trtgDEResultPane.setValTo_NegativeAnswerCategory(negativeAnswerCategory);
+                trtgDEResultPane.setValTo_Reason(reason);
+                trtgDEResultPane.setValTo_SupportingText(supportingText);
+                trtgDEResultPane.setValTo_PageLine(pageLine);
 
             } else {
                 System.err.println("aResultPaneHolder is null.");
