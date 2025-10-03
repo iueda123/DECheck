@@ -30,7 +30,7 @@ public class VerticalTextTabbedPane extends JTabbedPane {
                 at.rotate(-Math.PI / 2);
                 g2d.setTransform(at);
                 g2d.setFont(font);
-                g2d.setColor(isSelected ? Color.BLACK : Color.DARK_GRAY);
+                g2d.setColor(isSelected ? new Color(0, 51, 153) : Color.WHITE);
                 g2d.drawString(title, -metrics.stringWidth(title) / 2, metrics.getAscent() / 2);
 
                 // 元に戻す
@@ -44,7 +44,7 @@ public class VerticalTextTabbedPane extends JTabbedPane {
                 at.rotate(Math.PI / 2);
                 g2d.setTransform(at);
                 g2d.setFont(font);
-                g2d.setColor(isSelected ? Color.BLACK : Color.DARK_GRAY);
+                g2d.setColor(isSelected ? new Color(0, 51, 153) : Color.WHITE);
                 g2d.drawString(title, -metrics.stringWidth(title) / 2, metrics.getAscent() / 2);
 
                 // 元に戻す
