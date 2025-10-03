@@ -1,16 +1,16 @@
-package iu.LCAC.Member.action.Concretes.DEResultActions;
+package iu.LCAC.Member.action.Concretes.DEResultActions.NM;
 
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.action.Abstract.AbstActionMemberFactory;
 
-public class LoadPaneOrderActionFactory extends AbstActionMemberFactory {
+public class Initialize_NM_TabPanes_ActionFactory extends AbstActionMemberFactory {
 
   private AbstActionMember action;
 
   @Override
   protected AbstActionMember createInstance(String action_name, String short_name) {
     if (action == null) {
-      action = new LoadPaneOrderAction(action_name, short_name);
+      action = new Initialize_NM_TabPanes_Action(action_name, short_name);
     }
     return action;
   }

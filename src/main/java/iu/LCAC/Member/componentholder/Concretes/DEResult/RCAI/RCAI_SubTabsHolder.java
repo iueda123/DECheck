@@ -3,7 +3,7 @@ package iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI;
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.One_DEResultPane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.RCAI_OneDEResultPane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.ManagerOfSubTabBasePane;
 
 import javax.swing.*;
@@ -80,17 +80,17 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
         if (jsonFiles != null) {
             for (File jsonFile : jsonFiles) {
                 String jsonFileName = jsonFile.getName();
-                mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_1_Name));
-                mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_2_Name));
-                mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_3_Name));
-                mngrOfSubTabBasePane_4.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_4_Name));
-                mngrOfSubTabBasePane_5.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_5_Name));
-                mngrOfSubTabBasePane_6.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_6_Name));
-                mngrOfSubTabBasePane_7.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_7_Name));
-                mngrOfSubTabBasePane_8.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_8_Name));
-                mngrOfSubTabBasePane_9.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_9_Name));
-                mngrOfSubTabBasePane_10.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_10_Name));
-                mngrOfSubTabBasePane_11.addToTheDePaneArray(new One_DEResultPane(jsonFileName, sectionName, subSection_11_Name));
+                mngrOfSubTabBasePane_1.addToTheDePaneArray(new RCAI_OneDEResultPane(jsonFileName, sectionName, subSection_1_Name));
+                mngrOfSubTabBasePane_2.addToTheDePaneArray(new RCAI_OneDEResultPane(jsonFileName, sectionName, subSection_2_Name));
+                mngrOfSubTabBasePane_3.addToTheDePaneArray(new RCAI_OneDEResultPane(jsonFileName, sectionName, subSection_3_Name));
+                mngrOfSubTabBasePane_4.addToTheDePaneArray(new RCAI_OneDEResultPane(jsonFileName, sectionName, subSection_4_Name));
+                mngrOfSubTabBasePane_5.addToTheDePaneArray(new RCAI_OneDEResultPane(jsonFileName, sectionName, subSection_5_Name));
+                mngrOfSubTabBasePane_6.addToTheDePaneArray(new RCAI_OneDEResultPane(jsonFileName, sectionName, subSection_6_Name));
+                mngrOfSubTabBasePane_7.addToTheDePaneArray(new RCAI_OneDEResultPane(jsonFileName, sectionName, subSection_7_Name));
+                mngrOfSubTabBasePane_8.addToTheDePaneArray(new RCAI_OneDEResultPane(jsonFileName, sectionName, subSection_8_Name));
+                mngrOfSubTabBasePane_9.addToTheDePaneArray(new RCAI_OneDEResultPane(jsonFileName, sectionName, subSection_9_Name));
+                mngrOfSubTabBasePane_10.addToTheDePaneArray(new RCAI_OneDEResultPane(jsonFileName, sectionName, subSection_10_Name));
+                mngrOfSubTabBasePane_11.addToTheDePaneArray(new RCAI_OneDEResultPane(jsonFileName, sectionName, subSection_11_Name));
             }
         }
 
@@ -107,113 +107,113 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
 
             /* 値を流し込む */
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_1.getDePaneArray()) {
-                String jsonName = One_DEResultPane.getJsonName();
-                String sectionName = One_DEResultPane.getSectionName();
-                String subSectionName = One_DEResultPane.getSubSectionName();
+            for (RCAI_OneDEResultPane RCAI_OneDEResultPane : mngrOfSubTabBasePane_1.getDePaneArray()) {
+                String jsonName = RCAI_OneDEResultPane.getJsonName();
+                String sectionName = RCAI_OneDEResultPane.getSectionName();
+                String subSectionName = RCAI_OneDEResultPane.getSubSectionName();
 
                 // jsonNameを引数として渡すためにActionEventを作成
                 ActionEvent customEvent = new ActionEvent(
                         this,
                         ActionEvent.ACTION_PERFORMED,
-                        "initialize_de_result_pane " + jsonName + " " + sectionName + " " + subSectionName
+                        "initialize_rcai_tabpanes " + jsonName + " " + sectionName + " " + subSectionName
                 );
-                actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
+                actionMediator.getInstanceOfAMember("initialize_rcai_tabpanes").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_2.getDePaneArray()) {
-                String jsonName = One_DEResultPane.getJsonName();
-                String sectionName = One_DEResultPane.getSectionName();
-                String subSectionName = One_DEResultPane.getSubSectionName();
+            for (RCAI_OneDEResultPane RCAI_OneDEResultPane : mngrOfSubTabBasePane_2.getDePaneArray()) {
+                String jsonName = RCAI_OneDEResultPane.getJsonName();
+                String sectionName = RCAI_OneDEResultPane.getSectionName();
+                String subSectionName = RCAI_OneDEResultPane.getSubSectionName();
 
                 // jsonNameを引数として渡すためにActionEventを作成
                 ActionEvent customEvent = new ActionEvent(
                         this,
                         ActionEvent.ACTION_PERFORMED,
-                        "initialize_de_result_pane " + jsonName + " " + sectionName + " " + subSectionName
+                        "initialize_rcai_tabpanes " + jsonName + " " + sectionName + " " + subSectionName
                 );
-                actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
+                actionMediator.getInstanceOfAMember("initialize_rcai_tabpanes").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_3.getDePaneArray()) {
-                String jsonName = One_DEResultPane.getJsonName();
-                String sectionName = One_DEResultPane.getSectionName();
-                String subSectionName = One_DEResultPane.getSubSectionName();
+            for (RCAI_OneDEResultPane RCAI_OneDEResultPane : mngrOfSubTabBasePane_3.getDePaneArray()) {
+                String jsonName = RCAI_OneDEResultPane.getJsonName();
+                String sectionName = RCAI_OneDEResultPane.getSectionName();
+                String subSectionName = RCAI_OneDEResultPane.getSubSectionName();
                 ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_de_result_pane " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
+                        "initialize_rcai_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
+                actionMediator.getInstanceOfAMember("initialize_rcai_tabpanes").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_4.getDePaneArray()) {
-                String jsonName = One_DEResultPane.getJsonName();
-                String sectionName = One_DEResultPane.getSectionName();
-                String subSectionName = One_DEResultPane.getSubSectionName();
+            for (RCAI_OneDEResultPane RCAI_OneDEResultPane : mngrOfSubTabBasePane_4.getDePaneArray()) {
+                String jsonName = RCAI_OneDEResultPane.getJsonName();
+                String sectionName = RCAI_OneDEResultPane.getSectionName();
+                String subSectionName = RCAI_OneDEResultPane.getSubSectionName();
                 ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_de_result_pane " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
+                        "initialize_rcai_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
+                actionMediator.getInstanceOfAMember("initialize_rcai_tabpanes").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_5.getDePaneArray()) {
-                String jsonName = One_DEResultPane.getJsonName();
-                String sectionName = One_DEResultPane.getSectionName();
-                String subSectionName = One_DEResultPane.getSubSectionName();
+            for (RCAI_OneDEResultPane RCAI_OneDEResultPane : mngrOfSubTabBasePane_5.getDePaneArray()) {
+                String jsonName = RCAI_OneDEResultPane.getJsonName();
+                String sectionName = RCAI_OneDEResultPane.getSectionName();
+                String subSectionName = RCAI_OneDEResultPane.getSubSectionName();
                 ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_de_result_pane " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
+                        "initialize_rcai_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
+                actionMediator.getInstanceOfAMember("initialize_rcai_tabpanes").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_6.getDePaneArray()) {
-                String jsonName = One_DEResultPane.getJsonName();
-                String sectionName = One_DEResultPane.getSectionName();
-                String subSectionName = One_DEResultPane.getSubSectionName();
+            for (RCAI_OneDEResultPane RCAI_OneDEResultPane : mngrOfSubTabBasePane_6.getDePaneArray()) {
+                String jsonName = RCAI_OneDEResultPane.getJsonName();
+                String sectionName = RCAI_OneDEResultPane.getSectionName();
+                String subSectionName = RCAI_OneDEResultPane.getSubSectionName();
                 ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_de_result_pane " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
+                        "initialize_rcai_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
+                actionMediator.getInstanceOfAMember("initialize_rcai_tabpanes").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_7.getDePaneArray()) {
-                String jsonName = One_DEResultPane.getJsonName();
-                String sectionName = One_DEResultPane.getSectionName();
-                String subSectionName = One_DEResultPane.getSubSectionName();
+            for (RCAI_OneDEResultPane RCAI_OneDEResultPane : mngrOfSubTabBasePane_7.getDePaneArray()) {
+                String jsonName = RCAI_OneDEResultPane.getJsonName();
+                String sectionName = RCAI_OneDEResultPane.getSectionName();
+                String subSectionName = RCAI_OneDEResultPane.getSubSectionName();
                 ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_de_result_pane " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
+                        "initialize_rcai_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
+                actionMediator.getInstanceOfAMember("initialize_rcai_tabpanes").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_8.getDePaneArray()) {
-                String jsonName = One_DEResultPane.getJsonName();
-                String sectionName = One_DEResultPane.getSectionName();
-                String subSectionName = One_DEResultPane.getSubSectionName();
+            for (RCAI_OneDEResultPane RCAI_OneDEResultPane : mngrOfSubTabBasePane_8.getDePaneArray()) {
+                String jsonName = RCAI_OneDEResultPane.getJsonName();
+                String sectionName = RCAI_OneDEResultPane.getSectionName();
+                String subSectionName = RCAI_OneDEResultPane.getSubSectionName();
                 ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_de_result_pane " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
+                        "initialize_rcai_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
+                actionMediator.getInstanceOfAMember("initialize_rcai_tabpanes").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_9.getDePaneArray()) {
-                String jsonName = One_DEResultPane.getJsonName();
-                String sectionName = One_DEResultPane.getSectionName();
-                String subSectionName = One_DEResultPane.getSubSectionName();
+            for (RCAI_OneDEResultPane RCAI_OneDEResultPane : mngrOfSubTabBasePane_9.getDePaneArray()) {
+                String jsonName = RCAI_OneDEResultPane.getJsonName();
+                String sectionName = RCAI_OneDEResultPane.getSectionName();
+                String subSectionName = RCAI_OneDEResultPane.getSubSectionName();
                 ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_de_result_pane " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
+                        "initialize_rcai_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
+                actionMediator.getInstanceOfAMember("initialize_rcai_tabpanes").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_10.getDePaneArray()) {
-                String jsonName = One_DEResultPane.getJsonName();
-                String sectionName = One_DEResultPane.getSectionName();
-                String subSectionName = One_DEResultPane.getSubSectionName();
+            for (RCAI_OneDEResultPane RCAI_OneDEResultPane : mngrOfSubTabBasePane_10.getDePaneArray()) {
+                String jsonName = RCAI_OneDEResultPane.getJsonName();
+                String sectionName = RCAI_OneDEResultPane.getSectionName();
+                String subSectionName = RCAI_OneDEResultPane.getSubSectionName();
                 ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_de_result_pane " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
+                        "initialize_rcai_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
+                actionMediator.getInstanceOfAMember("initialize_rcai_tabpanes").perform(customEvent);
             }
 
-            for (One_DEResultPane One_DEResultPane : mngrOfSubTabBasePane_11.getDePaneArray()) {
-                String jsonName = One_DEResultPane.getJsonName();
-                String sectionName = One_DEResultPane.getSectionName();
-                String subSectionName = One_DEResultPane.getSubSectionName();
+            for (RCAI_OneDEResultPane RCAI_OneDEResultPane : mngrOfSubTabBasePane_11.getDePaneArray()) {
+                String jsonName = RCAI_OneDEResultPane.getJsonName();
+                String sectionName = RCAI_OneDEResultPane.getSectionName();
+                String subSectionName = RCAI_OneDEResultPane.getSubSectionName();
                 ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_de_result_pane " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_de_result_pane").perform(customEvent);
+                        "initialize_rcai_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
+                actionMediator.getInstanceOfAMember("initialize_rcai_tabpanes").perform(customEvent);
             }
 
 
@@ -256,7 +256,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
      * すべての paneArray の要素の中から、
      * jsonName, sectionName, subSectionName が一致するものを返す。
      */
-    public One_DEResultPane getResultPane(String jsonName, String sectionName, String subSectionName) {
+    public RCAI_OneDEResultPane getResultPane(String jsonName, String sectionName, String subSectionName) {
         //System.out.println("Start searching the DEResultPane with following: ");
         //System.out.println("  JSON Name: " + jsonName);
         //System.out.println("  Section Name: " + sectionName);
@@ -264,7 +264,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
 
         //System.out.println(mngrOfSubTabBasePane_1.getDePaneArray().size());
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_1.getDePaneArray()) {
+        for (RCAI_OneDEResultPane pane : mngrOfSubTabBasePane_1.getDePaneArray()) {
             //System.out.println("Candidate Info: ");
             //System.out.println("  JSON Name: " + pane.getJsonName());
             //System.out.println("  Section Name: " + pane.getSectionName());
@@ -276,7 +276,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_2.getDePaneArray()) {
+        for (RCAI_OneDEResultPane pane : mngrOfSubTabBasePane_2.getDePaneArray()) {
             //System.out.println("Candidate Info: ");
             //System.out.println("  JSON Name: " + pane.getJsonName());
             //System.out.println("  Section Name: " + pane.getSectionName());
@@ -288,7 +288,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_3.getDePaneArray()) {
+        for (RCAI_OneDEResultPane pane : mngrOfSubTabBasePane_3.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -296,7 +296,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_4.getDePaneArray()) {
+        for (RCAI_OneDEResultPane pane : mngrOfSubTabBasePane_4.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -304,7 +304,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_5.getDePaneArray()) {
+        for (RCAI_OneDEResultPane pane : mngrOfSubTabBasePane_5.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -312,7 +312,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_6.getDePaneArray()) {
+        for (RCAI_OneDEResultPane pane : mngrOfSubTabBasePane_6.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -320,7 +320,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_7.getDePaneArray()) {
+        for (RCAI_OneDEResultPane pane : mngrOfSubTabBasePane_7.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -328,7 +328,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_8.getDePaneArray()) {
+        for (RCAI_OneDEResultPane pane : mngrOfSubTabBasePane_8.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -336,7 +336,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_9.getDePaneArray()) {
+        for (RCAI_OneDEResultPane pane : mngrOfSubTabBasePane_9.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -344,7 +344,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_10.getDePaneArray()) {
+        for (RCAI_OneDEResultPane pane : mngrOfSubTabBasePane_10.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -352,7 +352,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
             }
         }
 
-        for (One_DEResultPane pane : mngrOfSubTabBasePane_11.getDePaneArray()) {
+        for (RCAI_OneDEResultPane pane : mngrOfSubTabBasePane_11.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {

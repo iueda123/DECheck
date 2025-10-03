@@ -13,7 +13,7 @@
   },
   "reference_cohort_and_imaging": {
     "dataset_name": {
-      "Answer": "ABIDE I; ABIDE II 星",
+      "Answer": "ABIDE I; ABIDE II",
       "Confidence Rating": "High",
       "Negative Answer Category": "Not Negative",
       "Reason": "The study explicitly states it utilized data from ABIDE I and ABIDE II datasets throughout the manuscript",

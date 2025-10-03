@@ -1,4 +1,4 @@
-package iu.LCAC.Member.action.Concretes.DEResultActions;
+package iu.LCAC.Member.action.Concretes.DEResultActions.RCAI;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
@@ -6,7 +6,7 @@ import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.ManagerOfSubTabBasePane;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.One_DEResultPane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.RCAI_OneDEResultPane;
 import iu.LCAC.Utils.PropertyManager_v5;
 
 import javax.swing.*;
@@ -39,14 +39,15 @@ public class SavePaneOrderAction extends AbstActionMember {
 
         // TODO: 全セクションに拡張
 
-        AbstCHolderMember member = this.cholderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder");
+
+        AbstCHolderMember member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI");
         RCAI_SubTabsHolder RCAISubTabsHolder = (RCAI_SubTabsHolder) member;
         String sectionName = RCAISubTabsHolder.getSectionName();
         ArrayList<ManagerOfSubTabBasePane> arrayList_of_managerOfSubTabBasePane = RCAISubTabsHolder.getArrayList_of_ManagerOfSubTabBasePane();
 
         // 全タブ（SubSectionに相当）配置されているコンポーネントの順番を把握し、propertyへ書き込む
         Component[] components = null;
-        One_DEResultPane one_deResultPane = null;
+        RCAI_OneDEResultPane RCAIOne_deResultPane = null;
         ArrayList<String> arrayList_PanelOrder = new ArrayList<>();
         PropertyManager_v5 prop_manager = createPropertyManager("./settings/" + sectionName + ".prop");
         for (ManagerOfSubTabBasePane managerOfSubTabBasePane : arrayList_of_managerOfSubTabBasePane) {
@@ -56,9 +57,9 @@ public class SavePaneOrderAction extends AbstActionMember {
             components = subSectionPanel.getComponents();
             for (int i = 0; i < components.length; i++) {
                 Object component = components[i];
-                if (component instanceof One_DEResultPane) {
-                    one_deResultPane = ((One_DEResultPane) components[i]);
-                    String jsonName = one_deResultPane.getJsonName();
+                if (component instanceof RCAI_OneDEResultPane) {
+                    RCAIOne_deResultPane = ((RCAI_OneDEResultPane) components[i]);
+                    String jsonName = RCAIOne_deResultPane.getJsonName();
                     System.out.println("  DEResultPane No. " + i + ": " + jsonName);
                     arrayList_PanelOrder.add(jsonName);
                 }

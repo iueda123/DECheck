@@ -10,7 +10,7 @@ public class ManagerOfSubTabBasePane {
 
     final String subSectionName;
 
-    ArrayList<One_DEResultPane> dePaneArray = new ArrayList<>();
+    ArrayList<NM_OneDEResultPane> dePaneArray = new ArrayList<>();
 
     JPanel basePanel = new JPanel();
 
@@ -20,14 +20,14 @@ public class ManagerOfSubTabBasePane {
     }
 
 
-    public void addToTheDePaneArray(One_DEResultPane oneDEResultPane) {
+    public void addToTheDePaneArray(NM_OneDEResultPane oneDEResultPane) {
         this.dePaneArray.add(oneDEResultPane);
     }
 
     public JScrollPane constructBasePaneOfSubTab() {
         for (int i = 0; i < dePaneArray.size(); i++) {
             //basePanel.add(new JLabel(" ")); // Separator
-            One_DEResultPane pane = dePaneArray.get(i);
+            NM_OneDEResultPane pane = dePaneArray.get(i);
             pane.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, pane.getPreferredSize().height));
             pane.setAlignmentX(java.awt.Component.LEFT_ALIGNMENT);
             basePanel.add(pane);
@@ -45,7 +45,7 @@ public class ManagerOfSubTabBasePane {
         return (scrollPane);
     }
 
-    public ArrayList<One_DEResultPane> getDePaneArray() {
+    public ArrayList<NM_OneDEResultPane> getDePaneArray() {
         return dePaneArray;
     }
 

@@ -1,9 +1,9 @@
-package iu.LCAC.Member.action.Concretes.DEResultActions;
+package iu.LCAC.Member.action.Concretes.DEResultActions.RCAI;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.One_DEResultPane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.RCAI_OneDEResultPane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
 import iu.LCAC.Utils.JsonManager;
 
@@ -11,12 +11,12 @@ import java.awt.event.ActionEvent;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class InitializeDEResultPaneAction extends AbstActionMember {
+public class Initialize_RCAI_TabPanes_Action extends AbstActionMember {
 
     static final String SettingPropertyFilePath =
             "./json/Example9997.json";
 
-    public InitializeDEResultPaneAction(String action_name, String short_name) {
+    public Initialize_RCAI_TabPanes_Action(String action_name, String short_name) {
         super(action_name, short_name);
     }
 
@@ -63,13 +63,13 @@ public class InitializeDEResultPaneAction extends AbstActionMember {
             //System.out.println(pageLine);
 
             // Preparation of Component
-            RCAI_SubTabsHolder RCAI_SubTabsHolder =
-                    (RCAI_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder");
+            RCAI_SubTabsHolder subTabsHolder =
+                    (RCAI_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI");
 
             // Initialization Core
-            if (RCAI_SubTabsHolder != null) {
+            if (subTabsHolder != null) {
 
-                One_DEResultPane trtgDEResultPane = RCAI_SubTabsHolder.getResultPane(jsonFileName, sectionName, subSectionName);
+                RCAI_OneDEResultPane trtgDEResultPane = subTabsHolder.getResultPane(jsonFileName, sectionName, subSectionName);
                 trtgDEResultPane.setValTo_JsonName(jsonFileName);
                 trtgDEResultPane.setValTo_Answer(answer);
                 trtgDEResultPane.setValTo_ConfidenceRating(confidenceRating);
@@ -81,7 +81,7 @@ public class InitializeDEResultPaneAction extends AbstActionMember {
                 trtgDEResultPane.resetBackgroundColorOfTAreasTFields();
 
             } else {
-                System.err.println("aResultPaneHolder is null.");
+                System.err.println("sub_tabs_holder_RCAI is null.");
             }
         }
 

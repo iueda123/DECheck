@@ -1,4 +1,4 @@
-package iu.LCAC.Member.action.Concretes.DEResultActions;
+package iu.LCAC.Member.action.Concretes.DEResultActions.RCAI;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
@@ -6,7 +6,7 @@ import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.ManagerOfSubTabBasePane;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.One_DEResultPane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.RCAI_OneDEResultPane;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,8 +37,10 @@ public class LoadPaneOrderAction extends AbstActionMember {
         System.out.println("");
         System.out.println("perform() in " + this.getClass().toString() + " was called.");
 
+        // TODO: 全セクションに拡張
+
         /* REFERENCE COHORT AND IMAGING */
-        AbstCHolderMember member = this.cholderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder");
+        AbstCHolderMember member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI");
         RCAI_SubTabsHolder RCAISubTabsHolder = (RCAI_SubTabsHolder) member;
         String sectionName = RCAISubTabsHolder.getSectionName();
         ArrayList<ManagerOfSubTabBasePane> arrayList_of_managerOfSubTabBasePane = RCAISubTabsHolder.getArrayList_of_ManagerOfSubTabBasePane();
@@ -80,8 +82,8 @@ public class LoadPaneOrderAction extends AbstActionMember {
             ArrayList<Component> newlyOrderedComponents = new ArrayList<>();
             for (int i = 0; i < newlyOrderedJsonNameArray.size(); i++) {
                 for (Component comp : currentComponentArray) {
-                    One_DEResultPane one_deResultPane1 = (One_DEResultPane) comp;
-                    String jsonName_of_checking_comp = one_deResultPane1.getJsonName();
+                    RCAI_OneDEResultPane RCAIOne_deResultPane1 = (RCAI_OneDEResultPane) comp;
+                    String jsonName_of_checking_comp = RCAIOne_deResultPane1.getJsonName();
                     //System.out.println("  Now checking '" + jsonName_of_checking_comp + "'");
                     //if (jsonName_of_checking_comp.equals(newlyOrderedJsonNameArray.get(i))) {
                     if (newlyOrderedJsonNameArray.get(i).equals(jsonName_of_checking_comp)) {
@@ -112,6 +114,9 @@ public class LoadPaneOrderAction extends AbstActionMember {
 
         }
         propManager = null; //Propの外部更新時のため（毎回新しいPropを呼ぶため）dispose
+
+
+
     }
 
     @Override

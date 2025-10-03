@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class One_DEResultPane extends JPanel {
+public class NM_OneDEResultPane extends JPanel {
 
     final String jsonName;
     final String sectionName;
@@ -29,7 +29,7 @@ public class One_DEResultPane extends JPanel {
     ColorChangeableTextArea tArea_SupportingText = new ColorChangeableTextArea("Supporting Text");
     ColorChangeableTextArea tArea_PageLine = new ColorChangeableTextArea("Page Line");
 
-    public One_DEResultPane(String jsonName, String sectionName, String subSectionName) {
+    public NM_OneDEResultPane(String jsonName, String sectionName, String subSectionName) {
         this.jsonName = jsonName;
         this.sectionName = sectionName;
         this.subSectionName = subSectionName;
@@ -264,7 +264,7 @@ public class One_DEResultPane extends JPanel {
 
 
         private void movePaneUp() {
-            Container parent = One_DEResultPane.this.getParent();
+            Container parent = NM_OneDEResultPane.this.getParent();
             if (parent == null) {
                 return;
             }
@@ -272,7 +272,7 @@ public class One_DEResultPane extends JPanel {
             Component[] components = parent.getComponents();
             int paneIndex = -1;
             for (int i = 0; i < components.length; i++) {
-                if (components[i] == One_DEResultPane.this) {
+                if (components[i] == NM_OneDEResultPane.this) {
                     paneIndex = i;
                     break;
                 }
@@ -284,7 +284,7 @@ public class One_DEResultPane extends JPanel {
 
             Component previousPane = null;
             for (int i = paneIndex - 1; i >= 0; i--) {
-                if (components[i] instanceof One_DEResultPane) {
+                if (components[i] instanceof NM_OneDEResultPane) {
                     previousPane = components[i];
                     break;
                 }
@@ -302,21 +302,21 @@ public class One_DEResultPane extends JPanel {
             if (spacerBefore != null) {
                 parent.remove(spacerBefore);
             }
-            parent.remove(One_DEResultPane.this);
+            parent.remove(NM_OneDEResultPane.this);
 
             int insertionIndex = parent.getComponentZOrder(previousPane);
             if (spacerBefore != null) {
                 parent.add(spacerBefore, insertionIndex);
                 insertionIndex++;
             }
-            parent.add(One_DEResultPane.this, insertionIndex);
+            parent.add(NM_OneDEResultPane.this, insertionIndex);
 
             parent.revalidate();
             parent.repaint();
         }
 
         private void movePaneDown() {
-            Container parent = One_DEResultPane.this.getParent();
+            Container parent = NM_OneDEResultPane.this.getParent();
             if (parent == null) {
                 return;
             }
@@ -324,7 +324,7 @@ public class One_DEResultPane extends JPanel {
             Component[] components = parent.getComponents();
             int paneIndex = -1;
             for (int i = 0; i < components.length; i++) {
-                if (components[i] == One_DEResultPane.this) {
+                if (components[i] == NM_OneDEResultPane.this) {
                     paneIndex = i;
                     break;
                 }
@@ -336,7 +336,7 @@ public class One_DEResultPane extends JPanel {
 
             Component nextPane = null;
             for (int i = paneIndex + 1; i < components.length; i++) {
-                if (components[i] instanceof One_DEResultPane) {
+                if (components[i] instanceof NM_OneDEResultPane) {
                     nextPane = components[i];
                     break;
                 }
@@ -354,14 +354,14 @@ public class One_DEResultPane extends JPanel {
             if (spacerBefore != null) {
                 parent.remove(spacerBefore);
             }
-            parent.remove(One_DEResultPane.this);
+            parent.remove(NM_OneDEResultPane.this);
 
             int insertionIndex = parent.getComponentZOrder(nextPane) + 1;
             if (spacerBefore != null) {
                 parent.add(spacerBefore, insertionIndex);
                 insertionIndex++;
             }
-            parent.add(One_DEResultPane.this, insertionIndex);
+            parent.add(NM_OneDEResultPane.this, insertionIndex);
 
             parent.revalidate();
             parent.repaint();

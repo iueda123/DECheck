@@ -160,19 +160,32 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
         runABashScriptAction.initialize();
         registerMemberToMap(runABashScriptAction);
 
-        actionMemberFactory =
-                MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.InitializeDEResultPaneActionFactory",
-                        AbstActionMemberFactory.class);
-        AbstActionMember ititializeAResultPaneAction =
-                actionMemberFactory.createAction("initialize_de_result_pane", "Initialize DE result pane");
-        ititializeAResultPaneAction.setActionMediator(this);
-        ititializeAResultPaneAction.initialize();
-        registerMemberToMap(ititializeAResultPaneAction);
+
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.SavePaneOrderActionFactory",
+                        "iu.LCAC.Member.action.Concretes.DEResultActions.RCAI.Initialize_RCAI_TabPanes_ActionFactory",
+                        AbstActionMemberFactory.class);
+        AbstActionMember ititialize_RCAI_TabPanes_Action =
+                actionMemberFactory.createAction("initialize_rcai_tabpanes", "Init RCAI");
+        ititialize_RCAI_TabPanes_Action.setActionMediator(this);
+        ititialize_RCAI_TabPanes_Action.initialize();
+        registerMemberToMap(ititialize_RCAI_TabPanes_Action);
+
+
+        actionMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.action.Concretes.DEResultActions.NM.Initialize_NM_TabPanes_ActionFactory",
+                        AbstActionMemberFactory.class);
+        AbstActionMember ititialize_NM_TabPanes_Action =
+                actionMemberFactory.createAction("initialize_nm_tabpanes", "Init NM");
+        ititialize_NM_TabPanes_Action.setActionMediator(this);
+        ititialize_NM_TabPanes_Action.initialize();
+        registerMemberToMap(ititialize_NM_TabPanes_Action);
+
+        actionMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.action.Concretes.DEResultActions.RCAI.SavePaneOrderActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember savePaneOrderAction =
                 actionMemberFactory.createAction("save_pane_order", "save pane order");
@@ -182,7 +195,7 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.LoadPaneOrderActionFactory",
+                        "iu.LCAC.Member.action.Concretes.DEResultActions.RCAI.LoadPaneOrderActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember loadPaneOrderAction =
                 actionMemberFactory.createAction("load_pane_order", "load pane order");
