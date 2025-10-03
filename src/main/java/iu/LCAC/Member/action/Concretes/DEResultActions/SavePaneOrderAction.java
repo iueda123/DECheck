@@ -4,7 +4,7 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.DEResultSubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.ManagerOfSubTabBasePane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.One_DEResultPane;
 import iu.LCAC.Utils.PropertyManager_v5;
@@ -40,9 +40,9 @@ public class SavePaneOrderAction extends AbstActionMember {
         // TODO: 全セクションに拡張
 
         AbstCHolderMember member = this.cholderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder");
-        DEResultSubTabsHolder deResultSubTabsHolder = (DEResultSubTabsHolder) member;
-        String sectionName = deResultSubTabsHolder .getSectionName();
-        ArrayList<ManagerOfSubTabBasePane> arrayList_of_managerOfSubTabBasePane = deResultSubTabsHolder.getArrayList_of_ManagerOfSubTabBasePane();
+        RCAI_SubTabsHolder RCAISubTabsHolder = (RCAI_SubTabsHolder) member;
+        String sectionName = RCAISubTabsHolder.getSectionName();
+        ArrayList<ManagerOfSubTabBasePane> arrayList_of_managerOfSubTabBasePane = RCAISubTabsHolder.getArrayList_of_ManagerOfSubTabBasePane();
 
         // 全タブ（SubSectionに相当）配置されているコンポーネントの順番を把握し、propertyへ書き込む
         Component[] components = null;

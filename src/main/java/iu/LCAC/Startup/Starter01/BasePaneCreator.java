@@ -33,7 +33,15 @@ public class BasePaneCreator {
     //    BorderLayout.WEST);
 
     VerticalTextTabbedPane tabbedPane = new VerticalTextTabbedPane(JTabbedPane.LEFT);
-    tabbedPane.add("Reference Cohort and Imaging", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
+    //tabbedPane.add("1. Study Identification", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
+
+    //tabbedPane.add("2. Study Characteristics", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
+
+    tabbedPane.add("3. Reference Cohort and Imaging", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
+    tabbedPane.add("4. Normative Modeling", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
+    //tabbedPane.add("5. Clinical Application and Analysis", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
+    //tabbedPane.add("6. General Notes", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
+    //tabbedPane.add("7. QA", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
 
     basePane.add(tabbedPane, BorderLayout.CENTER);
 

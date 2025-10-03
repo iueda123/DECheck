@@ -4,7 +4,7 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.One_DEResultPane;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.DEResultSubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
 import iu.LCAC.Utils.JsonManager;
 
 import java.awt.event.ActionEvent;
@@ -63,13 +63,13 @@ public class InitializeDEResultPaneAction extends AbstActionMember {
             //System.out.println(pageLine);
 
             // Preparation of Component
-            DEResultSubTabsHolder DEResultSubTabsHolder =
-                    (DEResultSubTabsHolder) this.cholderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder");
+            RCAI_SubTabsHolder RCAI_SubTabsHolder =
+                    (RCAI_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder");
 
             // Initialization Core
-            if (DEResultSubTabsHolder != null) {
+            if (RCAI_SubTabsHolder != null) {
 
-                One_DEResultPane trtgDEResultPane = DEResultSubTabsHolder.getResultPane(jsonFileName, sectionName, subSectionName);
+                One_DEResultPane trtgDEResultPane = RCAI_SubTabsHolder.getResultPane(jsonFileName, sectionName, subSectionName);
                 trtgDEResultPane.setValTo_JsonName(jsonFileName);
                 trtgDEResultPane.setValTo_Answer(answer);
                 trtgDEResultPane.setValTo_ConfidenceRating(confidenceRating);

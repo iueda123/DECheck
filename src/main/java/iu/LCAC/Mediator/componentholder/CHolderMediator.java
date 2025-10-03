@@ -75,7 +75,7 @@ public class CHolderMediator implements MediatorIntrfc {
 
     chMemberFactory =
             MemberFactoryLoader.loadFactory(
-                    "iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.DEResultSubTabsHolderFactory",
+                    "iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolderFactory",
                     AbstCHolderMemberFactory.class);
     AbstCHolderMember aResultPaneHolder =
             chMemberFactory.createCHolder("tab_of_reference_cohort_and_imaging_holder", "tab_of_reference_cohort_and_imaging_holder");

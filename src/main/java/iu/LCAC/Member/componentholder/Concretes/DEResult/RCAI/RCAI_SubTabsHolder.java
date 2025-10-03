@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.util.ArrayList;
 
-public class DEResultSubTabsHolder extends AbstCHolderMember {
+public class RCAI_SubTabsHolder extends AbstCHolderMember {
 
     static String sectionName = "reference_cohort_and_imaging";
 
@@ -34,7 +34,7 @@ public class DEResultSubTabsHolder extends AbstCHolderMember {
 
     ArrayList<ManagerOfSubTabBasePane> arrayList_of_ManagerOfSubTabBasePane = new ArrayList<>();
 
-    public DEResultSubTabsHolder(String cholder_name, String short_name) {
+    public RCAI_SubTabsHolder(String cholder_name, String short_name) {
         super(cholder_name, short_name);
 
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_DATASET_NAME);
