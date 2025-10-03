@@ -38,67 +38,36 @@ public class SavePaneOrderAction extends AbstActionMember {
     public void perform(ActionEvent action_event) {
         System.out.println("perform() in " + this.getClass().toString() + " was called.");
 
+        // TODO: 全セクションに拡張
+
         AbstCHolderMember member = this.cholderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder");
         DEResultSubTabsHolder deResultSubTabsHolder = (DEResultSubTabsHolder) member;
-
+        String sectionName = deResultSubTabsHolder .getSectionName();
         ArrayList<ManagerOfSubTabBasePane> arrayList_of_managerOfSubTabBasePane = deResultSubTabsHolder.getArrayList_of_ManagerOfSubTabBasePane();
 
-        // 配置されているコンポーネントの順番を取得し全タブで集める
+        // 全タブ（SubSectionに相当）配置されているコンポーネントの順番を把握し、propertyへ書き込む
         Component[] components = null;
         One_DEResultPane one_deResultPane = null;
-        String id_DEResultPane = "";
-        ArrayList<String> arrayList_ID_DEResultPane = new ArrayList<>();
-        for( ManagerOfSubTabBasePane managerOfSubTabBasePane : arrayList_of_managerOfSubTabBasePane) {
-            components =  managerOfSubTabBasePane.getBasePanel().getComponents();
+        ArrayList<String> arrayList_PanelOrder = new ArrayList<>();
+        PropertyManager_v5 prop_manager = createPropertyManager("./settings/" + sectionName + ".prop");
+        for (ManagerOfSubTabBasePane managerOfSubTabBasePane : arrayList_of_managerOfSubTabBasePane) {
+            String subSectionName = managerOfSubTabBasePane.getSubSectionName();
+            System.out.println("subSectionName: " + subSectionName);
+            JPanel subSectionPanel = managerOfSubTabBasePane.getBasePanel();
+            components = subSectionPanel.getComponents();
             for (int i = 0; i < components.length; i++) {
-                System.out.println("Index " + i + ": ");
-                one_deResultPane = ((One_DEResultPane) components[i]);
-                String jsonName = one_deResultPane.getJsonName();
-                String sectionName = one_deResultPane.getSectionName();
-                String subSectionName = one_deResultPane.getSubSectionName();
-                id_DEResultPane = managerOfSubTabBasePane.getTabName() + ":" + jsonName + "/" + sectionName + "/" + subSectionName;
-                System.out.println(id_DEResultPane);
-                arrayList_ID_DEResultPane.add(id_DEResultPane);
+                Object component = components[i];
+                if (component instanceof One_DEResultPane) {
+                    one_deResultPane = ((One_DEResultPane) components[i]);
+                    String jsonName = one_deResultPane.getJsonName();
+                    System.out.println("  DEResultPane No. " + i + ": " + jsonName);
+                    arrayList_PanelOrder.add(jsonName);
+                }
             }
+            prop_manager.setProperty(subSectionName, Joiner.joinWithSemicolon(arrayList_PanelOrder));
+            arrayList_PanelOrder.clear();
         }
-
-
-
-        //Set<String> action_commands = this.actionMediator.memberMap.keySet();
-
-        PropertyManager_v5 prop_manager = createPropertyManager(deresultpane_order_setting_file_path_str);
-
-        AbstActionMember action = null;
-        String accelerator = "";
-        for (String id : arrayList_ID_DEResultPane) {
-            System.out.print(id);
-
-            /*
-            action = this.actionMediator.getInstanceOfAMember(id);
-
-
-            JMenuItem menu_item = action.getMenuItem();
-            // KeyStroke ket_stroke = menu_item.getAccelerator();
-            if (menu_item == null) {
-                System.out.println(
-                        "    Can't get a JMenu item about '"
-                                + id
-                                + "' from the current ActionMediator instance.'");
-            } else if (menu_item.getAccelerator() == null) {
-                System.out.println(
-                        "    Can't get a key stroke info about '"
-                                + id
-                                + "' from the current ActionMediator instance.'");
-            } else {
-                accelerator = action.getMenuItem().getAccelerator().toString();
-                System.out.println("    " + accelerator);
-                prop_manager.setProperty(id, accelerator);
-            }
-            */
-        }
-
         prop_manager.writeoutProperties();
-
     }
 
     public void setCHolderMediator(CHolderMediator cHolderMediator) {
@@ -117,4 +86,23 @@ public class SavePaneOrderAction extends AbstActionMember {
     @Override
     public void doWorkAsMember() {
     }
+
+
+    class Joiner {
+        public static String joinWithSemicolon(ArrayList<String> list) {
+            return String.join(";", list);
+        }
+
+        public static void main(String[] args) {
+            ArrayList<String> items = new ArrayList<>();
+            items.add("apple");
+            items.add("banana");
+            items.add("cherry");
+
+            String result = joinWithSemicolon(items);
+            System.out.println(result);  // apple;banana;cherry
+        }
+    }
+
+
 }

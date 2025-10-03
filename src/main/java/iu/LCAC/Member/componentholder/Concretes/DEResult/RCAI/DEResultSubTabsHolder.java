@@ -14,21 +14,23 @@ import java.util.ArrayList;
 
 public class DEResultSubTabsHolder extends AbstCHolderMember {
 
+    static String sectionName = "reference_cohort_and_imaging";
+
     JPanel panel = new JPanel(new BorderLayout());
     JTabbedPane baseTabPane = new JTabbedPane();
 
     // Reference Cohort and Imaging
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_DATASET_NAME = new ManagerOfSubTabBasePane("Dataset Name");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_HC_N = new ManagerOfSubTabBasePane("HC N");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_HC_AGE = new ManagerOfSubTabBasePane("HC Age");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_HC_SEX = new ManagerOfSubTabBasePane("HC Sex");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_IMAGING_MODALITY = new ManagerOfSubTabBasePane("Imaging Modality");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_ANALYSIS_LEVEL = new ManagerOfSubTabBasePane("Analysis Level");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_PREPROCESSING_PIPELINE = new ManagerOfSubTabBasePane("Preprocessing Pipeline");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_QUALITY_CHECKING = new ManagerOfSubTabBasePane("Quality Checking");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_QUALITY_CHECKING_DETAIL = new ManagerOfSubTabBasePane("Quality Checking Detail");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_SITE_EFFECT_HANDLING = new ManagerOfSubTabBasePane("Site Effect Handling");
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_SITE_EFFECT_HANDLING_DETAIL = new ManagerOfSubTabBasePane("Site Effect Detail");
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_DATASET_NAME = new ManagerOfSubTabBasePane("Dataset Name", "dataset_name");
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_HC_N = new ManagerOfSubTabBasePane("HC N", "hc_n");
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_HC_AGE = new ManagerOfSubTabBasePane("HC Age", "hc_age");
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_HC_SEX = new ManagerOfSubTabBasePane("HC Sex", "hc_sex");
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_IMAGING_MODALITY = new ManagerOfSubTabBasePane("Imaging Modality", "imaging_modality");
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_ANALYSIS_LEVEL = new ManagerOfSubTabBasePane("Analysis Level", "analysis_level");
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_PREPROCESSING_PIPELINE = new ManagerOfSubTabBasePane("Preprocessing Pipeline", "preprocessing_pipeline");
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_QUALITY_CHECKING = new ManagerOfSubTabBasePane("Quality Checking", "quality_checking");
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_QUALITY_CHECKING_DETAIL = new ManagerOfSubTabBasePane("Quality Checking Detail", "quality_checking_detail");
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_SITE_EFFECT_HANDLING = new ManagerOfSubTabBasePane("Site Effect Handling", "site_effect_handling");
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_SITE_EFFECT_HANDLING_DETAIL = new ManagerOfSubTabBasePane("Site Effect Handling Detail", "site_effect_handling_detail");
 
     ArrayList<ManagerOfSubTabBasePane> arrayList_of_ManagerOfSubTabBasePane = new ArrayList<>();
     
@@ -332,6 +334,10 @@ public class DEResultSubTabsHolder extends AbstCHolderMember {
 
     public ArrayList<ManagerOfSubTabBasePane> getArrayList_of_ManagerOfSubTabBasePane(){
         return arrayList_of_ManagerOfSubTabBasePane;
+    }
+
+    public String getSectionName(){
+        return sectionName;
     }
     
 }

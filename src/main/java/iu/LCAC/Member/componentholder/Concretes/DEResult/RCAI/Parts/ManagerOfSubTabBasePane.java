@@ -5,16 +5,20 @@ import java.util.ArrayList;
 
 public class ManagerOfSubTabBasePane {
 
+    final String sectionName = "reference_cohort_and_imaging";
     final String tabName;
+
+    final String subSectionName;
 
     ArrayList<One_DEResultPane> dePaneArray = new ArrayList<>();
 
     JPanel basePanel = new JPanel();
 
-    public ManagerOfSubTabBasePane(String tabName) {
+    public ManagerOfSubTabBasePane(String tabName, String subSectionName) {
         this.tabName = tabName;
-        basePanel.setLayout(new BoxLayout(basePanel, BoxLayout.Y_AXIS));
+        this.subSectionName = subSectionName;
     }
+
 
     public void addToTheDePaneArray(One_DEResultPane oneDEResultPane) {
         this.dePaneArray.add(oneDEResultPane);
@@ -38,10 +42,10 @@ public class ManagerOfSubTabBasePane {
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
         scrollPane.getViewport().setScrollMode(JViewport.SIMPLE_SCROLL_MODE);
 
-        return(scrollPane);
+        return (scrollPane);
     }
 
-    public ArrayList<One_DEResultPane> getDePaneArray(){
+    public ArrayList<One_DEResultPane> getDePaneArray() {
         return dePaneArray;
     }
 
@@ -49,7 +53,15 @@ public class ManagerOfSubTabBasePane {
         return this.tabName;
     }
 
-    public JPanel getBasePanel(){
+    public JPanel getBasePanel() {
         return basePanel;
+    }
+
+    public String getSectionName() {
+        return sectionName;
+    }
+
+    public String getSubSectionName() {
+        return subSectionName;
     }
 }
