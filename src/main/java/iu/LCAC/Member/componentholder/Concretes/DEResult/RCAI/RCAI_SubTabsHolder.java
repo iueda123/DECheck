@@ -44,17 +44,17 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember {
     JTabbedPane baseTabPane = new JTabbedPane();
 
     // Reference Cohort and Imaging
-    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_1 = new ManagerOfSubTabBasePane_RCAI(subSection_1_TabName, subSection_1_Name);
-    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_2 = new ManagerOfSubTabBasePane_RCAI(subSection_2_TabName, subSection_2_Name);
-    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_3 = new ManagerOfSubTabBasePane_RCAI(subSection_3_TabName, subSection_3_Name);
-    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_4 = new ManagerOfSubTabBasePane_RCAI(subSection_4_TabName, subSection_4_Name);
-    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_5 = new ManagerOfSubTabBasePane_RCAI(subSection_5_TabName, subSection_5_Name);
-    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_6 = new ManagerOfSubTabBasePane_RCAI(subSection_6_TabName, subSection_6_Name);
-    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_7 = new ManagerOfSubTabBasePane_RCAI(subSection_7_TabName, subSection_7_Name);
-    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_8 = new ManagerOfSubTabBasePane_RCAI(subSection_8_TabName, subSection_8_Name);
-    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_9 = new ManagerOfSubTabBasePane_RCAI(subSection_9_TabName, subSection_9_Name);
-    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_10 = new ManagerOfSubTabBasePane_RCAI(subSection_10_TabName, subSection_10_Name);
-    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_11 = new ManagerOfSubTabBasePane_RCAI(subSection_11_TabName, subSection_11_Name);
+    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_1 = new ManagerOfSubTabBasePane_RCAI(subSection_1_TabName, subSection_1_Name, baseTabPane);
+    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_2 = new ManagerOfSubTabBasePane_RCAI(subSection_2_TabName, subSection_2_Name, baseTabPane);
+    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_3 = new ManagerOfSubTabBasePane_RCAI(subSection_3_TabName, subSection_3_Name, baseTabPane);
+    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_4 = new ManagerOfSubTabBasePane_RCAI(subSection_4_TabName, subSection_4_Name, baseTabPane);
+    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_5 = new ManagerOfSubTabBasePane_RCAI(subSection_5_TabName, subSection_5_Name, baseTabPane);
+    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_6 = new ManagerOfSubTabBasePane_RCAI(subSection_6_TabName, subSection_6_Name, baseTabPane);
+    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_7 = new ManagerOfSubTabBasePane_RCAI(subSection_7_TabName, subSection_7_Name, baseTabPane);
+    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_8 = new ManagerOfSubTabBasePane_RCAI(subSection_8_TabName, subSection_8_Name, baseTabPane);
+    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_9 = new ManagerOfSubTabBasePane_RCAI(subSection_9_TabName, subSection_9_Name, baseTabPane);
+    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_10 = new ManagerOfSubTabBasePane_RCAI(subSection_10_TabName, subSection_10_Name, baseTabPane);
+    ManagerOfSubTabBasePane_RCAI mngrOfSubTabBasePane_11 = new ManagerOfSubTabBasePane_RCAI(subSection_11_TabName, subSection_11_Name, baseTabPane);
 
     ArrayList<ManagerOfSubTabBasePane_RCAI> arrayList_of_ManagerOfSubTabBasePaneRCAI = new ArrayList<>();
 

@@ -44,17 +44,17 @@ public class NM_SubTabsHolder extends AbstCHolderMember {
     JTabbedPane baseTabPane = new JTabbedPane();
 
     // Reference Cohort and Imaging
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_1 = new ManagerOfSubTabBasePane_NM(subSection_1_TabName, subSection_1_Name);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_2 = new ManagerOfSubTabBasePane_NM(subSection_2_TabName, subSection_2_Name);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_3 = new ManagerOfSubTabBasePane_NM(subSection_3_TabName,  subSection_3_Name);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_4 = new ManagerOfSubTabBasePane_NM(subSection_4_TabName, subSection_4_Name);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_5 = new ManagerOfSubTabBasePane_NM(subSection_5_TabName, subSection_5_Name);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_6 = new ManagerOfSubTabBasePane_NM(subSection_6_TabName, subSection_6_Name);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_7 = new ManagerOfSubTabBasePane_NM(subSection_7_TabName, subSection_7_Name);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_8 = new ManagerOfSubTabBasePane_NM(subSection_8_TabName, subSection_8_Name);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_9 = new ManagerOfSubTabBasePane_NM(subSection_9_TabName, subSection_9_Name);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_10 = new ManagerOfSubTabBasePane_NM(subSection_10_TabName, subSection_10_Name);
-    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_11 = new ManagerOfSubTabBasePane_NM(subSection_11_TabName, subSection_11_Name);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_1 = new ManagerOfSubTabBasePane_NM(subSection_1_TabName, subSection_1_Name, baseTabPane);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_2 = new ManagerOfSubTabBasePane_NM(subSection_2_TabName, subSection_2_Name, baseTabPane);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_3 = new ManagerOfSubTabBasePane_NM(subSection_3_TabName,  subSection_3_Name, baseTabPane);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_4 = new ManagerOfSubTabBasePane_NM(subSection_4_TabName, subSection_4_Name, baseTabPane);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_5 = new ManagerOfSubTabBasePane_NM(subSection_5_TabName, subSection_5_Name, baseTabPane);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_6 = new ManagerOfSubTabBasePane_NM(subSection_6_TabName, subSection_6_Name, baseTabPane);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_7 = new ManagerOfSubTabBasePane_NM(subSection_7_TabName, subSection_7_Name, baseTabPane);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_8 = new ManagerOfSubTabBasePane_NM(subSection_8_TabName, subSection_8_Name, baseTabPane);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_9 = new ManagerOfSubTabBasePane_NM(subSection_9_TabName, subSection_9_Name, baseTabPane);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_10 = new ManagerOfSubTabBasePane_NM(subSection_10_TabName, subSection_10_Name, baseTabPane);
+    ManagerOfSubTabBasePane_NM mngrOfSubTabBasePane_11 = new ManagerOfSubTabBasePane_NM(subSection_11_TabName, subSection_11_Name, baseTabPane);
 
     ArrayList<ManagerOfSubTabBasePane_NM> arrayList_of_ManagerOfSubTabBasePaneNM = new ArrayList<>();
 

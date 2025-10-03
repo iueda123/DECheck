@@ -1,0 +1,208 @@
+{
+  "study_identification": {
+    "study_id": "Zheng2024",
+    "reference_file_names": "Zheng2024.pdf.md; Zheng2024_sup.pdf.md",
+    "author_journal_year": "Zheng et al., Psychological Medicine, 2024",
+    "title": "Characterizing the distinct imaging phenotypes, clinical behavior, and genetic vulnerability of brain maturational subtypes in mood disorders",
+    "doi": "10.1017/S0033291724000886"
+  },
+  "study_characteristics": {
+    "study_objective": "To map individual-level regional GMV deviations via quantile normative modeling in mood disorders (MDD, BD), identify maturational subtypes, and characterize differences in clinical behavior, transcriptomics, and genetic risk; with replication in an independent medicated patient cohort.",
+    "study_design": "Cross-sectional",
+    "study_design_other": "-"
+  },
+  "reference_cohort_and_imaging": {
+    "dataset_name": {
+      "Answer": "Single-site clinical cohort (First Affiliated Hospital of China Medical University, Shenyang)",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Participants were recruited and scanned at a single hospital site; MRI acquisition specifies one 3T GE system at the same institution.",
+      "Supporting Text": "Structural MRI scanning was conducted on a Signa HDx 3.0 T ... at the First Affiliated Hospital of China Medical University. Patients and HC were recruited ... at the First Affiliated Hospital of China Medical University.",
+      "Page/Line": "Main PDF: Methods and materials – Participants & Image acquisition; lines 67–79, 100–108"
+    },
+    "hc_n": {
+      "Answer": "404",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Supplementary Table S1 lists HC N=404 used to derive normative charts.",
+      "Supporting Text": "Dataset 1 Clinical and Demographic Data | HC N=404",
+      "Page/Line": "Supplementary PDF: Table S1, lines 64–72"
+    },
+    "hc_age": {
+      "Answer": "mean 29.0; sd 9.3",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Supplementary Table S1 provides HC age statistics (mean±SD).",
+      "Supporting Text": "Age | 29.0±9.3 (HC)",
+      "Page/Line": "Supplementary PDF: Table S1, lines 68–72"
+    },
+    "hc_sex": {
+      "Answer": "F 244 (60.4%), M 160 (39.6%)",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Sex counts are provided for HC; percentages computed from N=404.",
+      "Supporting Text": "Gender (male/female) | 160/244 (HC)",
+      "Page/Line": "Supplementary PDF: Table S1, line 69"
+    },
+    "imaging_modality": {
+      "Answer": "T1-weighted MRI",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "T1-weighted images were acquired and used for VBM/GMV analyses.",
+      "Supporting Text": "T1-weighted images were acquired by using the three-dimensional fast spoiled gradient-echo sequence...",
+      "Page/Line": "Supplementary PDF: Image acquisition, lines 29–33"
+    },
+    "analysis_level": {
+      "Answer": "ROI-level",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Normative deviations were computed per brain region; region names (e.g., caudalanteriorcingulate, parsorbitalis) correspond to Desikan–Killiany ROIs.",
+      "Supporting Text": "We applied regional gray matter volumes (GMV)... Top 10 regions name: caudalanteriorcingulate, lateralorbitofrontal, parsorbitalis...",
+      "Page/Line": "Main PDF: Methods – GMV normative deviation; lines ~80–100. Supplementary PDF: Table S9–S10, lines 190–230"
+    },
+    "preprocessing_pipeline": {
+      "Answer": "SPM12; CAT12; VBM with DARTEL normalization to MNI IXI555; tissue segmentation; bias correction; modulated GMV; TIV covariate",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Supplement details the CAT12/SPM12 VBM workflow, DARTEL to IXI555, and use of TIV as covariate.",
+      "Supporting Text": "CAT12 implemented in SPM12 for VBM... normalized into standard MNI IXI555 space... modulated by the Jacobian... TIV ... used as a covariate.",
+      "Page/Line": "Supplementary PDF: MRI processing, lines 31–37"
+    },
+    "quality_checking": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Automated CAT12 IQR-based QC with explicit pass/fail thresholds was applied.",
+      "Supporting Text": "The quality of images was assessed by ... IQR ... An image was classified as to fail QC if it had a noise grade ≤ 'C' (70%) and a total IQR grade < 'B' (80%). We applied the cut-off (>=80%, >= grad B)...",
+      "Page/Line": "Supplementary PDF: MRI processing/QC, lines 33–36"
+    },
+    "quality_checking_detail": {
+      "Answer": "CAT12 IQR-based QC; fail if noise grade ≤ C (70%) and total IQR < B (80%); applied cutoff ≥80% (≥ grade B) to retain high-quality images.",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "QC thresholds and criteria are explicitly described; exclusion counts not reported.",
+      "Supporting Text": "fail QC if ... noise grade ≤ 'C' (70%) and total IQR grade < 'B' (80%); applied the cut-off (>=80%, >= grad B) to ensure high quality images.",
+      "Page/Line": "Supplementary PDF: MRI processing/QC, lines 35–36"
+    },
+    "site_effect_handling": {
+      "Answer": "None",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Single-site acquisition on one 3T GE scanner; no multi-site harmonization reported or required.",
+      "Supporting Text": "Structural MRI scanning was conducted on a Signa HDx 3.0 T ... at the First Affiliated Hospital of China Medical University.",
+      "Page/Line": "Main PDF: Image acquisition, lines ~100–108"
+    },
+    "site_effect_detail": {
+      "Answer": "Single-site study (one scanner); no batch/site harmonization. Age and sex handled in normative step.",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "No mention of ComBat/HBR; consistent single-site design.",
+      "Supporting Text": "... conducted on a Signa HDx 3.0 T ... First Affiliated Hospital ...",
+      "Page/Line": "Main PDF: Image acquisition, lines ~100–108"
+    }
+  },
+  "normative_modeling": {
+    "model_origin": {
+      "Answer": "New",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Norms were derived from the study's own HC cohort using quantile regression; not a pre-trained external model.",
+      "Supporting Text": "Quantile regression was used to obtain a normative range ... based on HC ...",
+      "Page/Line": "Main PDF: GMV normative deviation calculation, lines ~80–95"
+    },
+    "model_origin_detail": {
+      "Answer": "-",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Model is newly trained on in-study controls; no external pre-training.",
+      "Supporting Text": "We positioned individuals ... on the normative percentile charts based on HC ...",
+      "Page/Line": "Main PDF: GMV normative deviation calculation, lines ~80–95"
+    },
+    "modeling_method": {
+      "Answer": "Quantile Regression (age- and sex-adjusted normative percentiles; z5, z50, z95)",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Methods explicitly state use of quantile regression to generate normative percentile charts and compute deviation z-scores.",
+      "Supporting Text": "Quantile regression was used to obtain a normative range ... expressed ... z5, z50, z95 ... as individual deviation z-scores for each brain region.",
+      "Page/Line": "Main PDF: GMV normative deviation calculation, lines ~80–100"
+    },
+    "software_tool": {
+      "Answer": "NR",
+      "Confidence Rating": "Low",
+      "Negative Answer Category": "Unclear/Incomplete",
+      "Reason": "No software/library is specified for the quantile regression normative modeling (e.g., R quantreg/Python not stated).",
+      "Supporting Text": "(No explicit software mentioned for quantile regression.)",
+      "Page/Line": "NR"
+    },
+    "response_variable": {
+      "Answer": "Regional gray matter volume (GMV) across cortical Desikan–Killiany ROIs",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Normative deviations computed for brain regions; listed regions match DK atlas nomenclature.",
+      "Supporting Text": "We applied regional gray matter volumes (GMV) ... Top 10 regions name ... caudalanteriorcingulate, parsorbitalis ...",
+      "Page/Line": "Main PDF: Methods; Supplementary: Tables S9–S10, lines 190–230"
+    },
+    "predictor_variables": {
+      "Answer": "Age; Sex",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Quantile regression modeled GMV as a function of age and sex as per method description and citation.",
+      "Supporting Text": "Quantile regression was used to obtain a normative range of regional GMV variation as a function of age and sex ...",
+      "Page/Line": "Main PDF: GMV normative deviation calculation, lines ~80–90"
+    },
+    "predictor_effects": {
+      "Answer": "Age and Sex modeled as fixed effects within quantile regression; no random/site effects (single-site).",
+      "Confidence Rating": "Medium",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Quantile regression specification mentions age/sex; random effects not applicable in single-site design; no explicit random-effect model described.",
+      "Supporting Text": "... variation as a function of age and sex ...",
+      "Page/Line": "Main PDF: GMV normative deviation calculation, lines ~80–90"
+    },
+    "nm_vldtn_handle_ns": {
+      "Answer": "Handled age and sex via quantile regression; applied CAT12 IQR-based QC thresholds; single-site acquisition implies no site/scanner batch effects modeled.",
+      "Confidence Rating": "Medium",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The study models key nuisance factors age/sex and enforces imaging QC; no mention of heteroscedastic variance modeling or site terms (single-site).",
+      "Supporting Text": "Quantile regression ... as a function of age and sex ...; The quality of images was assessed by ... IQR ... applied the cut-off (>=80%, >= grad B).",
+      "Page/Line": "Main PDF: GMV normative deviation calculation; Supplementary: QC lines 33–36"
+    },
+    "nm_vldtn_same_domain_nonindep": {
+      "Answer": "No",
+      "Confidence Rating": "Low",
+      "Negative Answer Category": "Missing",
+      "Reason": "No explicit within-cohort cross-validation metrics (e.g., EV, MSLL, R) for the normative model are reported; cross-validation described pertains to clustering stability, not normative model fit.",
+      "Supporting Text": "Clustering ARI cross-validation is reported; normative model accuracy metrics are not reported.",
+      "Page/Line": "Supplementary PDF: Figure S3 (clustering ARI); normative model validation metrics NR"
+    },
+    "nm_vldtn_same_domain_indep": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Replication in an independent medicated patient cohort using the same normative reference; regional deviation maps correlate between discovery and replication cohorts.",
+      "Supporting Text": "We also validated the GMV deviations based subtyping analysis in a replication cohort ... correlations between dataset 1 and dataset 2 in subtype 1 (r=0.29, p<0.05) and subtype 2 (r=0.45, p<0.0001).",
+      "Page/Line": "Main PDF: Abstract/Methods; Supplementary PDF: Figure S4 caption, lines 263–265"
+    },
+    "nm_vldtn_diff_domain": {
+      "Answer": "No",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Missing",
+      "Reason": "No external multi-site or different-scanner dataset was used to validate normative deviations.",
+      "Supporting Text": "All data were acquired at the same hospital site; no other dataset used for external validation.",
+      "Page/Line": "Main/Supplementary: Image acquisition states single site; external validation NR"
+    }
+  },
+  "clinical_application_and_analysis": {
+    "clinical_dataset": "First Affiliated Hospital of China Medical University (Shenyang) – discovery (drug-naïve/drug-free) and replication (medicated) cohorts",
+    "diseases_studied": "Major Depressive Disorder; Bipolar Disorder",
+    "clinical_groups_n": "Discovery—MDD:114; BD:60; Replication—MDD:142; BD:126",
+    "clinical_groups_age": "Discovery HC: 29.0±9.3; Patients (subtypes): Subtype1 29.1±11; Subtype2 27.1±9; Replication subtypes: Subtype1 29.20±8.89; Subtype2 28.45±9.47",
+    "clinical_groups_sex": "Discovery HC M/F:160/244; Subtype1 M/F:35/77; Subtype2 M/F:22/40; Replication Subtype1 M/F:24/51; Subtype2 M/F:69/124",
+    "deviation_metric": "Z-scores relative to age/sex conditional percentiles (z5, z50, z95); infra-normal (<5% CI), normal (within), supra-normal (>95% CI)",
+    "association_analysis": "Between-subtype comparisons via t-tests (HAMD/HAMA/BPRS; WCST); hierarchical clustering (Ward's) with 10-fold CV and 1000 permutations (ARI); PLS linking regional deviations to AHBA gene expression with permutation and spherical rotation bootstraps; PRS (PRSice) for AD and MDD with variance explained; symptom network analysis across HAMD/HAMA/BPRS.",
+    "key_findings_brief": "Two maturational subtypes emerged—supra-normal dominant with frontal/cingulate increases, cognitive impairment and higher AD genetic risk; infra-normal dominant with widespread decreases, more severe depression and higher MDD genetic risk; patterns replicated in an independent medicated cohort.",
+    "key_findings_detailed": "Subtype 1 (n=112) showed increased GMV deviations in frontal/cingulate/primary motor cortices and worse WCST performance; higher PRS-AD than HC at multiple thresholds (explaining 4.2–5.9% variance) but not PRS-MDD. Subtype 2 (n=62) showed globally decreased GMV deviations, higher HAMD (20.08±7.5 vs 23.82±8.9; p=0.008), elevated PRS-MDD (10.8% variance explained) but not PRS-AD. Replication cohort (n=268) yielded correlated regional deviation patterns with discovery (Subtype 1 r=0.29, p<0.05; Subtype 2 r=0.45, p<0.0001).",
+    "key_limitations": "Single-site cohort limits generalizability and precludes assessment of site/scanner batch effects; normative model performance metrics (e.g., EV/MSLL) not reported; software for quantile regression unspecified; ROI definition for deviations implied by region names but not explicitly described in preprocessing pipeline.",
+    "application_notes": "Clustering stability assessed via 10-fold CV with 1000 permutations (ARI); deviations encoded as {-1,0,+1} and summarized by abnormality rate and extent; transcriptomics used DK68 left hemisphere mapping for AHBA alignment."
+  },
+  "general_notes": "Normative modeling follows Lv et al., 2021; regional labels are consistent with Desikan–Killiany atlas (e.g., parsopercularis, parstriangularis). QC via CAT12 IQR thresholds; TIV included as covariate in downstream analyses; no ComBat/HBR used due to single-site acquisition; PRS calculated via PRSice with PGC GWAS references."
+}

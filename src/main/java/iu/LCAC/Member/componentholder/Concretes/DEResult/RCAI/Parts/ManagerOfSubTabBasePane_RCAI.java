@@ -16,12 +16,15 @@ public class ManagerOfSubTabBasePane_RCAI {
 
     ArrayList<RCAI_OneDEResultPane> dePaneArray = new ArrayList<>();
 
-    CommentPane commentPane = new CommentPane();
+    final JTabbedPane tabbedPane;
+    final CommentPane commentPane;
 
-    public ManagerOfSubTabBasePane_RCAI(String tabName, String subSectionName) {
+    public ManagerOfSubTabBasePane_RCAI(String tabName, String subSectionName, JTabbedPane tabbedPane) {
         this.basePaneForDEResultPanes.setLayout(new BoxLayout(this.basePaneForDEResultPanes, BoxLayout.Y_AXIS));
         this.tabName = tabName;
         this.subSectionName = subSectionName;
+        this.tabbedPane = tabbedPane;
+        commentPane = new CommentPane(sectionName, subSectionName, this.tabbedPane);
     }
 
 

@@ -1,4 +1,4 @@
-package iu.LCAC.Member.action.Concretes.DEResultActions.SaveAndLoadPaneOrder;
+package iu.LCAC.Member.action.Concretes.DEResultActions.SaveAndLoadNotePanes;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
@@ -7,9 +7,9 @@ import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.Parts.ManagerOfSubTabBasePane_NM;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.Parts.NM_OneDEResultPane;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.ManagerOfSubTabBasePane_RCAI;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.Parts.RCAI_OneDEResultPane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,10 +18,10 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-public class SavePaneOrderAction extends AbstActionMember {
+public class SaveNotePaneAction extends AbstActionMember {
 
 
-    public SavePaneOrderAction(String action_name, String short_name) {
+    public SaveNotePaneAction(String action_name, String short_name) {
         super(action_name, short_name);
     }
 
