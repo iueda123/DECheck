@@ -5,6 +5,7 @@ import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.ManagerOfSubTabBasePane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.OneDEResultPane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.SubTabsHolderItrfc;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +13,7 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.util.ArrayList;
 
-public class RCAI_SubTabsHolder extends AbstCHolderMember {
+public class RCAI_SubTabsHolder extends AbstCHolderMember implements SubTabsHolderItrfc {
 
     static String sectionName = "reference_cohort_and_imaging";
 

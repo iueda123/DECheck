@@ -5,6 +5,8 @@ import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.ManagerOfSubTabBasePane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.NotePane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.SubTabsHolderItrfc;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.OneDEResultPane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
@@ -37,82 +39,41 @@ public class SaveNotePaneAction extends AbstActionMember {
         System.out.println("perform() in " + this.getClass().toString() + " was called.");
 
         // TODO: 全セクションに拡張
-        savePaneOrderOf_RCAI_Tab();
-        savePaneOrderOf_NM_Tab();
-
-
+        saveNotePaneState("RCAI", "./settings/NotePane/" + "reference_cohort_and_imaging" + ".prop");
+        saveNotePaneState("NM", "./settings/NotePane/" + "normative_modeling" + ".prop");
     }
 
-    private void savePaneOrderOf_RCAI_Tab() {
-        AbstCHolderMember member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI");
-        RCAI_SubTabsHolder RCAISubTabsHolder = (RCAI_SubTabsHolder) member;
-        ArrayList<ManagerOfSubTabBasePane> arrayList_of_managerOfSubTabBasePaneRCAI = RCAISubTabsHolder.getArrayList_of_ManagerOfSubTabBasePane();
-
-        String sectionName = RCAISubTabsHolder.getSectionName();
-        String prop_file_path_str = "./settings/" + sectionName + ".prop";
-        System.out.println("----- Save pane order of '" + sectionName + "' section -----");
-
-        // 全タブ（SubSectionに相当）配置されているコンポーネントの順番を把握し、propertyへ書き込む
-        Component[] components = null;
-        OneDEResultPane RCAIOne_deResultPane = null;
-        ArrayList<String> arrayList_PanelOrder = new ArrayList<>();
-        propManager = createPropertyManager(prop_file_path_str);
-        for (ManagerOfSubTabBasePane managerOfSubTabBasePaneRCAI : arrayList_of_managerOfSubTabBasePaneRCAI) {
-            String subSectionName = managerOfSubTabBasePaneRCAI.getSubSectionName();
-            //System.out.println("subSectionName: " + subSectionName);
-            JPanel subSectionPanel = managerOfSubTabBasePaneRCAI.getBasePaneForDEResultPanes();
-            components = subSectionPanel.getComponents();
-            for (int i = 0; i < components.length; i++) {
-                Object component = components[i];
-                if (component instanceof OneDEResultPane) {
-                    RCAIOne_deResultPane = ((OneDEResultPane) components[i]);
-                    String jsonName = RCAIOne_deResultPane.getJsonName();
-                    //System.out.println("  DEResultPane No. " + i + ": " + jsonName);
-                    arrayList_PanelOrder.add(jsonName);
-                }
-            }
-            propManager.setProperty(subSectionName, Joiner.joinWithSemicolon(arrayList_PanelOrder));
-            arrayList_PanelOrder.clear();
+    private void saveNotePaneState(String member_name_key_word, String prop_file_path_str) {
+        AbstCHolderMember member = null;
+        SubTabsHolderItrfc subTabsHolder = null;
+        switch (member_name_key_word) {
+            case "RCAI":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI");
+                subTabsHolder = (RCAI_SubTabsHolder) member;
+                break;
+            case "NM":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_NM");
+                subTabsHolder = (NM_SubTabsHolder) member;
+                break;
+            default:
+                System.out.println("未知のSection指定です");
         }
-        propManager.writeoutProperties();
-        propManager=null;
-    }
-
-    private void savePaneOrderOf_NM_Tab() {
-        AbstCHolderMember member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_NM");
-        NM_SubTabsHolder subTabsHolder = (NM_SubTabsHolder) member;
-        ArrayList<ManagerOfSubTabBasePane> arrayList_of_managerOfSubTabBasePaneNMRCAI = subTabsHolder.getArrayList_of_ManagerOfSubTabBasePane();
 
         String sectionName = subTabsHolder.getSectionName();
-        String prop_file_path_str = "./settings/" + sectionName + ".prop";
-        System.out.println("----- Save pane order of '" + sectionName + "' section -----");
+        System.out.println("----- Save texts on NotePanes of '" + sectionName + "' section -----");
 
         // 全タブ（SubSectionに相当）配置されているコンポーネントの順番を把握し、propertyへ書き込む
-        Component[] components = null;
-        OneDEResultPane oneDEResultPane = null;
-        ArrayList<String> arrayList_PanelOrder = new ArrayList<>();
         propManager = createPropertyManager(prop_file_path_str);
-        for (ManagerOfSubTabBasePane managerOfSubTabBasePaneNM : arrayList_of_managerOfSubTabBasePaneNMRCAI) {
-            String subSectionName = managerOfSubTabBasePaneNM.getSubSectionName();
-            System.out.println("subSectionName: " + subSectionName);
-            JPanel subSectionPanel = managerOfSubTabBasePaneNM.getBasePaneForDEResultPanes();
-            components = subSectionPanel.getComponents();
-            for (int i = 0; i < components.length; i++) {
-                Object component = components[i];
-                if (component instanceof OneDEResultPane) {
-                    oneDEResultPane = ((OneDEResultPane) components[i]);
-                    String jsonName = oneDEResultPane.getJsonName();
-                    System.out.println("  DEResultPane No. " + i + ": " + jsonName);
-                    arrayList_PanelOrder.add(jsonName);
-                }
-            }
-            propManager.setProperty(subSectionName, Joiner.joinWithSemicolon(arrayList_PanelOrder));
-            arrayList_PanelOrder.clear();
+        for (ManagerOfSubTabBasePane managerOfSubTabBasePane : subTabsHolder.getArrayList_of_ManagerOfSubTabBasePane()) {
+            String subSectionName = managerOfSubTabBasePane.getSubSectionName();
+            //System.out.println("Now registering NotePane of  '" + subSectionName + "'");
+            NotePane notePane = managerOfSubTabBasePane.getNotePane();
+            propManager.setProperty(subSectionName + ".status", notePane.getStatusText());
+            propManager.setProperty(subSectionName + ".note", notePane.getNoteText());
         }
         propManager.writeoutProperties();
-        propManager=null;
+        propManager = null;
     }
-
 
 
     public void setCHolderMediator(CHolderMediator cHolderMediator) {
@@ -131,23 +92,5 @@ public class SaveNotePaneAction extends AbstActionMember {
     @Override
     public void doWorkAsMember() {
     }
-
-
-    class Joiner {
-        public static String joinWithSemicolon(ArrayList<String> list) {
-            return String.join(";", list);
-        }
-
-        public static void main(String[] args) {
-            ArrayList<String> items = new ArrayList<>();
-            items.add("apple");
-            items.add("banana");
-            items.add("cherry");
-
-            String result = joinWithSemicolon(items);
-            System.out.println(result);  // apple;banana;cherry
-        }
-    }
-
 
 }

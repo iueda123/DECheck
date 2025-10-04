@@ -3,7 +3,7 @@ package iu.LCAC.Member.action.Concretes.DEResultActions.SaveAndLoadNotePanes;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.action.Abstract.AbstActionMemberFactory;
 
-public class SavePaneOrderActionFactory extends AbstActionMemberFactory {
+public class SaveNotePaneActionFactory extends AbstActionMemberFactory {
 
   private AbstActionMember action;
 

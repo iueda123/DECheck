@@ -77,6 +77,14 @@ public class NotePane extends JPanel {
                 }
     }
 
+    public String getStatusText() {
+        return tFiled_Status.getText();
+    }
+
+    public String getNoteText() {
+        return tArea_Note.getText();
+    }
+
 
     private class CustomDocumentListener implements DocumentListener {
         final JTabbedPane tabbedPane;

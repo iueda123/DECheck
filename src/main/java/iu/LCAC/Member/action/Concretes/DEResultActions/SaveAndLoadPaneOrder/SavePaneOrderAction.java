@@ -45,37 +45,37 @@ public class SavePaneOrderAction extends AbstActionMember {
 
     private void savePaneOrderOf_RCAI_Tab() {
         AbstCHolderMember member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI");
-        RCAI_SubTabsHolder RCAISubTabsHolder = (RCAI_SubTabsHolder) member;
-        ArrayList<ManagerOfSubTabBasePane> arrayList_of_managerOfSubTabBasePaneRCAI = RCAISubTabsHolder.getArrayList_of_ManagerOfSubTabBasePane();
+        RCAI_SubTabsHolder subTabsHolder = (RCAI_SubTabsHolder) member;
+        ArrayList<ManagerOfSubTabBasePane> arrayList_of_managerOfSubTabBasePane = subTabsHolder.getArrayList_of_ManagerOfSubTabBasePane();
 
-        String sectionName = RCAISubTabsHolder.getSectionName();
+        String sectionName = subTabsHolder.getSectionName();
         String prop_file_path_str = "./settings/" + sectionName + ".prop";
         System.out.println("----- Save pane order of '" + sectionName + "' section -----");
 
         // 全タブ（SubSectionに相当）配置されているコンポーネントの順番を把握し、propertyへ書き込む
         Component[] components = null;
-        OneDEResultPane RCAIOne_deResultPane = null;
+        OneDEResultPane onteDEResultPane = null;
         ArrayList<String> arrayList_PanelOrder = new ArrayList<>();
         propManager = createPropertyManager(prop_file_path_str);
-        for (ManagerOfSubTabBasePane managerOfSubTabBasePaneRCAI : arrayList_of_managerOfSubTabBasePaneRCAI) {
-            String subSectionName = managerOfSubTabBasePaneRCAI.getSubSectionName();
+        for (ManagerOfSubTabBasePane managerOfSubTabBasePane : arrayList_of_managerOfSubTabBasePane) {
+            String subSectionName = managerOfSubTabBasePane.getSubSectionName();
             //System.out.println("subSectionName: " + subSectionName);
-            JPanel subSectionPanel = managerOfSubTabBasePaneRCAI.getBasePaneForDEResultPanes();
+            JPanel subSectionPanel = managerOfSubTabBasePane.getBasePaneForDEResultPanes();
             components = subSectionPanel.getComponents();
             for (int i = 0; i < components.length; i++) {
                 Object component = components[i];
                 if (component instanceof OneDEResultPane) {
-                    RCAIOne_deResultPane = ((OneDEResultPane) components[i]);
-                    String jsonName = RCAIOne_deResultPane.getJsonName();
+                    onteDEResultPane = ((OneDEResultPane) components[i]);
+                    String jsonName = onteDEResultPane.getJsonName();
                     //System.out.println("  DEResultPane No. " + i + ": " + jsonName);
                     arrayList_PanelOrder.add(jsonName);
                 }
             }
-            propManager.setProperty(subSectionName, Joiner.joinWithSemicolon(arrayList_PanelOrder));
+            propManager.setProperty(subSectionName, joinWithSemicolon(arrayList_PanelOrder));
             arrayList_PanelOrder.clear();
         }
         propManager.writeoutProperties();
-        propManager=null;
+        propManager = null;
     }
 
     private void savePaneOrderOf_NM_Tab() {
@@ -92,10 +92,10 @@ public class SavePaneOrderAction extends AbstActionMember {
         OneDEResultPane oneDEResultPane = null;
         ArrayList<String> arrayList_PanelOrder = new ArrayList<>();
         propManager = createPropertyManager(prop_file_path_str);
-        for (ManagerOfSubTabBasePane managerOfSubTabBasePaneNM : arrayList_of_managerOfSubTabBasePaneNMRCAI) {
-            String subSectionName = managerOfSubTabBasePaneNM.getSubSectionName();
+        for (ManagerOfSubTabBasePane managerOfSubTabBasePane : arrayList_of_managerOfSubTabBasePaneNMRCAI) {
+            String subSectionName = managerOfSubTabBasePane.getSubSectionName();
             System.out.println("subSectionName: " + subSectionName);
-            JPanel subSectionPanel = managerOfSubTabBasePaneNM.getBasePaneForDEResultPanes();
+            JPanel subSectionPanel = managerOfSubTabBasePane.getBasePaneForDEResultPanes();
             components = subSectionPanel.getComponents();
             for (int i = 0; i < components.length; i++) {
                 Object component = components[i];
@@ -106,13 +106,12 @@ public class SavePaneOrderAction extends AbstActionMember {
                     arrayList_PanelOrder.add(jsonName);
                 }
             }
-            propManager.setProperty(subSectionName, Joiner.joinWithSemicolon(arrayList_PanelOrder));
+            propManager.setProperty(subSectionName, joinWithSemicolon(arrayList_PanelOrder));
             arrayList_PanelOrder.clear();
         }
         propManager.writeoutProperties();
-        propManager=null;
+        propManager = null;
     }
-
 
 
     public void setCHolderMediator(CHolderMediator cHolderMediator) {
@@ -133,21 +132,8 @@ public class SavePaneOrderAction extends AbstActionMember {
     }
 
 
-    class Joiner {
-        public static String joinWithSemicolon(ArrayList<String> list) {
-            return String.join(";", list);
-        }
-
-        public static void main(String[] args) {
-            ArrayList<String> items = new ArrayList<>();
-            items.add("apple");
-            items.add("banana");
-            items.add("cherry");
-
-            String result = joinWithSemicolon(items);
-            System.out.println(result);  // apple;banana;cherry
-        }
+    public static String joinWithSemicolon(ArrayList<String> list) {
+        return String.join(";", list);
     }
-
 
 }

@@ -85,4 +85,8 @@ public class ManagerOfSubTabBasePane {
     public String getSubSectionName() {
         return subSectionName;
     }
+
+    public NotePane getNotePane() {
+        return notePane;
+    }
 }
