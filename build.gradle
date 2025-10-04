@@ -33,7 +33,7 @@ jar{
 
 task fatJar(type: Jar) {
     manifest {
-        attributes 'Main-Class': 'iu.LCAC.Startup.Starter01.Starter'
+        attributes 'Main-Class': 'iu.LCAC.Startup.Starter02.Starter'
     }
     archiveClassifier = 'all'
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE

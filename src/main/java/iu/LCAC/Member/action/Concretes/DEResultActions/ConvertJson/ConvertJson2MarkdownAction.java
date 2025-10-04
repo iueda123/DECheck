@@ -1,4 +1,4 @@
-package iu.LCAC.Member.action.Concretes.Sample.run_a_bash_script;
+package iu.LCAC.Member.action.Concretes.DEResultActions.ConvertJson;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
@@ -15,13 +15,13 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-public class RunABashScriptAction extends AbstActionMember {
+public class ConvertJson2MarkdownAction extends AbstActionMember {
 
-    private final String scriptFilePathStr = "src/main/java/iu/LCAC/Member/action/Concretes/Sample/run_a_bash_script/convertJson2Markdown.sh";
+    private final String scriptFilePathStr = "java/iu/LCAC/Member/action/Concretes/DEResultActions/ConvertJson2Markdown/convertJson2Markdown.sh";
 
     static final String SettingPropertyFilePath = "./settings/ActionControlledComponentFramework/settings.prop";
 
-    public RunABashScriptAction(String action_name, String short_name) {
+    public ConvertJson2MarkdownAction(String action_name, String short_name) {
         super(action_name, short_name);
     }
 

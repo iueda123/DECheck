@@ -1,12 +1,11 @@
-package iu.LCAC.Startup.Starter01;
+package iu.LCAC.Startup.Starter02;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Concretes.MainWindow.MainWindowHolder;
 import iu.LCAC.Utils.AutoCompleteCommandBox;
-
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
 
 public class CmdExecutorCreator {
   private final CHolderMediator cholderMediator;

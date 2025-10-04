@@ -59,6 +59,41 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
         /* *** children of main_menu_1 *** */
         AbstActionMemberFactory actionMemberFactory;
 
+        /* **** Core Actions **** */
+
+        actionMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.action.Concretes.CoreActions.Save_and_Load.LoadAcceleratorSettingsActionFactory",
+                        AbstActionMemberFactory.class);
+        AbstActionMember loadAcceleratorSettingsAction =
+                actionMemberFactory.createAction("load_accelerator_settings", "Load Accelerator");
+        loadAcceleratorSettingsAction.setActionMediator(this);
+        loadAcceleratorSettingsAction.initialize();
+        registerMemberToMap(loadAcceleratorSettingsAction);
+
+        actionMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.action.Concretes.CoreActions.Save_and_Load.SaveAcceleratorSettingsActionFactory",
+                        AbstActionMemberFactory.class);
+        AbstActionMember saveAcceleratorSettingsAction =
+                actionMemberFactory.createAction("save_accelerator_settings", "Save Accelerator");
+        saveAcceleratorSettingsAction.setActionMediator(this);
+        saveAcceleratorSettingsAction.initialize();
+        registerMemberToMap(saveAcceleratorSettingsAction);
+
+        actionMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.action.Concretes.CoreActions.SetAcceleratorOnNextClick.SetAcceleratorOnNextClickActionFactory",
+                        AbstActionMemberFactory.class);
+        AbstActionMember setAcceleratorOnNextClickAction =
+                actionMemberFactory.createAction("set_acceleration_on_next_click", "Setup Accelerator");
+        setAcceleratorOnNextClickAction.setActionMediator(this);
+        setAcceleratorOnNextClickAction.initialize();
+        registerMemberToMap(setAcceleratorOnNextClickAction);
+
+
+        /* **** Sample Actions **** */
+
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
                         "iu.LCAC.Member.action.Concretes.Sample.change_west_color.ChangeWestColorActionFactory",
@@ -112,36 +147,6 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.CoreActions.Save_and_Load.LoadAcceleratorSettingsActionFactory",
-                        AbstActionMemberFactory.class);
-        AbstActionMember loadAcceleratorSettingsAction =
-                actionMemberFactory.createAction("load_accelerator_settings", "Load Accelerator");
-        loadAcceleratorSettingsAction.setActionMediator(this);
-        loadAcceleratorSettingsAction.initialize();
-        registerMemberToMap(loadAcceleratorSettingsAction);
-
-        actionMemberFactory =
-                MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.CoreActions.Save_and_Load.SaveAcceleratorSettingsActionFactory",
-                        AbstActionMemberFactory.class);
-        AbstActionMember saveAcceleratorSettingsAction =
-                actionMemberFactory.createAction("save_accelerator_settings", "Save Accelerator");
-        saveAcceleratorSettingsAction.setActionMediator(this);
-        saveAcceleratorSettingsAction.initialize();
-        registerMemberToMap(saveAcceleratorSettingsAction);
-
-        actionMemberFactory =
-                MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.CoreActions.SetAcceleratorOnNextClick.SetAcceleratorOnNextClickActionFactory",
-                        AbstActionMemberFactory.class);
-        AbstActionMember setAcceleratorOnNextClickAction =
-                actionMemberFactory.createAction("set_acceleration_on_next_click", "Setup Accelerator");
-        setAcceleratorOnNextClickAction.setActionMediator(this);
-        setAcceleratorOnNextClickAction.initialize();
-        registerMemberToMap(setAcceleratorOnNextClickAction);
-
-        actionMemberFactory =
-                MemberFactoryLoader.loadFactory(
                         "iu.LCAC.Member.action.Concretes.Sample.change_text_of_textfield.ChangeTextOfTextFieldWithArgActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember changeTextOfTextFieldAction =
@@ -160,7 +165,7 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
         runABashScriptAction.initialize();
         registerMemberToMap(runABashScriptAction);
 
-        // Initialization
+        /* **** Initialization **** */
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
@@ -239,6 +244,18 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
         loadNotePaneAction.setActionMediator(this);
         loadNotePaneAction.initialize();
         registerMemberToMap(loadNotePaneAction);
+
+        /* **** Processing **** */
+
+        actionMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.action.Concretes.DEResultActions.ConvertJson.ConvertJson2MarkdownActionFactory",
+                        AbstActionMemberFactory.class);
+        AbstActionMember convertJson2MarkdownAction =
+                actionMemberFactory.createAction("convert_json_2_markdown", "Convert JSON 2 Markdown");
+        convertJson2MarkdownAction.setActionMediator(this);
+        convertJson2MarkdownAction.initialize();
+        registerMemberToMap(convertJson2MarkdownAction);
 
     }
 
