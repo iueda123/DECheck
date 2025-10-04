@@ -13,11 +13,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RunABashScriptAction extends AbstActionMember {
 
-    private final String scriptFilePathStr = "src/main/java/iu/LCAC/Member/action/Concretes/Sample/run_a_bash_script/convertJson2Markdown.sh";
+    private final String scriptFilePathStr = "src/main/java/iu/LCAC/Member/action/Concretes/Sample/run_a_bash_script/show_popup.sh";
 
     static final String SettingPropertyFilePath = "./settings/ActionControlledComponentFramework/settings.prop";
 
@@ -36,10 +37,10 @@ public class RunABashScriptAction extends AbstActionMember {
         System.out.println("");
         System.out.println("---- perform() in " + this.getClass().toString() + " was called. ----");
 
-        String[] cmd_and_args = getActionCommandAndArgs(action_event, false);
-        String cmd_and_args_in_a_line = "";
-        for (String cmd_and_arg : cmd_and_args) {
-            cmd_and_args_in_a_line = cmd_and_args_in_a_line + " " + cmd_and_arg;
+        String[] strings_passed_from_action_event = getActionCommandAndArgs(action_event, false);
+        String cmd_and_args_in_a_line = strings_passed_from_action_event[0];
+        for (int i =1; i < strings_passed_from_action_event.length; i++) {
+            cmd_and_args_in_a_line = cmd_and_args_in_a_line + " " + strings_passed_from_action_event[i];
         }
         System.out.println("cmd_and_args_in_a_line: "  + cmd_and_args_in_a_line);
 
@@ -50,9 +51,9 @@ public class RunABashScriptAction extends AbstActionMember {
         StatusPanelHolder statusPanelHolder = (StatusPanelHolder) this.cholderMediator.getInstanceOfAMember("status_panel_holder");
 
         // Core
-        if (cmd_and_args.length > 1) {
-            onRun(cmd_and_args);
-            statusPanelHolder.showAMessageForWhile("'" + cmd_and_args_in_a_line + "' was called.", 3000);
+        if (strings_passed_from_action_event.length > 1) {
+            onRun(strings_passed_from_action_event);
+            statusPanelHolder.showAMessageForWhile("'" + cmd_and_args_in_a_line + "' was called.", 10000);
         } else {
             JOptionPane.showMessageDialog(null, "引数を１つ指定してください。", "エラー", JOptionPane.ERROR_MESSAGE);
             //onRun(new String[0]);
@@ -86,6 +87,11 @@ public class RunABashScriptAction extends AbstActionMember {
     private ScriptWorker worker; // SwingWorker への参照
 
     private void onRun(String[] args) {
+
+        for (int i =0; i < args.length; i++) {
+            System.out.println(" * arg[" + i + "]: " + args[i]);
+        }
+        System.out.println("");
 
         if (worker != null && !worker.isDone()) return; // 二重起動防止
 
@@ -124,7 +130,17 @@ public class RunABashScriptAction extends AbstActionMember {
 
         @Override
         protected Integer doInBackground() {
-            ProcessBuilder pb = new ProcessBuilder("/bin/bash", scriptPath, args[1]);
+
+            // コマンドリストを構築: /bin/bash, scriptPath, args[1], args[2], ...
+            List<String> command = new ArrayList<>();
+            command.add("/bin/bash");
+            command.add(scriptPath);
+            // args[0]はコマンド名なので、args[1]以降をスクリプトへの引数として追加
+            for (int i = 1; i < args.length; i++) {
+                command.add(args[i]);
+            }
+
+            ProcessBuilder pb = new ProcessBuilder(command);
             pb.redirectErrorStream(true); // stderr を stdout に統合
 
             try {

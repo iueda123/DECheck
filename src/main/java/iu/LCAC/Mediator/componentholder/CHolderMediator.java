@@ -53,6 +53,8 @@ public class CHolderMediator implements MediatorIntrfc {
         statusPanelHolder.initialize();
         registerMemberToMap(statusPanelHolder);
 
+        /* **** Samples **** */
+
         chMemberFactory =
                 MemberFactoryLoader.loadFactory(
                         "iu.LCAC.Member.componentholder.Concretes.Sample.ButtonPanel.ButtonPanelHolderFactory",
@@ -82,6 +84,16 @@ public class CHolderMediator implements MediatorIntrfc {
         textFieldPanelHolder.setCHolderMediator(this);
         textFieldPanelHolder.initialize();
         registerMemberToMap(textFieldPanelHolder);
+
+        chMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.componentholder.Concretes.Sample.RunBashPanel.RunBashPanelHolderFactory",
+                        AbstCHolderMemberFactory.class);
+        AbstCHolderMember runBashPanelHolder =
+                chMemberFactory.createCHolder("run_bash_panel_holder", "Run Bash Panel Holder");
+        runBashPanelHolder.setCHolderMediator(this);
+        runBashPanelHolder.initialize();
+        registerMemberToMap(runBashPanelHolder);
 
         /* 1. SI */
         chMemberFactory =

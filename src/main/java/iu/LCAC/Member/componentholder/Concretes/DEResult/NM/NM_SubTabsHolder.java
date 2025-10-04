@@ -2,6 +2,7 @@ package iu.LCAC.Member.componentholder.Concretes.DEResult.NM;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
+import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.ManagerOfSubTabBasePane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_ARSL_Style_Pane;
@@ -142,13 +143,14 @@ public class NM_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
                 String sectionName = oneDEResultPane.getSectionName();
                 String subSectionName = oneDEResultPane.getSubSectionName();
 
+                AbstActionMember abstActionMember = actionMediator.getInstanceOfAMember("initialize_nm_tabpanes");
                 // jsonNameを引数として渡すためにActionEventを作成
                 ActionEvent customEvent = new ActionEvent(
                         this,
                         ActionEvent.ACTION_PERFORMED,
                         "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName
                 );
-                actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
+               abstActionMember.perform(customEvent);
             }
 
             for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_3.getDePaneArray()) {

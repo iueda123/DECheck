@@ -36,6 +36,9 @@ public class BasePaneCreator {
     basePane.add(
         (cHolderMediator.getInstanceOfAMember("text_field_panel_holder")).getBaseComponent(),
         BorderLayout.EAST);
+    basePane.add(
+            (cHolderMediator.getInstanceOfAMember("run_bash_panel_holder")).getBaseComponent(),
+            BorderLayout.SOUTH);
 
     return basePane;
   }
