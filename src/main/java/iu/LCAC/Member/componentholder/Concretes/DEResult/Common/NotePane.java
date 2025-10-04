@@ -18,24 +18,36 @@ public class NotePane extends JPanel {
     JTabbedPane parentTabbedPanel;
 
     ColorChangeableTextField tFiled_Status = new ColorChangeableTextField("");
+    final String tooltipForStatusFiled = "先頭文字がタブに表示される。タブ視認性向上のために使う。";
     ColorChangeableTextArea tArea_Note = new ColorChangeableTextArea("");
+    final String tooltipForNoteArea = "自由記載ノート。";
 
     public NotePane(String sectionName, String subSectionName, JTabbedPane parentTabbedPanel) {
         this.sectionName = sectionName;
         this.subSectionName = subSectionName;
         this.parentTabbedPanel = parentTabbedPanel;
 
+        // Status
+        tFiled_Status.setToolTipText(tooltipForStatusFiled);
+        tFiled_Status.setPreferredSize(new Dimension(50, 100));
+
+        // Note
+        tArea_Note.setToolTipText(tooltipForNoteArea);
+
+        //deploy
+        setLayout(new BorderLayout());
+        add(tFiled_Status, BorderLayout.WEST);
+        JScrollPane scrollPane = new JScrollPane(tArea_Note);
+        add(scrollPane, BorderLayout.CENTER);
+
+        //For debug
         this.updateTabTitleButton.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 updateTabTitle();
             }
         });
-
-        setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-        add(tFiled_Status);
-        add(tArea_Note);
-        add(updateTabTitleButton);
+        //add(updateTabTitleButton);
     }
 
     private void saveNoteArea() {

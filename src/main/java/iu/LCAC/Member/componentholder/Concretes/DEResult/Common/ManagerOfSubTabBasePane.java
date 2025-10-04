@@ -36,7 +36,7 @@ public class ManagerOfSubTabBasePane {
         basePane.setLayout(new BoxLayout(basePane, BoxLayout.Y_AXIS));
 
         // NotePane を配置
-        notePane.setPreferredSize(new Dimension(600, 50));
+        notePane.setPreferredSize(new Dimension(600, 150));
         basePane.add(notePane);
 
         // OneDEResultPane たちを配置

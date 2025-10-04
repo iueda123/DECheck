@@ -229,12 +229,6 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
                 actionMediator.getInstanceOfAMember("initialize_rcai_tabpanes").perform(customEvent);
             }
 
-
-            /* パネル順序のロード */
-            actionMediator
-                    .getInstanceOfAMember("load_pane_order")
-                    .perform(new ActionEvent(this, 0, "Load Panel Order."));
-
         } else {
             System.err.println("actionMediator is null in postInitialize() @ " + this.getClass());
         }

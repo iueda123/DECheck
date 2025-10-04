@@ -20,14 +20,21 @@ public class OneDEResultPane extends JPanel {
     JButton loadButton = new JButton("Load");
     JButton saveButton = new JButton("Save");
 
-    ColorChangeableTextField tField_jsonName = new ColorChangeableTextField("jsonName");
+    ColorChangeableTextField tField_jsonName = new ColorChangeableTextField("JSON File Name");
+    private final String tooltipForJsonName = "JSON File Name";
     ColorChangeableTextArea tArea_Answer = new ColorChangeableTextArea("Answer");
+    private final String tooltipForAnswer = "Answer";
     ColorChangeableTextField tFiled_ConfidenceRating = new ColorChangeableTextField("Confidence Rating");
+    private final String tooltipForConfidenceRating = "Confidence Rating";
     ColorChangeableTextField tField_NegativeAnswerCategory = new ColorChangeableTextField("Negative Answer Category");
+    private final String tooltipForNegativeAnswerCategory = "Negative Answer Category";
 
     ColorChangeableTextArea tArea_Reason = new ColorChangeableTextArea("Reason");
+    private final String tooltipForReason = "Reason";
     ColorChangeableTextArea tArea_SupportingText = new ColorChangeableTextArea("Supporting Text");
+    private final String tooltipForSupportingTextr = "Supporting Text";
     ColorChangeableTextArea tArea_PageLine = new ColorChangeableTextArea("Page Line");
+    private final String tooltipForPageLin = "Page Line";
 
     public OneDEResultPane(String jsonName, String sectionName, String subSectionName) {
         this.jsonName = jsonName;
@@ -36,6 +43,7 @@ public class OneDEResultPane extends JPanel {
 
         tArea_Answer.setLineWrap(true);
         tArea_Answer.setWrapStyleWord(true);
+        tArea_Answer.setToolTipText(tooltipForAnswer);
 
         tArea_Reason.setLineWrap(true);
         tArea_Reason.setWrapStyleWord(true);
