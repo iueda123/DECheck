@@ -69,7 +69,7 @@ public class Initialize_RCAI_TabPanes_Action extends AbstActionMember {
             if (subTabsHolder != null) {
 
                 One_ARSL_Style_Pane trtgDEResultPane = (One_ARSL_Style_Pane) subTabsHolder.getResultPane(jsonFileName, sectionName, subSectionName);
-                trtgDEResultPane.setValTo_JsonName(jsonFileName);
+                trtgDEResultPane.updateRegisteredJsonName(jsonFileName);
                 trtgDEResultPane.setValTo_Answer(answer);
                 trtgDEResultPane.setValTo_ConfidenceRating(confidenceRating);
                 trtgDEResultPane.setValTo_NegativeAnswerCategory(negativeAnswerCategory);

@@ -58,27 +58,13 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         tArea_Location.setWrapStyleWord(true);
         tArea_Location.setToolTipText(tooltip_Location);
 
-        saveButton.addActionListener(
-                new AbstractAction() {
-                    @Override
-                    public void actionPerformed(ActionEvent actionEvent) {
-                        saveJson();
-                    }
-                });
-
-        loadButton.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                loadJson();
-            }
-        });
 
         setLayout(new BorderLayout());
 
         /* North Area */
         Box northBox = Box.createVerticalBox();
 
-
+        //NorthSubPane1
         JPanel northSubPane1 = new JPanel(new BorderLayout());
         northSubPane1.setPreferredSize(new Dimension(600, 75));
 
@@ -86,14 +72,12 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         scrollPane_Answer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane_Answer.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         northSubPane1.add(scrollPane_Answer, BorderLayout.CENTER);
-        northSubPane1.add(new PanelMoverPane(), BorderLayout.EAST);
         northBox.add(northSubPane1);
 
+        //NorthSubPane2
         Box northSubBox2 = Box.createHorizontalBox();
         northSubBox2.add(tFiled_ConfidenceRating);
         northSubBox2.add(tField_NegativeAnswerCategory);
-        northSubBox2.add(loadButton);
-        northSubBox2.add(saveButton);
         northBox.add(northSubBox2);
         add(northBox, BorderLayout.NORTH);
 
@@ -120,6 +104,20 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         /* South Area */
         Box southBox = Box.createHorizontalBox();
         southBox.add(new JLabel(" "));
+
+        //SouthSubPane1
+        Box southSubBox1 = Box.createHorizontalBox();
+        southSubBox1.add(Box.createHorizontalGlue());
+        southSubBox1.add(saveButton);
+        southSubBox1.add(loadButton);
+        southSubBox1.add(jsonFileNameEditButton);
+        southSubBox1.add(new PanelMoverPane(), BorderLayout.EAST);
+        southBox.add(southSubBox1);
+
+        //SouthSubPane2
+        Box southSubBox2 = Box.createHorizontalBox();
+        southSubBox2.add(new JLabel(" "));
+        southBox.add(southSubBox2);
 
         add(southBox, BorderLayout.SOUTH);
 
@@ -154,7 +152,6 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
     public void setValTo_PageLine(String value) {
         tArea_Location.setText(value);
     }
-
 
 
     protected void loadJson() {
@@ -217,6 +214,7 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
             System.err.println("Failed to save to " + jsonFilePath.toFile().getAbsolutePath());
         }
     }
+
 
     @Override
     public void resetBackgroundColorOfTAreasTFields() {

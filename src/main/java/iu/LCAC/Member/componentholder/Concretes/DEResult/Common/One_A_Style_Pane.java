@@ -22,24 +22,9 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
         tArea_Answer.setWrapStyleWord(true);
         tArea_Answer.setToolTipText(tooltipForAnswer);
 
-        saveButton.addActionListener(
-                new AbstractAction() {
-                    @Override
-                    public void actionPerformed(ActionEvent actionEvent) {
-                        saveJson();
-                    }
-                });
-
-        loadButton.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                loadJson();
-            }
-        });
-
         setLayout(new BorderLayout());
 
-        /* North Area */
+        /* Setup North Area */
         Box northBox = Box.createVerticalBox();
         JPanel northSubPane1 = new JPanel(new BorderLayout());
         northSubPane1.setPreferredSize(new Dimension(600, 75));
@@ -48,17 +33,19 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
         scrollPane_Answer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane_Answer.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         northSubPane1.add(scrollPane_Answer, BorderLayout.CENTER);
-        northSubPane1.add(new PanelMoverPane(), BorderLayout.EAST);
         northBox.add(northSubPane1);
 
         Box northSubBox2 = Box.createHorizontalBox();
-        northSubBox2.add(loadButton);
+        northSubBox2.add(Box.createHorizontalGlue());
         northSubBox2.add(saveButton);
+        northSubBox2.add(loadButton);
+        northSubBox2.add(jsonFileNameEditButton);
+        northSubBox2.add(new PanelMoverPane());
         northBox.add(northSubBox2);
 
         add(northBox, BorderLayout.NORTH);
 
-        /* Center Area */
+        /* Setup Center Area */
 
         /* Finalization */
         setBorder(BorderFactory.createTitledBorder(jsonName));

@@ -6,19 +6,22 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public abstract class One_DEResult_Pane_Abs extends JPanel {
 
     final String jsonFolderPathStr;
-    final String jsonName;
+    String jsonName;
     final String sectionName;
     final String subSectionName;
 
     ColorChangeableTextField tField_jsonName = new ColorChangeableTextField("JSON File Name");
-    private final String tooltipForJsonName = "JSON File Name";
+    String tooltipForJsonName = "JSON File Name";
 
-    JButton loadButton = new JButton("Load");
-    JButton saveButton = new JButton("Save");
+    JButton loadButton = new JButton("load");
+    JButton saveButton = new JButton("save");
+    JButton jsonFileNameEditButton = new JButton("edit json name");
 
     public One_DEResult_Pane_Abs(
             String jsonFolderPathStr,
@@ -27,6 +30,30 @@ public abstract class One_DEResult_Pane_Abs extends JPanel {
         this.jsonName = jsonName;
         this.sectionName = sectionName;
         this.subSectionName = subSectionName;
+
+
+        saveButton.addActionListener(
+                new AbstractAction() {
+                    @Override
+                    public void actionPerformed(ActionEvent actionEvent) {
+                        saveJson();
+                    }
+                });
+
+        loadButton.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loadJson();
+            }
+        });
+
+        jsonFileNameEditButton.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                changeJsonFileName();
+            }
+        });
+
     }
 
     protected abstract void saveJson();
@@ -49,7 +76,7 @@ public abstract class One_DEResult_Pane_Abs extends JPanel {
         return sectionName;
     }
 
-    public void setValTo_JsonName(String value) {
+    public void updateRegisteredJsonName(String value) {
         tField_jsonName.setText(value);
         setBorder(BorderFactory.createTitledBorder(value));
     }
@@ -63,7 +90,7 @@ public abstract class One_DEResult_Pane_Abs extends JPanel {
         JButton moveDownButton = new JButton("↓");
 
         PanelMoverPane() {
-            setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+            setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
             add(moveUpButton);
             add(moveDownButton);
             moveDownButton.addActionListener(new ActionListener() {
@@ -187,4 +214,69 @@ public abstract class One_DEResult_Pane_Abs extends JPanel {
         }
 
     }
+
+    protected void changeJsonFileName(){
+        System.out.println("Start editing JSON file name");
+
+        String newJsonName = (String) JOptionPane.showInputDialog(
+                this,
+                "JSONファイル名を入力してください:",
+                "JSONファイル名変更",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                null,
+                jsonName
+        );
+
+        if (newJsonName == null || newJsonName.trim().isEmpty() || newJsonName.equals(jsonName)) {
+            return;
+        }
+
+        Path oldFilePath = Paths.get(jsonFolderPathStr, jsonName);
+        Path newFilePath = Paths.get(jsonFolderPathStr, newJsonName);
+
+        if (!oldFilePath.toFile().exists()) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "元のJSONファイルが見つかりません: " + oldFilePath.toAbsolutePath(),
+                    "エラー",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
+        if (newFilePath.toFile().exists()) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "同名のファイルが既に存在します: " + newJsonName,
+                    "エラー",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
+        try {
+            java.nio.file.Files.move(oldFilePath, newFilePath);
+            jsonName = newJsonName;
+            tField_jsonName.setText(jsonName);
+            updateRegisteredJsonName(jsonName);
+            tField_jsonName.updateDefaultValue();
+            JOptionPane.showMessageDialog(
+                    this,
+                    "JSONファイル名を変更しました: " + newJsonName,
+                    "成功",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+            System.out.println("Successfully renamed to " + newFilePath.toAbsolutePath());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "ファイル名の変更に失敗しました: " + e.getMessage(),
+                    "エラー",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            e.printStackTrace();
+        }
+    }
+
 }

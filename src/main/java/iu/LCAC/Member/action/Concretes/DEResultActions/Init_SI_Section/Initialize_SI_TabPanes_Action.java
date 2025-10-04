@@ -59,7 +59,7 @@ public class Initialize_SI_TabPanes_Action extends AbstActionMember {
             if (subTabsHolder != null) {
 
                 One_A_Style_Pane trtgDEResultPane = (One_A_Style_Pane) subTabsHolder.getResultPane(jsonFileName, sectionName, subSectionName);
-                trtgDEResultPane.setValTo_JsonName(jsonFileName);
+                trtgDEResultPane.updateRegisteredJsonName(jsonFileName);
                 trtgDEResultPane.setValTo_Answer(answer);
 
                 trtgDEResultPane.resetBackgroundColorOfTAreasTFields();
