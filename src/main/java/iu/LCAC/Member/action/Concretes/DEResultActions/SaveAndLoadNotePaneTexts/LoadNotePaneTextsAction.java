@@ -9,6 +9,7 @@ import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.NotePane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.SubTabsHolderItrfc;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.SI.SI_SubTabsHolder;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -35,11 +36,10 @@ public class LoadNotePaneTextsAction extends AbstActionMember {
         System.out.println("");
         System.out.println("perform() in " + this.getClass().toString() + " was called.");
 
-        // TODO: 全セクションに拡張
+        // 全セクションに拡張可能
+        loadNotePaneTexts("SI", "./settings/NotePane/" + "study_identification" + ".prop");
         loadNotePaneTexts("RCAI", "./settings/NotePane/" + "reference_cohort_and_imaging" + ".prop");
         loadNotePaneTexts("NM", "./settings/NotePane/" + "normative_modeling" + ".prop");
-
-
     }
 
     /**
@@ -50,6 +50,10 @@ public class LoadNotePaneTextsAction extends AbstActionMember {
         AbstCHolderMember member = null;
         SubTabsHolderItrfc subTabsHolder = null;
         switch (member_name_key_word) {
+            case "SI":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_SI");
+                subTabsHolder = (SI_SubTabsHolder) member;
+                break;
             case "RCAI":
                 member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI");
                 subTabsHolder = (RCAI_SubTabsHolder) member;
