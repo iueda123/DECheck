@@ -13,7 +13,9 @@ public class NotePane extends JPanel {
 
     final String sectionName;
     final String subSectionName;
-    JButton updateTabTitleButton = new JButton("update tab title");
+
+    JButton editJsonFileNameButton = new JButton("Unknown.json");
+    JButton updateTabTitleButton = new JButton("update tab title"); //For debug
 
     JTabbedPane parentTabbedPanel;
 
@@ -23,24 +25,40 @@ public class NotePane extends JPanel {
     final String tooltipForNoteArea = "自由記載ノート。";
 
     public NotePane(String sectionName, String subSectionName, JTabbedPane parentTabbedPanel) {
+
+        // Initialization
         this.sectionName = sectionName;
         this.subSectionName = subSectionName;
         this.parentTabbedPanel = parentTabbedPanel;
+        this.setLayout(new BorderLayout());
+        JPanel northPane = new JPanel(new BorderLayout());
+        JPanel centerPane = new JPanel(new BorderLayout());
+        JPanel southPane = new JPanel(new BorderLayout());
 
-        // Status
+        // Json File Name Edit Button
+        northPane.add(editJsonFileNameButton, BorderLayout. WEST);
+
+        // Status TextField
         tFiled_Status.setToolTipText(tooltipForStatusFiled);
-        tFiled_Status.setPreferredSize(new Dimension(50, 100));
-        //tFiled_Status.setMinimumSize(new Dimension(600, 100));
-        //tFiled_Status.setMaximumSize(new Dimension(600, 100));
+        northPane.add(tFiled_Status);
 
-        // Note
+        // Note Text Area
         tArea_Note.setToolTipText(tooltipForNoteArea);
-
-        //deploy
-        setLayout(new BorderLayout());
-        add(tFiled_Status, BorderLayout.WEST);
         JScrollPane scrollPane = new JScrollPane(tArea_Note);
-        add(scrollPane, BorderLayout.CENTER);
+        centerPane.add(scrollPane, BorderLayout.CENTER);
+
+        // Separator
+        southPane.add(new JLabel(" "));
+
+        // Finalization
+        this.add(northPane, BorderLayout.NORTH);
+        this.add(centerPane, BorderLayout.CENTER);
+        this.add(southPane, BorderLayout.SOUTH);
+        northPane.setMaximumSize(new Dimension(600, 100));
+        centerPane.setMinimumSize(new Dimension(600, 200));
+        //centerPane.setMaximumSize(new Dimension(600, 200));
+        //centerPane.setPreferredSize(new Dimension(600, 200));
+        southPane.setMaximumSize(new Dimension(600, 100));
 
         //For debug
         this.updateTabTitleButton.addActionListener(new AbstractAction() {
