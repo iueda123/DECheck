@@ -45,6 +45,16 @@ public class CHolderMediator implements MediatorIntrfc {
 
         chMemberFactory =
                 MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.componentholder.Concretes.StatusPanel.StatusPanelHolderFactory",
+                        AbstCHolderMemberFactory.class);
+        AbstCHolderMember statusPanelHolder =
+                chMemberFactory.createCHolder("status_panel_holder", "Status Panel Holder");
+        statusPanelHolder.setCHolderMediator(this);
+        statusPanelHolder.initialize();
+        registerMemberToMap(statusPanelHolder);
+
+        chMemberFactory =
+                MemberFactoryLoader.loadFactory(
                         "iu.LCAC.Member.componentholder.Concretes.Sample.ButtonPanel.ButtonPanelHolderFactory",
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember buttonPanelHolder =

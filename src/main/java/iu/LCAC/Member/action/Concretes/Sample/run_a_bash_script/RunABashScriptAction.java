@@ -3,8 +3,7 @@ package iu.LCAC.Member.action.Concretes.Sample.run_a_bash_script;
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
-import iu.LCAC.Member.componentholder.Concretes.Sample.TextField.TextFieldPanelHolder;
-import iu.LCAC.Utils.PropertyManager_v5;
+import iu.LCAC.Member.componentholder.Concretes.StatusPanel.StatusPanelHolder;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -18,8 +17,9 @@ import java.util.List;
 
 public class RunABashScriptAction extends AbstActionMember {
 
-    static final String SettingPropertyFilePath =
-            "./settings/ActionControlledComponentFramework/settings.prop";
+    private final String scriptFilePathStr = "src/main/java/iu/LCAC/Member/action/Concretes/Sample/run_a_bash_script/show_popup.sh";
+
+    static final String SettingPropertyFilePath = "./settings/ActionControlledComponentFramework/settings.prop";
 
     public RunABashScriptAction(String action_name, String short_name) {
         super(action_name, short_name);
@@ -33,23 +33,30 @@ public class RunABashScriptAction extends AbstActionMember {
 
     @Override
     public void perform(ActionEvent action_event) {
-        System.out.println("perform() in " + this.getClass().toString() + " was called.");
+        System.out.println("");
+        System.out.println("---- perform() in " + this.getClass().toString() + " was called. ----");
 
         String[] cmd_and_args = getActionCommandAndArgs(action_event, false);
+        String cmd_and_args_in_a_line = "";
+        for (String cmd_and_arg : cmd_and_args) {
+            cmd_and_args_in_a_line = cmd_and_args_in_a_line + " " + cmd_and_arg;
+        }
+        System.out.println("cmd_and_args_in_a_line: "  + cmd_and_args_in_a_line);
 
         // Load Properties
-        PropertyManager_v5 prop_manager = createPropertyManager(SettingPropertyFilePath);
+        propManager = createPropertyManager(SettingPropertyFilePath);
 
-        // Preparation of Components
-        TextFieldPanelHolder text_field_panel_holder =
-                (TextFieldPanelHolder) this.cholderMediator.getInstanceOfAMember("text_field_panel_holder");
+        // Prepare the components you want to integrate
+        StatusPanelHolder statusPanelHolder = (StatusPanelHolder) this.cholderMediator.getInstanceOfAMember("status_panel_holder");
 
         // Core
-            if (cmd_and_args.length > 1) {
-                onRun(cmd_and_args);
-            }else{
-                onRun(new String[0]);
-            }
+        if (cmd_and_args.length > 1) {
+            onRun(cmd_and_args);
+            statusPanelHolder.showAMessageForWhile("'" + cmd_and_args_in_a_line + "' was called.", 3000);
+        } else {
+            JOptionPane.showMessageDialog(null, "引数を１つ指定してください。", "エラー", JOptionPane.ERROR_MESSAGE);
+            //onRun(new String[0]);
+        }
     }
 
     @Override
@@ -71,7 +78,7 @@ public class RunABashScriptAction extends AbstActionMember {
     }
 
 
-    private final JTextField scriptPathField = new JTextField("./show_popup.sh");
+    private final JTextField scriptPathField = new JTextField("");
     private final JButton runButton = new JButton("実行");
     private final JButton cancelButton = new JButton("中止");
     private final JTextArea outputArea = new JTextArea(16, 60);
@@ -89,8 +96,7 @@ public class RunABashScriptAction extends AbstActionMember {
         cancelButton.setEnabled(true);
 
         //String script = scriptPathField.getText().trim();
-        String script = "src/main/java/iu/LCAC/Member/action/Concretes/Sample/run_a_bash_script/show_popup.sh";
-        worker = new ScriptWorker(script,  args);
+        worker = new ScriptWorker(scriptFilePathStr, args);
         worker.execute();
     }
 
@@ -101,7 +107,9 @@ public class RunABashScriptAction extends AbstActionMember {
         }
     }
 
-    /** Bash スクリプトをバックグラウンドで実行し、出力を publish/process で逐次表示する */
+    /**
+     * Bash スクリプトをバックグラウンドで実行し、出力を publish/process で逐次表示する
+     */
     private class ScriptWorker extends SwingWorker<Integer, String> {
         private final String scriptPath;
         private Process process;

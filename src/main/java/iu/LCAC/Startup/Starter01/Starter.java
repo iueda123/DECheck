@@ -50,6 +50,10 @@ public class Starter {
     CmdExecutorCreator cmdExecutorCreator = new CmdExecutorCreator(actionMediator, cholderMediator);
     cmdExecutorCreator.addCmdExecutorToMainFrame();
 
+    /* **** Status Area を作り MainWindowにはめ込む **** */
+    StatusPanelCreator statusPanelCreator = new StatusPanelCreator(actionMediator, cholderMediator);
+    statusPanelCreator.addStatusAreaToMainFrame();
+
     /* **** 表示 **** */
     ((MainWindowHolder) cholderMediator.getInstanceOfAMember("main_window_holder"))
         .displayAndInitialize();

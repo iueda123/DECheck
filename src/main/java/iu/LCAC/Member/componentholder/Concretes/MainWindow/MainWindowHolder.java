@@ -16,6 +16,7 @@ import javax.swing.*;
 public class MainWindowHolder extends AbstCHolderMember {
 
     private JFrame mainWindow = new JFrame();
+    private Box southBox = Box.createVerticalBox();
 
     public MainWindowHolder(String cholder_name, String short_name) throws HeadlessException {
         super(cholder_name, short_name);
@@ -34,6 +35,7 @@ public class MainWindowHolder extends AbstCHolderMember {
                         System.exit(0);
                     }
                 });
+        mainWindow.getContentPane().add(southBox, BorderLayout.SOUTH);
     }
 
     @Override
@@ -71,8 +73,9 @@ public class MainWindowHolder extends AbstCHolderMember {
         mainWindow.getContentPane().add(panel, BorderLayout.CENTER);
     }
 
-    public void addPanelToSouth(JComponent panel) {
-        mainWindow.getContentPane().add(panel, BorderLayout.SOUTH);
+
+    public void addPanelToSouth(JComponent comp) {
+        southBox.add(comp);
     }
 
     public void addPanelToNorth(JComponent panel) {
