@@ -6,7 +6,6 @@ import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.MemberIntrfc;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.action.Abstract.AbstActionMemberFactory;
-import iu.LCAC.Member.action.Concretes.DEResultActions.SaveAndLoadNotePanes.SaveNotePaneAction;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -183,6 +182,7 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
         ititialize_NM_TabPanes_Action.initialize();
         registerMemberToMap(ititialize_NM_TabPanes_Action);
 
+
         // Save & Load DEResultPane Order
 
         actionMemberFactory =
@@ -206,10 +206,11 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
         registerMemberToMap(loadPaneOrderAction);
 
 
+        // Save & Load NotePane Texts
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.SaveAndLoadNotePanes.SaveNotePaneActionFactory",
+                        "iu.LCAC.Member.action.Concretes.DEResultActions.SaveAndLoadNotePaneTexts.SaveNotePaneTextsActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember saveNotePaneAction =
                 actionMemberFactory.createAction("save_note_pane", "save note pane state");
@@ -217,17 +218,17 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
         saveNotePaneAction.initialize();
         registerMemberToMap(saveNotePaneAction);
 
-        /*
+
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.SaveAndLoadNotePanes.LoadNotePaneActionFactory",
+                        "iu.LCAC.Member.action.Concretes.DEResultActions.SaveAndLoadNotePaneTexts.LoadNotePaneTextsActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember loadNotePaneAction =
                 actionMemberFactory.createAction("load_note_pane", "load note pane state");
         loadNotePaneAction.setActionMediator(this);
         loadNotePaneAction.initialize();
         registerMemberToMap(loadNotePaneAction);
-        */
+
     }
 
     private void registerMemberToMap(AbstActionMember action) {

@@ -29,7 +29,13 @@ public class PropertyIOHelper {
   }
 
   public static boolean save(Properties properties, Path new_property_file_path) {
-    new_property_file_path.toFile().getParentFile().mkdirs();
+    File propfile =  new_property_file_path.toFile();
+    //System.out.println("propfile: " + propfile.getAbsolutePath());
+    File parent =  propfile.getParentFile();
+    if(parent != null) {
+      //System.out.println("parent: " + parent.getAbsolutePath());
+      parent.mkdirs();
+    }
     try {
       new_property_file_path.toFile().createNewFile();
       OutputStream os = new FileOutputStream(new_property_file_path.toFile());

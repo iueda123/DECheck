@@ -45,25 +45,21 @@ public class MenuBarCreator {
                 actionMediator.getInstanceOfAMember("change_color_of_center").getMenuItem();
         main_menu_1.add(menu_item1_2);
 
-        JMenuItem menu_item1_3 =
-                actionMediator.getInstanceOfAMember("change_color_of_east").getMenuItem();
+        //JMenuItem menu_item1_3 = actionMediator.getInstanceOfAMember("change_color_of_east").getMenuItem();
+        //main_menu_1.add(menu_item1_3);
+        JMenuItem menu_item1_3 = actionMediator.getInstanceOfAMember("save_note_pane").getMenuItem();
         main_menu_1.add(menu_item1_3);
 
-        JMenuItem menu_item1_4 = actionMediator.getInstanceOfAMember("change_text").getMenuItem();
+        //JMenuItem menu_item1_4 = actionMediator.getInstanceOfAMember("change_text").getMenuItem();
+        JMenuItem menu_item1_4 = actionMediator.getInstanceOfAMember("load_note_pane").getMenuItem();
         main_menu_1.add(menu_item1_4);
 
-        //JMenuItem menu_item1_5 =
-        //        actionMediator.getInstanceOfAMember("initialize_sample_text_field").getMenuItem();
-        //main_menu_1.add(menu_item1_5);
-        JMenuItem menu_item1_5 =
-                actionMediator.getInstanceOfAMember("load_pane_order").getMenuItem();
+        //JMenuItem menu_item1_5 = actionMediator.getInstanceOfAMember("initialize_sample_text_field").getMenuItem();
+        JMenuItem menu_item1_5 = actionMediator.getInstanceOfAMember("load_pane_order").getMenuItem();
         main_menu_1.add(menu_item1_5);
 
-        //JMenuItem menu_item1_6 =
-        //    actionMediator.getInstanceOfAMember("change_text_of_textfield").getMenuItem();
-        //main_menu_1.add(menu_item1_6);
-        JMenuItem menu_item1_6 =
-                actionMediator.getInstanceOfAMember("save_pane_order").getMenuItem();
+        //JMenuItem menu_item1_6 = actionMediator.getInstanceOfAMember("change_text_of_textfield").getMenuItem();
+        JMenuItem menu_item1_6 = actionMediator.getInstanceOfAMember("save_pane_order").getMenuItem();
         main_menu_1.add(menu_item1_6);
 
         /* *** main_menu_2 *** */

@@ -30,7 +30,7 @@ public class LoadPaneOrderAction extends AbstActionMember {
                 .setAccelerator(
                         KeyStroke.getKeyStroke(
                                 KeyEvent.VK_L,
-                                InputEvent.CTRL_DOWN_MASK));
+                                InputEvent.CTRL_DOWN_MASK + InputEvent.SHIFT_DOWN_MASK));
     }
 
     @Override

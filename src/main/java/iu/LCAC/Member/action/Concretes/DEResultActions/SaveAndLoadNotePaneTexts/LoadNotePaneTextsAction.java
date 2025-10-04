@@ -1,4 +1,4 @@
-package iu.LCAC.Member.action.Concretes.DEResultActions.SaveAndLoadNotePanes;
+package iu.LCAC.Member.action.Concretes.DEResultActions.SaveAndLoadNotePaneTexts;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
@@ -8,20 +8,18 @@ import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.ManagerOfSubTabB
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.NotePane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.SubTabsHolderItrfc;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.OneDEResultPane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
-public class SaveNotePaneAction extends AbstActionMember {
+public class LoadNotePaneTextsAction extends AbstActionMember {
 
+    String prop_file_path_str = "";
 
-    public SaveNotePaneAction(String action_name, String short_name) {
+    public LoadNotePaneTextsAction(String action_name, String short_name) {
         super(action_name, short_name);
     }
 
@@ -30,20 +28,27 @@ public class SaveNotePaneAction extends AbstActionMember {
         this.getMenuItem()
                 .setAccelerator(
                         KeyStroke.getKeyStroke(
-                                KeyEvent.VK_S,
+                                KeyEvent.VK_L,
                                 InputEvent.CTRL_DOWN_MASK));
     }
 
     @Override
     public void perform(ActionEvent action_event) {
+        System.out.println("");
         System.out.println("perform() in " + this.getClass().toString() + " was called.");
 
         // TODO: 全セクションに拡張
-        saveNotePaneState("RCAI", "./settings/NotePane/" + "reference_cohort_and_imaging" + ".prop");
-        saveNotePaneState("NM", "./settings/NotePane/" + "normative_modeling" + ".prop");
+        loadNotePaneTexts("RCAI", "./settings/NotePane/" + "reference_cohort_and_imaging" + ".prop");
+        loadNotePaneTexts("NM", "./settings/NotePane/" + "normative_modeling" + ".prop");
+
+
     }
 
-    private void saveNotePaneState(String member_name_key_word, String prop_file_path_str) {
+    /**
+     *  REFERENCE COHORT AND IMAGING
+     */
+    private void loadNotePaneTexts(String member_name_key_word, String prop_file_path_str) {
+
         AbstCHolderMember member = null;
         SubTabsHolderItrfc subTabsHolder = null;
         switch (member_name_key_word) {
@@ -60,29 +65,44 @@ public class SaveNotePaneAction extends AbstActionMember {
         }
 
         String sectionName = subTabsHolder.getSectionName();
-        System.out.println("----- Save texts on NotePanes of '" + sectionName + "' section -----");
+        System.out.println("----- Load texts on NotePanes of '" + sectionName + "' section -----");
 
-        // 全タブ（SubSectionに相当）配置されているコンポーネントの順番を把握し、propertyへ書き込む
         propManager = createPropertyManager(prop_file_path_str);
+        //System.out.println("Properties file '" + deresultpane_order_setting_file_path_str + "' was loaded.");
+        //propManager.listUpProperty();
+
+        String loaded_text = "";
         for (ManagerOfSubTabBasePane managerOfSubTabBasePane : subTabsHolder.getArrayList_of_ManagerOfSubTabBasePane()) {
-            String subSectionName = managerOfSubTabBasePane.getSubSectionName();
+             String subSectionName = managerOfSubTabBasePane.getSubSectionName();
             //System.out.println("Now registering NotePane of  '" + subSectionName + "'");
             NotePane notePane = managerOfSubTabBasePane.getNotePane();
-            propManager.setProperty(subSectionName + ".status", notePane.getStatusText());
-            propManager.setProperty(subSectionName + ".note", notePane.getNoteText());
+
+            for (String property_name : propManager.stringPropertyNames()) {
+                loaded_text =  propManager.getValueOrCreateNew(property_name);
+                if( property_name.equals( subSectionName + "." + "status" ) ){
+                    notePane.setStatusText(loaded_text);
+                }else if( property_name.equals( subSectionName + "." + "note")){
+                    notePane.setNoteText(loaded_text);
+                }
+            }
+            notePane.resetBackgroundColors();
+            notePane.updateDefaultValues();
+            notePane.updateTabTitle();
         }
-        propManager.writeoutProperties();
-        propManager = null;
+        propManager = null; //Propの外部更新時のため（毎回新しいPropを呼ぶため）dispose
     }
 
 
+
+
+    @Override
     public void setCHolderMediator(CHolderMediator cHolderMediator) {
         this.cholderMediator = cHolderMediator;
     }
 
     @Override
     public void setActionMediator(ActionMediator actionMediator) {
-        this.actionMediator = actionMediator;
+        super.actionMediator = actionMediator;
     }
 
     @Override

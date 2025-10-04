@@ -13,8 +13,7 @@ public class NotePane extends JPanel {
 
     final String sectionName;
     final String subSectionName;
-    JButton saveButton = new JButton("save");
-    JButton loadButton = new JButton("load");
+    JButton updateTabTitleButton = new JButton("update tab title");
 
     JTabbedPane parentTabbedPanel;
 
@@ -26,55 +25,45 @@ public class NotePane extends JPanel {
         this.subSectionName = subSectionName;
         this.parentTabbedPanel = parentTabbedPanel;
 
-        this.saveButton.addActionListener(new AbstractAction() {
+        this.updateTabTitleButton.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
                 updateTabTitle();
-                
-                saveMarkField();
-                
-                saveNoteArea();
-                
             }
         });
-        // Document に「どの JTextField のものか」を記録しておく
-        //tFiled_Mark.getDocument().putProperty("owner", tFiled_Mark);
-        //tFiled_Mark.getDocument().addDocumentListener(new CustomDocumentListener(this.parentTabbedPanel));
 
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         add(tFiled_Status);
         add(tArea_Note);
-        add(saveButton);
-        add(loadButton);
+        add(updateTabTitleButton);
     }
 
     private void saveNoteArea() {
     }
 
     private void saveMarkField() {
-        
+
     }
 
-    private void updateTabTitle() {
+    public void updateTabTitle() {
         String text = tFiled_Status.getText();
-                // この JTextField が含まれているタブインデックスを調べる
-                Component tabComponent = NotePane.this;
-                while (tabComponent != null && tabComponent.getParent() != parentTabbedPanel) {
-                    tabComponent = tabComponent.getParent();
+        // この JTextField が含まれているタブインデックスを調べる
+        Component tabComponent = NotePane.this;
+        while (tabComponent != null && tabComponent.getParent() != parentTabbedPanel) {
+            tabComponent = tabComponent.getParent();
+        }
+        if (tabComponent != null) {
+            int idx = parentTabbedPanel.indexOfComponent(tabComponent);
+            if (idx != -1) {
+                //String baseTitle = "タブ" + (idx + 1);
+                String baseTitle = subSectionName;
+                if (!text.isEmpty()) {
+                    baseTitle += " - " + text.charAt(0);
                 }
-                if (tabComponent != null) {
-                    int idx = parentTabbedPanel.indexOfComponent(tabComponent);
-                    if (idx != -1) {
-                        //String baseTitle = "タブ" + (idx + 1);
-                        String baseTitle = subSectionName;
-                        if (!text.isEmpty()) {
-                            baseTitle += " - " + text.charAt(0);
-                        }
-                        System.out.println(idx + " - " + baseTitle);
-                        parentTabbedPanel.setTitleAt(idx, baseTitle);
-                    }
-                }
+                System.out.println(idx + " - " + baseTitle);
+                parentTabbedPanel.setTitleAt(idx, baseTitle);
+            }
+        }
     }
 
     public String getStatusText() {
@@ -85,6 +74,23 @@ public class NotePane extends JPanel {
         return tArea_Note.getText();
     }
 
+    public void setStatusText(String text) {
+        tFiled_Status.setText(text);
+    }
+
+    public void setNoteText(String text) {
+        tArea_Note.setText(text);
+    }
+
+    public void resetBackgroundColors() {
+        tFiled_Status.resetBackgroundColor();
+        tArea_Note.resetBackgroundColor();
+    }
+
+    public void updateDefaultValues() {
+        tFiled_Status.updateDefaultValue();
+        tArea_Note.updateDefaultValue();
+    }
 
     private class CustomDocumentListener implements DocumentListener {
         final JTabbedPane tabbedPane;

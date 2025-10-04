@@ -29,7 +29,7 @@ public class SavePaneOrderAction extends AbstActionMember {
                 .setAccelerator(
                         KeyStroke.getKeyStroke(
                                 KeyEvent.VK_S,
-                                InputEvent.CTRL_DOWN_MASK));
+                                InputEvent.CTRL_DOWN_MASK+ InputEvent.SHIFT_DOWN_MASK));
     }
 
     @Override
