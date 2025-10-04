@@ -42,9 +42,13 @@ public class One_ACNRSL_Style_Pane extends One_DEResult_Pane_Abs {
         tArea_Answer.setWrapStyleWord(true);
         tArea_Answer.setToolTipText(tooltipForAnswer);
 
+        tFiled_ConfidenceRating.setToolTipText(tooltipForConfidenceRating);
+
+        tField_NegativeAnswerCategory.setToolTipText(tooltipForNegativeAnswerCategory);
+
         tArea_Reason.setLineWrap(true);
         tArea_Reason.setWrapStyleWord(true);
-        tArea_Answer.setToolTipText(tooltipForReason);
+        tArea_Reason.setToolTipText(tooltipForReason);
 
         tArea_SupportingText.setLineWrap(true);
         tArea_SupportingText.setWrapStyleWord(true);

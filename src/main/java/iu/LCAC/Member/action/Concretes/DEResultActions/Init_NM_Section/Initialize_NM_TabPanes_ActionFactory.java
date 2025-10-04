@@ -1,4 +1,4 @@
-package iu.LCAC.Member.action.Concretes.DEResultActions.NM;
+package iu.LCAC.Member.action.Concretes.DEResultActions.Init_NM_Section;
 
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.action.Abstract.AbstActionMemberFactory;

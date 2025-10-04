@@ -164,7 +164,7 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.SI.Initialize_SI_TabPanes_ActionFactory",
+                        "iu.LCAC.Member.action.Concretes.DEResultActions.Init_SI_Section.Initialize_SI_TabPanes_ActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember ititialize_SI_TabPanes_Action =
                 actionMemberFactory.createAction("initialize_si_tabpanes", "Init SI");
@@ -175,7 +175,7 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.RCAI.Initialize_RCAI_TabPanes_ActionFactory",
+                        "iu.LCAC.Member.action.Concretes.DEResultActions.Init_RCAI_Section.Initialize_RCAI_TabPanes_ActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember ititialize_RCAI_TabPanes_Action =
                 actionMemberFactory.createAction("initialize_rcai_tabpanes", "Init RCAI");
@@ -185,7 +185,7 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.NM.Initialize_NM_TabPanes_ActionFactory",
+                        "iu.LCAC.Member.action.Concretes.DEResultActions.Init_NM_Section.Initialize_NM_TabPanes_ActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember ititialize_NM_TabPanes_Action =
                 actionMemberFactory.createAction("initialize_nm_tabpanes", "Init NM");

@@ -1,4 +1,4 @@
-package iu.LCAC.Member.action.Concretes.DEResultActions.SI;
+package iu.LCAC.Member.action.Concretes.DEResultActions.Init_SI_Section;
 
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.action.Abstract.AbstActionMemberFactory;

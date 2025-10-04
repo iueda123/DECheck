@@ -1,4 +1,4 @@
-package iu.LCAC.Member.action.Concretes.DEResultActions.RCAI;
+package iu.LCAC.Member.action.Concretes.DEResultActions.Init_RCAI_Section;
 
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.action.Abstract.AbstActionMemberFactory;

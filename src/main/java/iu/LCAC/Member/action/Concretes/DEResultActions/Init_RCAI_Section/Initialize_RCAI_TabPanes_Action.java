@@ -1,21 +1,21 @@
-package iu.LCAC.Member.action.Concretes.DEResultActions.NM;
+package iu.LCAC.Member.action.Concretes.DEResultActions.Init_RCAI_Section;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_ACNRSL_Style_Pane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
 import iu.LCAC.Utils.JsonManager;
 
 import java.awt.event.ActionEvent;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class Initialize_NM_TabPanes_Action extends AbstActionMember {
+public class Initialize_RCAI_TabPanes_Action extends AbstActionMember {
 
     static final String jsonFolderPathString = "./json/DE";
 
-    public Initialize_NM_TabPanes_Action(String action_name, String short_name) {
+    public Initialize_RCAI_TabPanes_Action(String action_name, String short_name) {
         super(action_name, short_name);
     }
 
@@ -62,8 +62,8 @@ public class Initialize_NM_TabPanes_Action extends AbstActionMember {
             //System.out.println(pageLine);
 
             // Preparation of Component
-            NM_SubTabsHolder subTabsHolder =
-                    (NM_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_NM");
+            RCAI_SubTabsHolder subTabsHolder =
+                    (RCAI_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI");
 
             // Initialization Core
             if (subTabsHolder != null) {
@@ -80,7 +80,7 @@ public class Initialize_NM_TabPanes_Action extends AbstActionMember {
                 trtgDEResultPane.resetBackgroundColorOfTAreasTFields();
 
             } else {
-                System.err.println("sub_tabs_holder_NM is null.");
+                System.err.println("sub_tabs_holder_RCAI is null.");
             }
         }
 
