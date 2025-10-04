@@ -4,9 +4,9 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.ManagerOfSubTabBasePane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.ManagerOfSubTabBasePane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.OneDEResultPane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.OneDEResultPane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
 
 import javax.swing.*;

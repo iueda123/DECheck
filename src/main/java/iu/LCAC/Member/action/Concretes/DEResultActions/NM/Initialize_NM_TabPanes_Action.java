@@ -4,7 +4,7 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.OneDEResultPane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.OneDEResultPane;
 import iu.LCAC.Utils.JsonManager;
 
 import java.awt.event.ActionEvent;

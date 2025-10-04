@@ -1,4 +1,4 @@
-package iu.LCAC.Member.componentholder.Concretes.DEResult;
+package iu.LCAC.Member.componentholder.Concretes.DEResult.Common;
 
 import iu.LCAC.Utils.ColorChangeableTextArea;
 import iu.LCAC.Utils.ColorChangeableTextField;
@@ -9,7 +9,7 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class CommentPane extends JPanel {
+public class NotePane extends JPanel {
 
     final String sectionName;
     final String subSectionName;
@@ -18,10 +18,10 @@ public class CommentPane extends JPanel {
 
     JTabbedPane parentTabbedPanel;
 
-    ColorChangeableTextField tFiled_Mark = new ColorChangeableTextField("");
-    ColorChangeableTextArea textArea_Comments = new ColorChangeableTextArea("");
+    ColorChangeableTextField tFiled_Status = new ColorChangeableTextField("");
+    ColorChangeableTextArea tArea_Note = new ColorChangeableTextArea("");
 
-    public CommentPane(String sectionName, String subSectionName, JTabbedPane parentTabbedPanel) {
+    public NotePane(String sectionName, String subSectionName, JTabbedPane parentTabbedPanel) {
         this.sectionName = sectionName;
         this.subSectionName = subSectionName;
         this.parentTabbedPanel = parentTabbedPanel;
@@ -43,8 +43,8 @@ public class CommentPane extends JPanel {
         //tFiled_Mark.getDocument().addDocumentListener(new CustomDocumentListener(this.parentTabbedPanel));
 
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-        add(tFiled_Mark);
-        add(textArea_Comments);
+        add(tFiled_Status);
+        add(tArea_Note);
         add(saveButton);
         add(loadButton);
     }
@@ -57,9 +57,9 @@ public class CommentPane extends JPanel {
     }
 
     private void updateTabTitle() {
-        String text = tFiled_Mark.getText();
+        String text = tFiled_Status.getText();
                 // この JTextField が含まれているタブインデックスを調べる
-                Component tabComponent = CommentPane.this;
+                Component tabComponent = NotePane.this;
                 while (tabComponent != null && tabComponent.getParent() != parentTabbedPanel) {
                     tabComponent = tabComponent.getParent();
                 }

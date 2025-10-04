@@ -1,4 +1,4 @@
-package iu.LCAC.Member.componentholder.Concretes.DEResult;
+package iu.LCAC.Member.componentholder.Concretes.DEResult.Common;
 
 import iu.LCAC.Utils.ColorChangeableTextArea;
 import iu.LCAC.Utils.ColorChangeableTextField;

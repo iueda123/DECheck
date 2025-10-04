@@ -3,8 +3,8 @@ package iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI;
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.ManagerOfSubTabBasePane;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.OneDEResultPane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.ManagerOfSubTabBasePane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.OneDEResultPane;
 
 import javax.swing.*;
 import java.awt.*;
