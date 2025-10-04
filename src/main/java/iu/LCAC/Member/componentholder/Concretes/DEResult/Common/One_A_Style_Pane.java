@@ -38,6 +38,8 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
         Box northSubBox2 = Box.createHorizontalBox();
         northSubBox2.add(Box.createHorizontalGlue());
         northSubBox2.add(saveButton);
+        northSubBox2.add(convertJson2MarkdownButton);
+        northSubBox2.add(convertJson2TsvButton);
         northSubBox2.add(loadButton);
         northSubBox2.add(jsonFileNameEditButton);
         northSubBox2.add(new PanelMoverPane());

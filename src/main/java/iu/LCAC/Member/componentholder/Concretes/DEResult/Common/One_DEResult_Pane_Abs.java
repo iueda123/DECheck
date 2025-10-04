@@ -22,6 +22,9 @@ public abstract class One_DEResult_Pane_Abs extends JPanel {
     JButton loadButton = new JButton("load");
     JButton saveButton = new JButton("save");
     JButton jsonFileNameEditButton = new JButton("edit json name");
+    JButton convertJson2MarkdownButton = new JButton("2MD");
+    JButton convertJson2TsvButton = new JButton("2TSV");
+
 
     public One_DEResult_Pane_Abs(
             String jsonFolderPathStr,

@@ -109,6 +109,8 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         Box southSubBox1 = Box.createHorizontalBox();
         southSubBox1.add(Box.createHorizontalGlue());
         southSubBox1.add(saveButton);
+        southSubBox1.add(convertJson2MarkdownButton);
+        southSubBox1.add(convertJson2TsvButton);
         southSubBox1.add(loadButton);
         southSubBox1.add(jsonFileNameEditButton);
         southSubBox1.add(new PanelMoverPane(), BorderLayout.EAST);
