@@ -5,7 +5,7 @@ import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.ManagerOfSubTabBasePane;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.OneDEResultPane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_ACNRSL_Pane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.SubTabsHolderItrfc;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
@@ -38,13 +38,13 @@ public class SavePaneOrderAction extends AbstActionMember {
         System.out.println("perform() in " + this.getClass().toString() + " was called.");
 
         // TODO: 全セクションに拡張
-        savePaneOrder("RCAI");
-        savePaneOrder("NM");
+        savePaneOrder("RCAI", "./settings/NotePane/" + "reference_cohort_and_imaging" + ".prop");
+        savePaneOrder("NM", "./settings/NotePane/" + "normative_modeling" + ".prop");
 
 
     }
 
-    private void savePaneOrder(String member_name_key_word) {
+    private void savePaneOrder(String member_name_key_word, String prop_file_path_str) {
         AbstCHolderMember member;
         SubTabsHolderItrfc subTabsHolder;
         switch (member_name_key_word) {
@@ -62,7 +62,6 @@ public class SavePaneOrderAction extends AbstActionMember {
         }
 
         String sectionName = subTabsHolder.getSectionName();
-        String prop_file_path_str = "./settings/" + sectionName + ".prop";
         System.out.println("----- Save pane order of '" + sectionName + "' section -----");
 
         // 全タブ（SubSectionに相当）配置されているコンポーネントの順番を把握し、propertyへ書き込む
@@ -75,9 +74,9 @@ public class SavePaneOrderAction extends AbstActionMember {
             Component[] components = subSectionPanel.getComponents();
             for (int i = 0; i < components.length; i++) {
                 Object component = components[i];
-                if (component instanceof OneDEResultPane) {
-                    OneDEResultPane oneDEResultPane = (OneDEResultPane) component;
-                    String jsonName = oneDEResultPane.getJsonName();
+                if (component instanceof One_ACNRSL_Pane) {
+                    One_ACNRSL_Pane oneACNRSLPane = (One_ACNRSL_Pane) component;
+                    String jsonName = oneACNRSLPane.getJsonName();
                     //System.out.println("  DEResultPane No. " + i + ": " + jsonName);
                     arrayList_PanelOrder.add(jsonName);
                 }

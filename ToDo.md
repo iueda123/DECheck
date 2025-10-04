@@ -10,6 +10,7 @@
     * [x] NM Normative Modelingのパネル
     * [ ] CAAA Clinical Application & Analysis
     * [ ] GN
-    * [ ] QA
-  * Jar化
-  * 第１引数にJSONがあるフォルダを指定する
+    * [ ] QA ★
+  * [x] Jar化
+  * [ ] 2TSV機能 ★
+  * [ ] 2MD機能

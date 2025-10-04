@@ -3,7 +3,7 @@ package iu.LCAC.Member.action.Concretes.DEResultActions.RCAI;
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.OneDEResultPane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_ACNRSL_Pane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
 import iu.LCAC.Utils.JsonManager;
 
@@ -13,8 +13,7 @@ import java.nio.file.Paths;
 
 public class Initialize_RCAI_TabPanes_Action extends AbstActionMember {
 
-    static final String SettingPropertyFilePath =
-            "./json/Example9997.json";
+    static final String jsonFolderPathString = "./json/DE";
 
     public Initialize_RCAI_TabPanes_Action(String action_name, String short_name) {
         super(action_name, short_name);
@@ -28,14 +27,14 @@ public class Initialize_RCAI_TabPanes_Action extends AbstActionMember {
     public void perform(ActionEvent action_event) {
         System.out.println("perform() in " + this.getClass().toString() + " was called.");
 
-        String jsonFileName = SettingPropertyFilePath;
+        String jsonFileName =  jsonFolderPathString + "/" + "empty.json";
         String sectionName = "";
         String subSectionName = "";
         String[] cmd_and_args = getActionCommandAndArgs(action_event, false);
         if (cmd_and_args.length > 3) {
             // 引数からjsonNameを取得
             jsonFileName = cmd_and_args[1];
-            Path jsonFilePath = Paths.get("./json/" + jsonFileName);
+            Path jsonFilePath = Paths.get(jsonFolderPathString + "/" + jsonFileName);
             if (!jsonFilePath.toFile().exists()) {
                 System.err.println(jsonFilePath.toFile().getAbsolutePath() + " does not exist.");
                 return;
@@ -69,7 +68,7 @@ public class Initialize_RCAI_TabPanes_Action extends AbstActionMember {
             // Initialization Core
             if (subTabsHolder != null) {
 
-                OneDEResultPane trtgDEResultPane = subTabsHolder.getResultPane(jsonFileName, sectionName, subSectionName);
+                One_ACNRSL_Pane trtgDEResultPane = (One_ACNRSL_Pane) subTabsHolder.getResultPane(jsonFileName, sectionName, subSectionName);
                 trtgDEResultPane.setValTo_JsonName(jsonFileName);
                 trtgDEResultPane.setValTo_Answer(answer);
                 trtgDEResultPane.setValTo_ConfidenceRating(confidenceRating);

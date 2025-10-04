@@ -11,7 +11,7 @@ public class ManagerOfSubTabBasePane {
     final String sectionName;
     final String subSectionName;
 
-    ArrayList<OneDEResultPane> dePaneArray = new ArrayList<>();
+    ArrayList<One_DEResult_Pane_Abs> dePaneArray = new ArrayList<>();
 
     final JTabbedPane tabbedPane;
     final NotePane notePane;
@@ -26,8 +26,8 @@ public class ManagerOfSubTabBasePane {
     }
 
 
-    public void addToTheDePaneArray(OneDEResultPane oneDEResultPane) {
-        this.dePaneArray.add(oneDEResultPane);
+    public void addToTheDePaneArray(One_DEResult_Pane_Abs oneDeResultPaneAbs) {
+        this.dePaneArray.add(oneDeResultPaneAbs);
     }
 
     public JComponent constructBasePaneOfSubTab() {
@@ -42,7 +42,7 @@ public class ManagerOfSubTabBasePane {
         // OneDEResultPane たちを配置
         for (int i = 0; i < dePaneArray.size(); i++) {
             //basePanel.add(new JLabel(" ")); // Separator
-            OneDEResultPane pane = dePaneArray.get(i);
+            One_DEResult_Pane_Abs pane = dePaneArray.get(i);
             pane.setMaximumSize(new Dimension(Integer.MAX_VALUE, pane.getPreferredSize().height));
             pane.setAlignmentX(Component.LEFT_ALIGNMENT);
             basePaneForDEResultPanes.add(pane);
@@ -66,7 +66,7 @@ public class ManagerOfSubTabBasePane {
 
     }
 
-    public ArrayList<OneDEResultPane> getDePaneArray() {
+    public ArrayList<One_DEResult_Pane_Abs> getDePaneArray() {
         return dePaneArray;
     }
 

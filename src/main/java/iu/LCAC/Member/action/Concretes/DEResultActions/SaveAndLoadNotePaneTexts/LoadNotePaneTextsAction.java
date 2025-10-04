@@ -17,8 +17,6 @@ import java.awt.event.KeyEvent;
 
 public class LoadNotePaneTextsAction extends AbstActionMember {
 
-    String prop_file_path_str = "";
-
     public LoadNotePaneTextsAction(String action_name, String short_name) {
         super(action_name, short_name);
     }

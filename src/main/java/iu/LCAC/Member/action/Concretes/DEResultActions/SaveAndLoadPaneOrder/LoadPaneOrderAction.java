@@ -5,7 +5,7 @@ import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.ManagerOfSubTabBasePane;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.OneDEResultPane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_ACNRSL_Pane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.SubTabsHolderItrfc;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
@@ -19,7 +19,6 @@ import java.util.*;
 
 public class LoadPaneOrderAction extends AbstActionMember {
 
-    String prop_file_path_str = "";
 
     public LoadPaneOrderAction(String action_name, String short_name) {
         super(action_name, short_name);
@@ -41,8 +40,8 @@ public class LoadPaneOrderAction extends AbstActionMember {
 
 
         // TODO: 全セクションに拡張
-        loadPaneOrder("RCAI");
-        loadPaneOrder("NM");
+        loadPaneOrder("RCAI",  "./settings/" + "reference_cohort_and_imaging" + ".prop" );
+        loadPaneOrder("NM", "./settings/" + "normative_modeling" + ".prop");
 
 
     }
@@ -50,7 +49,7 @@ public class LoadPaneOrderAction extends AbstActionMember {
     /**
      * Loads pane order for a specific section keyed by member name.
      */
-    private void loadPaneOrder(String member_name_key_word) {
+    private void loadPaneOrder(String member_name_key_word, String prop_file_path_str ) {
         AbstCHolderMember member;
         SubTabsHolderItrfc subTabsHolder;
         switch (member_name_key_word) {
@@ -68,10 +67,9 @@ public class LoadPaneOrderAction extends AbstActionMember {
         }
 
         String sectionName = subTabsHolder.getSectionName();
-        prop_file_path_str = "./settings/" + sectionName + ".prop";
         System.out.println("----- Load pane order of '" + sectionName + "' section -----");
 
-        propManager = createPropertyManager(this.prop_file_path_str);
+        propManager = createPropertyManager(prop_file_path_str);
         //System.out.println("Properties file '" + deresultpane_order_setting_file_path_str + "' was loaded.");
         //propManager.listUpProperty();
 
@@ -98,8 +96,8 @@ public class LoadPaneOrderAction extends AbstActionMember {
             ArrayList<Component> newlyOrderedComponents = new ArrayList<>();
             for (String orderedJsonName : newlyOrderedJsonNameArray) {
                 for (Component comp : currentComponentArray) {
-                    OneDEResultPane oneDEResultPane = (OneDEResultPane) comp;
-                    String jsonName_of_checking_comp = oneDEResultPane.getJsonName();
+                    One_ACNRSL_Pane oneACNRSLPane = (One_ACNRSL_Pane) comp;
+                    String jsonName_of_checking_comp = oneACNRSLPane.getJsonName();
                     //System.out.println("  Now checking '" + jsonName_of_checking_comp + "'");
                     if (orderedJsonName.equals(jsonName_of_checking_comp)) {
                         //System.out.println("    This was added to newlyOrderedComponents!");

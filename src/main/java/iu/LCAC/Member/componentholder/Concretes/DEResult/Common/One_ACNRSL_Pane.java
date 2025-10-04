@@ -7,39 +7,36 @@ import iu.LCAC.Utils.JsonManager;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class OneDEResultPane extends JPanel {
+public class One_ACNRSL_Pane extends One_DEResult_Pane_Abs {
 
-    final String jsonName;
-    final String sectionName;
-    final String subSectionName;
 
-    JButton loadButton = new JButton("Load");
-    JButton saveButton = new JButton("Save");
-
-    ColorChangeableTextField tField_jsonName = new ColorChangeableTextField("JSON File Name");
-    private final String tooltipForJsonName = "JSON File Name";
     ColorChangeableTextArea tArea_Answer = new ColorChangeableTextArea("Answer");
     private final String tooltipForAnswer = "Answer";
+
     ColorChangeableTextField tFiled_ConfidenceRating = new ColorChangeableTextField("Confidence Rating");
     private final String tooltipForConfidenceRating = "Confidence Rating";
+
     ColorChangeableTextField tField_NegativeAnswerCategory = new ColorChangeableTextField("Negative Answer Category");
     private final String tooltipForNegativeAnswerCategory = "Negative Answer Category";
 
     ColorChangeableTextArea tArea_Reason = new ColorChangeableTextArea("Reason");
     private final String tooltipForReason = "Reason";
-    ColorChangeableTextArea tArea_SupportingText = new ColorChangeableTextArea("Supporting Text");
-    private final String tooltipForSupportingTextr = "Supporting Text";
-    ColorChangeableTextArea tArea_PageLine = new ColorChangeableTextArea("Page Line");
-    private final String tooltipForPageLin = "Page Line";
 
-    public OneDEResultPane(String jsonName, String sectionName, String subSectionName) {
-        this.jsonName = jsonName;
-        this.sectionName = sectionName;
-        this.subSectionName = subSectionName;
+    ColorChangeableTextArea tArea_SupportingText = new ColorChangeableTextArea("Supporting Text");
+    private final String tooltipForSupportingText = "Supporting Text";
+
+    ColorChangeableTextArea tArea_Location = new ColorChangeableTextArea("Location");
+    private final String tooltip_Location = "Source file, page, or/and line of the information.";
+
+    public One_ACNRSL_Pane(String jsonFolderPathStr, String jsonName, String sectionName, String subSectionName) {
+        super(jsonFolderPathStr, jsonName, sectionName, subSectionName);
+
+        //this.jsonName = jsonName;
+        //this.sectionName = sectionName;
+        //this.subSectionName = subSectionName;
 
         tArea_Answer.setLineWrap(true);
         tArea_Answer.setWrapStyleWord(true);
@@ -47,12 +44,15 @@ public class OneDEResultPane extends JPanel {
 
         tArea_Reason.setLineWrap(true);
         tArea_Reason.setWrapStyleWord(true);
+        tArea_Answer.setToolTipText(tooltipForReason);
 
         tArea_SupportingText.setLineWrap(true);
         tArea_SupportingText.setWrapStyleWord(true);
+        tArea_SupportingText.setToolTipText(tooltipForSupportingText);
 
-        tArea_PageLine.setLineWrap(true);
-        tArea_PageLine.setWrapStyleWord(true);
+        tArea_Location.setLineWrap(true);
+        tArea_Location.setWrapStyleWord(true);
+        tArea_Location.setToolTipText(tooltip_Location);
 
         saveButton.addActionListener(
                 new AbstractAction() {
@@ -82,7 +82,7 @@ public class OneDEResultPane extends JPanel {
         scrollPane_Answer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane_Answer.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         northSubPane1.add(scrollPane_Answer, BorderLayout.CENTER);
-        northSubPane1.add(new panelMoverPane(), BorderLayout.EAST);
+        northSubPane1.add(new PanelMoverPane(), BorderLayout.EAST);
         northBox.add(northSubPane1);
 
         Box northSubBox2 = Box.createHorizontalBox();
@@ -102,7 +102,7 @@ public class OneDEResultPane extends JPanel {
         scrollPane_SupportingText.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane_SupportingText.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
-        JScrollPane scrollPane_PageLine = new JScrollPane(tArea_PageLine);
+        JScrollPane scrollPane_PageLine = new JScrollPane(tArea_Location);
         scrollPane_PageLine.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane_PageLine.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
@@ -120,7 +120,7 @@ public class OneDEResultPane extends JPanel {
         add(southBox, BorderLayout.SOUTH);
 
         /* Finalization */
-        setBorder(BorderFactory.createTitledBorder("A Result Panel"));
+        setBorder(BorderFactory.createTitledBorder("A ACNRSL Panel"));
         // BoxLayoutで適切にスクロールするために、固定の高さを設定
         setPreferredSize(new Dimension(600, 400));
         setMaximumSize(new Dimension(Integer.MAX_VALUE, 400));
@@ -157,23 +157,14 @@ public class OneDEResultPane extends JPanel {
     }
 
     public void setValTo_PageLine(String value) {
-        tArea_PageLine.setText(value);
+        tArea_Location.setText(value);
     }
 
-    public String getJsonName() {
-        return jsonName;
-    }
 
-    public String getSubSectionName() {
-        return subSectionName;
-    }
 
-    public String getSectionName() {
-        return sectionName;
-    }
-
-    private void loadJson() {
-        Path jsonFilePath = Paths.get("./json/" + jsonName);
+    protected void loadJson() {
+        Path jsonFilePath = Paths.get(jsonFolderPathStr + "/" + jsonName);
+        //System.out.println("jsonFilePath: " + jsonFilePath);
 
         if (!jsonFilePath.toFile().exists()) {
             System.err.println("JSON file not found: " + jsonFilePath.toFile().getAbsolutePath());
@@ -182,6 +173,9 @@ public class OneDEResultPane extends JPanel {
 
         // JSONから読み込み
         JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
+        System.out.println("sectionName: " + sectionName);
+        System.out.println("subSectionName: " + subSectionName);
+
         String answer = jsonManager.getValue(sectionName + "/" + subSectionName + "/Answer");
         String confidenceRating = jsonManager.getValue(sectionName + "/" + subSectionName + "/Confidence\\ Rating");
         String negativeAnswerCategory = jsonManager.getValue(sectionName + "/" + subSectionName + "/Negative\\ Answer\\ Category");
@@ -195,21 +189,21 @@ public class OneDEResultPane extends JPanel {
         if (negativeAnswerCategory != null) tField_NegativeAnswerCategory.setText(negativeAnswerCategory);
         if (reason != null) tArea_Reason.setText(reason);
         if (supportingText != null) tArea_SupportingText.setText(supportingText);
-        if (pageLine != null) tArea_PageLine.setText(pageLine);
+        if (pageLine != null) tArea_Location.setText(pageLine);
 
         resetBackgroundColorOfTAreasTFields();
 
         System.out.println("Successfully loaded from " + jsonFilePath.toFile().getAbsolutePath());
     }
 
-    private void saveJson() {
-        Path jsonFilePath = Paths.get("./json/" + jsonName);
+    protected void saveJson() {
+        Path jsonFilePath = Paths.get(jsonFolderPathStr + "/" + jsonName);
         String answerText = tArea_Answer.getText();
         String confidenceRatingText = tFiled_ConfidenceRating.getText();
         String negativeAnswerCategoryText = tField_NegativeAnswerCategory.getText();
         String reasonText = tArea_Reason.getText();
         String supportingText = tArea_SupportingText.getText();
-        String pageLineText = tArea_PageLine.getText();
+        String pageLineText = tArea_Location.getText();
 
         // JSONへ書き込み
         JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
@@ -229,6 +223,7 @@ public class OneDEResultPane extends JPanel {
         }
     }
 
+    @Override
     public void resetBackgroundColorOfTAreasTFields() {
         tField_jsonName.resetBackgroundColor();
         tField_jsonName.updateDefaultValue();
@@ -242,138 +237,9 @@ public class OneDEResultPane extends JPanel {
         tArea_Reason.updateDefaultValue();
         tArea_SupportingText.resetBackgroundColor();
         tArea_SupportingText.updateDefaultValue();
-        tArea_PageLine.resetBackgroundColor();
-        tArea_PageLine.updateDefaultValue();
+        tArea_Location.resetBackgroundColor();
+        tArea_Location.updateDefaultValue();
     }
 
-    private class panelMoverPane extends JPanel {
 
-        JButton moveUpButton = new JButton("↑");
-        JButton moveDownButton = new JButton("↓");
-
-        panelMoverPane() {
-            setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-            add(moveUpButton);
-            add(moveDownButton);
-            moveDownButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    movePaneDown();
-                }
-            });
-
-            moveUpButton.addActionListener(new AbstractAction() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    movePaneUp();
-                }
-            });
-        }
-
-
-        private void movePaneUp() {
-            Container parent = OneDEResultPane.this.getParent();
-            if (parent == null) {
-                return;
-            }
-
-            Component[] components = parent.getComponents();
-            int paneIndex = -1;
-            for (int i = 0; i < components.length; i++) {
-                if (components[i] == OneDEResultPane.this) {
-                    paneIndex = i;
-                    break;
-                }
-            }
-
-            if (paneIndex == -1) {
-                return;
-            }
-
-            Component previousPane = null;
-            for (int i = paneIndex - 1; i >= 0; i--) {
-                if (components[i] instanceof OneDEResultPane) {
-                    previousPane = components[i];
-                    break;
-                }
-            }
-
-            if (previousPane == null) {
-                return;
-            }
-
-            JLabel spacerBefore = null;
-            if (paneIndex > 0 && components[paneIndex - 1] instanceof JLabel) {
-                spacerBefore = (JLabel) components[paneIndex - 1];
-            }
-
-            if (spacerBefore != null) {
-                parent.remove(spacerBefore);
-            }
-            parent.remove(OneDEResultPane.this);
-
-            int insertionIndex = parent.getComponentZOrder(previousPane);
-            if (spacerBefore != null) {
-                parent.add(spacerBefore, insertionIndex);
-                insertionIndex++;
-            }
-            parent.add(OneDEResultPane.this, insertionIndex);
-
-            parent.revalidate();
-            parent.repaint();
-        }
-
-        private void movePaneDown() {
-            Container parent = OneDEResultPane.this.getParent();
-            if (parent == null) {
-                return;
-            }
-
-            Component[] components = parent.getComponents();
-            int paneIndex = -1;
-            for (int i = 0; i < components.length; i++) {
-                if (components[i] == OneDEResultPane.this) {
-                    paneIndex = i;
-                    break;
-                }
-            }
-
-            if (paneIndex == -1) {
-                return;
-            }
-
-            Component nextPane = null;
-            for (int i = paneIndex + 1; i < components.length; i++) {
-                if (components[i] instanceof OneDEResultPane) {
-                    nextPane = components[i];
-                    break;
-                }
-            }
-
-            if (nextPane == null) {
-                return;
-            }
-
-            JLabel spacerBefore = null;
-            if (paneIndex > 0 && components[paneIndex - 1] instanceof JLabel) {
-                spacerBefore = (JLabel) components[paneIndex - 1];
-            }
-
-            if (spacerBefore != null) {
-                parent.remove(spacerBefore);
-            }
-            parent.remove(OneDEResultPane.this);
-
-            int insertionIndex = parent.getComponentZOrder(nextPane) + 1;
-            if (spacerBefore != null) {
-                parent.add(spacerBefore, insertionIndex);
-                insertionIndex++;
-            }
-            parent.add(OneDEResultPane.this, insertionIndex);
-
-            parent.revalidate();
-            parent.repaint();
-        }
-
-    }
 }

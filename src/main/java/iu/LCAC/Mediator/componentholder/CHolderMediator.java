@@ -73,6 +73,18 @@ public class CHolderMediator implements MediatorIntrfc {
         textFieldPanelHolder.initialize();
         registerMemberToMap(textFieldPanelHolder);
 
+        /* 1. SI */
+        chMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.componentholder.Concretes.DEResult.SI.SI_SubTabsHolderFactory",
+                        AbstCHolderMemberFactory.class);
+        AbstCHolderMember subTabsHoldFactory_SI =
+                chMemberFactory.createCHolder("sub_tabs_holder_SI", "sub_tabs_holder_SI");
+        subTabsHoldFactory_SI .setCHolderMediator(this);
+        subTabsHoldFactory_SI .initialize();
+        registerMemberToMap(subTabsHoldFactory_SI );
+
+        /* 3. RCAI */
         chMemberFactory =
                 MemberFactoryLoader.loadFactory(
                         "iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolderFactory",
@@ -83,6 +95,7 @@ public class CHolderMediator implements MediatorIntrfc {
         subTabsHoldFactory_RCAI .initialize();
         registerMemberToMap(subTabsHoldFactory_RCAI );
 
+        /* 4. NM */
         chMemberFactory =
                 MemberFactoryLoader.loadFactory(
                         "iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolderFactory",

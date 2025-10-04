@@ -33,7 +33,8 @@ public class BasePaneCreator {
     //    BorderLayout.WEST);
 
     VerticalTextTabbedPane tabbedPane = new VerticalTextTabbedPane(JTabbedPane.LEFT);
-    //tabbedPane.add("1. Study Identification", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
+
+    tabbedPane.add("1. Study Identification", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_SI")).getBaseComponent());
 
     //tabbedPane.add("2. Study Characteristics", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
 
