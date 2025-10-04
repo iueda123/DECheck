@@ -4,7 +4,7 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.ManagerOfSubTabBasePane;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_ACNRSL_Pane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_ACNRSL_Style_Pane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_DEResult_Pane_Abs;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.SubTabsHolderItrfc;
 
@@ -96,17 +96,17 @@ public class NM_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
         if (jsonFiles != null) {
             for (File jsonFile : jsonFiles) {
                 String jsonFileName = jsonFile.getName();
-                mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_ACNRSL_Pane(jsonFolderPathString, jsonFileName, sectionName,subSection_1_Name));
-                mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_ACNRSL_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_2_Name));
-                mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_ACNRSL_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_3_Name));
-                mngrOfSubTabBasePane_4.addToTheDePaneArray(new One_ACNRSL_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_4_Name));
-                mngrOfSubTabBasePane_5.addToTheDePaneArray(new One_ACNRSL_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_5_Name));
-                mngrOfSubTabBasePane_6.addToTheDePaneArray(new One_ACNRSL_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_6_Name));
-                mngrOfSubTabBasePane_7.addToTheDePaneArray(new One_ACNRSL_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_7_Name));
-                mngrOfSubTabBasePane_8.addToTheDePaneArray(new One_ACNRSL_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_8_Name));
-                mngrOfSubTabBasePane_9.addToTheDePaneArray(new One_ACNRSL_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_9_Name));
-                mngrOfSubTabBasePane_10.addToTheDePaneArray(new One_ACNRSL_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_10_Name));
-                mngrOfSubTabBasePane_11.addToTheDePaneArray(new One_ACNRSL_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_11_Name));
+                mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_ACNRSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName,subSection_1_Name));
+                mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_ACNRSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_2_Name));
+                mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_ACNRSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_3_Name));
+                mngrOfSubTabBasePane_4.addToTheDePaneArray(new One_ACNRSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_4_Name));
+                mngrOfSubTabBasePane_5.addToTheDePaneArray(new One_ACNRSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_5_Name));
+                mngrOfSubTabBasePane_6.addToTheDePaneArray(new One_ACNRSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_6_Name));
+                mngrOfSubTabBasePane_7.addToTheDePaneArray(new One_ACNRSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_7_Name));
+                mngrOfSubTabBasePane_8.addToTheDePaneArray(new One_ACNRSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_8_Name));
+                mngrOfSubTabBasePane_9.addToTheDePaneArray(new One_ACNRSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_9_Name));
+                mngrOfSubTabBasePane_10.addToTheDePaneArray(new One_ACNRSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_10_Name));
+                mngrOfSubTabBasePane_11.addToTheDePaneArray(new One_ACNRSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_11_Name));
             }
         }
 

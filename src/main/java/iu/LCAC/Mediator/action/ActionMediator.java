@@ -164,6 +164,17 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.action.Concretes.DEResultActions.SI.Initialize_SI_TabPanes_ActionFactory",
+                        AbstActionMemberFactory.class);
+        AbstActionMember ititialize_SI_TabPanes_Action =
+                actionMemberFactory.createAction("initialize_si_tabpanes", "Init SI");
+        ititialize_SI_TabPanes_Action.setActionMediator(this);
+        ititialize_SI_TabPanes_Action.initialize();
+        registerMemberToMap(ititialize_SI_TabPanes_Action);
+
+
+        actionMemberFactory =
+                MemberFactoryLoader.loadFactory(
                         "iu.LCAC.Member.action.Concretes.DEResultActions.RCAI.Initialize_RCAI_TabPanes_ActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember ititialize_RCAI_TabPanes_Action =

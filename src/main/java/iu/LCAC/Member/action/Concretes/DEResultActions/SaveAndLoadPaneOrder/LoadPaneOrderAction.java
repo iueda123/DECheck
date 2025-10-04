@@ -5,7 +5,7 @@ import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.ManagerOfSubTabBasePane;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_ACNRSL_Pane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_ACNRSL_Style_Pane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.SubTabsHolderItrfc;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
@@ -96,7 +96,7 @@ public class LoadPaneOrderAction extends AbstActionMember {
             ArrayList<Component> newlyOrderedComponents = new ArrayList<>();
             for (String orderedJsonName : newlyOrderedJsonNameArray) {
                 for (Component comp : currentComponentArray) {
-                    One_ACNRSL_Pane oneACNRSLPane = (One_ACNRSL_Pane) comp;
+                    One_ACNRSL_Style_Pane oneACNRSLPane = (One_ACNRSL_Style_Pane) comp;
                     String jsonName_of_checking_comp = oneACNRSLPane.getJsonName();
                     //System.out.println("  Now checking '" + jsonName_of_checking_comp + "'");
                     if (orderedJsonName.equals(jsonName_of_checking_comp)) {

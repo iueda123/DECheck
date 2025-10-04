@@ -49,6 +49,12 @@ public abstract class One_DEResult_Pane_Abs extends JPanel {
         return sectionName;
     }
 
+    public void setValTo_JsonName(String value) {
+        tField_jsonName.setText(value);
+        setBorder(BorderFactory.createTitledBorder(value));
+    }
+
+
     protected abstract void resetBackgroundColorOfTAreasTFields();
 
     protected class PanelMoverPane extends JPanel {

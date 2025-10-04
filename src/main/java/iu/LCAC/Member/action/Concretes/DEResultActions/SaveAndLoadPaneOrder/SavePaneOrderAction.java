@@ -5,7 +5,7 @@ import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.ManagerOfSubTabBasePane;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_ACNRSL_Pane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_ACNRSL_Style_Pane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.SubTabsHolderItrfc;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
@@ -74,8 +74,8 @@ public class SavePaneOrderAction extends AbstActionMember {
             Component[] components = subSectionPanel.getComponents();
             for (int i = 0; i < components.length; i++) {
                 Object component = components[i];
-                if (component instanceof One_ACNRSL_Pane) {
-                    One_ACNRSL_Pane oneACNRSLPane = (One_ACNRSL_Pane) component;
+                if (component instanceof One_ACNRSL_Style_Pane) {
+                    One_ACNRSL_Style_Pane oneACNRSLPane = (One_ACNRSL_Style_Pane) component;
                     String jsonName = oneACNRSLPane.getJsonName();
                     //System.out.println("  DEResultPane No. " + i + ": " + jsonName);
                     arrayList_PanelOrder.add(jsonName);

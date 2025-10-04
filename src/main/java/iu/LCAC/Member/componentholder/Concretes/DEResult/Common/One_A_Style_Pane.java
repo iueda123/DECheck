@@ -9,13 +9,13 @@ import java.awt.event.ActionEvent;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class One_A_Pane extends One_DEResult_Pane_Abs {
+public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
 
     ColorChangeableTextArea tArea_Answer = new ColorChangeableTextArea("Study ID");
     private final String tooltipForAnswer = "Study ID. e.g. AuthorYear style.";
 
 
-    public One_A_Pane(String jsonFolderPathStr, String jsonName, String sectionName, String subSectionName) {
+    public One_A_Style_Pane(String jsonFolderPathStr, String jsonName, String sectionName, String subSectionName) {
         super(jsonFolderPathStr, jsonName, sectionName, subSectionName);
 
         tArea_Answer.setLineWrap(true);
@@ -113,12 +113,12 @@ public class One_A_Pane extends One_DEResult_Pane_Abs {
     }
 
     @Override
-    protected void resetBackgroundColorOfTAreasTFields() {
+    public void resetBackgroundColorOfTAreasTFields() {
         tArea_Answer.resetBackgroundColor();
         tArea_Answer.updateDefaultValue();
     }
 
-    public void setValTo_StudyID(String value) {
+    public void setValTo_Answer(String value) {
         tArea_Answer.setText(value);
     }
 

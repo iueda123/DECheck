@@ -69,11 +69,11 @@ public class SI_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
         if (jsonFiles != null) {
             for (File jsonFile : jsonFiles) {
                 String jsonFileName = jsonFile.getName();
-                mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_A_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_1_Name));
-                mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_A_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_2_Name));
-                mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_A_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_3_Name));
-                mngrOfSubTabBasePane_4.addToTheDePaneArray(new One_A_Pane(jsonFolderPathStr,  jsonFileName, sectionName, subSection_4_Name));
-                mngrOfSubTabBasePane_5.addToTheDePaneArray(new One_A_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_5_Name));
+                mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_1_Name));
+                mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_2_Name));
+                mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_3_Name));
+                mngrOfSubTabBasePane_4.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr,  jsonFileName, sectionName, subSection_4_Name));
+                mngrOfSubTabBasePane_5.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_5_Name));
             }
         }
 

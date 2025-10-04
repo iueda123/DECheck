@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class One_ACNRSL_Pane extends One_DEResult_Pane_Abs {
+public class One_ACNRSL_Style_Pane extends One_DEResult_Pane_Abs {
 
 
     ColorChangeableTextArea tArea_Answer = new ColorChangeableTextArea("Answer");
@@ -31,7 +31,7 @@ public class One_ACNRSL_Pane extends One_DEResult_Pane_Abs {
     ColorChangeableTextArea tArea_Location = new ColorChangeableTextArea("Location");
     private final String tooltip_Location = "Source file, page, or/and line of the information.";
 
-    public One_ACNRSL_Pane(String jsonFolderPathStr, String jsonName, String sectionName, String subSectionName) {
+    public One_ACNRSL_Style_Pane(String jsonFolderPathStr, String jsonName, String sectionName, String subSectionName) {
         super(jsonFolderPathStr, jsonName, sectionName, subSectionName);
 
         //this.jsonName = jsonName;
@@ -126,15 +126,6 @@ public class One_ACNRSL_Pane extends One_DEResult_Pane_Abs {
         setMaximumSize(new Dimension(Integer.MAX_VALUE, 400));
     }
 
-
-    public void setTextToTheButton(String text) {
-        this.saveButton.setText(text);
-    }
-
-    public void setValTo_JsonName(String value) {
-        tField_jsonName.setText(value);
-        setBorder(BorderFactory.createTitledBorder(value));
-    }
 
     public void setValTo_Answer(String value) {
         tArea_Answer.setText(value);
