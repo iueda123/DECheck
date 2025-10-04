@@ -36,7 +36,8 @@ public class ManagerOfSubTabBasePane {
         basePane.setLayout(new BoxLayout(basePane, BoxLayout.Y_AXIS));
 
         // NotePane を配置
-        notePane.setPreferredSize(new Dimension(600, 150));
+        //notePane.setPreferredSize(new Dimension(600, 150));
+        //notePane.setMaximumSize(new Dimension(600, 100));
         basePane.add(notePane);
 
         // OneDEResultPane たちを配置
@@ -49,6 +50,7 @@ public class ManagerOfSubTabBasePane {
         }
         // パネル全体のPreferredSizeを明示的に計算
         int totalHeight = dePaneArray.stream().mapToInt(p -> p.getPreferredSize().height).sum();
+        totalHeight += 100; // NotePane分足す
         basePaneForDEResultPanes.setPreferredSize(new Dimension(600, totalHeight));
         basePane.add(basePaneForDEResultPanes);
 

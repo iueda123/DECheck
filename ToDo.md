@@ -4,16 +4,16 @@
     * [x] load機構
   * [x] 編集すると色が付き、保存したりloadすると色が消える
   * 他のセクションのパネル
-    * [x] SI
-    * [ ] SC
-    * [x] RCAI
-    * [x] NM Normative Modelingのパネル
-    * [ ] CAAA Clinical Application & Analysis
-    * [ ] GN
-    * [ ] SI2
-    * [ ] QA1 ★
-    * [ ] QA2 ★
-    * [ ] AN
+    * [x] 1. SI
+    * [ ] 2. SC
+    * [x] 3. RCAI
+    * [x] 4. NM Normative Modelingのパネル
+    * [ ] 5. CAAA Clinical Application & Analysis
+    * [ ] 6. GN
+    * [ ] 7. SI2
+    * [ ] 8. QA1 ★
+    * [ ] 9. QA2 ★
+    * [ ] 10. AN
   * [x] Jar化
   * [ ] clinical_application_and_analysis も ARSL Style が良いのではないろうか。
   * [ ] 2TSV機能 ★

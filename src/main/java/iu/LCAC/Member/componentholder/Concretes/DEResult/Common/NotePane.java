@@ -30,6 +30,8 @@ public class NotePane extends JPanel {
         // Status
         tFiled_Status.setToolTipText(tooltipForStatusFiled);
         tFiled_Status.setPreferredSize(new Dimension(50, 100));
+        //tFiled_Status.setMinimumSize(new Dimension(600, 100));
+        //tFiled_Status.setMaximumSize(new Dimension(600, 100));
 
         // Note
         tArea_Note.setToolTipText(tooltipForNoteArea);
