@@ -6,9 +6,11 @@ import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.ManagerOfSubTabBasePane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_ACNRSL_Style_Pane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_DEResult_Pane_Abs;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.SubTabsHolderItrfc;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.SI.SI_SubTabsHolder;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,10 +39,10 @@ public class SavePaneOrderAction extends AbstActionMember {
     public void perform(ActionEvent action_event) {
         System.out.println("perform() in " + this.getClass().toString() + " was called.");
 
-        // TODO: 全セクションに拡張
-        savePaneOrder("RCAI", "./settings/NotePane/" + "reference_cohort_and_imaging" + ".prop");
-        savePaneOrder("NM", "./settings/NotePane/" + "normative_modeling" + ".prop");
-
+        // 全セクションに拡張可能
+        savePaneOrder("SI", "./settings/PaneOrder/" + "study_identification" + ".prop");
+        savePaneOrder("RCAI", "./settings/PaneOrder/" + "reference_cohort_and_imaging" + ".prop");
+        savePaneOrder("NM", "./settings/PaneOrder/" + "normative_modeling" + ".prop");
 
     }
 
@@ -48,6 +50,10 @@ public class SavePaneOrderAction extends AbstActionMember {
         AbstCHolderMember member;
         SubTabsHolderItrfc subTabsHolder;
         switch (member_name_key_word) {
+            case "SI":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_SI");
+                subTabsHolder = (SI_SubTabsHolder) member;
+                break;
             case "RCAI":
                 member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI");
                 subTabsHolder = (RCAI_SubTabsHolder) member;
@@ -74,9 +80,9 @@ public class SavePaneOrderAction extends AbstActionMember {
             Component[] components = subSectionPanel.getComponents();
             for (int i = 0; i < components.length; i++) {
                 Object component = components[i];
-                if (component instanceof One_ACNRSL_Style_Pane) {
-                    One_ACNRSL_Style_Pane oneACNRSLPane = (One_ACNRSL_Style_Pane) component;
-                    String jsonName = oneACNRSLPane.getJsonName();
+                if (component instanceof One_DEResult_Pane_Abs) {
+                    One_DEResult_Pane_Abs oneDEResultPane = (One_DEResult_Pane_Abs) component;
+                    String jsonName = oneDEResultPane.getJsonName();
                     //System.out.println("  DEResultPane No. " + i + ": " + jsonName);
                     arrayList_PanelOrder.add(jsonName);
                 }

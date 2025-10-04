@@ -224,7 +224,7 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
                         "iu.LCAC.Member.action.Concretes.DEResultActions.SaveAndLoadNotePaneTexts.SaveNotePaneTextsActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember saveNotePaneAction =
-                actionMemberFactory.createAction("save_note_pane", "save note pane state");
+                actionMemberFactory.createAction("save_note_pane", "save note pane texts");
         saveNotePaneAction.setActionMediator(this);
         saveNotePaneAction.initialize();
         registerMemberToMap(saveNotePaneAction);
@@ -235,7 +235,7 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
                         "iu.LCAC.Member.action.Concretes.DEResultActions.SaveAndLoadNotePaneTexts.LoadNotePaneTextsActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember loadNotePaneAction =
-                actionMemberFactory.createAction("load_note_pane", "load note pane state");
+                actionMemberFactory.createAction("load_note_pane", "load note pane texts");
         loadNotePaneAction.setActionMediator(this);
         loadNotePaneAction.initialize();
         registerMemberToMap(loadNotePaneAction);

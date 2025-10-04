@@ -6,9 +6,11 @@ import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.ManagerOfSubTabBasePane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_ACNRSL_Style_Pane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_DEResult_Pane_Abs;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.SubTabsHolderItrfc;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.SI.SI_SubTabsHolder;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,8 +42,9 @@ public class LoadPaneOrderAction extends AbstActionMember {
 
 
         // TODO: 全セクションに拡張
-        loadPaneOrder("RCAI",  "./settings/" + "reference_cohort_and_imaging" + ".prop" );
-        loadPaneOrder("NM", "./settings/" + "normative_modeling" + ".prop");
+        loadPaneOrder("SI",  "./settings/PaneOrder/" + "study_identification" + ".prop" );
+        loadPaneOrder("RCAI",  "./settings/PaneOrder/" + "reference_cohort_and_imaging" + ".prop" );
+        loadPaneOrder("NM", "./settings/PaneOrder/" + "normative_modeling" + ".prop");
 
 
     }
@@ -53,6 +56,10 @@ public class LoadPaneOrderAction extends AbstActionMember {
         AbstCHolderMember member;
         SubTabsHolderItrfc subTabsHolder;
         switch (member_name_key_word) {
+            case "SI":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_SI");
+                subTabsHolder = (SI_SubTabsHolder) member;
+                break;
             case "RCAI":
                 member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI");
                 subTabsHolder = (RCAI_SubTabsHolder) member;
@@ -96,8 +103,8 @@ public class LoadPaneOrderAction extends AbstActionMember {
             ArrayList<Component> newlyOrderedComponents = new ArrayList<>();
             for (String orderedJsonName : newlyOrderedJsonNameArray) {
                 for (Component comp : currentComponentArray) {
-                    One_ACNRSL_Style_Pane oneACNRSLPane = (One_ACNRSL_Style_Pane) comp;
-                    String jsonName_of_checking_comp = oneACNRSLPane.getJsonName();
+                    One_DEResult_Pane_Abs oneDEResultPane = (One_DEResult_Pane_Abs) comp;
+                    String jsonName_of_checking_comp = oneDEResultPane.getJsonName();
                     //System.out.println("  Now checking '" + jsonName_of_checking_comp + "'");
                     if (orderedJsonName.equals(jsonName_of_checking_comp)) {
                         //System.out.println("    This was added to newlyOrderedComponents!");
