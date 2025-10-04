@@ -4,7 +4,7 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_ACNRSL_Style_Pane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_ARSL_Style_Pane;
 import iu.LCAC.Utils.JsonManager;
 
 import java.awt.event.ActionEvent;
@@ -68,7 +68,7 @@ public class Initialize_NM_TabPanes_Action extends AbstActionMember {
             // Initialization Core
             if (subTabsHolder != null) {
 
-                One_ACNRSL_Style_Pane trtgDEResultPane = (One_ACNRSL_Style_Pane) subTabsHolder.getResultPane(jsonFileName, sectionName, subSectionName);
+                One_ARSL_Style_Pane trtgDEResultPane = (One_ARSL_Style_Pane) subTabsHolder.getResultPane(jsonFileName, sectionName, subSectionName);
                 trtgDEResultPane.setValTo_JsonName(jsonFileName);
                 trtgDEResultPane.setValTo_Answer(answer);
                 trtgDEResultPane.setValTo_ConfidenceRating(confidenceRating);
