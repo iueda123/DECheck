@@ -8,6 +8,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.swing.*;
 
 public class MainWindowHolder extends AbstCHolderMember {
@@ -50,6 +53,13 @@ public class MainWindowHolder extends AbstCHolderMember {
                 .getInstanceOfAMember("load_note_pane")
                 .perform(new ActionEvent(this, 0, "Load Note Pane Texts."));
 
+        /* JFrameタイトル */
+        Path currentPath = Paths.get("./").toAbsolutePath().normalize();
+        String currentDirName = currentPath.getFileName().toString();
+        String parentDirName = currentPath.getParent().getFileName().toString();
+        String windowTitle = parentDirName + "-" + currentDirName;
+        mainWindow.setTitle(windowTitle);
+
 
     }
 
@@ -89,6 +99,7 @@ public class MainWindowHolder extends AbstCHolderMember {
 
                         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+
                         try {
                             // UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
@@ -97,6 +108,7 @@ public class MainWindowHolder extends AbstCHolderMember {
                         }
                         mainWindow.pack();
                         mainWindow.setVisible(true);
+
 
                         mainWindow.setLocationRelativeTo(null);
                     }
