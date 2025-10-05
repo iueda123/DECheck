@@ -14,8 +14,8 @@ import java.nio.file.Paths;
 
 public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
 
-    ColorChangeableTextArea tArea_Answer = new ColorChangeableTextArea("Study ID");
-    private final String tooltipForAnswer = "Study ID. e.g. AuthorYear style.";
+    ColorChangeableTextArea tArea_Answer = new ColorChangeableTextArea("Answer");
+    private final String tooltipForAnswer = "This is the answer areae.";
 
 
     public One_A_Style_Pane(String jsonFolderPathStr, String jsonName, String sectionName, String subSectionName) {
