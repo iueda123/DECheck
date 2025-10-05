@@ -1,5 +1,8 @@
 package iu.LCAC.Member.componentholder.Concretes.DEResult.Common;
 
+import iu.LCAC.Mediator.MediatorIntrfc;
+import iu.LCAC.Mediator.action.ActionMediator;
+import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Utils.ColorChangeableTextArea;
 import iu.LCAC.Utils.JsonManager;
 
@@ -16,7 +19,12 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
 
 
     public One_A_Style_Pane(String jsonFolderPathStr, String jsonName, String sectionName, String subSectionName) {
-        super(jsonFolderPathStr, jsonName, sectionName, subSectionName);
+        this(jsonFolderPathStr, jsonName, sectionName, subSectionName, null, null);
+    }
+
+    public One_A_Style_Pane(String jsonFolderPathStr, String jsonName, String sectionName, String subSectionName, CHolderMediator cHolderMediator, ActionMediator actionMediator) {
+
+        super(jsonFolderPathStr, jsonName, sectionName, subSectionName, cHolderMediator, actionMediator);
 
         tArea_Answer.setLineWrap(true);
         tArea_Answer.setWrapStyleWord(true);
@@ -38,8 +46,8 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
         Box northSubBox2 = Box.createHorizontalBox();
         northSubBox2.add(Box.createHorizontalGlue());
         northSubBox2.add(saveButton);
-        northSubBox2.add(convertJson2MarkdownButton);
-        northSubBox2.add(convertJson2TsvButton);
+        //northSubBox2.add(convertJson2MarkdownButton);
+        //northSubBox2.add(convertJson2TsvButton);
         northSubBox2.add(loadButton);
         northSubBox2.add(jsonFileNameEditButton);
         northSubBox2.add(new PanelMoverPane());
@@ -56,6 +64,7 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
         setMaximumSize(new Dimension(Integer.MAX_VALUE, 400));
 
     }
+
 
     @Override
     protected void saveJson() {

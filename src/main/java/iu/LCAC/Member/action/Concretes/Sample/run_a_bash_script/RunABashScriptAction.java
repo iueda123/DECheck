@@ -18,7 +18,7 @@ import java.util.List;
 
 public class RunABashScriptAction extends AbstActionMember {
 
-    private final String scriptFilePathStr = "src/main/java/iu/LCAC/Member/action/Concretes/Sample/run_a_bash_script/show_popup.sh";
+    private final String scriptFilePathStr = "src/main/java/iu/LCAC/Member/action/Concretes/DEResultActions/ConvertJson/convertJson2Markdown.sh";
 
     static final String SettingPropertyFilePath = "./settings/ActionControlledComponentFramework/settings.prop";
 

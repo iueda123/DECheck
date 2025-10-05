@@ -1,5 +1,9 @@
 package iu.LCAC.Member.componentholder.Concretes.DEResult.Common;
 
+import iu.LCAC.Mediator.action.ActionMediator;
+import iu.LCAC.Mediator.componentholder.CHolderMediator;
+import iu.LCAC.Member.MemberIntrfc;
+import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Utils.ColorChangeableTextField;
 
 import javax.swing.*;
@@ -16,6 +20,9 @@ public abstract class One_DEResult_Pane_Abs extends JPanel {
     final String sectionName;
     final String subSectionName;
 
+    final CHolderMediator cHolderMediator;
+    final ActionMediator actionMediator;
+
     ColorChangeableTextField tField_jsonName = new ColorChangeableTextField("JSON File Name");
     String tooltipForJsonName = "JSON File Name";
 
@@ -29,11 +36,21 @@ public abstract class One_DEResult_Pane_Abs extends JPanel {
     public One_DEResult_Pane_Abs(
             String jsonFolderPathStr,
             String jsonName, String sectionName, String subSectionName) {
+        this(jsonFolderPathStr, jsonName, sectionName, subSectionName, null, null);
+    }
+
+    public One_DEResult_Pane_Abs(
+            String jsonFolderPathStr, String jsonName, String sectionName, String subSectionName,
+            CHolderMediator cHolderMediator, ActionMediator actionMediator) {
+
+
         this.jsonFolderPathStr = jsonFolderPathStr;
         this.jsonName = jsonName;
         this.sectionName = sectionName;
         this.subSectionName = subSectionName;
 
+        this.cHolderMediator = cHolderMediator;
+        this.actionMediator = actionMediator;
 
         saveButton.addActionListener(
                 new AbstractAction() {
@@ -57,6 +74,44 @@ public abstract class One_DEResult_Pane_Abs extends JPanel {
             }
         });
 
+        convertJson2MarkdownButton.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                convertJson2Markdown();
+            }
+        });
+
+    }
+
+    private void convertJson2Markdown() {
+
+        if (cHolderMediator != null) {
+            System.err.println("The cHolderMediator is not null.");
+        } else {
+            System.err.println("The cHolderMediator is null.");
+        }
+
+        if (this.actionMediator != null) {
+            System.err.println("The actionMediator is not null.");
+
+            // 何かしらの文字列を引数として渡すには以下のようにしてActionEventを作成
+            AbstActionMember abstActionMember = actionMediator.getInstanceOfAMember("run_a_bash_script");
+            ActionEvent customEvent_with_ActionNameAndArgs = new ActionEvent(
+                    this,
+                    ActionEvent.ACTION_PERFORMED,
+                    "DummyActionName RunBashPanelHolderから渡した引数1 " + "RunBashPanelHolderから渡した引数2 "
+
+                    // AbstrActionMember#getActionCommandAndArgs()の自分が決めた仕様で、
+                    // ActionEventオブジェクトに格納された文字列の１つ目の要素はアクション名、
+                    // ２つ目以降の要素は引数扱い。
+                    // なので ここでは１つ目を DummyActionName としている。
+
+            );
+            abstActionMember.perform(customEvent_with_ActionNameAndArgs);
+
+        } else {
+            System.err.println("The actionMediator is null.");
+        }
     }
 
     protected abstract void saveJson();
@@ -218,7 +273,7 @@ public abstract class One_DEResult_Pane_Abs extends JPanel {
 
     }
 
-    protected void changeJsonFileName(){
+    protected void changeJsonFileName() {
         System.out.println("Start editing JSON file name");
 
         String newJsonName = (String) JOptionPane.showInputDialog(

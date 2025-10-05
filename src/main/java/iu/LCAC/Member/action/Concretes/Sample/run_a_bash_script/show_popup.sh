@@ -6,8 +6,7 @@
 message=""
 counter=1
 for arg in "$@"; do
-    message="${message}  * ARG${counter}: ${arg}
-"
+    message="${message}  * ARG${counter}: ${arg}"
     counter=$((counter + 1))
 done
 

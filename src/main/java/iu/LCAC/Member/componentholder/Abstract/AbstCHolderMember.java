@@ -11,9 +11,10 @@ import javax.swing.*;
 
 public abstract class AbstCHolderMember implements MemberIntrfc {
 
+  protected CHolderMediator cholderMediator;
+
   protected ActionMediator actionMediator;
 
-  protected CHolderMediator cholderMediator;
 
   protected String cholderName;
   protected String shortName;
