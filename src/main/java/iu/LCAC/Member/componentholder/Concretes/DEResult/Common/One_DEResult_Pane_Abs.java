@@ -43,6 +43,11 @@ public abstract class One_DEResult_Pane_Abs extends JPanel {
             String jsonFolderPathStr, String jsonName, String sectionName, String subSectionName,
             CHolderMediator cHolderMediator, ActionMediator actionMediator) {
 
+        // BashScriptを呼び出すActionMemberを利用すべく
+        // CHolderMediator や ActionMediator を このクラス内に保持したいと
+        // このコンストラクタを作った。しかし、どうやって CHolderMediatorやActionMediatorを
+        // nullじゃない状態で持ってくるかの良い方法を思いつけず。
+        //　ひとまずこのコンストラクタを残しておく。
 
         this.jsonFolderPathStr = jsonFolderPathStr;
         this.jsonName = jsonName;

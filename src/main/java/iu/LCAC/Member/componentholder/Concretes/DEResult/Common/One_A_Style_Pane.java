@@ -26,6 +26,13 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
 
         super(jsonFolderPathStr, jsonName, sectionName, subSectionName, cHolderMediator, actionMediator);
 
+        // BashScriptを呼び出すActionMemberを利用すべく
+        // CHolderMediator や ActionMediator を このクラス内に保持したいと
+        // このコンストラクタを作った。しかし、どうやって CHolderMediatorやActionMediatorを
+        // nullじゃない状態で持ってくるかの良い方法を思いつけず。
+        //　ひとまずこのコンストラクタを残しておく。
+
+
         tArea_Answer.setLineWrap(true);
         tArea_Answer.setWrapStyleWord(true);
         tArea_Answer.setToolTipText(tooltipForAnswer);
