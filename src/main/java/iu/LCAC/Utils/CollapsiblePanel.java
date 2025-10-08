@@ -13,9 +13,9 @@ import java.util.logging.Logger;
 
 public final class CollapsiblePanel extends JPanel {
 
-    JLabel showHideNorthButton = new JLabel("^");
+    JLabel showHideNorthButton = new JLabel("v");
     JLabel showHideEastButton = new JLabel(" < ");
-    JLabel showHideSouthButton = new JLabel("v");
+    JLabel showHideSouthButton = new JLabel("^");
     JLabel showHideWestButton = new JLabel(" > ");
 
     public CollapsiblePanel(JComponent base_comp, JComponent north_comp, int width, int height) {
@@ -30,12 +30,12 @@ public final class CollapsiblePanel extends JPanel {
         JPanel northBasePane = new JPanel(north_layout);
         northBasePane.add(north_comp);
         animator_for_north.addActionListener(e -> northBasePane.revalidate());
-        showHideEastButton.addMouseListener(new MouseAdapter() {
+        showHideNorthButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 if (!animator_for_north.isRunning()) {
-                    north_layout.isHidden = northBasePane.getWidth() == 0;
+                    north_layout.isHidden = northBasePane.getHeight() == 0;
                     animator_for_north.start();
                 }
             }
@@ -46,21 +46,21 @@ public final class CollapsiblePanel extends JPanel {
 
         Timer animator_for_south = new Timer(5, null);
         ControlsBorderLayout_for_North south_layout = new ControlsBorderLayout_for_North(animator_for_south);
-        JPanel southBasePane = new JPanel(north_layout);
-        northBasePane.add(north_comp);
+        JPanel southBasePane = new JPanel(south_layout);
+        southBasePane.add(new JLabel("SOUTH"));
         animator_for_south.addActionListener(e -> southBasePane.revalidate());
-        showHideEastButton.addMouseListener(new MouseAdapter() {
+        showHideSouthButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 if (!animator_for_south.isRunning()) {
-                    south_layout.isHidden = southBasePane.getWidth() == 0;
+                    south_layout.isHidden = southBasePane.getHeight() == 0;
                     animator_for_south.start();
                 }
             }
         });
         showHideSouthButton.setFocusable(false);
-        //outerBasePanel.add(southBasePane, BorderLayout.EAST);
+        outerBasePanel.add(southBasePane, BorderLayout.SOUTH);
 
 
         Timer animator_for_east = new Timer(5, null);
@@ -98,7 +98,7 @@ public final class CollapsiblePanel extends JPanel {
             }
         });
         showHideWestButton.setFocusable(false);
-        //outerBasePanel.add(westBasePane, BorderLayout.WEST);
+        outerBasePanel.add(westBasePane, BorderLayout.WEST);
 
 
 
@@ -111,11 +111,8 @@ public final class CollapsiblePanel extends JPanel {
 
         JTree tree = new JTree();
         //p.add(new JScrollPane(tree));
-        outerBasePanel.add(new JScrollPane(base_comp));
-        outerBasePanel.add(showHideNorthButton, BorderLayout.SOUTH);
-        outerBasePanel.add(showHideEastButton, BorderLayout.WEST);
 
-        outerBasePanel.add(new InnerBasePane(new JLabel("中央")));
+        outerBasePanel.add(new InnerBasePane(new JScrollPane(base_comp)));
 
         add(outerBasePanel);
         //setPreferredSize(new Dimension(width, height));
