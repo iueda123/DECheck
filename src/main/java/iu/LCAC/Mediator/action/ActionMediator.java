@@ -198,6 +198,17 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
         ititialize_NM_TabPanes_Action.initialize();
         registerMemberToMap(ititialize_NM_TabPanes_Action);
 
+        actionMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.action.Concretes.DEResultActions.Init_CAAA_Section.Initialize_CAAA_TabPanes_ActionFactory",
+                        AbstActionMemberFactory.class);
+        AbstActionMember ititialize_CAAA_TabPanes_Action =
+                actionMemberFactory.createAction("initialize_caaa_tabpanes", "Init CAAA");
+        ititialize_CAAA_TabPanes_Action.setActionMediator(this);
+        ititialize_CAAA_TabPanes_Action.initialize();
+        registerMemberToMap(ititialize_CAAA_TabPanes_Action);
+
+
 
         // Save & Load DEResultPane Order
 

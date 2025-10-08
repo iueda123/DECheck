@@ -128,6 +128,17 @@ public class CHolderMediator implements MediatorIntrfc {
         subTabsHoldFactory_NM.initialize();
         registerMemberToMap(subTabsHoldFactory_NM);
 
+        /* 4. CAAA */
+        chMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.componentholder.Concretes.DEResult.CAAA.CAAA_SubTabsHolderFactory",
+                        AbstCHolderMemberFactory.class);
+        AbstCHolderMember subTabsHoldFactory_CAAA =
+                chMemberFactory.createCHolder("sub_tabs_holder_CAAA", "sub_tabs_holder_CAAA");
+        subTabsHoldFactory_CAAA.setCHolderMediator(this);
+        subTabsHoldFactory_CAAA.initialize();
+        registerMemberToMap(subTabsHoldFactory_CAAA);
+
 
     }
 
