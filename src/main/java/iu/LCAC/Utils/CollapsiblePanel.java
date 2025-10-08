@@ -17,32 +17,46 @@ public final class CollapsiblePanel extends JPanel {
         button.setFocusable(false);
         JTextField field = new JTextField("", 10);
 
-        Timer animator = new Timer(5, null);
+        Timer animator_for_north = new Timer(5, null);
         //ControlsBorderLayout_for_North layout = new ControlsBorderLayout_for_North(animator);
-        ControlsBorderLayout_for_West layout = new ControlsBorderLayout_for_West(animator);
-        JPanel controls = new JPanel(layout);
-        controls.add(north_comp);
-        //controls.setName("aaa");
-        //controls.setBorder(BorderFactory.createTitledBorder("Search down"));
-        //controls.add(new JLabel("Find what:"), BorderLayout.WEST);
-        //controls.add(field);
-        //controls.add(button, BorderLayout.EAST);
-        animator.addActionListener(e -> controls.revalidate());
 
-        Action act = new AbstractAction("Show/Hide Search Box") {
+        ControlsBorderLayout_for_North north_layout = new ControlsBorderLayout_for_North(animator_for_north);
+        JPanel northBasePane = new JPanel(north_layout);
+        northBasePane.add(north_comp);
+        animator_for_north.addActionListener(e -> northBasePane.revalidate());
+        Action showHideNorthAction = new AbstractAction("Show/Hide North") {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                if (!animator.isRunning()) {
-                    //layout.isHidden = controls.getHeight() == 0;
-                    layout.isHidden = controls.getWidth() == 0;
-                    animator.start();
+                if (!animator_for_north.isRunning()) {
+                    north_layout.isHidden = northBasePane.getHeight() == 0;
+                    animator_for_north.start();
                 }
             }
         };
+        JButton showHideNorthButton = new JButton();
+        showHideNorthButton.setAction(showHideNorthAction);
+        showHideNorthButton.setFocusable(false);
 
+
+        Timer animator_for_east = new Timer(5, null);
+        ControlsBorderLayout_for_East east_layout = new ControlsBorderLayout_for_East(animator_for_east);
+        JPanel eastBasePane = new JPanel(east_layout);
+        eastBasePane.add(new JLabel("Hello"));
+        animator_for_east.addActionListener(e -> eastBasePane.revalidate());
+        Action showHideEastAction = new AbstractAction("Show/Hide East") {
+            @Override
+            public void actionPerformed(ActionEvent ev) {
+                if (!animator_for_east.isRunning()) {
+                    east_layout.isHidden = eastBasePane.getWidth() == 0;
+                    animator_for_east.start();
+                }
+            }
+        };
         JButton showHideEastButton = new JButton();
-        showHideEastButton.setAction(act);
+        showHideEastButton.setAction(showHideEastAction);
         showHideEastButton.setFocusable(false);
+
+
         JPanel basePanel = new JPanel(new BorderLayout());
 
         //int modifiers = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
@@ -51,12 +65,14 @@ public final class CollapsiblePanel extends JPanel {
         //im.put(KeyStroke.getKeyStroke(KeyEvent.VK_F, modifiers), "open-searchbox");
         //p.getActionMap().put("open-searchbox", act);
         //p.add(controls, BorderLayout.WEST);
-        basePanel.add(controls, BorderLayout.EAST);
+        basePanel.add(northBasePane, BorderLayout.NORTH);
+        basePanel.add(eastBasePane, BorderLayout.EAST);
 
         JTree tree = new JTree();
         //p.add(new JScrollPane(tree));
         basePanel.add(new JScrollPane(base_comp));
-        basePanel.add(showHideEastButton, BorderLayout.CENTER);
+        basePanel.add(showHideNorthButton, BorderLayout.SOUTH);
+        basePanel.add(showHideEastButton, BorderLayout.WEST);
 
         add(basePanel);
         //setPreferredSize(new Dimension(width, height));
@@ -82,7 +98,7 @@ public final class CollapsiblePanel extends JPanel {
         JPanel pane_upper = new JPanel();
         pane_upper.add(new JLabel("upper"));
         JPanel pane_base = new JPanel();
-         pane_base.setLayout(new BoxLayout(pane_base, BoxLayout.Y_AXIS));
+        pane_base.setLayout(new BoxLayout(pane_base, BoxLayout.Y_AXIS));
         pane_base.add(new JLabel("over"));
         pane_base.add(new JLabel("over"));
         pane_base.add(new JLabel("over"));
@@ -90,7 +106,7 @@ public final class CollapsiblePanel extends JPanel {
         pane_base.add(new JLabel("over"));
 
 
-        frame.getContentPane().add(new CollapsiblePanel( pane_base, pane_upper, 320, 240));
+        frame.getContentPane().add(new CollapsiblePanel(pane_base, pane_upper, 320, 240));
 
         frame.pack();
         frame.setLocationRelativeTo(null);
@@ -135,12 +151,12 @@ class ControlsBorderLayout_for_North extends BorderLayout {
 }
 
 
-class ControlsBorderLayout_for_West extends BorderLayout {
+class ControlsBorderLayout_for_East extends BorderLayout {
     public boolean isHidden = true;
     private final Timer animator;
     private int controlsWidth;
 
-    public ControlsBorderLayout_for_West(Timer animator) {
+    public ControlsBorderLayout_for_East(Timer animator) {
         super(5, 5);
         this.animator = animator;
     }
