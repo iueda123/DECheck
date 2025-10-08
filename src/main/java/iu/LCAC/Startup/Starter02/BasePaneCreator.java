@@ -2,6 +2,7 @@ package iu.LCAC.Startup.Starter02;
 
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Concretes.MainWindow.MainWindowHolder;
+import iu.LCAC.Utils.CollapsiblePanel;
 import iu.LCAC.Utils.VerticalTextTabbedPane;
 
 import java.awt.*;
@@ -52,13 +53,16 @@ public class BasePaneCreator {
     //tabbedPane.add("6. General Notes", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
     //tabbedPane.add("7. QA", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
 
-    basePane.add(tabbedPane, BorderLayout.CENTER);
+    //basePane.add(tabbedPane, BorderLayout.CENTER);
+
+
 
 
     //basePane.add(
     //    (cHolderMediator.getInstanceOfAMember("text_field_panel_holder")).getBaseComponent(),
     //    BorderLayout.EAST);
 
-    return basePane;
+    //return basePane;
+    return new CollapsiblePanel(tabbedPane, new JLabel("East"), new JLabel("West"), new JLabel("South"), new JLabel("North"));
   }
 }
