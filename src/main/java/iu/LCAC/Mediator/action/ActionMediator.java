@@ -177,6 +177,15 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
         ititialize_SI_TabPanes_Action.initialize();
         registerMemberToMap(ititialize_SI_TabPanes_Action);
 
+        actionMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.action.Concretes.DEResultActions.Init_SC_Section.Initialize_SC_TabPanes_ActionFactory",
+                        AbstActionMemberFactory.class);
+        AbstActionMember ititialize_SC_TabPanes_Action =
+                actionMemberFactory.createAction("initialize_sc_tabpanes", "Init SC");
+        ititialize_SC_TabPanes_Action.setActionMediator(this);
+        ititialize_SC_TabPanes_Action.initialize();
+        registerMemberToMap(ititialize_SC_TabPanes_Action);
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
@@ -207,6 +216,17 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
         ititialize_CAAA_TabPanes_Action.setActionMediator(this);
         ititialize_CAAA_TabPanes_Action.initialize();
         registerMemberToMap(ititialize_CAAA_TabPanes_Action);
+
+        actionMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.action.Concretes.DEResultActions.Init_GN_Section.Initialize_GN_TabPanes_ActionFactory",
+                        AbstActionMemberFactory.class);
+        AbstActionMember ititialize_GN_TabPanes_Action =
+                actionMemberFactory.createAction("initialize_gn_tabpanes", "Init GN");
+        ititialize_GN_TabPanes_Action.setActionMediator(this);
+        ititialize_GN_TabPanes_Action.initialize();
+        registerMemberToMap(ititialize_GN_TabPanes_Action);
+
 
 
 

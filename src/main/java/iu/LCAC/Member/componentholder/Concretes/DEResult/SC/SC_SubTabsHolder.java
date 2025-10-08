@@ -1,10 +1,12 @@
-package iu.LCAC.Member.componentholder.Concretes.DEResult.SI;
+package iu.LCAC.Member.componentholder.Concretes.DEResult.SC;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
-import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.*;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.ManagerOfSubTabBasePane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_A_Style_Pane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_DEResult_Pane_Abs;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.SubTabsHolderItrfc;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,23 +14,19 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.util.ArrayList;
 
-public class SI_SubTabsHolder extends AbstCHolderMember implements SubTabsHolderItrfc {
+public class SC_SubTabsHolder extends AbstCHolderMember implements SubTabsHolderItrfc {
 
     static final String jsonFolderPathStr = "./json/DE";
 
-    static String sectionName = "study_identification";
+    static String sectionName = "study_characteristics";
 
-    static String subSection_1_Name = "study_id";
-    static String subSection_2_Name = "reference_file_names";
-    static String subSection_3_Name = "author_journal_year";
-    static String subSection_4_Name = "title";
-    static String subSection_5_Name = "doi";
+    static String subSection_1_Name = "study_objective";
+    static String subSection_2_Name = "study_design";
+    static String subSection_3_Name = "study_design_other";
 
-    static String subSection_1_TabName = "Study ID";
-    static String subSection_2_TabName = "Reference File Names";
-    static String subSection_3_TabName = "Author Journal Year";
-    static String subSection_4_TabName = "TItle";
-    static String subSection_5_TabName = "DOI";
+    static String subSection_1_TabName = "Study Objective";
+    static String subSection_2_TabName = "Study Design";
+    static String subSection_3_TabName = "Study Design Other";
 
 
     JPanel panel = new JPanel(new BorderLayout());
@@ -38,19 +36,15 @@ public class SI_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
     ManagerOfSubTabBasePane mngrOfSubTabBasePane_1 = new ManagerOfSubTabBasePane(subSection_1_TabName, sectionName,subSection_1_Name, baseTabPane);
     ManagerOfSubTabBasePane mngrOfSubTabBasePane_2 = new ManagerOfSubTabBasePane(subSection_2_TabName, sectionName,subSection_2_Name, baseTabPane);
     ManagerOfSubTabBasePane mngrOfSubTabBasePane_3 = new ManagerOfSubTabBasePane(subSection_3_TabName, sectionName,subSection_3_Name, baseTabPane);
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_4 = new ManagerOfSubTabBasePane(subSection_4_TabName, sectionName,subSection_4_Name, baseTabPane);
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_5 = new ManagerOfSubTabBasePane(subSection_5_TabName, sectionName,subSection_5_Name, baseTabPane);
 
     ArrayList<ManagerOfSubTabBasePane> arrayList_of_ManagerOfSubTabBasePane = new ArrayList<>();
 
-    public SI_SubTabsHolder(String cholder_name, String short_name) {
+    public SC_SubTabsHolder(String cholder_name, String short_name) {
         super(cholder_name, short_name);
 
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_1);
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_2);
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_3);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_4);
-        arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_5);
 
         // ./json下のすべてのJSONファイルを取得
         File jsonDir = new File(jsonFolderPathStr);
@@ -81,8 +75,6 @@ public class SI_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
                 mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_1_Name, this.cholderMediator, this.actionMediator));
                 mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_2_Name, this.cholderMediator, this.actionMediator));
                 mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_3_Name, this.cholderMediator, this.actionMediator));
-                mngrOfSubTabBasePane_4.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr,  jsonFileName, sectionName, subSection_4_Name, this.cholderMediator, this.actionMediator));
-                mngrOfSubTabBasePane_5.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_5_Name, this.cholderMediator, this.actionMediator));
             }
         }
 
@@ -108,9 +100,9 @@ public class SI_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
                 ActionEvent customEvent = new ActionEvent(
                         this,
                         ActionEvent.ACTION_PERFORMED,
-                        "initialize_si_tabpanes " + jsonName + " " + sectionName + " " + subSectionName
+                        "initialize_sc_tabpanes " + jsonName + " " + sectionName + " " + subSectionName
                 );
-                actionMediator.getInstanceOfAMember("initialize_si_tabpanes").perform(customEvent);
+                actionMediator.getInstanceOfAMember("initialize_sc_tabpanes").perform(customEvent);
             }
 
             for (One_DEResult_Pane_Abs oneDeResultPaneAbs : mngrOfSubTabBasePane_2.getDePaneArray()) {
@@ -122,9 +114,9 @@ public class SI_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
                 ActionEvent customEvent = new ActionEvent(
                         this,
                         ActionEvent.ACTION_PERFORMED,
-                        "initialize_si_tabpanes " + jsonName + " " + sectionName + " " + subSectionName
+                        "initialize_sc_tabpanes " + jsonName + " " + sectionName + " " + subSectionName
                 );
-                actionMediator.getInstanceOfAMember("initialize_si_tabpanes").perform(customEvent);
+                actionMediator.getInstanceOfAMember("initialize_sc_tabpanes").perform(customEvent);
             }
 
             for (One_DEResult_Pane_Abs oneDeResultPaneAbs : mngrOfSubTabBasePane_3.getDePaneArray()) {
@@ -132,27 +124,11 @@ public class SI_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
                 String sectionName = oneDeResultPaneAbs.getSectionName();
                 String subSectionName = oneDeResultPaneAbs.getSubSectionName();
                 ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_si_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_si_tabpanes").perform(customEvent);
+                        "initialize_sc_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
+                actionMediator.getInstanceOfAMember("initialize_sc_tabpanes").perform(customEvent);
             }
 
-            for (One_DEResult_Pane_Abs oneDeResultPaneAbs : mngrOfSubTabBasePane_4.getDePaneArray()) {
-                String jsonName = oneDeResultPaneAbs.getJsonName();
-                String sectionName = oneDeResultPaneAbs.getSectionName();
-                String subSectionName = oneDeResultPaneAbs.getSubSectionName();
-                ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_si_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_si_tabpanes").perform(customEvent);
-            }
 
-            for (One_DEResult_Pane_Abs oneDeResultPaneAbs : mngrOfSubTabBasePane_5.getDePaneArray()) {
-                String jsonName = oneDeResultPaneAbs.getJsonName();
-                String sectionName = oneDeResultPaneAbs.getSectionName();
-                String subSectionName = oneDeResultPaneAbs.getSubSectionName();
-                ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_si_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_si_tabpanes").perform(customEvent);
-            }
 
 
         } else {
@@ -222,22 +198,6 @@ public class SI_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
         }
 
         for (One_DEResult_Pane_Abs pane : mngrOfSubTabBasePane_3.getDePaneArray()) {
-            if (pane.getJsonName().equals(jsonName) &&
-                    pane.getSectionName().equals(sectionName) &&
-                    pane.getSubSectionName().equals(subSectionName)) {
-                return pane;
-            }
-        }
-
-        for (One_DEResult_Pane_Abs pane : mngrOfSubTabBasePane_4.getDePaneArray()) {
-            if (pane.getJsonName().equals(jsonName) &&
-                    pane.getSectionName().equals(sectionName) &&
-                    pane.getSubSectionName().equals(subSectionName)) {
-                return pane;
-            }
-        }
-
-        for (One_DEResult_Pane_Abs pane : mngrOfSubTabBasePane_5.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {

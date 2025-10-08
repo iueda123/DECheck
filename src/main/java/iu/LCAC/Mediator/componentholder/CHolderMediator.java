@@ -106,6 +106,17 @@ public class CHolderMediator implements MediatorIntrfc {
         subTabsHoldFactory_SI .initialize();
         registerMemberToMap(subTabsHoldFactory_SI );
 
+        /* 1. SC */
+        chMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.componentholder.Concretes.DEResult.SC.SC_SubTabsHolderFactory",
+                        AbstCHolderMemberFactory.class);
+        AbstCHolderMember subTabsHoldFactory_SC =
+                chMemberFactory.createCHolder("sub_tabs_holder_SC", "sub_tabs_holder_SC");
+        subTabsHoldFactory_SC .setCHolderMediator(this);
+        subTabsHoldFactory_SC .initialize();
+        registerMemberToMap(subTabsHoldFactory_SC );
+
         /* 3. RCAI */
         chMemberFactory =
                 MemberFactoryLoader.loadFactory(
@@ -128,7 +139,7 @@ public class CHolderMediator implements MediatorIntrfc {
         subTabsHoldFactory_NM.initialize();
         registerMemberToMap(subTabsHoldFactory_NM);
 
-        /* 4. CAAA */
+        /* 5. CAAA */
         chMemberFactory =
                 MemberFactoryLoader.loadFactory(
                         "iu.LCAC.Member.componentholder.Concretes.DEResult.CAAA.CAAA_SubTabsHolderFactory",
@@ -138,6 +149,17 @@ public class CHolderMediator implements MediatorIntrfc {
         subTabsHoldFactory_CAAA.setCHolderMediator(this);
         subTabsHoldFactory_CAAA.initialize();
         registerMemberToMap(subTabsHoldFactory_CAAA);
+
+        /* 6. GN */
+        chMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.componentholder.Concretes.DEResult.GN.GN_SubTabsHolderFactory",
+                        AbstCHolderMemberFactory.class);
+        AbstCHolderMember subTabsHoldFactory_GN =
+                chMemberFactory.createCHolder("sub_tabs_holder_GN", "sub_tabs_holder_GN");
+        subTabsHoldFactory_GN.setCHolderMediator(this);
+        subTabsHoldFactory_GN.initialize();
+        registerMemberToMap(subTabsHoldFactory_GN);
 
 
     }

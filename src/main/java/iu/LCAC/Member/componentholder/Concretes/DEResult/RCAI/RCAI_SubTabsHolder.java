@@ -16,6 +16,8 @@ import java.util.ArrayList;
 
 public class RCAI_SubTabsHolder extends AbstCHolderMember implements SubTabsHolderItrfc {
 
+    static final String jsonFolderPathString = "./json/DE";
+
     static String sectionName = "reference_cohort_and_imaging";
 
     static String subSection_1_Name = "dataset_name";
@@ -42,7 +44,6 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
     static String subSection_10_TabName = "Site Effect Handling";
     static String subSection_11_TabName = "Site Effect Handling Detail";
 
-    static final String jsonFolderPathString = "./json/DE";
 
     JPanel panel = new JPanel(new BorderLayout());
     JTabbedPane baseTabPane = new JTabbedPane();

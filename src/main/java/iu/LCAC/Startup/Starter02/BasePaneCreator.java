@@ -38,31 +38,31 @@ public class BasePaneCreator {
     tabbedPane.add("1. SI", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_SI")).getBaseComponent());
     tabbedPane.setToolTipTextAt(0, "Study Identification");
 
-    //tabbedPane.add("2. Study Characteristics", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
-    //tabbedPane.setToolTipTextAt(2, "Clinical Application and Analysis");
+    tabbedPane.add("2. SC", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_SC")).getBaseComponent());
+    tabbedPane.setToolTipTextAt(1, "Study Characteristics");
 
     tabbedPane.add("3. RCAI", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI")).getBaseComponent());
-    tabbedPane.setToolTipTextAt(1, "Reference Cohort and Imaging");
+    tabbedPane.setToolTipTextAt(2, "Reference Cohort and Imaging");
 
     tabbedPane.add("4. NM", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_NM")).getBaseComponent());
-    tabbedPane.setToolTipTextAt(2, "Normative Modeling");
+    tabbedPane.setToolTipTextAt(3, "Normative Modeling");
 
     tabbedPane.add("5. CAAA", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_CAAA")).getBaseComponent());
-    tabbedPane.setToolTipTextAt(3, "Clinical Application and Analysis");
+    tabbedPane.setToolTipTextAt(4, "Clinical Application and Analysis");
 
-    //tabbedPane.add("6. General Notes", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
+    tabbedPane.add("6. GN", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_GN")).getBaseComponent());
+    tabbedPane.setToolTipTextAt(5, "General Notes");
+
     //tabbedPane.add("7. QA", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
-
-    //basePane.add(tabbedPane, BorderLayout.CENTER);
-
-
 
 
     //basePane.add(
     //    (cHolderMediator.getInstanceOfAMember("text_field_panel_holder")).getBaseComponent(),
     //    BorderLayout.EAST);
 
+    //basePane.add(tabbedPane, BorderLayout.CENTER);
     //return basePane;
+
     return new CollapsiblePanel(tabbedPane, new JLabel("East"), new JLabel("West"), new JLabel("South"), new JLabel("North"));
   }
 }

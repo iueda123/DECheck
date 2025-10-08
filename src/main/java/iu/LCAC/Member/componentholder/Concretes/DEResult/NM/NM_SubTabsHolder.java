@@ -17,6 +17,8 @@ import java.util.ArrayList;
 
 public class NM_SubTabsHolder extends AbstCHolderMember implements SubTabsHolderItrfc {
 
+    static final String jsonFolderPathString = "./json/DE";
+
     static String sectionName = "normative_modeling";
 
     static String subSection_1_Name = "model_origin";
@@ -43,7 +45,6 @@ public class NM_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
     static String subSection_10_TabName = "Validation - Same Domain Independent Dataset";
     static String subSection_11_TabName = "Validation - Different Domain";
 
-    static final String jsonFolderPathString = "./json/DE";
 
     JPanel panel = new JPanel(new BorderLayout());
     JTabbedPane baseTabPane = new JTabbedPane();
