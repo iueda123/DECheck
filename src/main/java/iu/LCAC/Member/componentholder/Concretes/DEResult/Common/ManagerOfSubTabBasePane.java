@@ -51,7 +51,7 @@ public class ManagerOfSubTabBasePane {
         // パネル全体のPreferredSizeを明示的に計算
         int totalHeight = dePaneArray.stream().mapToInt(p -> p.getPreferredSize().height).sum();
         //totalHeight += 100; // NotePane分足す
-        totalHeight =  Math.max(totalHeight, 600);
+        totalHeight =  Math.max(totalHeight, 1200);
 
         basePaneForDEResultPanes.setPreferredSize(new Dimension(600, totalHeight));
 

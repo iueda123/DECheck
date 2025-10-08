@@ -1,5 +1,6 @@
 package iu.LCAC.Member.componentholder.Concretes.DEResult.Common;
 
+import iu.LCAC.Utils.CollapsiblePanel;
 import iu.LCAC.Utils.ColorChangeableTextArea;
 import iu.LCAC.Utils.ColorChangeableTextField;
 
@@ -39,23 +40,52 @@ public class NotePane extends JPanel {
         Box northPane = Box.createVerticalBox();
 
         // Status TextField
+        Box northSubPane_1 = Box.createVerticalBox();
         tFiled_Status.setMaximumSize(new Dimension(9000, 30));
         tFiled_Status.setMinimumSize(new Dimension(9000, 30));
         //tFiled_Status.setPreferredSize(new Dimension(0, 30));
         tFiled_Status.setToolTipText(tooltipForStatusFiled);
+        //northSubPane_1.add(Box.createHorizontalGlue());
+        northSubPane_1.add(tFiled_Status);
+        //northSubPane_1.setMaximumSize(new Dimension(9000, 60));
+        //northSubPane_1.setMinimumSize(new Dimension(9000, 60));
+        //northSubPane_1.setPreferredSize(new Dimension(9000, 60));
+        //northPane.add(northSubPane_1);
         northPane.add(tFiled_Status);
+
+        // Status TextField
+        //JTextField sample = new JTextField();
+        //JPanel sample = new JPanel();
+        //sample.setMaximumSize(new Dimension(9000, 180));
+        //sample.setMinimumSize(new Dimension(9000, 180));
+        //tFiled_Status.setPreferredSize(new Dimension(0, 30));
+        //northPane.add(sample);
         //northPane.add(northSubPane_1);
 
+
+        //CollapsiblePanel collapsiblePanel = new CollapsiblePanel(new JLabel("説明"), new JTextField("aiueo"), 600, 100);
+        //JLabel collapsiblePanel = new JLabel("a");
+        //collapsiblePanel.setBackground(Color.BLUE);
+        //collapsiblePanel.setPreferredSize(new Dimension(600, 100));
+        //collapsiblePanel.setMaximumSize(new Dimension(9000, 180));
+        //collapsiblePanel.setMinimumSize(new Dimension(9000, 180));
+        //northPane.add(collapsiblePanel);
+
+        this.add(northPane, BorderLayout.NORTH);
+
         // Note Text Area
-        tArea_Note.setToolTipText(tooltipForNoteArea);
+        //tArea_Note.setToolTipText(tooltipForNoteArea);
         JScrollPane scrollPane = new JScrollPane(tArea_Note);
-        //scrollPane.setMaximumSize(new Dimension(600, 100));
-        //scrollPane.setMinimumSize(new Dimension(600, 100));
-        scrollPane.setPreferredSize(new Dimension(600, 100));
-        northPane.add(scrollPane);
+        //northPane.add(scrollPane);
+        scrollPane.setMaximumSize(new Dimension(600, 100));
+        scrollPane.setMinimumSize(new Dimension(600, 100));
+        //scrollPane.setPreferredSize(new Dimension(600, 80));
+        this.add(scrollPane, BorderLayout.CENTER);
+
+
+
 
         //northPane.setPreferredSize(new Dimension(600, 300));
-        this.add(northPane, BorderLayout.CENTER);
 
         /* **** CENTER AREA **** */
         //JPanel centerPane = new JPanel();
