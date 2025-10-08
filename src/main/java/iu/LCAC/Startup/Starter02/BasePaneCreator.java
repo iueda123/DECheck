@@ -34,13 +34,21 @@ public class BasePaneCreator {
 
     VerticalTextTabbedPane tabbedPane = new VerticalTextTabbedPane(JTabbedPane.LEFT);
 
-    tabbedPane.add("1. Study Identification", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_SI")).getBaseComponent());
+    tabbedPane.add("1. SI", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_SI")).getBaseComponent());
+    tabbedPane.setToolTipTextAt(0, "Study Identification");
 
     //tabbedPane.add("2. Study Characteristics", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
+    //tabbedPane.setToolTipTextAt(2, "Clinical Application and Analysis");
 
-    tabbedPane.add("3. Reference Cohort and Imaging", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI")).getBaseComponent());
-    tabbedPane.add("4. Normative Modeling", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_NM")).getBaseComponent());
-    tabbedPane.add("5. Clinical Application and Analysis", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_CAAA")).getBaseComponent());
+    tabbedPane.add("3. RCAI", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI")).getBaseComponent());
+    tabbedPane.setToolTipTextAt(1, "Reference Cohort and Imaging");
+
+    tabbedPane.add("4. NM", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_NM")).getBaseComponent());
+    tabbedPane.setToolTipTextAt(2, "Normative Modeling");
+
+    tabbedPane.add("5. CAAA", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_CAAA")).getBaseComponent());
+    tabbedPane.setToolTipTextAt(3, "Clinical Application and Analysis");
+
     //tabbedPane.add("6. General Notes", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
     //tabbedPane.add("7. QA", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
 

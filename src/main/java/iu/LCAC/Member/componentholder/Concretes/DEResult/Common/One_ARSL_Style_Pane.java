@@ -64,21 +64,31 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         /* North Area */
         Box northBox = Box.createVerticalBox();
 
-        //NorthSubPane1
-        JPanel northSubPane1 = new JPanel(new BorderLayout());
-        northSubPane1.setPreferredSize(new Dimension(600, 75));
+        //NorthSubPane_0
+        Box northSubPane_0 = Box.createHorizontalBox();
+        northSubPane_0.add(Box.createHorizontalGlue());
+        northSubPane_0.add(saveButton);
+        northSubPane_0.add(convertJson2MarkdownButton);
+        northSubPane_0.add(convertJson2TsvButton);
+        northSubPane_0.add(loadButton);
+        northSubPane_0.add(jsonFileNameEditButton);
+        northSubPane_0.add(new PanelMoverPane(), BorderLayout.EAST);
+        northBox.add(northSubPane_0);
 
+        //NorthSubPane_1
+        JPanel northSubPane_1 = new JPanel(new BorderLayout());
+        northSubPane_1.setPreferredSize(new Dimension(600, 75));
         JScrollPane scrollPane_Answer = new JScrollPane(tArea_Answer);
         scrollPane_Answer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane_Answer.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        northSubPane1.add(scrollPane_Answer, BorderLayout.CENTER);
-        northBox.add(northSubPane1);
+        northSubPane_1.add(scrollPane_Answer, BorderLayout.CENTER);
+        northBox.add(northSubPane_1);
 
         //NorthSubPane2
-        Box northSubBox2 = Box.createHorizontalBox();
-        northSubBox2.add(tFiled_ConfidenceRating);
-        northSubBox2.add(tField_NegativeAnswerCategory);
-        northBox.add(northSubBox2);
+        Box northSubPane_2 = Box.createHorizontalBox();
+        northSubPane_2.add(tFiled_ConfidenceRating);
+        northSubPane_2.add(tField_NegativeAnswerCategory);
+        northBox.add(northSubPane_2);
         add(northBox, BorderLayout.NORTH);
 
         /* Center Area */
@@ -106,6 +116,7 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         southBox.add(new JLabel(" "));
 
         //SouthSubPane1
+        /*
         Box southSubBox1 = Box.createHorizontalBox();
         southSubBox1.add(Box.createHorizontalGlue());
         southSubBox1.add(saveButton);
@@ -115,6 +126,7 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         southSubBox1.add(jsonFileNameEditButton);
         southSubBox1.add(new PanelMoverPane(), BorderLayout.EAST);
         southBox.add(southSubBox1);
+        */
 
         //SouthSubPane2
         Box southSubBox2 = Box.createHorizontalBox();

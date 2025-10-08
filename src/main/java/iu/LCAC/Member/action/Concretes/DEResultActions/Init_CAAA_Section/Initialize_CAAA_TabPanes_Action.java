@@ -67,12 +67,13 @@ public class Initialize_CAAA_TabPanes_Action extends AbstActionMember {
             CAAA_SubTabsHolder subTabsHolder =
                     (CAAA_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_CAAA");
 
+
             // Initialization Core
             if (subTabsHolder != null) {
 
-                if (sectionName.equals("association_analysis") ||
-                        sectionName.equals("key_findings_brief") || sectionName.equals("key_findings_detailed") ||
-                        sectionName.equals("key_limitations") || sectionName.equals("application_notes")) {
+                if (subSectionName.equals("association_analysis") ||
+                        subSectionName.equals("key_findings_brief") || subSectionName.equals("key_findings_detailed") ||
+                        subSectionName.equals("key_limitations") || subSectionName.equals("application_notes")) {
 
                     One_A_Style_Pane trtgDEResultPane = (One_A_Style_Pane) subTabsHolder.getResultPane(jsonFileName, sectionName, subSectionName);
                     trtgDEResultPane.updateRegisteredJsonName(jsonFileName);

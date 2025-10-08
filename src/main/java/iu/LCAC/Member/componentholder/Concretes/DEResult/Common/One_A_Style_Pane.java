@@ -41,24 +41,24 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
 
         /* Setup North Area */
         Box northBox = Box.createVerticalBox();
-        JPanel northSubPane1 = new JPanel(new BorderLayout());
-        northSubPane1.setPreferredSize(new Dimension(600, 75));
 
+        Box northSubPanel_1 = Box.createHorizontalBox();
+        northSubPanel_1.add(Box.createHorizontalGlue());
+        northSubPanel_1.add(saveButton);
+        //northSubBox1.add(convertJson2MarkdownButton);
+        //northSubBox1.add(convertJson2TsvButton);
+        northSubPanel_1.add(loadButton);
+        northSubPanel_1.add(jsonFileNameEditButton);
+        northSubPanel_1.add(new PanelMoverPane());
+        northBox.add(northSubPanel_1);
+
+        JPanel northSubPanel_2 = new JPanel(new BorderLayout());
+        northSubPanel_2.setPreferredSize(new Dimension(600, 75));
         JScrollPane scrollPane_Answer = new JScrollPane(tArea_Answer);
         scrollPane_Answer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane_Answer.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        northSubPane1.add(scrollPane_Answer, BorderLayout.CENTER);
-        northBox.add(northSubPane1);
-
-        Box northSubBox2 = Box.createHorizontalBox();
-        northSubBox2.add(Box.createHorizontalGlue());
-        northSubBox2.add(saveButton);
-        //northSubBox2.add(convertJson2MarkdownButton);
-        //northSubBox2.add(convertJson2TsvButton);
-        northSubBox2.add(loadButton);
-        northSubBox2.add(jsonFileNameEditButton);
-        northSubBox2.add(new PanelMoverPane());
-        northBox.add(northSubBox2);
+        northSubPanel_2.add(scrollPane_Answer, BorderLayout.CENTER);
+        northBox.add(northSubPanel_2);
 
         add(northBox, BorderLayout.NORTH);
 

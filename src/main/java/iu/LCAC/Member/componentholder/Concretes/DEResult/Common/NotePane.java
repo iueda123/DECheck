@@ -31,34 +31,47 @@ public class NotePane extends JPanel {
         this.subSectionName = subSectionName;
         this.parentTabbedPanel = parentTabbedPanel;
         this.setLayout(new BorderLayout());
-        JPanel northPane = new JPanel(new BorderLayout());
-        JPanel centerPane = new JPanel(new BorderLayout());
-        JPanel southPane = new JPanel(new BorderLayout());
 
         // Json File Name Edit Button
-        northPane.add(editJsonFileNameButton, BorderLayout. WEST);
+        //northPane.add(editJsonFileNameButton, BorderLayout. WEST);
+
+        /* **** NORTH AREA **** */
+        Box northPane = Box.createVerticalBox();
 
         // Status TextField
+        tFiled_Status.setMaximumSize(new Dimension(9000, 30));
+        tFiled_Status.setMinimumSize(new Dimension(9000, 30));
+        //tFiled_Status.setPreferredSize(new Dimension(0, 30));
         tFiled_Status.setToolTipText(tooltipForStatusFiled);
         northPane.add(tFiled_Status);
+        //northPane.add(northSubPane_1);
 
         // Note Text Area
         tArea_Note.setToolTipText(tooltipForNoteArea);
         JScrollPane scrollPane = new JScrollPane(tArea_Note);
-        centerPane.add(scrollPane, BorderLayout.CENTER);
+        //scrollPane.setMaximumSize(new Dimension(600, 100));
+        //scrollPane.setMinimumSize(new Dimension(600, 100));
+        scrollPane.setPreferredSize(new Dimension(600, 100));
+        northPane.add(scrollPane);
 
+        //northPane.setPreferredSize(new Dimension(600, 300));
+        this.add(northPane, BorderLayout.CENTER);
+
+        /* **** CENTER AREA **** */
+        //JPanel centerPane = new JPanel();
+        //centerPane.setLayout(new BoxLayout(centerPane, BoxLayout.Y_AXIS));
+        //this.add(centerPane, BorderLayout.CENTER);
+
+        /* **** SOUTH AREA **** */
         // Separator
-        southPane.add(new JLabel(" "));
+        //JPanel southPane = new JPanel(new BorderLayout());
+        //southPane.add(new JLabel(" "));
+        //this.add(southPane, BorderLayout.SOUTH);
 
         // Finalization
-        this.add(northPane, BorderLayout.NORTH);
-        this.add(centerPane, BorderLayout.CENTER);
-        this.add(southPane, BorderLayout.SOUTH);
-        northPane.setMaximumSize(new Dimension(600, 100));
-        centerPane.setMinimumSize(new Dimension(600, 200));
         //centerPane.setMaximumSize(new Dimension(600, 200));
         //centerPane.setPreferredSize(new Dimension(600, 200));
-        southPane.setMaximumSize(new Dimension(600, 100));
+        //southPane.setMaximumSize(new Dimension(600, 100));
 
         //For debug
         this.updateTabTitleButton.addActionListener(new AbstractAction() {
