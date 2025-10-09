@@ -5,20 +5,33 @@ import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class ExplanationPanelHolder extends AbstCHolderMember {
 
-  JPanel panel = new JPanel();
-  JTextField SampleTextField = new JTextField("please write something.");
+  JPanel panel = new JPanel(new BorderLayout());
+  JTextArea explanationTextArea = new JTextArea("EXPLANATION");
 
   public ExplanationPanelHolder(String cholder_name, String short_name) {
     super(cholder_name, short_name);
-    panel.add(SampleTextField);
-    SampleTextField.addPropertyChangeListener(new SamplePropertyChangeListener());
+
+    JScrollPane scrollPane = new JScrollPane(explanationTextArea);
+
+    scrollPane.setPreferredSize(new Dimension(500, 9000));
+    //scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+    scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+    panel.add(scrollPane, BorderLayout.EAST);
+    explanationTextArea.addPropertyChangeListener(new SamplePropertyChangeListener());
+    explanationTextArea.setEditable(false);
   }
+
+
+
 
   @Override
   public JComponent getBaseComponent() {
@@ -26,10 +39,32 @@ public class ExplanationPanelHolder extends AbstCHolderMember {
   }
 
   @Override
-  public void postInitialize() {}
+  public void postInitialize() {
+
+    // 説明文を書き込む
+
+    try {
+      String guideFilePath = "./settings/Guides/DE_Guide.md";
+      StringBuilder content = new StringBuilder();
+
+      try (java.io.BufferedReader reader = new java.io.BufferedReader(
+          new java.io.FileReader(guideFilePath))) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+          content.append(line).append("\n");
+        }
+      }
+
+      explanationTextArea.setText(content.toString());
+      explanationTextArea.setCaretPosition(0);
+    } catch (java.io.IOException e) {
+      explanationTextArea.setText("Error loading guide file: " + e.getMessage());
+      e.printStackTrace();
+    }
+  }
 
   public void setText(String text) {
-    SampleTextField.setText(text);
+    explanationTextArea.setText(text);
   }
 
   @Override
