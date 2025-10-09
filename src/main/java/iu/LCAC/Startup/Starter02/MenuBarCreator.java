@@ -60,6 +60,12 @@ public class MenuBarCreator {
         JMenuItem menu_item1_6 = actionMediator.getInstanceOfAMember("load_pane_order").getMenuItem();
         main_menu_1.add(menu_item1_6);
 
+        JMenuItem menu_item1_7 = actionMediator.getInstanceOfAMember("convert_json_2_markdown").getMenuItem();
+        main_menu_1.add(menu_item1_7);
+
+        JMenuItem menu_item1_8 = actionMediator.getInstanceOfAMember("convert_json_2_tsv").getMenuItem();
+        main_menu_1.add(menu_item1_8);
+
         /* *** main_menu_2 *** */
         JMenu main_menu_2 = new JMenu("Other (O)");
         main_menu_2.setMnemonic(KeyEvent.VK_O); // ムネモニックの登録

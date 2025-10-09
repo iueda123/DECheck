@@ -3,7 +3,6 @@ package iu.LCAC.Member.action.Concretes.DEResultActions.ConvertJson;
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.SI.SI_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.StatusPanel.StatusPanelHolder;
 
 import javax.swing.*;
@@ -17,20 +16,20 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConvertJson2MarkdownAction extends AbstActionMember {
+public class ConvertJson2TsvAction extends AbstActionMember {
 
-    private final String scriptFilePathStr = "settings/sh/convertJson2Markdown.sh";
+    private final String scriptFilePathStr = "src/main/java/iu/LCAC/Member/action/Concretes/DEResultActions/ConvertJson/convertJson2Markdown.sh";
 
     static final String SettingPropertyFilePath = "./settings/ActionControlledComponentFramework/settings.prop";
 
-    public ConvertJson2MarkdownAction(String action_name, String short_name) {
+    public ConvertJson2TsvAction(String action_name, String short_name) {
         super(action_name, short_name);
     }
 
     @Override
     protected void setAcceleratorKeyStroke() {
         this.getMenuItem()
-                .setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.CTRL_DOWN_MASK));
+                .setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, InputEvent.CTRL_DOWN_MASK));
     }
 
     @Override
@@ -39,71 +38,26 @@ public class ConvertJson2MarkdownAction extends AbstActionMember {
         System.out.println("---- perform() in " + this.getClass().toString() + " was called. ----");
 
         String[] strings_passed_from_action_event = getActionCommandAndArgs(action_event, false);
+        String cmd_and_args_in_a_line = strings_passed_from_action_event[0];
+        for (int i =1; i < strings_passed_from_action_event.length; i++) {
+            cmd_and_args_in_a_line = cmd_and_args_in_a_line + " " + strings_passed_from_action_event[i];
+        }
+        System.out.println("cmd_and_args_in_a_line: "  + cmd_and_args_in_a_line);
 
         // Load Properties
-        //propManager = createPropertyManager(SettingPropertyFilePath);
+        propManager = createPropertyManager(SettingPropertyFilePath);
 
         // Prepare the components you want to integrate
         StatusPanelHolder statusPanelHolder = (StatusPanelHolder) this.cholderMediator.getInstanceOfAMember("status_panel_holder");
-        SI_SubTabsHolder si_subTabsHolder = (SI_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_SI");
 
         // Core
         if (strings_passed_from_action_event.length > 1) {
-
-            String cmd_and_args_in_a_line = strings_passed_from_action_event[0];
-            for (int i = 1; i < strings_passed_from_action_event.length; i++) {
-                cmd_and_args_in_a_line = cmd_and_args_in_a_line + " " + strings_passed_from_action_event[i];
-            }
-            System.out.println("cmd_and_args_in_a_line: " + cmd_and_args_in_a_line);
-
-
-            statusPanelHolder.showAMessageForWhile("'" + cmd_and_args_in_a_line + "' was called.", 10000);
-
             onRun(strings_passed_from_action_event);
-
-        } else {
-            System.out.println("引数が指定されていないので、SI Section の 1番目の JSON をターゲットとして変換をかけます。");
-
-            String jsonName = si_subTabsHolder.getTheFirstJsonPanel().getJsonName();
-
-            System.out.println("jsonName: " + jsonName);
-
-            String[] strings_passed_from_action_event_2 = {strings_passed_from_action_event[0], "DE", jsonName};
-
-            String cmd_and_args_in_a_line = strings_passed_from_action_event[0];
-            for (int i = 1; i < strings_passed_from_action_event_2.length; i++) {
-                cmd_and_args_in_a_line = cmd_and_args_in_a_line + " " + strings_passed_from_action_event[i];
-            }
-            System.out.println("cmd_and_args_in_a_line: " + cmd_and_args_in_a_line);
-
-
             statusPanelHolder.showAMessageForWhile("'" + cmd_and_args_in_a_line + "' was called.", 10000);
-
-            if (checkBashScriptExistence(true)) {
-                onRun(strings_passed_from_action_event_2);
-            }
-            //JOptionPane.showMessageDialog(null, "引数を１つ指定してください。", "エラー", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "引数を１つ指定してください。", "エラー", JOptionPane.ERROR_MESSAGE);
             //onRun(new String[0]);
         }
-    }
-
-    public boolean checkBashScriptExistence(boolean showPopup) {
-        //scriptFilePathStr に指定されたbashファイルの存在を確認する。
-        java.io.File scriptFile = new java.io.File(scriptFilePathStr);
-        boolean exists = scriptFile.exists() && scriptFile.isFile();
-
-        // showPopup が trueならポップアップを表示して 指定のbashファイルが存在しないことを警告
-        if (showPopup && !exists) {
-            JOptionPane.showMessageDialog(
-                null,
-                "指定されたBashスクリプトが見つかりません。\n" +
-                "パス: " + scriptFilePathStr,
-                "エラー",
-                JOptionPane.ERROR_MESSAGE
-            );
-        }
-
-        return exists;
     }
 
     @Override
@@ -134,7 +88,7 @@ public class ConvertJson2MarkdownAction extends AbstActionMember {
 
     private void onRun(String[] args) {
 
-        for (int i = 0; i < args.length; i++) {
+        for (int i =0; i < args.length; i++) {
             System.out.println(" * arg[" + i + "]: " + args[i]);
         }
         System.out.println("");

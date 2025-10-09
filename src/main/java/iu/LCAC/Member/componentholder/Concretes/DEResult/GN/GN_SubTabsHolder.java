@@ -161,6 +161,11 @@ public class GN_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
         return arrayList_of_ManagerOfSubTabBasePane;
     }
 
+    @Override
+    public One_DEResult_Pane_Abs getTheFirstJsonPanel() {
+        return null;
+    }
+
     public String getSectionName() {
         return sectionName;
     }

@@ -16,7 +16,7 @@ import java.nio.file.Paths;
 public abstract class One_DEResult_Pane_Abs extends JPanel {
 
     final String jsonFolderPathStr;
-    String jsonName;
+     String jsonName;
     final String sectionName;
     final String subSectionName;
 

@@ -1,5 +1,6 @@
 package iu.LCAC.Member.componentholder.Concretes.DEResult.Common;
 
+import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Utils.CollapsiblePanel;
 import iu.LCAC.Utils.ColorChangeableTextArea;
 import iu.LCAC.Utils.ColorChangeableTextField;
@@ -15,7 +16,8 @@ public class NotePane extends JPanel {
     final String sectionName;
     final String subSectionName;
 
-    JButton updateTabTitleButton = new JButton("update tab title"); //For debug
+    JButton updateTabTitleButton = new JButton("update tab title");//For debug
+    final String tooltipForConvertJsonToTscButton = "最上段のjsonファイルをtsvへ出力する";
 
     JTabbedPane parentTabbedPanel;
 
@@ -51,6 +53,8 @@ public class NotePane extends JPanel {
 
         this.add(baseOfCenter, BorderLayout.CENTER);
 
+        /* *** SOUTH AREA *** */
+
         //For debug
         /*
         this.updateTabTitleButton.addActionListener(new AbstractAction() {
@@ -62,6 +66,7 @@ public class NotePane extends JPanel {
         add(updateTabTitleButton);
         */
     }
+
 
     private void saveStatusField() {
 

@@ -102,6 +102,53 @@ public class SI_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
         panel.add(baseTabPane, BorderLayout.CENTER);
     }
 
+    public One_DEResult_Pane_Abs getTheFirstJsonPanel(){
+        //panel の baseTabPane の 0 番目 の 中で一番上に配置されている OneDEResult_Pane_Abs クラスオブジェクトを取得する
+        if (baseTabPane.getTabCount() == 0) {
+            return null;
+        }
+
+        // baseTabPane の 0 番目のタブのコンポーネントを取得
+        Component firstTabComponent = baseTabPane.getComponentAt(0);
+        if (firstTabComponent == null) {
+            return null;
+        }
+
+        // そのタブに対応する ManagerOfSubTabBasePane を検索
+        ManagerOfSubTabBasePane targetManager = null;
+        for (ManagerOfSubTabBasePane manager : arrayList_of_ManagerOfSubTabBasePane) {
+            JPanel basePaneForDEResultPanes = manager.getBasePaneForDEResultPanes();
+            // basePaneForDEResultPanes が firstTabComponent の子孫かどうかを確認
+            Container parent = basePaneForDEResultPanes.getParent();
+            while (parent != null) {
+                if (parent == firstTabComponent) {
+                    targetManager = manager;
+                    break;
+                }
+                parent = parent.getParent();
+            }
+            if (targetManager != null) {
+                break;
+            }
+        }
+
+        if (targetManager == null) {
+            return null;
+        }
+
+        // basePaneForDEResultPanes から実際の表示順序で一番上の One_DEResult_Pane_Abs を取得
+        JPanel basePaneForDEResultPanes = targetManager.getBasePaneForDEResultPanes();
+        Component[] components = basePaneForDEResultPanes.getComponents();
+
+        for (Component component : components) {
+            if (component instanceof One_DEResult_Pane_Abs) {
+                return (One_DEResult_Pane_Abs) component;
+            }
+        }
+
+        return null;
+    }
+
     @Override
     public void postInitialize() {
         if (actionMediator != null) {

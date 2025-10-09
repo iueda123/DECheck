@@ -26,7 +26,7 @@ public class ExplanationPanelHolder extends AbstCHolderMember {
     scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
     panel.add(scrollPane, BorderLayout.EAST);
-    explanationTextArea.addPropertyChangeListener(new SamplePropertyChangeListener());
+    //explanationTextArea.addPropertyChangeListener(new SamplePropertyChangeListener());
     explanationTextArea.setEditable(false);
   }
 

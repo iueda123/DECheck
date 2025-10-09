@@ -122,6 +122,7 @@ public class CAAA_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
             baseTabbedPane.add(managerOfSubTabBasePaneNM.getTabName(), managerOfSubTabBasePaneNM.constructBasePaneOfSubTab());
         }
 
+
         panel.add(baseTabbedPane, BorderLayout.CENTER);
     }
 
@@ -389,6 +390,11 @@ public class CAAA_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
 
     public ArrayList<ManagerOfSubTabBasePane> getArrayList_of_ManagerOfSubTabBasePane() {
         return arrayList_of_ManagerOfSubTabBasePane;
+    }
+
+    @Override
+    public One_DEResult_Pane_Abs getTheFirstJsonPanel() {
+        return null;
     }
 
     public String getSectionName() {

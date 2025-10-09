@@ -288,6 +288,16 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
         convertJson2MarkdownAction.initialize();
         registerMemberToMap(convertJson2MarkdownAction);
 
+        actionMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.action.Concretes.DEResultActions.ConvertJson.ConvertJson2TsvActionFactory",
+                        AbstActionMemberFactory.class);
+        AbstActionMember convertJson2TsvAction =
+                actionMemberFactory.createAction("convert_json_2_tsv", "Convert JSON 2 TSV");
+        convertJson2TsvAction.setActionMediator(this);
+        convertJson2TsvAction.initialize();
+        registerMemberToMap(convertJson2TsvAction);
+
     }
 
     private void registerMemberToMap(AbstActionMember action) {

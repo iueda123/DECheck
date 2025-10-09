@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.util.logging.Logger;
 
 //ToDo:　明示的にBarクリックしないでパネルが閉じてしまったときに > < ^ v が適切に反転しないのを直したい。
+//ToDo: 例えばCenter領域にTooltipを表示されるとパネルが閉じてしまう。
 
 public final class CollapsiblePanel extends JPanel {
 
