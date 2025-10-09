@@ -115,7 +115,7 @@ public abstract class One_DEResult_Pane_Abs extends JPanel {
             abstActionMember.perform(customEvent_with_ActionNameAndArgs);
 
         } else {
-            System.err.println("The actionMediator is null.");
+            System.err.println("The actionMediator is null @ One_DEResult_Pane_Abs.java.");
         }
     }
 

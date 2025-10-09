@@ -57,11 +57,10 @@ public class BasePaneCreator {
     //tabbedPane.setToolTipTextAt(6, "Quality Check 1");
     //tabbedPane.add("8. QA2", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
     //tabbedPane.setToolTipTextAt(7, "Quality Check 2");
+    JComponent explanationPanelHolder = (cHolderMediator.getInstanceOfAMember("explanation_panel_holder").getBaseComponent());
 
-
-    JPanel explanationPanel = new JPanel();
-
-    return new CollapsiblePanel(tabbedPane, new JLabel("East"), new JLabel("West"), new JLabel("South"), new JLabel("North"));
+    return new CollapsiblePanel(tabbedPane, explanationPanelHolder, new JLabel("West"), new JLabel("South"), new JLabel("North"));
+    //return new CollapsiblePanel(tabbedPane, null, new JLabel("West"), new JLabel("South"), new JLabel("North"));
 
     //basePane.add(tabbedPane, BorderLayout.CENTER);
     //return basePane;

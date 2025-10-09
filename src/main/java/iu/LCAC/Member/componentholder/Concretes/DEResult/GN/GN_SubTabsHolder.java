@@ -57,13 +57,7 @@ public class GN_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
             for (File jsonFile : jsonFiles) {
                 String jsonFileName = jsonFile.getName();
 
-                if (this.actionMediator != null) {
-                    System.err.println("The actionMediator is not null.");
-                }else {
-                    System.err.println("The actionMediator is null.");
-                }
-
-                mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_1_Name, this.cholderMediator, this.actionMediator));
+                mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_1_Name));
             }
         }
 
@@ -96,7 +90,7 @@ public class GN_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
 
 
         } else {
-            System.err.println("actionMediator is null in postInitialize() @ " + this.getClass());
+            System.err.println("The actionMediator is null. @ GN_SubTabsHolder.java");
         }
     }
 

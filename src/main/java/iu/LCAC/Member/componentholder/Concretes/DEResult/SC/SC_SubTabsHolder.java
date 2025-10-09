@@ -69,7 +69,7 @@ public class SC_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
                 if (this.actionMediator != null) {
                     System.err.println("The actionMediator is not null.");
                 }else {
-                    System.err.println("The actionMediator is null.");
+                    System.err.println("The actionMediator is null. @ SC_SubTabsHolder.java");
                 }
 
                 mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_1_Name, this.cholderMediator, this.actionMediator));

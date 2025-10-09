@@ -161,6 +161,17 @@ public class CHolderMediator implements MediatorIntrfc {
         subTabsHoldFactory_GN.initialize();
         registerMemberToMap(subTabsHoldFactory_GN);
 
+        /* Explanation Text Field */
+        chMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.componentholder.Concretes.DEResult.Explanation.ExplanationPanelHolderFactory",
+                        AbstCHolderMemberFactory.class);
+        AbstCHolderMember explanationPanelHolderFactory =
+                chMemberFactory.createCHolder("explanation_panel_holder", "explanation panel holder");
+        explanationPanelHolderFactory.setCHolderMediator(this);
+        explanationPanelHolderFactory.initialize();
+        registerMemberToMap(explanationPanelHolderFactory);
+
 
     }
 
