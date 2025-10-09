@@ -21,8 +21,6 @@ public class ConvertJson2MarkdownAction extends AbstActionMember {
 
     private final String scriptFilePathStr = "settings/sh/convertJson2Markdown.sh";
 
-    static final String SettingPropertyFilePath = "./settings/ActionControlledComponentFramework/settings.prop";
-
     public ConvertJson2MarkdownAction(String action_name, String short_name) {
         super(action_name, short_name);
     }
@@ -35,56 +33,45 @@ public class ConvertJson2MarkdownAction extends AbstActionMember {
 
     @Override
     public void perform(ActionEvent action_event) {
-        System.out.println("");
-        System.out.println("---- perform() in " + this.getClass().toString() + " was called. ----");
+        System.out.println();
+        System.out.println("---- perform() in " + this.getClass() + " was called. ----");
 
         String[] strings_passed_from_action_event = getActionCommandAndArgs(action_event, false);
-
-        // Load Properties
-        //propManager = createPropertyManager(SettingPropertyFilePath);
 
         // Prepare the components you want to integrate
         StatusPanelHolder statusPanelHolder = (StatusPanelHolder) this.cholderMediator.getInstanceOfAMember("status_panel_holder");
         SI_SubTabsHolder si_subTabsHolder = (SI_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_SI");
 
+        String[] argsToExecute;
+
         // Core
         if (strings_passed_from_action_event.length > 1) {
-
-            String cmd_and_args_in_a_line = strings_passed_from_action_event[0];
-            for (int i = 1; i < strings_passed_from_action_event.length; i++) {
-                cmd_and_args_in_a_line = cmd_and_args_in_a_line + " " + strings_passed_from_action_event[i];
-            }
-            System.out.println("cmd_and_args_in_a_line: " + cmd_and_args_in_a_line);
-
-
-            statusPanelHolder.showAMessageForWhile("'" + cmd_and_args_in_a_line + "' was called.", 10000);
-
-            onRun(strings_passed_from_action_event);
-
+            argsToExecute = strings_passed_from_action_event;
         } else {
-            System.out.println("引数が指定されていないので、SI Section の 1番目の JSON をターゲットとして変換をかけます。");
-
+            //System.out.println("引数が指定されていないので、SI Section の 1番目の JSON をターゲットとして変換をかけます。");
             String jsonName = si_subTabsHolder.getTheFirstJsonPanel().getJsonName();
+            //System.out.println("jsonName: " + jsonName);
 
-            System.out.println("jsonName: " + jsonName);
+            argsToExecute = new String[]{strings_passed_from_action_event[0], "DE", jsonName};
 
-            String[] strings_passed_from_action_event_2 = {strings_passed_from_action_event[0], "DE", jsonName};
-
-            String cmd_and_args_in_a_line = strings_passed_from_action_event[0];
-            for (int i = 1; i < strings_passed_from_action_event_2.length; i++) {
-                cmd_and_args_in_a_line = cmd_and_args_in_a_line + " " + strings_passed_from_action_event[i];
-            }
-            System.out.println("cmd_and_args_in_a_line: " + cmd_and_args_in_a_line);
-
-
-            statusPanelHolder.showAMessageForWhile("'" + cmd_and_args_in_a_line + "' was called.", 10000);
-
-            if (checkBashScriptExistence(true)) {
-                onRun(strings_passed_from_action_event_2);
-            }
-            //JOptionPane.showMessageDialog(null, "引数を１つ指定してください。", "エラー", JOptionPane.ERROR_MESSAGE);
-            //onRun(new String[0]);
         }
+        String commandLine = buildCommandLine(argsToExecute);
+        //System.out.println("cmd_and_args_in_a_line: " + commandLine);
+        statusPanelHolder.showAMessageForWhile("'" + commandLine + "' was called.", 10000);
+
+        if (!checkBashScriptExistence(true)) {
+            return;
+        }
+        onRun(argsToExecute);
+    }
+
+    private String buildCommandLine(String[] args) {
+        //StringBuilder sb = new StringBuilder(args[0]);
+        StringBuilder sb = new StringBuilder(scriptFilePathStr);
+        for (int i = 1; i < args.length; i++) {
+            sb.append(" ").append(args[i]);
+        }
+        return sb.toString();
     }
 
     public boolean checkBashScriptExistence(boolean showPopup) {
@@ -95,11 +82,11 @@ public class ConvertJson2MarkdownAction extends AbstActionMember {
         // showPopup が trueならポップアップを表示して 指定のbashファイルが存在しないことを警告
         if (showPopup && !exists) {
             JOptionPane.showMessageDialog(
-                null,
-                "指定されたBashスクリプトが見つかりません。\n" +
-                "パス: " + scriptFilePathStr,
-                "エラー",
-                JOptionPane.ERROR_MESSAGE
+                    null,
+                    "指定されたBashスクリプトが見つかりません。\n" +
+                            "パス: " + scriptFilePathStr,
+                    "エラー",
+                    JOptionPane.ERROR_MESSAGE
             );
         }
 
@@ -125,49 +112,28 @@ public class ConvertJson2MarkdownAction extends AbstActionMember {
     }
 
 
-    private final JTextField scriptPathField = new JTextField("");
-    private final JButton runButton = new JButton("実行");
-    private final JButton cancelButton = new JButton("中止");
-    private final JTextArea outputArea = new JTextArea(16, 60);
-    private final JProgressBar progressBar = new JProgressBar();
     private ScriptWorker worker; // SwingWorker への参照
 
     private void onRun(String[] args) {
-
         for (int i = 0; i < args.length; i++) {
             System.out.println(" * arg[" + i + "]: " + args[i]);
         }
-        System.out.println("");
+        System.out.println();
 
         if (worker != null && !worker.isDone()) return; // 二重起動防止
 
-        outputArea.setText("");
-        progressBar.setIndeterminate(true);
-        progressBar.setString("実行中…");
-        runButton.setEnabled(false);
-        cancelButton.setEnabled(true);
-
-        //String script = scriptPathField.getText().trim();
         worker = new ScriptWorker(scriptFilePathStr, args);
         worker.execute();
-    }
-
-    private void onCancel(ActionEvent e) {
-        if (worker != null && !worker.isDone()) {
-            worker.cancel(true); // キャンセル要求
-            cancelButton.setEnabled(false);
-        }
     }
 
     /**
      * Bash スクリプトをバックグラウンドで実行し、出力を publish/process で逐次表示する
      */
-    private class ScriptWorker extends SwingWorker<Integer, String> {
+    private static class ScriptWorker extends SwingWorker<Integer, String> {
         private final String scriptPath;
+        private final String[] args;
         private Process process;
         private volatile boolean destroyed = false;
-
-        String[] args;
 
         ScriptWorker(String scriptPath, String[] args) {
             this.scriptPath = scriptPath;
@@ -176,7 +142,6 @@ public class ConvertJson2MarkdownAction extends AbstActionMember {
 
         @Override
         protected Integer doInBackground() {
-
             // コマンドリストを構築: /bin/bash, scriptPath, args[1], args[2], ...
             List<String> command = new ArrayList<>();
             command.add("/bin/bash");
@@ -200,11 +165,10 @@ public class ConvertJson2MarkdownAction extends AbstActionMember {
                         if (isCancelled()) {
                             // プロセスを安全に停止
                             destroyed = true;
-                            process.destroy();            // ソフト停止
-                            // 応答がない場合は強制終了も検討: process.destroyForcibly();
+                            process.destroy();
                             break;
                         }
-                        publish(line); // EDT 外 → バッファ → process() で EDT へ
+                        publish(line);
                     }
                 }
 
@@ -226,37 +190,23 @@ public class ConvertJson2MarkdownAction extends AbstActionMember {
 
         @Override
         protected void process(List<String> chunks) {
-            // ここは EDT 上。安全に UI を更新できる
+            // 出力をコンソールに表示
             for (String s : chunks) {
-                outputArea.append(s);
-                outputArea.append("\n");
+                System.out.println(s);
             }
-            // 任意の進捗表示（行数で雰囲気だけ示す）
-            setProgress(Math.min(99, Math.max(0, outputArea.getLineCount() % 100)));
         }
 
         @Override
         protected void done() {
-            // ここも EDT 上
-            progressBar.setIndeterminate(false);
-            runButton.setEnabled(true);
-            cancelButton.setEnabled(false);
-
             try {
                 if (isCancelled()) {
-                    progressBar.setValue(0);
-                    progressBar.setString("中止しました");
-                    outputArea.append("[INFO] 実行を中止しました。\n");
+                    System.out.println("[INFO] 実行を中止しました。");
                 } else {
                     Integer exit = get(); // doInBackground の戻り値
-                    progressBar.setValue(100);
-                    progressBar.setString("完了 (exit=" + exit + ")");
-                    outputArea.append("[INFO] スクリプト終了コード: " + exit + "\n");
+                    System.out.println("[INFO] スクリプト終了コード: " + exit);
                 }
             } catch (Exception ex) {
-                progressBar.setValue(0);
-                progressBar.setString("失敗");
-                outputArea.append("[ERROR] " + ex.getClass().getSimpleName() + ": " + ex.getMessage() + "\n");
+                System.err.println("[ERROR] " + ex.getClass().getSimpleName() + ": " + ex.getMessage());
             }
         }
     }
