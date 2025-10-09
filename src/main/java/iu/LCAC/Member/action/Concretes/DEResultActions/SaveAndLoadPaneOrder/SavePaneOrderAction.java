@@ -10,6 +10,8 @@ import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.SubTabsHolderItr
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.SI.SI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.StatusPanel.StatusPanelHolder;
+import iu.LCAC.Utils.CollapsiblePanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,7 +33,7 @@ public class SavePaneOrderAction extends AbstActionMember {
                 .setAccelerator(
                         KeyStroke.getKeyStroke(
                                 KeyEvent.VK_S,
-                                InputEvent.CTRL_DOWN_MASK+ InputEvent.SHIFT_DOWN_MASK));
+                                InputEvent.CTRL_DOWN_MASK + InputEvent.SHIFT_DOWN_MASK));
     }
 
     @Override
@@ -89,8 +91,17 @@ public class SavePaneOrderAction extends AbstActionMember {
             propManager.setProperty(subSectionName, joinWithSemicolon(arrayList_PanelOrder));
             arrayList_PanelOrder.clear();
         }
-        propManager.writeoutProperties();
+        boolean property_save_result = propManager.writeoutProperties();
         propManager = null;
+
+        //保存が完了したことをフィードバック
+        member = this.cholderMediator.getInstanceOfAMember("status_panel_holder");
+        StatusPanelHolder statusPanelHolder = (StatusPanelHolder) member;
+        if (property_save_result) {
+            statusPanelHolder.showAMessageForWhile("The current panel order was saved.", 5000);
+        } else {
+            statusPanelHolder.showAMessageForWhile("★Saving the current panel order failed★", 5000);
+        }
     }
 
 

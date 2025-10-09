@@ -10,6 +10,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.logging.Logger;
 
+//ToDo:　明示的にBarクリックしないでパネルが閉じてしまったときに > < ^ v が適切に反転しないのを直したい。
+
 public final class CollapsiblePanel extends JPanel {
 
     Box northShowHideBar = Box.createHorizontalBox();
