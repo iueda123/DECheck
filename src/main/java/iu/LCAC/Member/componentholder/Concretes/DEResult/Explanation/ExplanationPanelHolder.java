@@ -44,7 +44,7 @@ public class ExplanationPanelHolder extends AbstCHolderMember {
     // 説明文を書き込む
 
     try {
-      String guideFilePath = "./settings/Guides/DE_Guide.md";
+      String guideFilePath = "./settings/Guides/DE_Guide_jp.md";
       StringBuilder content = new StringBuilder();
 
       try (java.io.BufferedReader reader = new java.io.BufferedReader(

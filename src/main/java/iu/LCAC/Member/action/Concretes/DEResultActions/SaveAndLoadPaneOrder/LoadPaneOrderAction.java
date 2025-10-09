@@ -4,11 +4,14 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.CAAA.CAAA_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.ManagerOfSubTabBasePane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_DEResult_Pane_Abs;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.SubTabsHolderItrfc;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.GN.GN_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.SC.SC_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.SI.SI_SubTabsHolder;
 
 import javax.swing.*;
@@ -42,8 +45,11 @@ public class LoadPaneOrderAction extends AbstActionMember {
 
         // TODO: 全セクションに拡張
         loadPaneOrder("SI",  "./settings/PaneOrder/" + "study_identification" + ".prop" );
+        loadPaneOrder("SC",  "./settings/PaneOrder/" + "study_characteristics" + ".prop" );
         loadPaneOrder("RCAI",  "./settings/PaneOrder/" + "reference_cohort_and_imaging" + ".prop" );
         loadPaneOrder("NM", "./settings/PaneOrder/" + "normative_modeling" + ".prop");
+        loadPaneOrder("CAAA", "./settings/PaneOrder/" + "clinical_application_and_analysis" + ".prop");
+        loadPaneOrder("GN", "./settings/PaneOrder/" + "general_notes" + ".prop");
 
 
     }
@@ -59,6 +65,10 @@ public class LoadPaneOrderAction extends AbstActionMember {
                 member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_SI");
                 subTabsHolder = (SI_SubTabsHolder) member;
                 break;
+            case "SC":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_SC");
+                subTabsHolder = (SC_SubTabsHolder) member;
+                break;
             case "RCAI":
                 member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI");
                 subTabsHolder = (RCAI_SubTabsHolder) member;
@@ -67,8 +77,16 @@ public class LoadPaneOrderAction extends AbstActionMember {
                 member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_NM");
                 subTabsHolder = (NM_SubTabsHolder) member;
                 break;
+            case "CAAA":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_CAAA");
+                subTabsHolder = (CAAA_SubTabsHolder) member;
+                break;
+            case "GN":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_GN");
+                subTabsHolder = (GN_SubTabsHolder) member;
+                break;
             default:
-                System.out.println("未知のSection指定です");
+                System.err.println("未知のSection指定です@LoadPaneOrderAction.java");
                 return;
         }
 

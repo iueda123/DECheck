@@ -4,11 +4,14 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.CAAA.CAAA_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.ManagerOfSubTabBasePane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.NotePane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.SubTabsHolderItrfc;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.GN.GN_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.SC.SC_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.SI.SI_SubTabsHolder;
 
 import javax.swing.*;
@@ -38,8 +41,11 @@ public class LoadNotePaneTextsAction extends AbstActionMember {
 
         // 全セクションに拡張可能
         loadNotePaneTexts("SI", "./settings/NotePane/" + "study_identification" + ".prop");
+        loadNotePaneTexts("SC", "./settings/NotePane/" + "study_characteristics" + ".prop");
         loadNotePaneTexts("RCAI", "./settings/NotePane/" + "reference_cohort_and_imaging" + ".prop");
         loadNotePaneTexts("NM", "./settings/NotePane/" + "normative_modeling" + ".prop");
+        loadNotePaneTexts("CAAA", "./settings/NotePane/" + "clinical_application_and_analysis" + ".prop");
+        loadNotePaneTexts("GN", "./settings/NotePane/" + "general_notes" + ".prop");
     }
 
     /**
@@ -54,6 +60,10 @@ public class LoadNotePaneTextsAction extends AbstActionMember {
                 member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_SI");
                 subTabsHolder = (SI_SubTabsHolder) member;
                 break;
+            case "SC":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_SC");
+                subTabsHolder = (SC_SubTabsHolder) member;
+                break;
             case "RCAI":
                 member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI");
                 subTabsHolder = (RCAI_SubTabsHolder) member;
@@ -62,8 +72,16 @@ public class LoadNotePaneTextsAction extends AbstActionMember {
                 member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_NM");
                 subTabsHolder = (NM_SubTabsHolder) member;
                 break;
+            case "CAAA":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_CAAA");
+                subTabsHolder = (CAAA_SubTabsHolder) member;
+                break;
+            case "GN":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_GN");
+                subTabsHolder = (GN_SubTabsHolder) member;
+                break;
             default:
-                System.out.println("未知のSection指定です");
+                System.err.println("未知のSection指定です@LoadNotePaneTextsAction.java");
         }
 
         String sectionName = subTabsHolder.getSectionName();
