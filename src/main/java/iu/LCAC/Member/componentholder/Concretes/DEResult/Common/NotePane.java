@@ -15,7 +15,6 @@ public class NotePane extends JPanel {
     final String sectionName;
     final String subSectionName;
 
-    JButton editJsonFileNameButton = new JButton("Unknown.json");
     JButton updateTabTitleButton = new JButton("update tab title"); //For debug
 
     JTabbedPane parentTabbedPanel;
@@ -33,92 +32,44 @@ public class NotePane extends JPanel {
         this.parentTabbedPanel = parentTabbedPanel;
         this.setLayout(new BorderLayout());
 
-        // Json File Name Edit Button
-        //northPane.add(editJsonFileNameButton, BorderLayout. WEST);
-
         /* **** NORTH AREA **** */
-        Box northPane = Box.createVerticalBox();
+        JPanel baseOfNorth = new JPanel(new BorderLayout());
 
         // Status TextField
-        Box northSubPane_1 = Box.createVerticalBox();
-        tFiled_Status.setMaximumSize(new Dimension(9000, 30));
-        tFiled_Status.setMinimumSize(new Dimension(9000, 30));
-        //tFiled_Status.setPreferredSize(new Dimension(0, 30));
         tFiled_Status.setToolTipText(tooltipForStatusFiled);
-        //northSubPane_1.add(Box.createHorizontalGlue());
-        northSubPane_1.add(tFiled_Status);
-        //northSubPane_1.setMaximumSize(new Dimension(9000, 60));
-        //northSubPane_1.setMinimumSize(new Dimension(9000, 60));
-        //northSubPane_1.setPreferredSize(new Dimension(9000, 60));
-        //northPane.add(northSubPane_1);
-        northPane.add(tFiled_Status);
-
-        // Status TextField
-        //JTextField sample = new JTextField();
-        //JPanel sample = new JPanel();
-        //sample.setMaximumSize(new Dimension(9000, 180));
-        //sample.setMinimumSize(new Dimension(9000, 180));
-        //tFiled_Status.setPreferredSize(new Dimension(0, 30));
-        //northPane.add(sample);
-        //northPane.add(northSubPane_1);
-
-
-        //CollapsiblePanel collapsiblePanel = new CollapsiblePanel(new JLabel("説明"), new JTextField("aiueo"), 600, 100);
-        //JLabel collapsiblePanel = new JLabel("a");
-        //collapsiblePanel.setBackground(Color.BLUE);
-        //collapsiblePanel.setPreferredSize(new Dimension(600, 100));
-        //collapsiblePanel.setMaximumSize(new Dimension(9000, 180));
-        //collapsiblePanel.setMinimumSize(new Dimension(9000, 180));
-        //northPane.add(collapsiblePanel);
-
-        this.add(northPane, BorderLayout.NORTH);
+        baseOfNorth.setMaximumSize(new Dimension(9000, 30));
+        baseOfNorth.setMinimumSize(new Dimension(9000, 30));
+        baseOfNorth.add(tFiled_Status, BorderLayout.NORTH);
+        this.add(baseOfNorth, BorderLayout.NORTH);
 
         // Note Text Area
-        //tArea_Note.setToolTipText(tooltipForNoteArea);
+        JPanel baseOfCenter = new JPanel(new BorderLayout());
+        tArea_Note.setToolTipText(tooltipForNoteArea);
         JScrollPane scrollPane = new JScrollPane(tArea_Note);
-        //northPane.add(scrollPane);
-        scrollPane.setMaximumSize(new Dimension(600, 100));
-        scrollPane.setMinimumSize(new Dimension(600, 100));
-        //scrollPane.setPreferredSize(new Dimension(600, 80));
-        this.add(scrollPane, BorderLayout.CENTER);
+        baseOfCenter.setPreferredSize(new Dimension(800, 100));
+        baseOfCenter.add(scrollPane, BorderLayout.CENTER);
 
-
-
-
-        //northPane.setPreferredSize(new Dimension(600, 300));
-
-        /* **** CENTER AREA **** */
-        //JPanel centerPane = new JPanel();
-        //centerPane.setLayout(new BoxLayout(centerPane, BoxLayout.Y_AXIS));
-        //this.add(centerPane, BorderLayout.CENTER);
-
-        /* **** SOUTH AREA **** */
-        // Separator
-        //JPanel southPane = new JPanel(new BorderLayout());
-        //southPane.add(new JLabel(" "));
-        //this.add(southPane, BorderLayout.SOUTH);
-
-        // Finalization
-        //centerPane.setMaximumSize(new Dimension(600, 200));
-        //centerPane.setPreferredSize(new Dimension(600, 200));
-        //southPane.setMaximumSize(new Dimension(600, 100));
+        this.add(baseOfCenter, BorderLayout.CENTER);
 
         //For debug
+        /*
         this.updateTabTitleButton.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 updateTabTitle();
             }
         });
-        //add(updateTabTitleButton);
+        add(updateTabTitleButton);
+        */
+    }
+
+    private void saveStatusField() {
+
     }
 
     private void saveNoteArea() {
     }
 
-    private void saveMarkField() {
-
-    }
 
     public void updateTabTitle() {
         String text = tFiled_Status.getText();

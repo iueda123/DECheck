@@ -38,60 +38,76 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         //this.sectionName = sectionName;
         //this.subSectionName = subSectionName;
 
+        // Answer Sub Sub Section
         tArea_Answer.setLineWrap(true);
         tArea_Answer.setWrapStyleWord(true);
         tArea_Answer.setToolTipText(tooltipForAnswer);
 
+        // Confidence Rating Sub Sub Section
         tFiled_ConfidenceRating.setToolTipText(tooltipForConfidenceRating);
 
+        // Negative Answer Category Sub SubSection
         tField_NegativeAnswerCategory.setToolTipText(tooltipForNegativeAnswerCategory);
 
+        // Reason Sub Sub Section
         tArea_Reason.setLineWrap(true);
         tArea_Reason.setWrapStyleWord(true);
         tArea_Reason.setToolTipText(tooltipForReason);
 
+        // Supporting Text Sub Sub Section
         tArea_SupportingText.setLineWrap(true);
         tArea_SupportingText.setWrapStyleWord(true);
         tArea_SupportingText.setToolTipText(tooltipForSupportingText);
 
+        // Supporting Location Sub Sub Section
         tArea_Location.setLineWrap(true);
         tArea_Location.setWrapStyleWord(true);
         tArea_Location.setToolTipText(tooltip_Location);
 
-
         setLayout(new BorderLayout());
 
-        /* North Area */
-        Box northBox = Box.createVerticalBox();
+        /* Setup North Area */
+        //JPanel baseOfNorth = new JPanel(new BorderLayout());
+        Box baseOfNorth = Box.createVerticalBox();
 
         //NorthSubPane_0
-        Box northSubPane_0 = Box.createHorizontalBox();
-        northSubPane_0.add(Box.createHorizontalGlue());
-        northSubPane_0.add(saveButton);
-        northSubPane_0.add(convertJson2MarkdownButton);
-        northSubPane_0.add(convertJson2TsvButton);
-        northSubPane_0.add(loadButton);
-        northSubPane_0.add(jsonFileNameEditButton);
-        northSubPane_0.add(new PanelMoverPane(), BorderLayout.EAST);
-        northBox.add(northSubPane_0);
+        Box upperBaseOfNorth = Box.createHorizontalBox();
+        upperBaseOfNorth.add(Box.createHorizontalGlue());
+        upperBaseOfNorth.add(saveButton);
+        //northSubPane_0.add(convertJson2MarkdownButton);
+        //northSubPane_0.add(convertJson2TsvButton);
+        upperBaseOfNorth.add(loadButton);
+        upperBaseOfNorth.add(jsonFileNameEditButton);
+        upperBaseOfNorth.add(new PanelMoverPane());
+        baseOfNorth.add(upperBaseOfNorth);
+        //baseOfNorth.add(upperBaseOfNorth, BorderLayout.NORTH);
 
-        //NorthSubPane_1
+        //NorthSubPane2
+        Box lowerBaseOfNorth = Box.createHorizontalBox();
+        lowerBaseOfNorth.add(tFiled_ConfidenceRating);
+        lowerBaseOfNorth.add(tField_NegativeAnswerCategory);
+        baseOfNorth.add(lowerBaseOfNorth);
+        //northArea.add(lowerBaseOfNorth, BorderLayout.SOUTH);
+
+        add(baseOfNorth, BorderLayout.NORTH);
+
+        /* Center Area */
+
+        Box baseOfCenter = Box.createVerticalBox();
+
+        // Upper
+        Box upperBaseOfCenter = Box.createHorizontalBox();
         JPanel northSubPane_1 = new JPanel(new BorderLayout());
-        northSubPane_1.setPreferredSize(new Dimension(600, 75));
+        northSubPane_1.setPreferredSize(new Dimension(800, 150));
         JScrollPane scrollPane_Answer = new JScrollPane(tArea_Answer);
         scrollPane_Answer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane_Answer.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        northSubPane_1.add(scrollPane_Answer, BorderLayout.CENTER);
-        northBox.add(northSubPane_1);
+        upperBaseOfCenter.add(scrollPane_Answer);
+        baseOfCenter.add(upperBaseOfCenter);
 
-        //NorthSubPane2
-        Box northSubPane_2 = Box.createHorizontalBox();
-        northSubPane_2.add(tFiled_ConfidenceRating);
-        northSubPane_2.add(tField_NegativeAnswerCategory);
-        northBox.add(northSubPane_2);
-        add(northBox, BorderLayout.NORTH);
+        // Lower
+        Box lowerBaseOfCenter = Box.createHorizontalBox();
 
-        /* Center Area */
         JScrollPane scrollPane_Reason = new JScrollPane(tArea_Reason);
         scrollPane_Reason.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane_Reason.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -104,12 +120,13 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         scrollPane_PageLine.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane_PageLine.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
-        Box centerBox = Box.createHorizontalBox();
-        centerBox.add(scrollPane_Reason);
-        centerBox.add(scrollPane_SupportingText);
-        centerBox.add(scrollPane_PageLine);
+        lowerBaseOfCenter.add(scrollPane_Reason);
+        lowerBaseOfCenter.add(scrollPane_SupportingText);
+        lowerBaseOfCenter.add(scrollPane_PageLine);
 
-        add(centerBox, BorderLayout.CENTER);
+        baseOfCenter.add(lowerBaseOfCenter);
+
+        add(baseOfCenter, BorderLayout.CENTER);
 
         /* South Area */
         Box southBox = Box.createHorizontalBox();
@@ -138,7 +155,7 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         /* Finalization */
         setBorder(BorderFactory.createTitledBorder("A ACNRSL Panel"));
         // BoxLayoutで適切にスクロールするために、固定の高さを設定
-        setPreferredSize(new Dimension(600, 400));
+        setPreferredSize(new Dimension(800, 400));
         setMaximumSize(new Dimension(Integer.MAX_VALUE, 400));
     }
 

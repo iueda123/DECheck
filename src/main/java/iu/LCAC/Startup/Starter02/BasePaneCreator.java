@@ -53,16 +53,18 @@ public class BasePaneCreator {
     tabbedPane.add("6. GN", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_GN")).getBaseComponent());
     tabbedPane.setToolTipTextAt(5, "General Notes");
 
-    //tabbedPane.add("7. QA", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
+    //tabbedPane.add("7. QA1", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
+    //tabbedPane.setToolTipTextAt(6, "Quality Check 1");
+    //tabbedPane.add("8. QA2", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
+    //tabbedPane.setToolTipTextAt(7, "Quality Check 2");
 
 
-    //basePane.add(
-    //    (cHolderMediator.getInstanceOfAMember("text_field_panel_holder")).getBaseComponent(),
-    //    BorderLayout.EAST);
+    JPanel explanationPanel = new JPanel();
+
+    return new CollapsiblePanel(tabbedPane, new JLabel("East"), new JLabel("West"), new JLabel("South"), new JLabel("North"));
 
     //basePane.add(tabbedPane, BorderLayout.CENTER);
     //return basePane;
 
-    return new CollapsiblePanel(tabbedPane, new JLabel("East"), new JLabel("West"), new JLabel("South"), new JLabel("North"));
   }
 }

@@ -32,7 +32,7 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
         // nullじゃない状態で持ってくるかの良い方法を思いつけず。
         //　ひとまずこのコンストラクタを残しておく。
 
-
+        // Answer Sub Sub Section
         tArea_Answer.setLineWrap(true);
         tArea_Answer.setWrapStyleWord(true);
         tArea_Answer.setToolTipText(tooltipForAnswer);
@@ -50,24 +50,27 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
         northSubPanel_1.add(loadButton);
         northSubPanel_1.add(jsonFileNameEditButton);
         northSubPanel_1.add(new PanelMoverPane());
-        northBox.add(northSubPanel_1);
+        //northBox.add(northSubPanel_1);
+        add(northSubPanel_1, BorderLayout.NORTH);
 
+        /* Setup Center Area */
         JPanel northSubPanel_2 = new JPanel(new BorderLayout());
-        northSubPanel_2.setPreferredSize(new Dimension(600, 75));
+        northSubPanel_2.setPreferredSize(new Dimension(800, 150));
         JScrollPane scrollPane_Answer = new JScrollPane(tArea_Answer);
         scrollPane_Answer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane_Answer.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         northSubPanel_2.add(scrollPane_Answer, BorderLayout.CENTER);
         northBox.add(northSubPanel_2);
+        add(northSubPanel_2, BorderLayout.CENTER);
 
-        add(northBox, BorderLayout.NORTH);
+        //add(northBox, BorderLayout.NORTH);
 
         /* Setup Center Area */
 
         /* Finalization */
         setBorder(BorderFactory.createTitledBorder(jsonName));
         // BoxLayoutで適切にスクロールするために、固定の高さを設定
-        setPreferredSize(new Dimension(600, 125));
+        setPreferredSize(new Dimension(800, 400));
         setMaximumSize(new Dimension(Integer.MAX_VALUE, 400));
 
     }
