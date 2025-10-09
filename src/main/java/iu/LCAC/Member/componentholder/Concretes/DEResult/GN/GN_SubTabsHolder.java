@@ -13,6 +13,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GN_SubTabsHolder extends AbstCHolderMember implements SubTabsHolderItrfc {
 
@@ -52,6 +53,14 @@ public class GN_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
         }
 
         File[] jsonFiles = jsonDir.listFiles((dir, name) -> name.endsWith(".json"));
+        // jsonFiles に格納されているもののうち、ファイル名の先頭が "_" で始まるものを先頭に持ってくる
+        if (jsonFiles != null) {
+            Arrays.sort(jsonFiles, (f1, f2) -> {
+                boolean f1StartsWithUnderscore = f1.getName().startsWith("_");
+                boolean f2StartsWithUnderscore = f2.getName().startsWith("_");
+                return Boolean.compare(f2StartsWithUnderscore, f1StartsWithUnderscore);
+            });
+        }
 
         if (jsonFiles != null) {
             for (File jsonFile : jsonFiles) {
