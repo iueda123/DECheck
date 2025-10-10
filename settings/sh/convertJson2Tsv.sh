@@ -97,7 +97,7 @@ def convert_json_to_tsv(json_file, output_file):
         ("Quality Checking", "quality_checking"),
         ("Quality Checking (Detail)", "quality_checking_detail"),
         ("Site Effect Handling", "site_effect_handling"),
-        ("Site Effect (Detail)", "site_effect_detail")
+        ("Site Effect (Detail)", "site_effect_handling_detail")
     ]
 
     for section_title, section_key in sections:

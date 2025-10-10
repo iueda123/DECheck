@@ -92,7 +92,7 @@
       "Supporting Text": "Structural MRI scanning was conducted on a Signa HDx 3.0 T ... at the First Affiliated Hospital, China Medical University.",
       "Page/Line": "Main PDF line 73"
     },
-    "site_effect_detail": {
+    "site_effect_handling_detail": {
       "Answer": "Single-site acquisition (GE Signa HDx 3.0T) at First Affiliated Hospital of China Medical University; no ComBat or hierarchical site modeling reported.",
       "Confidence Rating": "High",
       "Negative Answer Category": "Not Negative",

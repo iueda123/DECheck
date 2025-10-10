@@ -92,7 +92,7 @@
       "Supporting Text": "We used a linear mixed effects model with scanner site as a random effect\"; \"scanner site and age proved to be the most dominant sources of variance (each explaining on average around 15% of the total variance)\"", 
       "Page/Line": "Methods, Statistics and reproducibility section, lines 143-144; Results section Fig. 5 caption line 145"
     },
-    "site_effect_detail": {
+    "site_effect_handling_detail": {
       "Answer": "Linear mixed effects (LME) models with scanner site as random effect; age included as fixed effect covariate; site explained approximately 15% of total variance in CT alongside age; sensitivity analyses confirmed spatial consistency after site modeling; Euler index and mean framewise displacement included as additional confound regressors", 
       "Confidence Rating": "High", 
       "Negative Answer Category": "Not Negative", 

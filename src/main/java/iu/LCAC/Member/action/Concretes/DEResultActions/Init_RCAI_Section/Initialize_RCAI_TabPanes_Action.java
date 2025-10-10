@@ -4,6 +4,7 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_ARSL_Style_Pane;
+import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_A_Style_Pane;
 import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
 import iu.LCAC.Utils.JsonManager;
 
@@ -27,7 +28,7 @@ public class Initialize_RCAI_TabPanes_Action extends AbstActionMember {
     public void perform(ActionEvent action_event) {
         System.out.println("perform() in " + this.getClass().toString() + " was called.");
 
-        String jsonFileName =  jsonFolderPathString + "/" + "empty.json";
+        String jsonFileName = jsonFolderPathString + "/" + "empty.json";
         String sectionName = "";
         String subSectionName = "";
         String[] cmd_and_args = getActionCommandAndArgs(action_event, false);
@@ -48,25 +49,26 @@ public class Initialize_RCAI_TabPanes_Action extends AbstActionMember {
             // Load Properties
             JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
 
-            String answer = jsonManager.getValue(sectionName + "/" + subSectionName + "/Answer");
-            //System.out.println(answer);
-            String confidenceRating = jsonManager.getValue(sectionName + "/" + subSectionName + "/Confidence\\ Rating");
-            //System.out.println(confidenceRating);
-            String negativeAnswerCategory = jsonManager.getValue(sectionName + "/" + subSectionName + "/Negative\\ Answer\\ Category");
-            //System.out.println(negativeAnswerCategory);
-            String reason = jsonManager.getValue(sectionName + "/" + subSectionName + "/Reason");
-            //System.out.println(reason);
-            String supportingText = jsonManager.getValue(sectionName + "/" + subSectionName + "/Supporting\\ Text");
-            //System.out.println(supportingText);
-            String pageLine = jsonManager.getValue(sectionName + "/" + subSectionName + "/Page\\/Line");
-            //System.out.println(pageLine);
-
             // Preparation of Component
             RCAI_SubTabsHolder subTabsHolder =
                     (RCAI_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI");
 
             // Initialization Core
             if (subTabsHolder != null) {
+
+
+                String answer = jsonManager.getValue(sectionName + "/" + subSectionName + "/Answer");
+                //System.out.println("★answer: " + answer);
+                String confidenceRating = jsonManager.getValue(sectionName + "/" + subSectionName + "/Confidence\\ Rating");
+                //System.out.println(confidenceRating);
+                String negativeAnswerCategory = jsonManager.getValue(sectionName + "/" + subSectionName + "/Negative\\ Answer\\ Category");
+                //System.out.println(negativeAnswerCategory);
+                String reason = jsonManager.getValue(sectionName + "/" + subSectionName + "/Reason");
+                //System.out.println(reason);
+                String supportingText = jsonManager.getValue(sectionName + "/" + subSectionName + "/Supporting\\ Text");
+                //System.out.println(supportingText);
+                String pageLine = jsonManager.getValue(sectionName + "/" + subSectionName + "/Page\\/Line");
+                //System.out.println(pageLine);
 
                 One_ARSL_Style_Pane trtgDEResultPane = (One_ARSL_Style_Pane) subTabsHolder.getResultPane(jsonFileName, sectionName, subSectionName);
                 trtgDEResultPane.updateRegisteredJsonName(jsonFileName);

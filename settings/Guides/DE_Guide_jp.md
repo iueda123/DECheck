@@ -181,7 +181,7 @@
   * Data Type: categorical
   * Notes: Choose from the options
 
-#### 3-11. site_effect_detail
+#### 3-11. site_effect_handling_detail
   * Extraction Criteria: Site effect handling details (method names, batch variables, etc.)
   * Data Type: text
   * Example: 

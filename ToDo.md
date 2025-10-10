@@ -1,6 +1,7 @@
-  * [ ] RCAIパネルのsite_effect_handing_detail の初期化に失敗している。
+  * [ ] RCAIパネルのsite_effect_handling_detail の初期化に失敗している。
   * [ ] Answerエリアが１行未満になることがある Zeng2024において
   * [ ] 安全な保存機構
+  * [ ] 間接的起動
   * [x] 項目の説明を入れたい
   * [x] パネルオーダーの保存時に反応が欲しい
   * [x] __HumanChecked.jsonが先頭に来るように

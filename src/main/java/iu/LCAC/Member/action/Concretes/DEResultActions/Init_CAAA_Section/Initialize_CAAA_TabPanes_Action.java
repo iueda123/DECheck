@@ -50,7 +50,6 @@ public class Initialize_CAAA_TabPanes_Action extends AbstActionMember {
             // Load Properties
             JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
 
-
             // Preparation of Component
             CAAA_SubTabsHolder subTabsHolder =
                     (CAAA_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_CAAA");
@@ -62,13 +61,14 @@ public class Initialize_CAAA_TabPanes_Action extends AbstActionMember {
                         subSectionName.equals("key_findings_brief") || subSectionName.equals("key_findings_detailed") ||
                         subSectionName.equals("key_limitations") || subSectionName.equals("application_notes")) {
 
-                    String answer = jsonManager.getValue(sectionName + "/" + subSectionName );
+                    String answer = jsonManager.getValue(sectionName + "/" + subSectionName);
                     //System.out.println("★" + subSectionName + ": " + answer);
 
                     One_A_Style_Pane trtgDEResultPane = (One_A_Style_Pane) subTabsHolder.getResultPane(jsonFileName, sectionName, subSectionName);
                     trtgDEResultPane.updateRegisteredJsonName(jsonFileName);
                     trtgDEResultPane.setValTo_Answer(answer);
                     trtgDEResultPane.resetBackgroundColorOfTAreasTFields();
+
                 } else {
 
                     String answer = jsonManager.getValue(sectionName + "/" + subSectionName + "/Answer");

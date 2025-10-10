@@ -92,7 +92,7 @@
       "Supporting Text": "Structural MRI scanning was conducted on a Signa HDx 3.0 T ... at the First Affiliated Hospital of China Medical University.",
       "Page/Line": "Main PDF: Image acquisition, lines ~100–108"
     },
-    "site_effect_detail": {
+    "site_effect_handling_detail": {
       "Answer": "Single-site study (one scanner); no batch/site harmonization. Age and sex handled in normative step.",
       "Confidence Rating": "High",
       "Negative Answer Category": "Not Negative",
