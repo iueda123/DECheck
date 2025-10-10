@@ -7,15 +7,15 @@
     "doi": "10.1017/S0033291724000886"
   },
   "study_characteristics": {
-    "study_objective": "",
-    "study_design": "",
-    "study_design_other": ""
+    "study_objective": "To quantify brain morphological heterogeneity in mood disorders (MDD and BD) by mapping individual-level gray matter volume (GMV) deviations using normative modeling, identify subtypes through unsupervised clustering, and characterize these subtypes using clinical behaviors, cell-specific transcriptomic profiles, and polygenic risk scores.",
+    "study_design": "Cross-sectional",
+    "study_design_other": "-"
   },
   "reference_cohort_and_imaging": {
     "dataset_name": {
-      "Answer": "",
-      "Confidence Rating": "",
-      "Negative Answer Category": "",
+      "Answer": "Single-site dataset from First Affiliated Hospital of China Medical University, Shenyang, China",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
       "Reason": "",
       "Supporting Text": "",
       "Page/Line": ""
@@ -92,7 +92,7 @@
       "Supporting Text": "",
       "Page/Line": ""
     },
-    "site_effect_handling_detail": {
+    "site_effect_detail": {
       "Answer": "",
       "Confidence Rating": "",
       "Negative Answer Category": "",
@@ -103,12 +103,12 @@
   },
   "normative_modeling": {
     "model_origin": {
-      "Answer": "",
-      "Confidence Rating": "",
-      "Negative Answer Category": "",
+      "Answer": "New",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
       "Reason": "",
-      "Supporting Text": "",
-      "Page/Line": ""
+      "Supporting Text": "Quantile regression was used to obtain a normative range of regional GMV variation as a function of age and sex descripted in a previous study (Lv et al., 2021). We positioned individuals with MDD and BD on the normative percentile charts based on HC and expressed three kinds of continuous measurement of deviation from the generated normative range",
+      "Page/Line": "Main paper lines 82-85"
     },
     "model_origin_detail": {
       "Answer": "",
@@ -193,12 +193,12 @@
   },
   "clinical_application_and_analysis": {
     "clinical_dataset": {
-      "Answer": "",
-      "Confidence Rating": "",
+      "Answer": "First Affiliated Hospital of China Medical University, Shenyang, China (same institution as reference cohort)",
+      "Confidence Rating": "High",
       "Negative Answer Category": "",
-      "Reason": "",
+      "Reason": "The clinical patient data came from the same institution where healthy controls were recruited, as explicitly stated in the methods section.",
       "Supporting Text": "",
-      "Page/Line": ""
+      "Page/Line": "materials/Zheng2024.pdf.md: lines 69-76; 100-108; 122-124"
     },
     "diseases_studied": {
       "Answer": "",
@@ -225,12 +225,12 @@
       "Page/Line": ""
     },
     "clinical_groups_sex": {
-      "Answer": "",
-      "Confidence Rating": "",
-      "Negative Answer Category": "",
-      "Reason": "",
-      "Supporting Text": "",
-      "Page/Line": ""
+      "Answer": "MDD: F 80 (70.2%) M 34 (29.8%); BD: F 37 (61.7%) M 23 (38.3%)",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Sex distribution for each clinical diagnostic group is provided in Supplementary Table S1 with exact counts.",
+      "Supporting Text": "Dataset 1: MDD N\u003d114, Gender (male/female) 34/80; BD N\u003d60, Gender (male/female) 23/37",
+      "Page/Line": "Supplementary Table S1, line 69"
     },
     "deviation_metric": {
       "Answer": "",
@@ -247,6 +247,6 @@
     "application_notes": ""
   },
   "general_notes": {
-    "general_notes": ""
+    "general_notes": "Single-site 3.0T GE Signa HDx; CAT12/SPM12 preprocessing with DARTEL; DK-68 ROI summarization; TIV used as covariate in analyses; no site harmonization needed due to single-site design."
   }
 }

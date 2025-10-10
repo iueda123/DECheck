@@ -1,0 +1,252 @@
+{
+  "study_identification": {
+      "study_id": "Zheng2024",
+      "reference_file_names": "Zheng2024.pdf.md; Zheng2024_sup.pdf.md",
+      "author_journal_year": "Zheng et al., Psychological Medicine, 2024",
+      "title": "Characterizing the distinct imaging phenotypes, clinical behavior, and genetic vulnerability of brain maturational subtypes in mood disorders",
+      "doi": "10.1017/S0033291724000886"
+  },
+  "study_characteristics": {
+      "study_objective": "To quantify brain morphological heterogeneity in mood disorders (MDD and BD) by mapping individual-level gray matter volume (GMV) deviations using normative modeling, identify subtypes through unsupervised clustering, and characterize these subtypes using clinical behaviors, cell-specific transcriptomic profiles, and polygenic risk scores.",
+      "study_design": "Cross-sectional",
+      "study_design_other": "-"
+  },
+  "reference_cohort_and_imaging": {
+    "dataset_name": {
+      "Answer": "Single-site dataset from First Affiliated Hospital of China Medical University, Shenyang, China",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The paper clearly states that all participants (HC and patients) were recruited and scanned at a single institution: First Affiliated Hospital of China Medical University, Shenyang, China. This is explicitly mentioned in the Methods section for both discovery and replication cohorts.",
+      "Supporting Text": "All the patients were recruited from the inpatient department of the Shenyang Mental Health Center and the outpatient clinic of the Department of Psychiatry of the First Affiliated Hospital of China Medical University, Shenyang, China. [...] Structural MRI scanning was conducted on a Signa HDx 3.0 T superconductive MRI system (GE Healthcare, Little Chalfont, UK) at the First Affiliated Hospital, China Medical University.",
+      "Page/Line": "Main paper lines 69-73; Supplementary lines 23-29"
+    },
+    "hc_n": {
+      "Answer": "404",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The number of healthy controls is explicitly stated in multiple locations in the paper, including the abstract, methods section, and supplementary tables.",
+      "Supporting Text": "We recruited 114 MDD patients, 60 BD patients and 404 healthy controls (HC).",
+      "Page/Line": "Main paper line 68; Supplementary Table S1"
+    },
+    "hc_age": {
+      "Answer": "mean 29.0; sd 9.3",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The mean age and standard deviation for healthy controls are clearly provided in Supplementary Table S1.",
+      "Supporting Text": "HC N=404, Age 29.0±9.3",
+      "Page/Line": "Supplementary Table S1, line 68"
+    },
+    "hc_sex": {
+      "Answer": "F 244 (60.4%), M 160 (39.6%)",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The gender distribution for healthy controls is explicitly provided in Supplementary Table S1 with exact numbers of males and females.",
+      "Supporting Text": "HC N=404, Gender (male/female) 160/244",
+      "Page/Line": "Supplementary Table S1, line 69"
+    },
+    "imaging_modality": {
+      "Answer": "T1-weighted MRI",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The imaging modality is clearly stated in both the main text and supplementary materials. Only T1-weighted structural MRI was acquired for this study.",
+      "Supporting Text": "Structural MRI scanning was conducted on a Signa HDx 3.0T superconductive MRI system (GE Healthcare, Little Chalfont, UK). T1-weighted images were acquired by using the three-dimensional fast spoiled gradient-echo sequence with the parameters: Repetition time/Echo time, 7.2/3.2 ms; Flip angle, 13°; image matrix, 240 × 240; field of view, 240 × 240 mm²; 176 contiguous 1.0 mm slices with a gap; and voxel size, 1.0 mm³.",
+      "Page/Line": "Supplementary lines 29-30"
+    },
+    "analysis_level": {
+      "Answer": "ROI-level",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The analysis was performed at the ROI level using the Desikan-Killiany parcellation atlas with 68 cortical regions. This is explicitly stated in the methods section.",
+      "Supporting Text": "The Desikan-Killiany (DK) parcellation atlas partitioned the cortex into 68 cortical regions was used as the regions of interest (ROI) template. ROI-wise gray matter density for each brain region was used for investigating between-group differences.",
+      "Page/Line": "Main paper lines 79-80"
+    },
+    "preprocessing_pipeline": {
+      "Answer": "CAT12; SPM12; VBM; Desikan-Killiany parcellation (68 regions); DARTEL for spatial normalization; IXI555 template",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The preprocessing pipeline is described in detail in both the main text and supplementary materials, including specific software versions and key processing steps.",
+      "Supporting Text": "T1-weighted images were preprocessed by using the Computation Anatomy Toolbox (CAT) implemented in Statistical Parametric Mapping (SPM 12) for voxel-based morphometry (VBM) calculation (http://www.neuro.uni-jena.de/cat/) (Gaser & Dahnke, 2016). [...] T1-weighted images were preprocessed using the Computation Anatomy Toolbox (CAT 12; Christian Gaser; Department of Psychiatry, University of Jena) implemented in Statistical Parametric Mapping (SPM 12; Wellcome Department of Cognitive Neurology, University of London, UK) for voxel-based morphometry (VBM). [...] using the high-dimensional Diffeomorphic Anatomical Registration Exponentiated Lie Algebra, the segmented scans were normalized into standard Montreal Neurological Institute IXI555 space",
+      "Page/Line": "Main paper lines 74-79; Supplementary lines 31-32"
+    },
+    "quality_checking": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Quality control was performed using automated weighted average image quality rating (IQR) included in CAT12, with specific cutoff criteria applied.",
+      "Supporting Text": "The quality of images was assessed by using the automated weighted average image quality rating (IQR). We applied the cut-off (>=80%, >= grad B) to ensure high-quality images for analysis as low-quality images can lead to GM underestimations in preprocessing.",
+      "Page/Line": "Main paper lines 74-77; Supplementary lines 33-36"
+    },
+    "quality_checking_detail": {
+      "Answer": "Automated weighted average image quality rating (IQR) using CAT12 toolbox. Cutoff threshold: IQR >=80% and >= grade B. Images failing QC had noise grade <= C (70%) and total IQR grade < B (80%). Final IQR ratings: Dataset 1: 86.4% ± 0.74% (mean ± SD); Dataset 2: 86.3% ± 0.72% (mean ± SD). IQR is a weighted average of local (noise contrast ratio) and global (inhomogeneity contrast ratio) standard deviations within optimized white matter segment, scaled by minimum tissue contrast and root mean square of voxel size.",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Detailed quality control metrics and exclusion criteria are provided in the supplementary materials, including the specific threshold values and the actual IQR ratings achieved in both datasets.",
+      "Supporting Text": "The quality of images was assessed by using the automated weighted average image quality rating (IQR) included in the CAT12 toolbox (http://neuro.uni-jena.de/cat). It constitutes a weighted average of the local (noise contrast ratio) and global (inhomogeneity contrast ratio) standard deviations within the optimized white matter segment scaled by the minimum tissue contrast, and the root mean square of the voxel size. [...] An image was classified as to fail QC if it had a noise grade less than or equal to 'C' (70%) and a total IQR grade of less than 'B'(80%). We applied the cut-off (>=80%, >= grad B) to ensure high quality images for analysis as low-quality images can lead to GM underestimations in preprocessing. The general IQR ratings in this study were 86.4% ± 0.74% (mean ± sd) in Dataset 1 and 86.3% ± 0.72% (mean ± sd) in Dataset 2.",
+      "Page/Line": "Supplementary lines 33-36"
+    },
+    "site_effect_handling": {
+      "Answer": "None",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "This was a single-site study conducted at one institution using one scanner. Therefore, there were no multi-site effects to handle. All participants were scanned on the same Signa HDx 3.0T scanner at the First Affiliated Hospital of China Medical University.",
+      "Supporting Text": "Structural MRI scanning was conducted on a Signa HDx 3.0 T superconductive MRI system (GE Healthcare, Little Chalfont, UK) at the First Affiliated Hospital, China Medical University.",
+      "Page/Line": "Main paper lines 73-74; Supplementary lines 28-29"
+    },
+    "site_effect_detail": {
+      "Answer": "-",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Since this is a single-site study with all scanning performed at one location on one scanner, site effect handling methods are not applicable.",
+      "Supporting Text": "N/A - single-site study",
+      "Page/Line": "N/A"
+    }
+  },
+  "normative_modeling": {
+    "model_origin": {
+      "Answer": "New",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The normative model was newly created using the 404 healthy controls from this study. There is no indication that a pre-trained model was used.",
+      "Supporting Text": "Quantile regression was used to obtain a normative range of regional GMV variation as a function of age and sex descripted in a previous study (Lv et al., 2021). We positioned individuals with MDD and BD on the normative percentile charts based on HC and expressed three kinds of continuous measurement of deviation from the generated normative range",
+      "Page/Line": "Main paper lines 82-85"
+    },
+    "model_origin_detail": {
+      "Answer": "-",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The model origin is 'New', so details about pre-training are not applicable. The model was built de novo using the study's own healthy control cohort (n=404).",
+      "Supporting Text": "N/A - new model created from study HC cohort",
+      "Page/Line": "N/A"
+    },
+    "modeling_method": {
+      "Answer": "Quantile regression",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The paper explicitly states that quantile regression was used to model the normative range of GMV variation as a function of age and sex.",
+      "Supporting Text": "Quantile regression was used to obtain a normative range of regional GMV variation as a function of age and sex descripted in a previous study (Lv et al., 2021).",
+      "Page/Line": "Main paper lines 82-83"
+    },
+    "software_tool": {
+      "Answer": "Not explicitly stated (CAT12 and SPM12 used for preprocessing; quantile regression method from Lv et al., 2021)",
+      "Confidence Rating": "Medium",
+      "Negative Answer Category": "Unclear/Incomplete",
+      "Reason": "The paper does not explicitly state which software package or library was used to perform the quantile regression for normative modeling. It references a previous study (Lv et al., 2021) for the methodology but does not specify the implementation tool. CAT12 and SPM12 are mentioned for preprocessing, but not for the normative modeling itself.",
+      "Supporting Text": "Quantile regression was used to obtain a normative range of regional GMV variation as a function of age and sex descripted in a previous study (Lv et al., 2021).",
+      "Page/Line": "Main paper lines 82-83"
+    },
+    "response_variable": {
+      "Answer": "Regional gray matter volumes (GMV) across 68 cortical regions defined by Desikan-Killiany parcellation atlas",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The response variable is clearly stated as ROI-wise gray matter density/volume for each of the 68 Desikan-Killiany cortical regions.",
+      "Supporting Text": "The Desikan-Killiany (DK) parcellation atlas partitioned the cortex into 68 cortical regions was used as the regions of interest (ROI) template. ROI-wise gray matter density for each brain region was used for investigating between-group differences. [...] Quantile regression was used to obtain a normative range of regional GMV variation as a function of age and sex",
+      "Page/Line": "Main paper lines 79-83"
+    },
+    "predictor_variables": {
+      "Answer": "Age; Sex",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The paper explicitly states that age and sex were used as predictor variables in the quantile regression model to define the normative range.",
+      "Supporting Text": "Quantile regression was used to obtain a normative range of regional GMV variation as a function of age and sex",
+      "Page/Line": "Main paper line 82"
+    },
+    "predictor_effects": {
+      "Answer": "Not explicitly stated. Age and sex were used as predictors in quantile regression framework, but the paper does not specify whether these were modeled as fixed or random effects.",
+      "Confidence Rating": "Medium",
+      "Negative Answer Category": "Unclear/Incomplete",
+      "Reason": "While age and sex are clearly identified as predictor variables in the quantile regression model, the paper does not provide explicit details about whether they were treated as fixed or random effects. Quantile regression typically uses fixed effects, but this is not explicitly confirmed.",
+      "Supporting Text": "Quantile regression was used to obtain a normative range of regional GMV variation as a function of age and sex",
+      "Page/Line": "Main paper line 82"
+    },
+    "nm_vldtn_handle_ns": {
+      "Answer": "The study addresses some nuisance structures but lacks comprehensive handling. Age and sex are modeled in the normative framework via quantile regression to account for normative developmental variance. Total intracranial volume (TIV) was calculated and mentioned as a covariate, though its specific use in normative modeling is not detailed. Quality control using IQR filters images with poor noise/inhomogeneity characteristics. However, there is no explicit discussion of handling other potential nuisance structures such as motion, inter-individual variance patterns, or heteroscedasticity across age ranges.",
+      "Confidence Rating": "Medium",
+      "Negative Answer Category": "Unclear/Incomplete",
+      "Reason": "The paper addresses basic nuisance structures (age, sex via quantile regression; image quality via IQR QC; TIV as covariate mentioned in supplementary), but does not provide detailed methodology for handling more complex nuisance structures like variance heterogeneity, non-linear effects beyond what quantile regression captures, or inter-regional correlations. The quantile regression approach itself (modeling 5th, 50th, 95th percentiles) does account for variance differences across age ranges to some extent, but this is not explicitly discussed in the context of nuisance structure handling.",
+      "Supporting Text": "Quantile regression was used to obtain a normative range of regional GMV variation as a function of age and sex descripted in a previous study (Lv et al., 2021). [...] Total intracranial volume (TIV), calculated as the sum of GM, WM, and CSF volumes, was used as a covariate for further statistical analyses. [...] The quality of images was assessed by using the automated weighted average image quality rating (IQR). We applied the cut-off (>=80%, >= grad B) to ensure high-quality images for analysis",
+      "Page/Line": "Main paper lines 82-83; Supplementary lines 31-32, 33-36"
+    },
+    "nm_vldtn_same_domain_nonindep": {
+      "Answer": "The study performed clustering stability validation using 10-fold cross-validation with 1000 permutations on the same dataset (Dataset 1, n=174 patients). Adjusted Rand Index (ARI) scores were computed for k=2-5 cluster solutions, with k=2 showing the highest averaged ARI, confirming clustering stability. This represents validation on the same domain with non-independent data (cross-validation folds from the same 174 patients).",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The paper explicitly describes a comprehensive cross-validation approach to assess the stability and reproducibility of the clustering solution within the discovery dataset. This demonstrates validation of the subtyping (based on normative model deviations) using non-independent splits of the same domain data.",
+      "Supporting Text": "We assessed the stability of clustering based on scores of the adjusted rand index (ARI) for 2-5 clusters which were divided by using the hierarchical cutoffs (Hubert & Arabie, 1985). We then chose the clustering solution with the highest averaged ARI following 10-fold cross-validation with 1000 times permutations, as the optimal clustering results. [...] The clustering stability analysis showed that two clustered subtypes had the highest ARI score among k = 2-5 clusters (online Supplementary Figure S3).",
+      "Page/Line": "Main paper lines 83-84, 110-111"
+    },
+    "nm_vldtn_same_domain_indep": {
+      "Answer": "Not applicable. While the study has a discovery cohort (Dataset 1) and replication cohort (Dataset 2), Dataset 2 consists of medicated patients from a different clinical population (not drug-naïve/drug-free), which constitutes validation in a different domain rather than same-domain independent validation.",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The study does not include truly independent data from the same domain (i.e., another set of drug-naïve/drug-free patients with the same inclusion criteria). Dataset 2 differs fundamentally in medication status, making it a different domain validation rather than same-domain independent validation.",
+      "Supporting Text": "In this study, the 174 drug-free patients constitute the discovery dataset (dataset 1), while the 268 medicated patients comprise the validated dataset (dataset 2). [...] The replication cohort included 142 MDD patients and 126 BD patients. [...] The patients in the replication cohort were all currently received medication treatment before enrollment.",
+      "Page/Line": "Main paper lines 83-84; Supplementary lines 24-26"
+    },
+    "nm_vldtn_diff_domain": {
+      "Answer": "The study validated GMV deviation patterns in an independent replication cohort (Dataset 2, n=268 medicated patients: MDD 142, BD 126) from the same institution. This represents a different domain because patients were on medication (vs. drug-naïve/drug-free in Dataset 1). Regional GMV deviation patterns (z50 maps) between the two subtypes showed significant correlations between Dataset 1 and Dataset 2: Subtype 1 (r=0.29, p<0.05) and Subtype 2 (r=0.45, p<0.0001). The top 10 regions with supra-normal deviations in frontal cortex for Subtype 1 and regions with infra-normal deviations in frontal/cingulate cortex for Subtype 2 were consistent across both datasets.",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The paper provides clear evidence of validation in a different clinical domain (medicated vs. unmedicated patients), demonstrating that the GMV deviation patterns generalize across medication status. Specific correlation values and regional consistency are reported.",
+      "Supporting Text": "In this study, the 174 drug-free patients constitute the discovery dataset (dataset 1), while the 268 medicated patients comprise the validated dataset (dataset 2). We validate the distinct GMV deviations between subtypes in dataset 1 and assess the correlations of regional deviation findings between dataset 1 and dataset 2. [...] The group averaged regional GMV deviations values (z50 maps) were mapped and found to show significantly correlations between datasets 1 and 2 in both subtypes 1 (r = 0.29, p < 0.05) and 2 (r = 0.45, p < 0.0001) (online Supplementary Fig. S4). The top 10 regions with supra-normal deviations in frontal cortex in subtype 1 and regions with infra-normal deviations in frontal cortex and cingulated cortex in subtype 2 were found consistent in both datasets 1 and 2 (online Supplementary Table S9, Table S10).",
+      "Page/Line": "Main paper lines 83-84, 121-122"
+    }
+  },
+  "clinical_application_and_analysis": {
+    "clinical_dataset": {
+      "Answer": "First Affiliated Hospital of China Medical University, Shenyang, China (same institution as reference cohort)",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The clinical patient data came from the same institution where healthy controls were recruited, as explicitly stated in the methods section.",
+      "Supporting Text": "All the patients were recruited from the inpatient department of the Shenyang Mental Health Center and the outpatient clinic of the Department of Psychiatry of the First Affiliated Hospital of China Medical University, Shenyang, China.",
+      "Page/Line": "Main paper lines 69-71"
+    },
+    "diseases_studied": {
+      "Answer": "Major Depressive Disorder (MDD); Bipolar Disorder (BD)",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The two target disorders are clearly stated throughout the paper, beginning with the title and abstract.",
+      "Supporting Text": "We recruited 114 MDD patients, 60 BD patients and 404 healthy controls (HC). [...] Patients with mood disorders, including bipolar disorder (BD) and major depressive disorder (MDD)",
+      "Page/Line": "Main paper lines 53-54, 68"
+    },
+    "clinical_groups_n": {
+      "Answer": "MDD:114; BD:60",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Sample sizes for each clinical group are explicitly stated in the abstract, methods, and supplementary tables for the discovery cohort (Dataset 1).",
+      "Supporting Text": "We recruited 114 MDD patients, 60 BD patients and 404 healthy controls (HC). [...] Dataset 1: MDD N=114, BD N=60",
+      "Page/Line": "Main paper line 68; Supplementary Table S1 line 67"
+    },
+    "clinical_groups_age": {
+      "Answer": "MDD: mean 28.7; sd 11.1; BD: mean 27.8; sd 8.5",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Mean age and standard deviation for each clinical diagnostic group are provided in Supplementary Table S1.",
+      "Supporting Text": "Dataset 1: MDD N=114, Age 28.7±11.1; BD N=60, Age 27.8±8.5",
+      "Page/Line": "Supplementary Table S1, line 68"
+    },
+    "clinical_groups_sex": {
+      "Answer": "MDD: F 80 (70.2%) M 34 (29.8%); BD: F 37 (61.7%) M 23 (38.3%)",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Sex distribution for each clinical diagnostic group is provided in Supplementary Table S1 with exact counts.",
+      "Supporting Text": "Dataset 1: MDD N=114, Gender (male/female) 34/80; BD N=60, Gender (male/female) 23/37",
+      "Page/Line": "Supplementary Table S1, line 69"
+    },
+    "deviation_metric": {
+      "Answer": "Z-scores from quantile regression (z5, z50, z95); Individual classification: supra-normal (z95 > 1.96), normal, infra-normal (z5 < -1.96); Group-level summary metrics: average abnormality rate (percentage of regions showing deviation), average abnormality extent (mean z95 or z5 values)",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The paper provides detailed description of how individual deviations from normative ranges were quantified, including three percentile-based z-scores and categorical classification schemes.",
+      "Supporting Text": "We positioned individuals with MDD and BD on the normative percentile charts based on HC and expressed three kinds of continuous measurement of deviation from the generated normative range including the 5th percentile (z5) quantile regression predictor, the 50th percentile (z50) quantile regression predictor and the 95th percentile (z95) quantile regression predictor, as individual deviation z-scores for each brain region, representing the difference from normative GMV calculated across all HC individuals. [...] We defined the supra-normal as any individual exceeding the 95% CI for the 95th percentile (z95 > 1.96), and infra-normal as any individual below the 5% CI for the 5th percentile (z5 < -1.96). [...] The average of the above encoded number across all patients in each subtype group produced a whole-brain summary measurement defined as the average abnormality rate, which quantified the overall percentage of GMV deviation. The average of the GMV deviation z map across all patients in each subtype group defined as the average abnormality extent (mean values of z95 or z5), which quantified the overall extent of GMV deviation.",
+      "Page/Line": "Main paper lines 84-90"
+    },
+    "association_analysis": "Between-subtype comparisons of clinical measures using two-sample t-tests with FDR correction (pFDR < 0.05) for HAMD, HAMA, BPRS total scores and WCST cognitive performance indices (CR, CC, TE, PE, NPE). Symptom network analysis using graph theory: nodes=17 HAMD items + 14 HAMA items + 5 BPRS factors; edges=Pearson correlations (r>=0.2); compared global network density and strength between subtypes; paired t-tests for nodal strength and degree. Imaging transcriptomics: Partial least squares (PLS) regression to identify genes whose expression patterns spatially correlate with GMV deviation maps (34 left hemisphere regions × 10,027 genes from AHBA); PLS1 component significance tested by 5,000 permutations; genes ranked by Z-scores from spatial bootstrapping; FDR < 0.05. GO/KEGG pathway enrichment analysis using Metascape (pFDR < 0.05). Virtual histology: overlap analysis between PLS genes and 7 cell-type specific gene sets (excitatory neurons, inhibitory neurons, astrocytes, microglia, endothelial cells, oligodendrocytes, OPC); significance tested by permutation (pFDR < 0.05) and chi-squared tests for between-subtype differences. Polygenic risk score (PRS) analysis: logistic regression models testing associations of PRS-AD and PRS-MDD with subtype membership vs. HC at multiple p-value thresholds (1.0e-06 to 0.1); Nagelkerke's pseudo-R² as effect size; significance pFDR < 0.05.",
+    "key_findings_brief": "Two distinct subtypes were identified in mood disorders: Subtype 1 characterized by supra-normal GMV deviations in frontal cortex, cognitive impairment, higher AD genetic risk, and enrichment in oligodendrocytes/endothelial cells; Subtype 2 characterized by widespread infra-normal GMV deviations, more severe depressive symptoms, higher MDD genetic vulnerability, and enrichment in microglia/inhibitory neurons.",
+    "key_findings_detailed": "Using quantile regression-based normative modeling and hierarchical clustering of individual GMV deviations (z50 maps), two subtypes emerged across 174 drug-naïve/drug-free patients (MDD and BD): Subtype 1 (n=112: 74 MDD, 38 BD) and Subtype 2 (n=62: 40 MDD, 22 BD). Clinical diagnosis distribution did not differ between subtypes (χ²=0.04, p=0.83), indicating trans-diagnostic subtypes. Subtype 1 exhibited supra-normal GMV deviations (z95>1.96, z5<-1.96, p<0.05) in frontal cortex (orbitofrontal, rostral middle frontal), cingulate cortex, and paracentral cortex, with >57.4% of regions showing supra-normal deviations, particularly in prefrontal, cingulate, and paracentral areas. Cognitively, Subtype 1 showed significant impairment on WCST: worse perseverative errors (t=4.00, pFDR=0.001), correct responses (t=-3.65, pFDR=0.001), and completed categories (t=-3.63, pFDR=0.001) vs. HC. PLS analysis revealed spatial correlation between GMV deviations and gene expression (r=0.52, p=0.0017, explaining 26.38% covariance), with genes enriched in Alzheimer's disease pathways (pFDR<0.05), blood/cell morphogenesis, and cellular component processes. Virtual histology showed significant enrichment in endothelial cells and oligodendrocytes compared to Subtype 2 (chi-squared pFDR<0.05). PRS-AD was significantly elevated vs. HC at 4 p-value thresholds (1.0e-06, 1.0e-03, 1.0e-02, 0.1), explaining 4.2-5.9% of variance (pFDR<0.05). Subtype 2 displayed widespread infra-normal deviations (z95>1.96, z5<-1.96, p<0.05) across frontal, temporal, parietal, cingulate cortex, with 90% of regions showing infra-normal pattern. Clinically, Subtype 2 had significantly higher HAMD total scores (23.82±8.9 vs. 20.08±7.5, t=2.67, pFDR=0.025), particularly in guilt (t=2.16, p=0.032), early insomnia (t=2.369, p=0.019), insight (t=2.16, p=0.032), and general somatic symptoms (t=2.219, p=0.028). WCST performance did not differ from HC. Symptom network analysis revealed higher global network density (0.51 vs. 0.42) and strength (6.76 vs. 5.24) in Subtype 2, with significantly greater global strength at matched density (t=10.17, p=1.0e-06). PLS analysis showed spatial gene correlation (r=0.48, p=0.0039), with enrichment in ion transport, calcium signaling, trans-synaptic signaling, and stress response pathways (pFDR<0.05). Virtual histology revealed significant enrichment in microglia (n=117 overlapped genes, permutation pFDR=0.005) and marginal enrichment in inhibitory neurons (n=157, pFDR=0.057). PRS-MDD was significantly elevated vs. HC at p<1.0e-03 threshold (1,357 SNPs), explaining 10.8% variance (pFDR<0.05). Validation in independent Dataset 2 (n=268 medicated patients) showed significant correlations of regional GMV deviation patterns: Subtype 1 (r=0.29, p<0.05), Subtype 2 (r=0.45, p<0.0001), with top 10 regions showing consistent supra-normal (Subtype 1 frontal) and infra-normal (Subtype 2 frontal/cingulate) patterns across datasets.",
+    "key_limitations": "Use of AHBA gene expression profiles from healthy human brains may not reflect transcriptional differences in patients with mood disorders. AHBA right hemisphere data limited to 2 participants restricts representation of whole-brain spatial correlation between transcription and GMV deviations. Small genetic data sample size (Subtype 1 n=19, Subtype 2 n=29, HC n=160) limits power for PRS analyses. Cognitive function assessment limited to WCST only; additional cognitive batteries needed for comprehensive neuropsychological profiling. Lack of specific data about illness severity of first episode in medication-free patients prevented examining associations between GMV alterations and prior depressive/anxious/psychotic symptoms.",
+    "application_notes": "Study demonstrates trans-diagnostic approach to subtyping mood disorders based on neurobiological features rather than traditional diagnostic categories (both MDD and BD represented in each subtype). Multi-omics integration (neuroimaging + transcriptomics + genetics) provides mechanistic insights: Subtype 1 may represent inflammatory/vascular subtype with AD-related pathophysiology involving endothelial dysfunction and demyelination, while Subtype 2 may reflect neurodevelopmental/synaptic subtype with GABAergic and microglial dysfunction. Authors suggest limited immediate clinical application but highlight potential for precision medicine: identifying cognitive impairment subtype (Subtype 1) with AD risk may inform early intervention strategies, while severe depression subtype (Subtype 2) with MDD genetic vulnerability may guide treatment selection. Replication in medicated patients suggests robustness of imaging phenotypes across medication status, supporting clinical utility. Future work should examine treatment response differences between subtypes and test whether subtype-specific interventions improve outcomes."
+  },
+  "general_notes": {
+      "general_notes": "Single-site study at First Affiliated Hospital of China Medical University, Shenyang, China. Scanner: Signa HDx 3.0T (GE Healthcare). Acquisition: 3D fast spoiled gradient-echo T1-weighted MRI; TR/TE 7.2/3.2 ms; FA 13°; 240×240 matrix; 240×240 mm² FOV; 176 contiguous 1.0 mm slices; 1.0 mm³ isotropic voxels. Two datasets: Discovery cohort (Dataset 1): 174 drug-naïve or drug-free patients (>2 months off medications): MDD n=114 (80% first episode, duration 13.4±46.6 months, HAMD 22.0±8.5, HAMA 17.3±10.4, BPRS 16.2±15.3), BD n=60 (51% first episode, duration 33.4±53.4 months, HAMD 11.7±10.1, HAMA 9.0±9.5, BPRS 18.6±11.2); HC n=404 (age 29.0±9.3, 160M/244F, education 14.5±3.6 years). Replication cohort (Dataset 2): 268 medicated patients: MDD n=142, BD n=126; scanned at same institution. Diagnosis: DSM-IV-TR using SCID (age ≥18) or K-SADS-PL (age <18). Preprocessing: CAT12 in SPM12; VBM with DARTEL registration to MNI IXI555 space; tissue segmentation; modulation by Jacobian determinants; TIV calculated as covariate. QC: IQR ≥80%, ≥ grade B; Dataset 1 mean IQR 86.4±0.74%; Dataset 2 mean IQR 86.3±0.72%. Parcellation: Desikan-Killiany 68 cortical regions; ROI-wise GMV density extracted. Normative modeling: Quantile regression (method from Lv et al., 2021) modeling GMV as function of age and sex in HC; three deviation scores per region (z5, z50, z95); individual classification: supra-normal (z95>1.96), normal, infra-normal (z5<-1.96). Clustering: Hierarchical clustering (Ward's linkage) on z50 maps (68-dimensional individual profiles); stability assessed by ARI across k=2-5 using 10-fold CV with 1000 permutations; k=2 optimal (highest ARI). Subtype composition: Subtype 1 (n=112): 74 MDD, 38 BD; age 29.1±11, 35M/77F, education 12.5±3.8 years, duration 19.4±40 months, HAMD 20.08±7.5, HAMA 16.7±9.3, BPRS 18.1±14. Subtype 2 (n=62): 40 MDD, 22 BD; age 27.1±9, 22M/40F, education 12.0±3.7 years, duration 21.9±63 months, HAMD 23.82±8.9, HAMA 16.6±9.8, BPRS 15.2±15. No demographic differences between subtypes (all p>0.05). Transcriptomics: AHBA microarray data (6 donors, 3702 samples, 20,737 genes, 58,692 probes); preprocessing: Re-annotator for probe annotation, filtering (≤50% samples above background), RNA-seq correlation selection, co-registration to DK68 (2mm distance), sigmoid normalization per donor; left hemisphere only (2 donors with right); final 34 regions × 10,027 genes. PLS regression: region × gene matrix predicting GMV deviation vector; PLS1 significance by 5,000 permutations; gene ranking by Z-scores from spatial bootstrapping; FDR 0.05 cutoff (|Z|>3). Enrichment: Metascape GO/KEGG (pFDR<0.05). Cell types: 7 canonical classes from Habib 2017, Lake 2018, Li 2018; overlap with PLS genes tested by permutation (pFDR<0.05) and chi-squared (between-subtype comparison). Genetics: Illumina Global Screening Array-24 v1.0 (642,824 fixed + 53,411 custom variants); QC: call rate >95%, MAF >1%, HWE p>1.0e-5, gender concordance, missingness <5%, IBD <0.9; imputation: GenoImpute (mean r²=0.736 from 1% holdout); PRS calculation: PRSice; GWAS discovery: PRS-AD from 71,880 AD cases + 383,378 controls (Jansen et al., 2019); PRS-MDD from 135,458 MDD + 344,901 controls (Wray et al., 2018); clumping: 250kb window, r²=0.1; thresholds: 1.0e-06, 1.0e-03, 1.0e-02, 0.1; logistic regression: subtype vs. HC; effect size: Nagelkerke pseudo-R²; significance pFDR<0.05. Statistics: FDR correction throughout; two-sample t-tests for clinical measures; graph theory for symptom networks (Pearson r≥0.2 threshold); paired t-tests for network properties. Code/data availability: https://github.com/zhengjunjie1234/Mood_Disorders_subtypeing.git. Funding: National Science Fund for Distinguished Young Scholars (81725005), NSFC-Guangdong Joint Fund (U20A6005), NSFC (62176129), National Key R&D Program (2022YFC2405603), China Postdoctoral Science Foundation (2022M721681)."
+  }
+}

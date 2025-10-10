@@ -1,0 +1,252 @@
+{
+  "study_identification": {
+    "study_id": "Zheng2024",
+    "reference_file_names": "Zheng2024.pdf.md; Zheng2024_sup.pdf.md",
+    "author_journal_year": "Zheng et al., Psychological Medicine, 2024",
+    "title": "Characterizing the distinct imaging phenotypes, clinical behavior, and genetic vulnerability of brain maturational subtypes in mood disorders",
+    "doi": "10.1017/S0033291724000886"
+  },
+  "study_characteristics": {
+    "study_objective": "To uncover the heterogeneity of mood disorders by identifying neuroimaging-based individual biomarkers, and characterizing their links with clinical behaviors, and genetic risks, to elucidate the etiology of these diseases and support precision medicine.",
+    "study_design": "Cross-sectional",
+    "study_design_other": "-"
+  },
+  "reference_cohort_and_imaging": {
+    "dataset_name": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The dataset name is explicitly mentioned in the methods section.",
+      "Supporting Text": "We recruited 114 MDD patients, 60 BD patients and 404 healthy controls (HC). All the patients were recruited from the inpatient department of the Shenyang Mental Health Center and the outpatient clinic of the Department of Psychiatry of the First Affiliated Hospital of China Medical University, Shenyang, China.",
+      "Page/Line": "Zheng2024.pdf.md"
+    },
+    "hc_n": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The number of healthy controls is explicitly stated.",
+      "Supporting Text": "We recruited 114 MDD patients, 60 BD patients and 404 healthy controls (HC).",
+      "Page/Line": "Zheng2024.pdf.md"
+    },
+    "hc_age": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The mean and standard deviation of the age of healthy controls are provided in Table S1.",
+      "Supporting Text": "Age 29.0±9.3",
+      "Page/Line": "Zheng2024_sup.pdf.md"
+    },
+    "hc_sex": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The number of male and female healthy controls is provided in Table S1.",
+      "Supporting Text": "Gender (male/female) 160/244",
+      "Page/Line": "Zheng2024_sup.pdf.md"
+    },
+    "imaging_modality": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The imaging modality is explicitly mentioned.",
+      "Supporting Text": "T1 MRI imaging data, clinical symptoms, and neurocognitive assessments, and genetics were obtained and analyzed.",
+      "Page/Line": "Zheng2024.pdf.md"
+    },
+    "analysis_level": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The analysis level is specified in the methods.",
+      "Supporting Text": "We applied regional gray matter volumes (GMV) and quantile normative modeling to create maturation curves...",
+      "Page/Line": "Zheng2024.pdf.md"
+    },
+    "preprocessing_pipeline": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The preprocessing pipeline is detailed in the methods section.",
+      "Supporting Text": "T1-weighted images were preprocessed by using the Computation Anatomy Toolbox (CAT) implemented in Statistical Parametric Mapping (SPM 12) for voxel-based morphometry (VBM) calculation (http://www.neuro.uni-jena.de/ cat/) (Gaser & Dahnke, 2016).",
+      "Page/Line": "Zheng2024.pdf.md"
+    },
+    "quality_checking": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The paper mentions quality checking of the images.",
+      "Supporting Text": "The quality of images was assessed by using the automated weighted average image quality rating (IQR). We applied the cut-off (>= 80%, >= grad B) to ensure high-quality images for analysis as low-quality images can lead to GM underestimations in preprocessing.",
+      "Page/Line": "Zheng2024.pdf.md"
+    },
+    "quality_checking_detail": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Details of the quality checking are provided in the supplementary material.",
+      "Supporting Text": "The quality of images was assessed by using the automated weighted average image quality rating (IQR) included in the CAT12 toolbox (http://neuro.uni-jena.de/ cat). It constitutes a weighted average of the local (noise contrast ratio) and global (inhomogeneity contrast ratio) standard deviations within the optimized white matter segment scaled by the minimum tissue contrast, and the root mean square of the voxel size. A pdf is created for all subjects that contains a percentage rating (0-100%) and a corresponding letter value (F - A+) for noise, bias (inhomogeneity), resolution and IQR. The obtained quality ratings indicate images with good quality (grad A+, A and B) and modulate quality (grad C, D and E) and low quality (grad F, indicating problematic images). An image was classified as to fail QC if it had a noise grade less than or equal to 'C' (70%) and a total IQR grade of less than 'B'(80%). We applied the cut-off (>=80%, >= grad B) to ensure high quality images for analysis as lowquality images can lead to GM underestimations in preprocessing. The general IQR ratings in this study were 86.4% ± 0.74% (mean ± sd) in Dataset 1 and 86.3% ± 0.72% (mean ± sd) in Dataset 2.",
+      "Page/Line": "Zheng2024_sup.pdf.md"
+    },
+    "site_effect_handling": {
+      "Answer": "No",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Missing",
+      "Reason": "The study was conducted at a single site, so site effect handling was not applicable.",
+      "Supporting Text": "Structural MRI scanning was conducted on a Signa HDx 3.0 T superconductive MRI system (GE Healthcare, Little Chalfont, UK) at the First Affiliated Hospital, China Medical University.",
+      "Page/Line": "Zheng2024.pdf.md"
+    },
+    "site_effect_detail": {
+      "Answer": "NA",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Single site study.",
+      "Supporting Text": "-",
+      "Page/Line": "-"
+    }
+  },
+  "normative_modeling": {
+    "model_origin": {
+      "Answer": "New",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The study developed a new normative model.",
+      "Supporting Text": "We used quantile regression model and created normative curves with age based on GMV in HC group and calculated individual deviations for each region",
+      "Page/Line": "Zheng2024.pdf.md"
+    },
+    "model_origin_detail": {
+      "Answer": "-",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The model is new, so no pre-training details are needed.",
+      "Supporting Text": "-",
+      "Page/Line": "-"
+    },
+    "modeling_method": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The modeling method is explicitly stated.",
+      "Supporting Text": "Quantile regression was used to obtain a normative range of regional GMV variation as a function of age and sex descripted in a previous study (Lv et al., 2021).",
+      "Page/Line": "Zheng2024.pdf.md"
+    },
+    "software_tool": {
+      "Answer": "Partial",
+      "Confidence Rating": "Medium",
+      "Negative Answer Category": "Unclear/Incomplete",
+      "Reason": "The paper mentions the statistical software used for some parts of the analysis, but not specifically for the normative modeling itself.",
+      "Supporting Text": "T1-weighted images were preprocessed by using the Computation Anatomy Toolbox (CAT) implemented in Statistical Parametric Mapping (SPM 12) for voxel-based morphometry (VBM) calculation",
+      "Page/Line": "Zheng2024.pdf.md"
+    },
+    "response_variable": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The response variable is clearly defined.",
+      "Supporting Text": "We applied regional gray matter volumes (GMV) and quantile normative modeling to create maturation curves...",
+      "Page/Line": "Zheng2024.pdf.md"
+    },
+    "predictor_variables": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The predictor variables are specified.",
+      "Supporting Text": "Quantile regression was used to obtain a normative range of regional GMV variation as a function of age and sex...",
+      "Page/Line": "Zheng2024.pdf.md"
+    },
+    "predictor_effects": {
+      "Answer": "No",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Missing",
+      "Reason": "The paper does not specify whether the predictor effects were fixed or random.",
+      "Supporting Text": "-",
+      "Page/Line": "-"
+    },
+    "nm_vldtn_handle_ns": {
+      "Answer": "No",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Missing",
+      "Reason": "The paper does not mention handling of nuisance structure.",
+      "Supporting Text": "-",
+      "Page/Line": "-"
+    },
+    "nm_vldtn_same_domain_nonindep": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The stability of clustering was assessed using 10-fold cross-validation.",
+      "Supporting Text": "We assessed the stability of clustering based on scores of the adjusted rand index (ARI) for 2 -5 clusters which were divided by using the hierarchical cutoffs (Hubert & Arabie, 1985). We then chose the clustering solution with the highest averaged ARI following 10-fold cross-validation with 1000 times permutations, as the optimal clustering results.",
+      "Page/Line": "Zheng2024.pdf.md"
+    },
+    "nm_vldtn_same_domain_indep": {
+      "Answer": "No",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Missing",
+      "Reason": "The paper does not mention validation on an independent dataset from the same domain.",
+      "Supporting Text": "-",
+      "Page/Line": "-"
+    },
+    "nm_vldtn_diff_domain": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The imaging-based subtyping was validated in a replication cohort.",
+      "Supporting Text": "To validate the imaging phenotypes, we involved 268 patients who received medication treatment as the replication cohort.",
+      "Page/Line": "Zheng2024.pdf.md"
+    }
+  },
+  "clinical_application_and_analysis": {
+    "clinical_dataset": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The clinical dataset is the same as the reference cohort.",
+      "Supporting Text": "We recruited 114 MDD patients, 60 BD patients and 404 healthy controls (HC).",
+      "Page/Line": "Zheng2024.pdf.md"
+    },
+    "diseases_studied": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The diseases studied are explicitly mentioned.",
+      "Supporting Text": "Mood disorders, including bipolar disorder (BD) and major depressive disorder (MDD)",
+      "Page/Line": "Zheng2024.pdf.md"
+    },
+    "clinical_groups_n": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The sample sizes of the clinical groups are provided.",
+      "Supporting Text": "We recruited 114 MDD patients, 60 BD patients...",
+      "Page/Line": "Zheng2024.pdf.md"
+    },
+    "clinical_groups_age": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The age of the clinical groups is provided in Table S1.",
+      "Supporting Text": "MDD 28.7±11.1, BD 27.8±8.5",
+      "Page/Line": "Zheng2024_sup.pdf.md"
+    },
+    "clinical_groups_sex": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The sex distribution of the clinical groups is provided in Table S1.",
+      "Supporting Text": "MDD 34/80, BD 23/37",
+      "Page/Line": "Zheng2024_sup.pdf.md"
+    },
+    "deviation_metric": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "The deviation metric is described in the methods.",
+      "Supporting Text": "We then obtained individual-specific profiles of regional GMV deviations (z50 maps) to perform subtyping analysis for all patients.",
+      "Page/Line": "Zheng2024.pdf.md"
+    },
+    "association_analysis": "Two-sample t-test, chi-squared test, partial least squares (PLS) regression, logistic regression.",
+    "key_findings_brief": "Two subtypes of mood disorders were identified with distinct imaging phenotypes, clinical behaviors, and genetic vulnerabilities.",
+    "key_findings_detailed": "Two subtypes emerged: subtype 1, characterized by increased GMV deviations in the frontal cortex, cognitive impairment, a higher genetic risk for Alzheimer's disease, and transcriptionally associated with Alzheimer's disease pathways, oligodendrocytes, and endothelial cells; and subtype 2, displaying globally decreased GMV deviations, more severe depressive symptoms, increased genetic vulnerability to major depressive disorder and transcriptionally related to microglia and inhibitory neurons.",
+    "key_limitations": "The use of gene expression profiles from healthy brains, small genetic data size, limited cognitive testing, and lack of data on first-episode illness severity.",
+    "application_notes": "The identification and validation of the two subtypes provide a potential framework for future studies about the underlying neuropathological mechanisms and genetic heterogeneity as well as precise clinical care in mood disorders."
+  },
+  "general_notes": {
+    "general_notes": "The study provides a comprehensive analysis of mood disorder heterogeneity by integrating neuroimaging, clinical, and genetic data. The identification of two distinct subtypes with opposite brain developmental patterns is a significant finding."
+  }
+}

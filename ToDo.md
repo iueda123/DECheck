@@ -1,4 +1,4 @@
-  * [ ] RCAIパネルのsite_effect_handling_detail の初期化に失敗している。
+  * [x] RCAIパネルのsite_effect_handling_detail の初期化に失敗している。
   * [ ] Answerエリアが１行未満になることがある Zeng2024において
   * [ ] 安全な保存機構
   * [ ] 間接的起動
