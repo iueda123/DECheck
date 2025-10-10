@@ -48,7 +48,9 @@ public class ExplanationPanelHolder extends AbstCHolderMember {
       StringBuilder content = new StringBuilder();
 
       try (java.io.BufferedReader reader = new java.io.BufferedReader(
-          new java.io.FileReader(guideFilePath))) {
+          new java.io.InputStreamReader(
+              new java.io.FileInputStream(guideFilePath),
+              java.nio.charset.StandardCharsets.UTF_8))) {
         String line;
         while ((line = reader.readLine()) != null) {
           content.append(line).append("\n");

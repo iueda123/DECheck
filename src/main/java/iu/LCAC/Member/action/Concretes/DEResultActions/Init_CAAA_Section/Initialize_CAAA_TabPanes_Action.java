@@ -50,23 +50,10 @@ public class Initialize_CAAA_TabPanes_Action extends AbstActionMember {
             // Load Properties
             JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
 
-            String answer = jsonManager.getValue(sectionName + "/" + subSectionName + "/Answer");
-            //System.out.println(answer);
-            String confidenceRating = jsonManager.getValue(sectionName + "/" + subSectionName + "/Confidence\\ Rating");
-            //System.out.println(confidenceRating);
-            String negativeAnswerCategory = jsonManager.getValue(sectionName + "/" + subSectionName + "/Negative\\ Answer\\ Category");
-            //System.out.println(negativeAnswerCategory);
-            String reason = jsonManager.getValue(sectionName + "/" + subSectionName + "/Reason");
-            //System.out.println(reason);
-            String supportingText = jsonManager.getValue(sectionName + "/" + subSectionName + "/Supporting\\ Text");
-            //System.out.println(supportingText);
-            String pageLine = jsonManager.getValue(sectionName + "/" + subSectionName + "/Page\\/Line");
-            //System.out.println(pageLine);
 
             // Preparation of Component
             CAAA_SubTabsHolder subTabsHolder =
                     (CAAA_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_CAAA");
-
 
             // Initialization Core
             if (subTabsHolder != null) {
@@ -75,11 +62,28 @@ public class Initialize_CAAA_TabPanes_Action extends AbstActionMember {
                         subSectionName.equals("key_findings_brief") || subSectionName.equals("key_findings_detailed") ||
                         subSectionName.equals("key_limitations") || subSectionName.equals("application_notes")) {
 
+                    String answer = jsonManager.getValue(sectionName + "/" + subSectionName );
+                    //System.out.println("★" + subSectionName + ": " + answer);
+
                     One_A_Style_Pane trtgDEResultPane = (One_A_Style_Pane) subTabsHolder.getResultPane(jsonFileName, sectionName, subSectionName);
                     trtgDEResultPane.updateRegisteredJsonName(jsonFileName);
                     trtgDEResultPane.setValTo_Answer(answer);
                     trtgDEResultPane.resetBackgroundColorOfTAreasTFields();
                 } else {
+
+                    String answer = jsonManager.getValue(sectionName + "/" + subSectionName + "/Answer");
+                    //System.out.println("answer: " + answer);
+                    String confidenceRating = jsonManager.getValue(sectionName + "/" + subSectionName + "/Confidence\\ Rating");
+                    //System.out.println("confidenceRating: " + confidenceRating);
+                    String negativeAnswerCategory = jsonManager.getValue(sectionName + "/" + subSectionName + "/Negative\\ Answer\\ Category");
+                    //System.out.println("negativeAnswerCategory: " + supportingText);
+                    String reason = jsonManager.getValue(sectionName + "/" + subSectionName + "/Reason");
+                    //System.out.println("reason: " + reason);
+                    String supportingText = jsonManager.getValue(sectionName + "/" + subSectionName + "/Supporting\\ Text");
+                    //System.out.println("supportingText: " + supportingText);
+                    String pageLine = jsonManager.getValue(sectionName + "/" + subSectionName + "/Page\\/Line");
+                    //System.out.println("pageLine: " + pageLine);
+
                     One_ARSL_Style_Pane trtgDEResultPane = (One_ARSL_Style_Pane) subTabsHolder.getResultPane(jsonFileName, sectionName, subSectionName);
                     trtgDEResultPane.updateRegisteredJsonName(jsonFileName);
                     trtgDEResultPane.setValTo_Answer(answer);
