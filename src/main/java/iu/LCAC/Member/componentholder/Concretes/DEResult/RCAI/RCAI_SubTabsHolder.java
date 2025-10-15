@@ -80,6 +80,50 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_10);
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_11);
 
+        // ./json/ フォルダの確認
+        File jsonDir = new File(jsonFolderPathString);
+        // jsonディレクトリが存在しない、またはディレクトリではない場合
+        if (!jsonDir.exists() || !jsonDir.isDirectory()) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "json/フォルダが見つかりません。\n" + jsonFolderPathString + "/フォルダを作成し、JSONファイルを格納してください。",
+                    "エラー",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            System.exit(1);
+        }
+        // ./json下のすべてのJSONファイルを取得
+        File[] jsonFiles = jsonDir.listFiles((dir, name) -> name.endsWith(".json"));
+        // jsonFiles に格納されているもののうち、ファイル名の先頭が "_" で始まるものを先頭に持ってくる
+        if (jsonFiles != null) {
+            Arrays.sort(jsonFiles, (f1, f2) -> {
+                boolean f1StartsWithUnderscore = f1.getName().startsWith("_");
+                boolean f2StartsWithUnderscore = f2.getName().startsWith("_");
+                return Boolean.compare(f2StartsWithUnderscore, f1StartsWithUnderscore);
+            });
+        }
+
+        if (jsonFiles != null) {
+            for (File jsonFile : jsonFiles) {
+                String jsonFileName = jsonFile.getName();
+                mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_1_Name));
+                mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_2_Name));
+                mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_3_Name));
+                mngrOfSubTabBasePane_4.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_4_Name));
+                mngrOfSubTabBasePane_5.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_5_Name));
+                mngrOfSubTabBasePane_6.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_6_Name));
+                mngrOfSubTabBasePane_7.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_7_Name));
+                mngrOfSubTabBasePane_8.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_8_Name));
+                mngrOfSubTabBasePane_9.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_9_Name));
+                mngrOfSubTabBasePane_10.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_10_Name));
+                mngrOfSubTabBasePane_11.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_11_Name));
+            }
+        }
+
+        for (ManagerOfSubTabBasePane managerOfSubTabBasePaneRCAI : arrayList_of_ManagerOfSubTabBasePane) {
+            baseTabPane.add(managerOfSubTabBasePaneRCAI.getTabName(), managerOfSubTabBasePaneRCAI.constructBasePaneOfSubTab());
+        }
+
         panel.add(baseTabPane, BorderLayout.CENTER);
     }
 
@@ -88,49 +132,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
         //System.out.println("postInitialize() @ RCAI_SubTabsHolder.java");
         if (actionMediator != null) {
 
-            // ./json/ フォルダの確認
-            File jsonDir = new File(jsonFolderPathString);
-            // jsonディレクトリが存在しない、またはディレクトリではない場合
-            if (!jsonDir.exists() || !jsonDir.isDirectory()) {
-                JOptionPane.showMessageDialog(
-                        null,
-                        "json/フォルダが見つかりません。\n" + jsonFolderPathString + "/フォルダを作成し、JSONファイルを格納してください。",
-                        "エラー",
-                        JOptionPane.ERROR_MESSAGE
-                );
-                System.exit(1);
-            }
-            // ./json下のすべてのJSONファイルを取得
-            File[] jsonFiles = jsonDir.listFiles((dir, name) -> name.endsWith(".json"));
-            // jsonFiles に格納されているもののうち、ファイル名の先頭が "_" で始まるものを先頭に持ってくる
-            if (jsonFiles != null) {
-                Arrays.sort(jsonFiles, (f1, f2) -> {
-                    boolean f1StartsWithUnderscore = f1.getName().startsWith("_");
-                    boolean f2StartsWithUnderscore = f2.getName().startsWith("_");
-                    return Boolean.compare(f2StartsWithUnderscore, f1StartsWithUnderscore);
-                });
-            }
 
-            if (jsonFiles != null) {
-                for (File jsonFile : jsonFiles) {
-                    String jsonFileName = jsonFile.getName();
-                    mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_1_Name));
-                    mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_2_Name));
-                    mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_3_Name));
-                    mngrOfSubTabBasePane_4.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_4_Name));
-                    mngrOfSubTabBasePane_5.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_5_Name));
-                    mngrOfSubTabBasePane_6.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_6_Name));
-                    mngrOfSubTabBasePane_7.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_7_Name));
-                    mngrOfSubTabBasePane_8.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_8_Name));
-                    mngrOfSubTabBasePane_9.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_9_Name));
-                    mngrOfSubTabBasePane_10.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_10_Name));
-                    mngrOfSubTabBasePane_11.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_11_Name));
-                }
-            }
-
-            for (ManagerOfSubTabBasePane managerOfSubTabBasePaneRCAI : arrayList_of_ManagerOfSubTabBasePane) {
-                baseTabPane.add(managerOfSubTabBasePaneRCAI.getTabName(), managerOfSubTabBasePaneRCAI.constructBasePaneOfSubTab());
-            }
             /* 値を流し込む */
 
             for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_1.getDePaneArray()) {

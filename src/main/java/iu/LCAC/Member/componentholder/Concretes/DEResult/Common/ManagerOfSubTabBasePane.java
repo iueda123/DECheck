@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class ManagerOfSubTabBasePane {
     JPanel basePaneForDEResultPanes = new JPanel();
+    JPanel subTabBasePane;
     final String tabName;
 
     final String sectionName;
@@ -30,45 +31,50 @@ public class ManagerOfSubTabBasePane {
         this.dePaneArray.add(oneDeResultPaneAbs);
     }
 
+    public void clearTheDePaneArray() {
+        this.dePaneArray.clear();
+    }
+
     public JComponent constructBasePaneOfSubTab() {
 
-        JPanel basePane = new JPanel();
-        basePane.setLayout(new BoxLayout(basePane, BoxLayout.Y_AXIS));
+        if(subTabBasePane == null) {
+           subTabBasePane = new JPanel();
+            subTabBasePane.setLayout(new BoxLayout(subTabBasePane, BoxLayout.Y_AXIS));
 
-        // NotePane を配置
-        //notePane.setPreferredSize(new Dimension(600, 150));
-        //notePane.setMaximumSize(new Dimension(600, 100));
-        basePane.add(notePane);
+            // NotePane を配置
+            subTabBasePane.add(notePane);
 
-        // OneDEResultPane たちを配置
-        for (int i = 0; i < dePaneArray.size(); i++) {
-            //basePanel.add(new JLabel(" ")); // Separator
-            One_DEResult_Pane_Abs pane = dePaneArray.get(i);
-            pane.setMaximumSize(new Dimension(Integer.MAX_VALUE, pane.getPreferredSize().height));
-            pane.setAlignmentX(Component.LEFT_ALIGNMENT);
-            basePaneForDEResultPanes.add(pane);
+            // OneDEResultPane たちを配置
+            for (int i = 0; i < dePaneArray.size(); i++) {
+                //basePanel.add(new JLabel(" ")); // Separator
+                One_DEResult_Pane_Abs pane = dePaneArray.get(i);
+                pane.setMaximumSize(new Dimension(Integer.MAX_VALUE, pane.getPreferredSize().height));
+                pane.setAlignmentX(Component.LEFT_ALIGNMENT);
+                basePaneForDEResultPanes.add(pane);
+            }
+            // DEResult Pane 達を置くパネルの全体のPreferredSizeを明示的に計算
+            int totalHeight = dePaneArray.stream().mapToInt(p -> p.getPreferredSize().height).sum();
+            //totalHeight += 100; // NotePane分足す
+            totalHeight = Math.max(totalHeight, 1000);
+
+            basePaneForDEResultPanes.setPreferredSize(new Dimension(800, totalHeight));
+
+
+            subTabBasePane.add(basePaneForDEResultPanes);
+
+            // スクロールパネルを用意
+            JScrollPane scrollPane = new JScrollPane(basePaneForDEResultPanes,
+                    JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                    JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+            scrollPane.getViewport().setScrollMode(JViewport.SIMPLE_SCROLL_MODE);
+            //return (scrollPane);
+
+            // 土台を返す
+            subTabBasePane.add(scrollPane);
         }
-        // パネル全体のPreferredSizeを明示的に計算
-        int totalHeight = dePaneArray.stream().mapToInt(p -> p.getPreferredSize().height).sum();
-        //totalHeight += 100; // NotePane分足す
-        totalHeight =  Math.max(totalHeight, 1200);
 
-        basePaneForDEResultPanes.setPreferredSize(new Dimension(600, totalHeight));
-
-
-        basePane.add(basePaneForDEResultPanes);
-
-        // スクロールパネルを用意
-        JScrollPane scrollPane = new JScrollPane(basePaneForDEResultPanes,
-                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
-        scrollPane.getViewport().setScrollMode(JViewport.SIMPLE_SCROLL_MODE);
-        //return (scrollPane);
-
-        // 土台を返す
-        basePane.add(scrollPane);
-        return (basePane);
+        return (subTabBasePane);
 
     }
 
@@ -94,5 +100,10 @@ public class ManagerOfSubTabBasePane {
 
     public NotePane getNotePane() {
         return notePane;
+    }
+
+
+    public void revalidateChildren() {
+       this.basePaneForDEResultPanes.revalidate();
     }
 }

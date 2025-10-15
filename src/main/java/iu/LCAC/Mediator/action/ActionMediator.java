@@ -227,6 +227,15 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
         ititialize_GN_TabPanes_Action.initialize();
         registerMemberToMap(ititialize_GN_TabPanes_Action);
 
+        actionMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.action.Concretes.DEResultActions.Init_All_Section.Initialize_All_TabPanes_ActionFactory",
+                        AbstActionMemberFactory.class);
+        AbstActionMember ititialize_All_TabPanes_Action =
+                actionMemberFactory.createAction("initialize_all_tabpanes", "Init All");
+        ititialize_All_TabPanes_Action.setActionMediator(this);
+        ititialize_All_TabPanes_Action.initialize();
+        registerMemberToMap(ititialize_All_TabPanes_Action);
 
 
 

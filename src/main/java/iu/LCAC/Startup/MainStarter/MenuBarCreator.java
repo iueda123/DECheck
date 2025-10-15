@@ -60,11 +60,14 @@ public class MenuBarCreator {
         JMenuItem menu_item1_6 = actionMediator.getInstanceOfAMember("load_pane_order").getMenuItem();
         main_menu_1.add(menu_item1_6);
 
-        JMenuItem menu_item1_7 = actionMediator.getInstanceOfAMember("convert_json_2_markdown").getMenuItem();
+        JMenuItem menu_item1_7 = actionMediator.getInstanceOfAMember("initialize_all_tabpanes").getMenuItem();
         main_menu_1.add(menu_item1_7);
 
-        JMenuItem menu_item1_8 = actionMediator.getInstanceOfAMember("convert_json_2_tsv").getMenuItem();
+        JMenuItem menu_item1_8 = actionMediator.getInstanceOfAMember("convert_json_2_markdown").getMenuItem();
         main_menu_1.add(menu_item1_8);
+
+        JMenuItem menu_item1_9 = actionMediator.getInstanceOfAMember("convert_json_2_tsv").getMenuItem();
+        main_menu_1.add(menu_item1_9);
 
         /* *** main_menu_2 *** */
         JMenu main_menu_2 = new JMenu("Other (O)");

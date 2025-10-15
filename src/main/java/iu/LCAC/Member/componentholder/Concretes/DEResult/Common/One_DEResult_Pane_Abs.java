@@ -97,7 +97,7 @@ public abstract class One_DEResult_Pane_Abs extends JPanel {
         }
 
         if (this.actionMediator != null) {
-            System.err.println("The actionMediator is not null.");
+            //System.err.println("The actionMediator is not null.");
 
             // 何かしらの文字列を引数として渡すには以下のようにしてActionEventを作成
             AbstActionMember abstActionMember = actionMediator.getInstanceOfAMember("run_a_bash_script");

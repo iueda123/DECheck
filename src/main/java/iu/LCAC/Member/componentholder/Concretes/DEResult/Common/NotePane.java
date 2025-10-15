@@ -35,23 +35,25 @@ public class NotePane extends JPanel {
         this.setLayout(new BorderLayout());
 
         /* **** NORTH AREA **** */
-        JPanel baseOfNorth = new JPanel(new BorderLayout());
+        JPanel baseOfNorth = new JPanel();
+        baseOfNorth.setLayout(new BoxLayout(baseOfNorth, BoxLayout.Y_AXIS));
 
         // Status TextField
         tFiled_Status.setToolTipText(tooltipForStatusFiled);
-        baseOfNorth.setMaximumSize(new Dimension(9000, 30));
-        baseOfNorth.setMinimumSize(new Dimension(9000, 30));
-        baseOfNorth.add(tFiled_Status, BorderLayout.NORTH);
-        this.add(baseOfNorth, BorderLayout.NORTH);
+        tFiled_Status.setPreferredSize(new Dimension(80, 30));
+        baseOfNorth.add(tFiled_Status);
 
         // Note Text Area
-        JPanel baseOfCenter = new JPanel(new BorderLayout());
         tArea_Note.setToolTipText(tooltipForNoteArea);
         JScrollPane scrollPane = new JScrollPane(tArea_Note);
-        baseOfCenter.setPreferredSize(new Dimension(800, 100));
-        baseOfCenter.add(scrollPane, BorderLayout.CENTER);
+        scrollPane.setPreferredSize(new Dimension(80, 100));
+        baseOfNorth.add(scrollPane);
 
-        this.add(baseOfCenter, BorderLayout.CENTER);
+        this.setLayout(new BorderLayout());
+        this.add(baseOfNorth, BorderLayout.NORTH);
+        this.setPreferredSize(new Dimension(80, 130));
+
+       //this.setBackground(Color.YELLOW);
 
         /* *** SOUTH AREA *** */
 

@@ -10,17 +10,17 @@
 
 ## Study Characteristics
 
-- **Study Objective**: 
-- **Study Design**: 
-- **Study Design (Other)**: 
+- **Study Objective**: To quantify brain morphological heterogeneity in mood disorders (MDD and BD) by mapping individual-level gray matter volume (GMV) deviations using normative modeling, identify subtypes through unsupervised clustering, and characterize these subtypes using clinical behaviors, cell-specific transcriptomic profiles, and polygenic risk scores.
+- **Study Design**: Cross-sectional
+- **Study Design (Other)**: -
 
 ## Reference Cohort and Imaging
 
 ### Dataset Name
 
-- **Answer**: 
-- **Confidence Rating**: 
-- **Negative Answer Category**: 
+- **Answer**: Single-site dataset from First Affiliated Hospital of China Medical University, Shenyang, China
+- **Confidence Rating**: High
+- **Negative Answer Category**: Not Negative
 - **Reason**: 
 - **Supporting Text**: 
 - **Page/Line**: 
@@ -108,23 +108,17 @@
 
 ### Site Effect (Detail)
 
-- **Answer**: 
-- **Confidence Rating**: 
-- **Negative Answer Category**: 
-- **Reason**: 
-- **Supporting Text**: 
-- **Page/Line**: 
 
 ## Normative Modeling
 
 ### Model Origin
 
-- **Answer**: 
-- **Confidence Rating**: 
-- **Negative Answer Category**: 
+- **Answer**: New3
+- **Confidence Rating**: High
+- **Negative Answer Category**: Not Negative
 - **Reason**: 
-- **Supporting Text**: 
-- **Page/Line**: 
+- **Supporting Text**: Quantile regression was used to obtain a normative range of regional GMV variation as a function of age and sex descripted in a previous study (Lv et al., 2021). We positioned individuals with MDD and BD on the normative percentile charts based on HC and expressed three kinds of continuous measurement of deviation from the generated normative range
+- **Page/Line**: Main paper lines 82-85
 
 ### Model Origin (Detail)
 
@@ -192,7 +186,7 @@
 ### Normative Model Validation - Same Domain (Non-Independent)
 
 - **Answer**: 
-- **Confidence Rating**: 
+- **Confidence Rating**: test
 - **Negative Answer Category**: 
 - **Reason**: 
 - **Supporting Text**: 
@@ -220,12 +214,12 @@
 
 ### Clinical Dataset
 
-- **Answer**: 
-- **Confidence Rating**: 
+- **Answer**: First Affiliated Hospital of China Medical University, Shenyang, China (same institution as reference cohort)
+- **Confidence Rating**: High
 - **Negative Answer Category**: 
-- **Reason**: 
+- **Reason**: The clinical patient data came from the same institution where healthy controls were recruited, as explicitly stated in the methods section.
 - **Supporting Text**: 
-- **Page/Line**: 
+- **Page/Line**: materials/Zheng2024.pdf.md: lines 69-76; 100-108; 122-124
 
 ### Diseases Studied
 
@@ -256,12 +250,12 @@
 
 ### Clinical Groups (Sex)
 
-- **Answer**: 
-- **Confidence Rating**: 
-- **Negative Answer Category**: 
-- **Reason**: 
-- **Supporting Text**: 
-- **Page/Line**: 
+- **Answer**: MDD: F 80 (70.2%) M 34 (29.8%); BD: F 37 (61.7%) M 23 (38.3%)
+- **Confidence Rating**: High
+- **Negative Answer Category**: Not Negative
+- **Reason**: Sex distribution for each clinical diagnostic group is provided in Supplementary Table S1 with exact counts.
+- **Supporting Text**: Dataset 1: MDD N=114, Gender (male/female) 34/80; BD N=60, Gender (male/female) 23/37
+- **Page/Line**: Supplementary Table S1, line 69
 
 ### Deviation Metric
 
@@ -294,7 +288,7 @@
 
 ## General Notes
 
-
+Single-site 3.0T GE Signa HDx; CAT12/SPM12 preprocessing with DARTEL; DK-68 ROI summarization; TIV used as covariate in analyses; no site harmonization needed due to single-site design.
 
 ---
-*Generated on 2025-10-09 15:26:10*
+*Generated on 2025-10-15 14:44:07*

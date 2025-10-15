@@ -34,9 +34,9 @@ public class SC_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
     JTabbedPane baseTabPane = new JTabbedPane();
 
     // Reference Cohort and Imaging
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_1 = new ManagerOfSubTabBasePane(subSection_1_TabName, sectionName,subSection_1_Name, baseTabPane);
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_2 = new ManagerOfSubTabBasePane(subSection_2_TabName, sectionName,subSection_2_Name, baseTabPane);
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_3 = new ManagerOfSubTabBasePane(subSection_3_TabName, sectionName,subSection_3_Name, baseTabPane);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_1 = new ManagerOfSubTabBasePane(subSection_1_TabName, sectionName, subSection_1_Name, baseTabPane);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_2 = new ManagerOfSubTabBasePane(subSection_2_TabName, sectionName, subSection_2_Name, baseTabPane);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_3 = new ManagerOfSubTabBasePane(subSection_3_TabName, sectionName, subSection_3_Name, baseTabPane);
 
     ArrayList<ManagerOfSubTabBasePane> arrayList_of_ManagerOfSubTabBasePane = new ArrayList<>();
 
@@ -47,6 +47,49 @@ public class SC_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_2);
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_3);
 
+        // ./json/ フォルダの確認
+        File jsonDir = new File(jsonFolderPathStr);
+        // jsonディレクトリが存在しない、またはディレクトリではない場合
+        if (!jsonDir.exists() || !jsonDir.isDirectory()) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "json/フォルダが見つかりません。\n" + jsonFolderPathStr + "/フォルダを作成し、JSONファイルを格納してください。",
+                    "エラー",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            System.exit(1);
+        }
+        // ./json下のすべてのJSONファイルを取得
+        File[] jsonFiles = jsonDir.listFiles((dir, name) -> name.endsWith(".json"));
+        // jsonFiles に格納されているもののうち、ファイル名の先頭が "_" で始まるものを先頭に持ってくる
+        if (jsonFiles != null) {
+            Arrays.sort(jsonFiles, (f1, f2) -> {
+                boolean f1StartsWithUnderscore = f1.getName().startsWith("_");
+                boolean f2StartsWithUnderscore = f2.getName().startsWith("_");
+                return Boolean.compare(f2StartsWithUnderscore, f1StartsWithUnderscore);
+            });
+        }
+
+        if (jsonFiles != null) {
+            for (File jsonFile : jsonFiles) {
+                String jsonFileName = jsonFile.getName();
+
+                if (this.actionMediator != null) {
+                    System.err.println("The actionMediator is not null.");
+                } else {
+                    System.err.println("The actionMediator is null. @ SC_SubTabsHolder.java");
+                }
+
+                mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_1_Name, this.cholderMediator, this.actionMediator));
+                mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_2_Name, this.cholderMediator, this.actionMediator));
+                mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_3_Name, this.cholderMediator, this.actionMediator));
+            }
+        }
+
+        for (ManagerOfSubTabBasePane managerOfSubTabBasePaneRCAI : arrayList_of_ManagerOfSubTabBasePane) {
+            baseTabPane.add(managerOfSubTabBasePaneRCAI.getTabName(), managerOfSubTabBasePaneRCAI.constructBasePaneOfSubTab());
+        }
+
         panel.add(baseTabPane, BorderLayout.CENTER);
     }
 
@@ -55,48 +98,7 @@ public class SC_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
         //System.out.println("postInitialize() @ SC_SubTabsHolder.java");
         if (actionMediator != null) {
 
-            // ./json/ フォルダの確認
-            File jsonDir = new File(jsonFolderPathStr);
-            // jsonディレクトリが存在しない、またはディレクトリではない場合
-            if (!jsonDir.exists() || !jsonDir.isDirectory()) {
-                JOptionPane.showMessageDialog(
-                        null,
-                        "json/フォルダが見つかりません。\n" + jsonFolderPathStr + "/フォルダを作成し、JSONファイルを格納してください。",
-                        "エラー",
-                        JOptionPane.ERROR_MESSAGE
-                );
-                System.exit(1);
-            }
-            // ./json下のすべてのJSONファイルを取得
-            File[] jsonFiles = jsonDir.listFiles((dir, name) -> name.endsWith(".json"));
-            // jsonFiles に格納されているもののうち、ファイル名の先頭が "_" で始まるものを先頭に持ってくる
-            if (jsonFiles != null) {
-                Arrays.sort(jsonFiles, (f1, f2) -> {
-                    boolean f1StartsWithUnderscore = f1.getName().startsWith("_");
-                    boolean f2StartsWithUnderscore = f2.getName().startsWith("_");
-                    return Boolean.compare(f2StartsWithUnderscore, f1StartsWithUnderscore);
-                });
-            }
 
-            if (jsonFiles != null) {
-                for (File jsonFile : jsonFiles) {
-                    String jsonFileName = jsonFile.getName();
-
-                    if (this.actionMediator != null) {
-                        System.err.println("The actionMediator is not null.");
-                    }else {
-                        System.err.println("The actionMediator is null. @ SC_SubTabsHolder.java");
-                    }
-
-                    mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_1_Name, this.cholderMediator, this.actionMediator));
-                    mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_2_Name, this.cholderMediator, this.actionMediator));
-                    mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_3_Name, this.cholderMediator, this.actionMediator));
-                }
-            }
-
-            for (ManagerOfSubTabBasePane managerOfSubTabBasePaneRCAI : arrayList_of_ManagerOfSubTabBasePane) {
-                baseTabPane.add(managerOfSubTabBasePaneRCAI.getTabName(), managerOfSubTabBasePaneRCAI.constructBasePaneOfSubTab());
-            }
 
             /* 値を流し込む */
             for (One_DEResult_Pane_Abs oneDeResultPaneAbs : mngrOfSubTabBasePane_1.getDePaneArray()) {
@@ -135,8 +137,6 @@ public class SC_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
                         "initialize_sc_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
                 actionMediator.getInstanceOfAMember("initialize_sc_tabpanes").perform(customEvent);
             }
-
-
 
 
         } else {

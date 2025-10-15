@@ -29,7 +29,7 @@ public class GN_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
     JTabbedPane baseTabPane = new JTabbedPane();
 
     // Reference Cohort and Imaging
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_1 = new ManagerOfSubTabBasePane(subSection_1_TabName, sectionName,subSection_1_Name, baseTabPane);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_1 = new ManagerOfSubTabBasePane(subSection_1_TabName, sectionName, subSection_1_Name, baseTabPane);
 
     ArrayList<ManagerOfSubTabBasePane> arrayList_of_ManagerOfSubTabBasePane = new ArrayList<>();
 
@@ -38,7 +38,41 @@ public class GN_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
 
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_1);
 
+        // ./json/ フォルダの確認
+        File jsonDir = new File(jsonFolderPathStr);
+        // jsonディレクトリが存在しない、またはディレクトリではない場合
+        if (!jsonDir.exists() || !jsonDir.isDirectory()) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "json/フォルダが見つかりません。\n" + jsonFolderPathStr + "/フォルダを作成し、JSONファイルを格納してください。",
+                    "エラー",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            System.exit(1);
+        }
+        // ./json下のすべてのJSONファイルを取得
+        File[] jsonFiles = jsonDir.listFiles((dir, name) -> name.endsWith(".json"));
+        // jsonFiles に格納されているもののうち、ファイル名の先頭が "_" で始まるものを先頭に持ってくる
+        if (jsonFiles != null) {
+            Arrays.sort(jsonFiles, (f1, f2) -> {
+                boolean f1StartsWithUnderscore = f1.getName().startsWith("_");
+                boolean f2StartsWithUnderscore = f2.getName().startsWith("_");
+                return Boolean.compare(f2StartsWithUnderscore, f1StartsWithUnderscore);
+            });
+        }
 
+        if (jsonFiles != null) {
+            for (File jsonFile : jsonFiles) {
+                String jsonFileName = jsonFile.getName();
+
+                mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_1_Name));
+            }
+        }
+
+        //個々のサブタブの中身の準備と配備
+        for (ManagerOfSubTabBasePane managerOfSubTabBasePaneRCAI : arrayList_of_ManagerOfSubTabBasePane) {
+            baseTabPane.add(managerOfSubTabBasePaneRCAI.getTabName(), managerOfSubTabBasePaneRCAI.constructBasePaneOfSubTab());
+        }
 
         panel.add(baseTabPane, BorderLayout.CENTER);
     }
@@ -48,40 +82,7 @@ public class GN_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
         //System.out.println("postInitialize() @ GN_SubTabsHolder.java");
         if (actionMediator != null) {
 
-            // ./json/ フォルダの確認
-            File jsonDir = new File(jsonFolderPathStr);
-            // jsonディレクトリが存在しない、またはディレクトリではない場合
-            if (!jsonDir.exists() || !jsonDir.isDirectory()) {
-                JOptionPane.showMessageDialog(
-                        null,
-                        "json/フォルダが見つかりません。\n" + jsonFolderPathStr + "/フォルダを作成し、JSONファイルを格納してください。",
-                        "エラー",
-                        JOptionPane.ERROR_MESSAGE
-                );
-                System.exit(1);
-            }
-            // ./json下のすべてのJSONファイルを取得
-            File[] jsonFiles = jsonDir.listFiles((dir, name) -> name.endsWith(".json"));
-            // jsonFiles に格納されているもののうち、ファイル名の先頭が "_" で始まるものを先頭に持ってくる
-            if (jsonFiles != null) {
-                Arrays.sort(jsonFiles, (f1, f2) -> {
-                    boolean f1StartsWithUnderscore = f1.getName().startsWith("_");
-                    boolean f2StartsWithUnderscore = f2.getName().startsWith("_");
-                    return Boolean.compare(f2StartsWithUnderscore, f1StartsWithUnderscore);
-                });
-            }
 
-            if (jsonFiles != null) {
-                for (File jsonFile : jsonFiles) {
-                    String jsonFileName = jsonFile.getName();
-
-                    mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_1_Name));
-                }
-            }
-
-            for (ManagerOfSubTabBasePane managerOfSubTabBasePaneRCAI : arrayList_of_ManagerOfSubTabBasePane) {
-                baseTabPane.add(managerOfSubTabBasePaneRCAI.getTabName(), managerOfSubTabBasePaneRCAI.constructBasePaneOfSubTab());
-            }
 
             /* 値を流し込む */
             for (One_DEResult_Pane_Abs oneDeResultPaneAbs : mngrOfSubTabBasePane_1.getDePaneArray()) {
