@@ -82,23 +82,10 @@ public class GN_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
         //System.out.println("postInitialize() @ GN_SubTabsHolder.java");
         if (actionMediator != null) {
 
-
-
             /* 値を流し込む */
-            for (One_DEResult_Pane_Abs oneDeResultPaneAbs : mngrOfSubTabBasePane_1.getDePaneArray()) {
-                String jsonName = oneDeResultPaneAbs.getJsonName();
-                String sectionName = oneDeResultPaneAbs.getSectionName();
-                String subSectionName = oneDeResultPaneAbs.getSubSectionName();
-
-                // jsonNameを引数として渡すためにActionEventを作成
-                ActionEvent customEvent = new ActionEvent(
-                        this,
-                        ActionEvent.ACTION_PERFORMED,
-                        "initialize_gn_tabpanes " + jsonName + " " + sectionName + " " + subSectionName
-                );
-                actionMediator.getInstanceOfAMember("initialize_gn_tabpanes").perform(customEvent);
+            for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_1.getDePaneArray()) {
+                oneDEResultPane.loadJson();
             }
-
 
         } else {
             System.err.println("The actionMediator is null. @ GN_SubTabsHolder.java");

@@ -37,46 +37,75 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
 
         SI_SubTabsHolder subTabsHolder_SI = (SI_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_SI");
         if (subTabsHolder_SI != null) {
-            subTabsHolder_SI.postInitialize();
+            ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_SI.getArrayList_of_ManagerOfSubTabBasePane();
+            for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
+                for(One_DEResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDePaneArray()){
+                    de_result_pane.loadJson();
+                }
+            }
         } else {
             System.err.println("sub_tabs_holder_SI is null.");
         }
 
         SC_SubTabsHolder subTabsHolder_SC = (SC_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_SC");
         if (subTabsHolder_SC != null) {
-            subTabsHolder_SC.postInitialize();
+            ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_SC.getArrayList_of_ManagerOfSubTabBasePane();
+            for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
+                for(One_DEResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDePaneArray()){
+                    de_result_pane.loadJson();
+                }
+            }
         } else {
             System.err.println("sub_tabs_holder_SC is null.");
         }
 
         RCAI_SubTabsHolder subTabsHolder_RCAI = (RCAI_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI");
         if (subTabsHolder_RCAI != null) {
-            subTabsHolder_RCAI.postInitialize();
+            ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_RCAI.getArrayList_of_ManagerOfSubTabBasePane();
+            for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
+                for(One_DEResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDePaneArray()){
+                    de_result_pane.loadJson();
+                }
+            }
         } else {
             System.err.println("sub_tabs_holder_RCAI is null.");
         }
 
         NM_SubTabsHolder subTabsHolder_NM = (NM_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_NM");
         if (subTabsHolder_NM != null) {
-            subTabsHolder_NM.postInitialize();
+            ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_NM.getArrayList_of_ManagerOfSubTabBasePane();
+            for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
+                for(One_DEResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDePaneArray()){
+                    de_result_pane.loadJson();
+                }
+            }
         } else {
             System.err.println("sub_tabs_holder_NM is null.");
         }
 
         CAAA_SubTabsHolder subTabsHolder_CAAA = (CAAA_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_CAAA");
         if (subTabsHolder_CAAA != null) {
-            subTabsHolder_CAAA.postInitialize();
+            ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_CAAA.getArrayList_of_ManagerOfSubTabBasePane();
+            for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
+                for(One_DEResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDePaneArray()){
+                    de_result_pane.loadJson();
+                }
+            }
         } else {
             System.err.println("sub_tabs_holder_CAAA is null.");
         }
 
         GN_SubTabsHolder subTabsHolder_GN = (GN_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_GN");
         if (subTabsHolder_GN != null) {
-            subTabsHolder_GN.postInitialize();
+            ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_GN.getArrayList_of_ManagerOfSubTabBasePane();
+            for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
+                for(One_DEResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDePaneArray()){
+                    de_result_pane.loadJson();
+                }
+            }
         } else {
             System.err.println("sub_tabs_holder_GN is null.");
         }
-
     }
 
     @Override

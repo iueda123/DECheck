@@ -77,7 +77,7 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
 
 
     @Override
-    protected void saveJson() {
+    public void saveJson() {
         Path jsonFilePath = Paths.get(jsonFolderPathStr + "/" + jsonName);
         String answerText = tArea_Answer.getText();
 
@@ -95,7 +95,7 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
     }
 
     @Override
-    protected void loadJson() {
+    public void loadJson() {
         Path jsonFilePath = Paths.get(jsonFolderPathStr + "/" + jsonName);
         //System.out.println("jsonFilePath: " + jsonFilePath);
 

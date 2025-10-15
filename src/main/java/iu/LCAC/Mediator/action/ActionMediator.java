@@ -169,66 +169,6 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.Init_SI_Section.Initialize_SI_TabPanes_ActionFactory",
-                        AbstActionMemberFactory.class);
-        AbstActionMember ititialize_SI_TabPanes_Action =
-                actionMemberFactory.createAction("initialize_si_tabpanes", "Init SI");
-        ititialize_SI_TabPanes_Action.setActionMediator(this);
-        ititialize_SI_TabPanes_Action.initialize();
-        registerMemberToMap(ititialize_SI_TabPanes_Action);
-
-        actionMemberFactory =
-                MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.Init_SC_Section.Initialize_SC_TabPanes_ActionFactory",
-                        AbstActionMemberFactory.class);
-        AbstActionMember ititialize_SC_TabPanes_Action =
-                actionMemberFactory.createAction("initialize_sc_tabpanes", "Init SC");
-        ititialize_SC_TabPanes_Action.setActionMediator(this);
-        ititialize_SC_TabPanes_Action.initialize();
-        registerMemberToMap(ititialize_SC_TabPanes_Action);
-
-        actionMemberFactory =
-                MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.Init_RCAI_Section.Initialize_RCAI_TabPanes_ActionFactory",
-                        AbstActionMemberFactory.class);
-        AbstActionMember ititialize_RCAI_TabPanes_Action =
-                actionMemberFactory.createAction("initialize_rcai_tabpanes", "Init RCAI");
-        ititialize_RCAI_TabPanes_Action.setActionMediator(this);
-        ititialize_RCAI_TabPanes_Action.initialize();
-        registerMemberToMap(ititialize_RCAI_TabPanes_Action);
-
-        actionMemberFactory =
-                MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.Init_NM_Section.Initialize_NM_TabPanes_ActionFactory",
-                        AbstActionMemberFactory.class);
-        AbstActionMember ititialize_NM_TabPanes_Action =
-                actionMemberFactory.createAction("initialize_nm_tabpanes", "Init NM");
-        ititialize_NM_TabPanes_Action.setActionMediator(this);
-        ititialize_NM_TabPanes_Action.initialize();
-        registerMemberToMap(ititialize_NM_TabPanes_Action);
-
-        actionMemberFactory =
-                MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.Init_CAAA_Section.Initialize_CAAA_TabPanes_ActionFactory",
-                        AbstActionMemberFactory.class);
-        AbstActionMember ititialize_CAAA_TabPanes_Action =
-                actionMemberFactory.createAction("initialize_caaa_tabpanes", "Init CAAA");
-        ititialize_CAAA_TabPanes_Action.setActionMediator(this);
-        ititialize_CAAA_TabPanes_Action.initialize();
-        registerMemberToMap(ititialize_CAAA_TabPanes_Action);
-
-        actionMemberFactory =
-                MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.Init_GN_Section.Initialize_GN_TabPanes_ActionFactory",
-                        AbstActionMemberFactory.class);
-        AbstActionMember ititialize_GN_TabPanes_Action =
-                actionMemberFactory.createAction("initialize_gn_tabpanes", "Init GN");
-        ititialize_GN_TabPanes_Action.setActionMediator(this);
-        ititialize_GN_TabPanes_Action.initialize();
-        registerMemberToMap(ititialize_GN_TabPanes_Action);
-
-        actionMemberFactory =
-                MemberFactoryLoader.loadFactory(
                         "iu.LCAC.Member.action.Concretes.DEResultActions.Init_All_Section.Initialize_All_TabPanes_ActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember ititialize_All_TabPanes_Action =

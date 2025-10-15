@@ -2,7 +2,6 @@ package iu.LCAC.Member.action.Concretes.DEResultActions.Init_All_Section;
 
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.action.Abstract.AbstActionMemberFactory;
-import iu.LCAC.Member.action.Concretes.DEResultActions.Init_NM_Section.Initialize_NM_TabPanes_Action;
 
 public class Initialize_All_TabPanes_ActionFactory extends AbstActionMemberFactory {
 

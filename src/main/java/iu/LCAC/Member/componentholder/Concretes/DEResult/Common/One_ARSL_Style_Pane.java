@@ -164,7 +164,7 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
     }
 
 
-    protected void loadJson() {
+    public void loadJson() {
         Path jsonFilePath = Paths.get(jsonFolderPathStr + "/" + jsonName);
         //System.out.println("jsonFilePath: " + jsonFilePath);
 
@@ -198,7 +198,7 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         System.out.println("Successfully loaded from " + jsonFilePath.toFile().getAbsolutePath());
     }
 
-    protected void saveJson() {
+    public void saveJson() {
         Path jsonFilePath = Paths.get(jsonFolderPathStr + "/" + jsonName);
         String answerText = tArea_Answer.getText();
         String confidenceRatingText = tFiled_ConfidenceRating.getText();

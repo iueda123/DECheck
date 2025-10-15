@@ -139,120 +139,48 @@ public class NM_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
 
             /* 値を流し込む */
             for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_1.getDePaneArray()) {
-                String jsonName = oneDEResultPane.getJsonName();
-                String sectionName = oneDEResultPane.getSectionName();
-                String subSectionName = oneDEResultPane.getSubSectionName();
-
-                // jsonNameを引数として渡すためにActionEventを作成
-                ActionEvent customEvent = new ActionEvent(
-                        this,
-                        ActionEvent.ACTION_PERFORMED,
-                        "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName
-                );
-                actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
+                oneDEResultPane.loadJson();
             }
 
             for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_2.getDePaneArray()) {
-                String jsonName = oneDEResultPane.getJsonName();
-                String sectionName = oneDEResultPane.getSectionName();
-                String subSectionName = oneDEResultPane.getSubSectionName();
-                AbstActionMember abstActionMember = actionMediator.getInstanceOfAMember("initialize_nm_tabpanes");
-                // jsonNameを引数として渡すためにActionEventを作成
-                ActionEvent customEvent = new ActionEvent(
-                        this,
-                        ActionEvent.ACTION_PERFORMED,
-                        "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName
-                );
-                abstActionMember.perform(customEvent);
+                oneDEResultPane.loadJson();
             }
 
             for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_3.getDePaneArray()) {
-                String jsonName = oneDEResultPane.getJsonName();
-                String sectionName = oneDEResultPane.getSectionName();
-                String subSectionName = oneDEResultPane.getSubSectionName();
-                ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
+                oneDEResultPane.loadJson();
             }
 
             for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_4.getDePaneArray()) {
-                String jsonName = oneDEResultPane.getJsonName();
-                String sectionName = oneDEResultPane.getSectionName();
-                String subSectionName = oneDEResultPane.getSubSectionName();
-                ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
+                oneDEResultPane.loadJson();
             }
 
             for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_5.getDePaneArray()) {
-                String jsonName = oneDEResultPane.getJsonName();
-                String sectionName = oneDEResultPane.getSectionName();
-                String subSectionName = oneDEResultPane.getSubSectionName();
-                ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
+                oneDEResultPane.loadJson();
             }
 
             for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_6.getDePaneArray()) {
-                String jsonName = oneDEResultPane.getJsonName();
-                String sectionName = oneDEResultPane.getSectionName();
-                String subSectionName = oneDEResultPane.getSubSectionName();
-                ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
+                oneDEResultPane.loadJson();
             }
 
             for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_7.getDePaneArray()) {
-                String jsonName = oneDEResultPane.getJsonName();
-                String sectionName = oneDEResultPane.getSectionName();
-                String subSectionName = oneDEResultPane.getSubSectionName();
-                ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
+                oneDEResultPane.loadJson();
             }
 
             for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_8.getDePaneArray()) {
-                String jsonName = oneDEResultPane.getJsonName();
-                String sectionName = oneDEResultPane.getSectionName();
-                String subSectionName = oneDEResultPane.getSubSectionName();
-                ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
+                oneDEResultPane.loadJson();
             }
 
             for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_9.getDePaneArray()) {
-                String jsonName = oneDEResultPane.getJsonName();
-                String sectionName = oneDEResultPane.getSectionName();
-                String subSectionName = oneDEResultPane.getSubSectionName();
-                ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
+                oneDEResultPane.loadJson();
             }
 
             for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_10.getDePaneArray()) {
-                String jsonName = oneDEResultPane.getJsonName();
-                String sectionName = oneDEResultPane.getSectionName();
-                String subSectionName = oneDEResultPane.getSubSectionName();
-                ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
+                oneDEResultPane.loadJson();
             }
 
             for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_11.getDePaneArray()) {
-                String jsonName = oneDEResultPane.getJsonName();
-                String sectionName = oneDEResultPane.getSectionName();
-                String subSectionName = oneDEResultPane.getSubSectionName();
-                ActionEvent customEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
-                        "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
-                actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
+                oneDEResultPane.loadJson();
             }
-
-            //baseTabPane.revalidate();
-            //baseTabPane.repaint();
-
-            //for (ManagerOfSubTabBasePane managerOfSubTabBasePane : arrayList_of_ManagerOfSubTabBasePane) {
-            //    managerOfSubTabBasePane.revalidateChildren();
-            //}
 
         } else {
             System.err.println("actionMediator is null in postInitialize() @ " + this.getClass());
