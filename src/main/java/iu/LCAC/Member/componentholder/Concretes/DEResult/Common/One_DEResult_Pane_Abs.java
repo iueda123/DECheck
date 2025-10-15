@@ -2,9 +2,9 @@ package iu.LCAC.Member.componentholder.Concretes.DEResult.Common;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
-import iu.LCAC.Member.MemberIntrfc;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Utils.ColorChangeableTextField;
+import iu.LCAC.Utils.JsonManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +16,9 @@ import java.nio.file.Paths;
 public abstract class One_DEResult_Pane_Abs extends JPanel {
 
     final String jsonFolderPathStr;
-     String jsonName;
+    String jsonName;
+    final JsonManager jsonManager;
+
     final String sectionName;
     final String subSectionName;
 
@@ -51,6 +53,8 @@ public abstract class One_DEResult_Pane_Abs extends JPanel {
 
         this.jsonFolderPathStr = jsonFolderPathStr;
         this.jsonName = jsonName;
+        this.jsonManager = new JsonManager(this.jsonFolderPathStr + "/" + jsonName);
+
         this.sectionName = sectionName;
         this.subSectionName = subSectionName;
 

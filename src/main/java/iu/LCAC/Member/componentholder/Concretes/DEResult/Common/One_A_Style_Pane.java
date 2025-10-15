@@ -82,7 +82,7 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
         String answerText = tArea_Answer.getText();
 
         // JSONへ書き込み
-        JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
+        //JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
         jsonManager.setValue(sectionName + "/" + subSectionName, answerText);
 
         boolean success = jsonManager.writeoutJson();
@@ -105,7 +105,7 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
         }
 
         // JSONから読み込み
-        JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
+        //jsonManager = new JsonManager(jsonFilePath.toFile());
         //System.out.println("sectionName: " + sectionName);
         //System.out.println("subSectionName: " + subSectionName);
         //String answer = jsonManager.getValue(sectionName + "/" + subSectionName + "/study_id");

@@ -174,7 +174,7 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         }
 
         // JSONから読み込み
-        JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
+        //JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
         System.out.println("sectionName: " + sectionName);
         System.out.println("subSectionName: " + subSectionName);
 
@@ -208,7 +208,7 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         String pageLineText = tArea_Location.getText();
 
         // JSONへ書き込み
-        JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
+        //JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
         jsonManager.setValue(sectionName + "/" + subSectionName + "/Answer", answerText);
         jsonManager.setValue(sectionName + "/" + subSectionName + "/Confidence\\ Rating", confidenceRatingText);
         jsonManager.setValue(sectionName + "/" + subSectionName + "/Negative\\ Answer\\ Category", negativeAnswerCategoryText);
