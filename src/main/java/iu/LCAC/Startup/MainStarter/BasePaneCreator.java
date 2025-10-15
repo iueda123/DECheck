@@ -1,4 +1,4 @@
-package iu.LCAC.Startup.Starter02;
+package iu.LCAC.Startup.MainStarter;
 
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Concretes.MainWindow.MainWindowHolder;

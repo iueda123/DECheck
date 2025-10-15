@@ -1,7 +1,9 @@
-package iu.LCAC.Startup.Starter01;
+package iu.LCAC.Startup.DebugStarter02;
 
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Concretes.MainWindow.MainWindowHolder;
+import iu.LCAC.Utils.CollapsiblePanel;
+import iu.LCAC.Utils.VerticalTextTabbedPane;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,19 +29,19 @@ public class BasePaneCreator {
     // Factory を介して各パネル（Panel_Aのサブクラス）を生成し、配置。
 
     /* **** Component を配置する **** */
-    basePane.add(
-        (cHolderMediator.getInstanceOfAMember("button_panel_holder")).getBaseComponent(),
-        BorderLayout.WEST);
-    basePane.add(
-        (cHolderMediator.getInstanceOfAMember("checkbox_panel_holder")).getBaseComponent(),
-        BorderLayout.CENTER);
-    basePane.add(
-        (cHolderMediator.getInstanceOfAMember("text_field_panel_holder")).getBaseComponent(),
-        BorderLayout.EAST);
-    basePane.add(
-            (cHolderMediator.getInstanceOfAMember("run_bash_panel_holder")).getBaseComponent(),
-            BorderLayout.SOUTH);
+    //basePane.add(
+    //    (cHolderMediator.getInstanceOfAMember("button_panel_holder")).getBaseComponent(),
+    //    BorderLayout.WEST);
 
-    return basePane;
+    VerticalTextTabbedPane tabbedPane = new VerticalTextTabbedPane(JTabbedPane.LEFT);
+
+   tabbedPane.add("4. NM", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_NM")).getBaseComponent());
+    tabbedPane.setToolTipTextAt(0, "Normative Modeling");
+
+
+   JComponent explanationPanelHolder = (cHolderMediator.getInstanceOfAMember("explanation_panel_holder").getBaseComponent());
+
+    return new CollapsiblePanel(tabbedPane, explanationPanelHolder, new JLabel("West"), new JLabel("South"), new JLabel("North"));
+
   }
 }

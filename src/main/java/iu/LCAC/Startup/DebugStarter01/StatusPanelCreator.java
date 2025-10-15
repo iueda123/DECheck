@@ -1,4 +1,4 @@
-package iu.LCAC.Startup.Starter03;
+package iu.LCAC.Startup.DebugStarter01;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;

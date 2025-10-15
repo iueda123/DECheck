@@ -45,6 +45,7 @@ public class MainWindowHolder extends AbstCHolderMember {
 
     @Override
     public void postInitialize() {
+        System.out.println("postInitialize() @ MainWindowHolder.java");
         /* パネル順序のロード */
         actionMediator
                 .getInstanceOfAMember("load_pane_order")

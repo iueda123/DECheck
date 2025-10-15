@@ -168,7 +168,7 @@
     },
     "nm_vldtn_same_domain_nonindep": {
       "Answer": "",
-      "Confidence Rating": "",
+      "Confidence Rating": "test",
       "Negative Answer Category": "",
       "Reason": "",
       "Supporting Text": "",

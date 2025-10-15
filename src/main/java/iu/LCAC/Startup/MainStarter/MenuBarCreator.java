@@ -1,11 +1,11 @@
-package iu.LCAC.Startup.Starter03;
+package iu.LCAC.Startup.MainStarter;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Concretes.MainWindow.MainWindowHolder;
 
-import javax.swing.*;
 import java.awt.event.KeyEvent;
+import javax.swing.*;
 
 public class MenuBarCreator {
 

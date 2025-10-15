@@ -53,7 +53,7 @@ public class NM_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
     // Reference Cohort and Imaging
     ManagerOfSubTabBasePane mngrOfSubTabBasePane_1 = new ManagerOfSubTabBasePane(subSection_1_TabName, sectionName, subSection_1_Name, baseTabPane);
     ManagerOfSubTabBasePane mngrOfSubTabBasePane_2 = new ManagerOfSubTabBasePane(subSection_2_TabName, sectionName, subSection_2_Name, baseTabPane);
-    ManagerOfSubTabBasePane mngrOfSubTabBasePane_3 = new ManagerOfSubTabBasePane(subSection_3_TabName,  sectionName, subSection_3_Name, baseTabPane);
+    ManagerOfSubTabBasePane mngrOfSubTabBasePane_3 = new ManagerOfSubTabBasePane(subSection_3_TabName, sectionName, subSection_3_Name, baseTabPane);
     ManagerOfSubTabBasePane mngrOfSubTabBasePane_4 = new ManagerOfSubTabBasePane(subSection_4_TabName, sectionName, subSection_4_Name, baseTabPane);
     ManagerOfSubTabBasePane mngrOfSubTabBasePane_5 = new ManagerOfSubTabBasePane(subSection_5_TabName, sectionName, subSection_5_Name, baseTabPane);
     ManagerOfSubTabBasePane mngrOfSubTabBasePane_6 = new ManagerOfSubTabBasePane(subSection_6_TabName, sectionName, subSection_6_Name, baseTabPane);
@@ -80,58 +80,60 @@ public class NM_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_10);
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_11);
 
-        // ./json下のすべてのJSONファイルを取得
-        File jsonDir = new File(jsonFolderPathString);
-        // jsonディレクトリが存在しない、またはディレクトリではない場合
-        if (!jsonDir.exists() || !jsonDir.isDirectory()) {
-            JOptionPane.showMessageDialog(
-                    null,
-                    "json/フォルダが見つかりません。\n" + jsonFolderPathString+ "/フォルダを作成し、JSONファイルを格納してください。",
-                    "エラー",
-                    JOptionPane.ERROR_MESSAGE
-            );
-            System.exit(1);
-        }
-        File[] jsonFiles = jsonDir.listFiles((dir, name) -> name.endsWith(".json"));
-        // jsonFiles に格納されているもののうち、ファイル名の先頭が "_" で始まるものを先頭に持ってくる
-        if (jsonFiles != null) {
-            Arrays.sort(jsonFiles, (f1, f2) -> {
-                boolean f1StartsWithUnderscore = f1.getName().startsWith("_");
-                boolean f2StartsWithUnderscore = f2.getName().startsWith("_");
-                return Boolean.compare(f2StartsWithUnderscore, f1StartsWithUnderscore);
-            });
-        }
-
-        if (jsonFiles != null) {
-            for (File jsonFile : jsonFiles) {
-                String jsonFileName = jsonFile.getName();
-                mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName,subSection_1_Name));
-                mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_2_Name));
-                mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_3_Name));
-                mngrOfSubTabBasePane_4.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_4_Name));
-                mngrOfSubTabBasePane_5.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_5_Name));
-                mngrOfSubTabBasePane_6.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_6_Name));
-                mngrOfSubTabBasePane_7.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_7_Name));
-                mngrOfSubTabBasePane_8.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_8_Name));
-                mngrOfSubTabBasePane_9.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_9_Name));
-                mngrOfSubTabBasePane_10.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_10_Name));
-                mngrOfSubTabBasePane_11.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_11_Name));
-            }
-        }
-
-        for (ManagerOfSubTabBasePane managerOfSubTabBasePaneNM : arrayList_of_ManagerOfSubTabBasePane) {
-            baseTabPane.add(managerOfSubTabBasePaneNM.getTabName(), managerOfSubTabBasePaneNM.constructBasePaneOfSubTab());
-        }
-
         panel.add(baseTabPane, BorderLayout.CENTER);
     }
 
     @Override
     public void postInitialize() {
+        //System.out.println("postInitialize() @ NM_SubTabsHolder.java");
         if (actionMediator != null) {
 
-            /* 値を流し込む */
+            // ./json/ フォルダの確認
+            File jsonDir = new File(jsonFolderPathString);
+            // jsonディレクトリが存在しない、またはディレクトリではない場合
+            if (!jsonDir.exists() || !jsonDir.isDirectory()) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "json/フォルダが見つかりません。\n" + jsonFolderPathString + "/フォルダを作成し、JSONファイルを格納してください。",
+                        "エラー",
+                        JOptionPane.ERROR_MESSAGE
+                );
+                System.exit(1);
+            }
+            // ./json下のすべてのJSONファイルを取得
+            File[] jsonFiles = jsonDir.listFiles((dir, name) -> name.endsWith(".json"));
+            // jsonFiles に格納されているもののうち、ファイル名の先頭が "_" で始まるものを先頭に持ってくる
+            if (jsonFiles != null) {
+                Arrays.sort(jsonFiles, (f1, f2) -> {
+                    boolean f1StartsWithUnderscore = f1.getName().startsWith("_");
+                    boolean f2StartsWithUnderscore = f2.getName().startsWith("_");
+                    return Boolean.compare(f2StartsWithUnderscore, f1StartsWithUnderscore);
+                });
+            }
 
+            if (jsonFiles != null) {
+                for (File jsonFile : jsonFiles) {
+                    String jsonFileName = jsonFile.getName();
+                    System.out.println("jsonFileName: " + jsonFileName);
+                    mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_1_Name));
+                    mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_2_Name));
+                    mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_3_Name));
+                    mngrOfSubTabBasePane_4.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_4_Name));
+                    mngrOfSubTabBasePane_5.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_5_Name));
+                    mngrOfSubTabBasePane_6.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_6_Name));
+                    mngrOfSubTabBasePane_7.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_7_Name));
+                    mngrOfSubTabBasePane_8.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_8_Name));
+                    mngrOfSubTabBasePane_9.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_9_Name));
+                    mngrOfSubTabBasePane_10.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_10_Name));
+                    mngrOfSubTabBasePane_11.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString, jsonFileName, sectionName, subSection_11_Name));
+                }
+
+                for (ManagerOfSubTabBasePane managerOfSubTabBasePaneNM : arrayList_of_ManagerOfSubTabBasePane) {
+                    baseTabPane.add(managerOfSubTabBasePaneNM.getTabName(), managerOfSubTabBasePaneNM.constructBasePaneOfSubTab());
+                }
+            }
+
+            /* 値を流し込む */
             for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_1.getDePaneArray()) {
                 String jsonName = oneDEResultPane.getJsonName();
                 String sectionName = oneDEResultPane.getSectionName();
@@ -150,7 +152,6 @@ public class NM_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
                 String jsonName = oneDEResultPane.getJsonName();
                 String sectionName = oneDEResultPane.getSectionName();
                 String subSectionName = oneDEResultPane.getSubSectionName();
-
                 AbstActionMember abstActionMember = actionMediator.getInstanceOfAMember("initialize_nm_tabpanes");
                 // jsonNameを引数として渡すためにActionEventを作成
                 ActionEvent customEvent = new ActionEvent(
@@ -158,7 +159,7 @@ public class NM_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
                         ActionEvent.ACTION_PERFORMED,
                         "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName
                 );
-               abstActionMember.perform(customEvent);
+                abstActionMember.perform(customEvent);
             }
 
             for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_3.getDePaneArray()) {
@@ -241,9 +242,6 @@ public class NM_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
                         "initialize_nm_tabpanes " + jsonName + " " + sectionName + " " + subSectionName);
                 actionMediator.getInstanceOfAMember("initialize_nm_tabpanes").perform(customEvent);
             }
-
-
-
 
 
         } else {
@@ -400,5 +398,6 @@ public class NM_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
     public String getSectionName() {
         return sectionName;
     }
+
 
 }
