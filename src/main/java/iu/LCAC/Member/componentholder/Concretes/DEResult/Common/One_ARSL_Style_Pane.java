@@ -2,11 +2,9 @@ package iu.LCAC.Member.componentholder.Concretes.DEResult.Common;
 
 import iu.LCAC.Utils.ColorChangeableTextArea;
 import iu.LCAC.Utils.ColorChangeableTextField;
-import iu.LCAC.Utils.JsonManager;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -71,8 +69,7 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         Box baseOfNorth = Box.createVerticalBox();
 
         // The 1st Box
-        Box the1stBaseOfNorth = Box.createHorizontalBox();
-        the1stBaseOfNorth.add(Box.createHorizontalGlue());
+        Box the1stBaseOfNorth = Box.createHorizontalBox(); the1stBaseOfNorth.add(Box.createHorizontalGlue());
         the1stBaseOfNorth.add(saveButton);
         the1stBaseOfNorth.add(loadButton);
         the1stBaseOfNorth.add(jsonFileNameEditButton);
@@ -218,11 +215,13 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
 
         boolean success = jsonManager.writeoutJson();
         if (success) {
-            System.out.println("Successfully saved to " + jsonFilePath.toFile().getAbsolutePath());
+            System.out.println("Successfully saved to " + jsonManager.getJsonFile().getAbsolutePath());
             resetBackgroundColorOfTAreasTFields();
         } else {
-            System.err.println("Failed to save to " + jsonFilePath.toFile().getAbsolutePath());
+            System.err.println("Failed to save to " +  jsonManager.getJsonFile().getAbsolutePath());
         }
+
+        //jsonManager.showLoadedContent();
     }
 
 

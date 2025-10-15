@@ -5,6 +5,7 @@ import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Utils.ColorChangeableTextField;
 import iu.LCAC.Utils.JsonManager;
+import iu.LCAC.Utils.JsonManagerWithConflictSafe;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +18,8 @@ public abstract class One_DEResult_Pane_Abs extends JPanel {
 
     final String jsonFolderPathStr;
     String jsonName;
-    final JsonManager jsonManager;
+    JsonManager jsonManager;
+    //final JsonManagerWithConflictSafe jsonManager;
 
     final String sectionName;
     final String subSectionName;
@@ -53,6 +55,14 @@ public abstract class One_DEResult_Pane_Abs extends JPanel {
 
         this.jsonFolderPathStr = jsonFolderPathStr;
         this.jsonName = jsonName;
+
+        //ToDo: JsonManagerWithConflictSafe() を使いたい。
+        // 問題は、reloadが選択されたときにどのようにコンポーネントに反映させるか
+        // JsonManagerWithConfilictSafe() という JsonManagerの一種と
+        // JComponent系へのリロード処理をどう結びつける？
+        //JsonManagerWithConflictSafe()のコンストラクタに引数としてreload()メソッドをもつインターフェースを渡し、
+        //そのインターフェースのreload()を呼び出すか？
+        //this.jsonManager = new JsonManagerWithConflictSafe(this.jsonFolderPathStr + "/" + jsonName);
         this.jsonManager = new JsonManager(this.jsonFolderPathStr + "/" + jsonName);
 
         this.sectionName = sectionName;

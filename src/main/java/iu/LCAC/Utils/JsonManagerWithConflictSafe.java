@@ -1,15 +1,18 @@
 package iu.LCAC.Utils;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.time.Instant;
 
@@ -46,17 +49,31 @@ public class JsonManagerWithConflictSafe extends JsonManager {
     private final JButton saveAsBtn = new JButton("Save As");
     private final JLabel statusLbl = new JLabel("No file");
 
-    private Path currentPath = null;
+    private  Path currentPath = null;
     private volatile long loadedMtime = -1L;
     private volatile String loadedHash = null;
 
 
     public JsonManagerWithConflictSafe(String json_file_path) {
-        super(new File(json_file_path));
+        this(new File(json_file_path));
     }
 
     public JsonManagerWithConflictSafe(File jsonFile) {
         super(jsonFile);
+
+        openPath(jsonFile.toPath());
+
+        /*
+        currentPath = jsonFile.toPath();
+        String content = null;
+        try {
+            content = Files.readString(currentPath, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            content = "Error";
+            throw new RuntimeException(e);
+        }
+        textArea.setText(content);
+        */
 
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         frame.setSize(900, 600);
@@ -136,8 +153,7 @@ public class JsonManagerWithConflictSafe extends JsonManager {
     @Override
     public boolean writeoutJson(){
         //super.writeoutJson();
-        doSave(false);
-        return true;
+       return doSave(false);
     }
 
 
@@ -145,14 +161,20 @@ public class JsonManagerWithConflictSafe extends JsonManager {
      * Save current text. If forceOverwrite==false and disk mtime differs from loadedMtime,
      * show conflict dialog (Cancel/Overwrite/Reload/Save As).
      */
-    private void doSave(boolean forceOverwrite) {
+    private boolean doSave(boolean forceOverwrite) {
         //System.out.println("doSave");
-        if (currentPath == null) return;
+        if (currentPath == null){
+            System.err.println("currentPath is null.");
+            return false;
+        }
         try {
             long diskMtime = Files.getLastModifiedTime(currentPath).toMillis();
             //System.out.println("diskMtime: " + diskMtime);
 
-            String currentText = textArea.getText();
+            //String currentText = textArea.getText();
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String currentText = gson.toJson(getJsonObject());
+            textArea.setText(currentText);
 
             if (!forceOverwrite && loadedMtime != -1 && diskMtime != loadedMtime) {
                 // Conflict
@@ -160,36 +182,38 @@ public class JsonManagerWithConflictSafe extends JsonManager {
                 switch (choice) {
                     case 0: // Cancel
                         //System.out.println("Cancel");
-                        return;
+                        return false;
                     case 1: // Overwrite
                         //System.out.println("Overwrite");
                         writeText(currentPath, currentText);
                         afterSaveUpdate(currentPath, currentText);
-                        return;
+                        return true;
                     case 2: // Reload
                         //System.out.println("Reload");
                         String reloadedContent = reloadFromDisk(); //textArea の内容が更新される
-                        return;
+                        return false;
                     case 3: // Save As
                         //System.out.println("Save As");
-                        doSaveAs();
-                        return;
+                        return doSaveAs();
+
                     default:
                         //System.out.println("default");
-                        return;
+                        return false;
                 }
             }
 
             //System.out.println("No conflict or force overwrite");
             writeText(currentPath, currentText);
             afterSaveUpdate(currentPath, currentText);
+            return true;
         } catch (IOException ex) {
             showError("Save failed: " + ex.getMessage());
+            return false;
         }
     }
 
-    private void doSaveAs() {
-        if (currentPath == null && textArea.getText().isEmpty()) return;
+    private boolean doSaveAs() {
+        if (currentPath == null && textArea.getText().isEmpty()) return false;
         JFileChooser fc = new JFileChooser();
         if (currentPath != null) fc.setSelectedFile(currentPath.toFile());
         if (fc.showSaveDialog(this.frame) == JFileChooser.APPROVE_OPTION) {
@@ -198,17 +222,20 @@ public class JsonManagerWithConflictSafe extends JsonManager {
                 int ans = JOptionPane.showConfirmDialog(this.frame,
                         "既に存在します。上書きしますか？" + dest.toAbsolutePath(),
                         "別名保存の確認", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-                if (ans != JOptionPane.YES_OPTION) return;
+                if (ans != JOptionPane.YES_OPTION) return false;
             }
             try {
                 String text = textArea.getText();
                 writeText(dest, text);
                 currentPath = dest;
                 afterSaveUpdate(dest, text);
+                return true;
             } catch (IOException ex) {
                 showError("Save As failed: " + ex.getMessage());
+                return false;
             }
         }
+        return false;
     }
 
     private String reloadFromDisk() {
@@ -228,12 +255,18 @@ public class JsonManagerWithConflictSafe extends JsonManager {
 
     private void writeText(Path p, String text) throws IOException {
         // 親ディレクトリ作成（必要なら）
+        /*
         Path parent = p.getParent();
         if (parent != null && !Files.exists(parent)) {
             Files.createDirectories(parent);
         }
         Files.writeString(p, text, StandardCharsets.UTF_8,
                 StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
+        */
+
+      super.writeoutJson();
+
+
     }
 
     private void afterSaveUpdate(Path p, String text) throws IOException {

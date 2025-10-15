@@ -8,7 +8,6 @@ import iu.LCAC.Utils.JsonManager;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -80,7 +79,7 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
     public void saveJson() {
         Path jsonFilePath = Paths.get(jsonFolderPathStr + "/" + jsonName);
         String answerText = tArea_Answer.getText();
-
+        System.out.println("answerText: " + answerText);
         // JSONへ書き込み
         //JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
         jsonManager.setValue(sectionName + "/" + subSectionName, answerText);
@@ -105,12 +104,12 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
         }
 
         // JSONから読み込み
-        //jsonManager = new JsonManager(jsonFilePath.toFile());
+        jsonManager = new JsonManager(jsonFilePath.toFile());
         //System.out.println("sectionName: " + sectionName);
         //System.out.println("subSectionName: " + subSectionName);
         //String answer = jsonManager.getValue(sectionName + "/" + subSectionName + "/study_id");
         String answer = jsonManager.getValue(sectionName + "/" + subSectionName );
-        //System.out.println("answer: " + answer);
+        System.out.println("answer: " + answer);
 
         // 各フィールドに値を設定
         if (answer != null) tArea_Answer.setText(answer);
