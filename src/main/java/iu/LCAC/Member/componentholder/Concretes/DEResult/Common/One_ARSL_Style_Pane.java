@@ -190,6 +190,9 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         if (supportingText != null) tArea_SupportingText.setText(supportingText);
         if (pageLine != null) tArea_Location.setText(pageLine);
 
+        // set title border
+        setBorder(BorderFactory.createTitledBorder(jsonName));
+
         resetBackgroundColorOfTAreasTFields();
 
         System.out.println("Successfully loaded from " + jsonFilePath.toFile().getAbsolutePath());
