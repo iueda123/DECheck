@@ -1,4 +1,4 @@
-package iu.LCAC.Utils;
+package iu.LCAC.Utils.JsonManagerWithConflictSafe;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -12,8 +12,6 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.time.Instant;
 
 /**
@@ -43,6 +41,7 @@ public class JsonManagerWithConflictSafe extends JsonManager {
     private final JFrame frame = new JFrame("Over View of Json");
 
     //GUI
+    private final Intrfc_CompWithReloadFunc compWithReloadFunc;
     private final JTextArea textArea = new JTextArea();
     private final JButton openBtn = new JButton("Open");
     private final JButton saveBtn = new JButton("Save");
@@ -54,13 +53,13 @@ public class JsonManagerWithConflictSafe extends JsonManager {
     private volatile String loadedHash = null;
 
 
-    public JsonManagerWithConflictSafe(String json_file_path) {
-        this(new File(json_file_path));
+    public JsonManagerWithConflictSafe(String json_file_path, Intrfc_CompWithReloadFunc compWithReloadFunc) {
+        this(new File(json_file_path), compWithReloadFunc);
     }
 
-    public JsonManagerWithConflictSafe(File jsonFile) {
+    public JsonManagerWithConflictSafe(File jsonFile, Intrfc_CompWithReloadFunc compWithReloadFunc) {
         super(jsonFile);
-
+        this.compWithReloadFunc = compWithReloadFunc;
         openPath(jsonFile.toPath());
 
         /*
@@ -191,6 +190,7 @@ public class JsonManagerWithConflictSafe extends JsonManager {
                     case 2: // Reload
                         //System.out.println("Reload");
                         String reloadedContent = reloadFromDisk(); //textArea の内容が更新される
+                        this.compWithReloadFunc.reload();
                         return false;
                     case 3: // Save As
                         //System.out.println("Save As");
@@ -320,8 +320,13 @@ public class JsonManagerWithConflictSafe extends JsonManager {
     }
 
     public static void main(String[] args) {
+
+        Intrfc_CompWithReloadFunc compWithReloadFunc = new TestComponent();
+
         // 基本的な使い方
-        JsonManagerWithConflictSafe jm = new JsonManagerWithConflictSafe(new File("/home/iu/Downloads/test.json"));
+        JsonManagerWithConflictSafe jm = new JsonManagerWithConflictSafe(
+                                                new File("/home/iu/Downloads/test.json"),
+                                                compWithReloadFunc);
 
         System.out.println("Json読み込み");
         System.out.println("key1 = " + jm.getValue("test/key1"));

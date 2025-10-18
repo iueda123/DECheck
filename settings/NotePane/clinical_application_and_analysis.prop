@@ -1,5 +1,5 @@
 #no comment.
-#Sat Oct 18 23:16:35 JST 2025
+#Sat Oct 18 23:22:00 JST 2025
 clinical_groups_age.status=
 clinical_groups_sex.status=
 deviation_metric.status=
@@ -7,7 +7,7 @@ application_notes.note=
 clinical_dataset.note=
 key_findings_detailed.status=
 diseases_studied.note=
-clinical_groups_n.status=
+clinical_groups_n.status=a
 association_analysis.status=
 key_limitations.status=
 diseases_studied.status=あ

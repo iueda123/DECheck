@@ -1,10 +1,9 @@
 package iu.LCAC.Member.componentholder.Concretes.DEResult.Common;
 
-import iu.LCAC.Mediator.MediatorIntrfc;
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Utils.ColorChangeableTextArea;
-import iu.LCAC.Utils.JsonManager;
+import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManager;
 
 import javax.swing.*;
 import java.awt.*;

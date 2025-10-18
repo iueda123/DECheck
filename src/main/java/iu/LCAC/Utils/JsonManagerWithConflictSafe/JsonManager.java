@@ -1,4 +1,4 @@
-package iu.LCAC.Utils;
+package iu.LCAC.Utils.JsonManagerWithConflictSafe;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
