@@ -5,11 +5,11 @@ import java.nio.file.Path;
 
 public interface Intrfc_CompWithReloadFunc {
 
-    boolean actionAfterReloading();
-
-    void actionAfterOpeningJson(Path p, String content);
-
     Component getFrame();
+
+    void actionAfterReloading();
+
+    void actionAfterOpeningJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe);
 
     void actionAfterSavingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe);
 }

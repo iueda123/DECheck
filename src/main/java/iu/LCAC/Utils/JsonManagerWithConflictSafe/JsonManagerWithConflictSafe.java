@@ -65,7 +65,7 @@ public class JsonManagerWithConflictSafe extends JsonManager {
         this.loadedMtime = this.getLoadedMtime();
         this.loadedHash = this.getHashString();
 
-        compWithReloadFunc.actionAfterOpeningJson(jsonFile.toPath(), this.getJsonAsText());
+        compWithReloadFunc.actionAfterOpeningJson(this);
     }
 
     private void showError(String msg) {
@@ -240,7 +240,6 @@ public class JsonManagerWithConflictSafe extends JsonManager {
         jm.setValue("test/key1", "value1");
         jm.setValue("test/key2", "value2");
         jm.writeJson();
-
 
     }
 }
