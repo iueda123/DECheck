@@ -216,7 +216,7 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         jsonManager.setValue(sectionName + "/" + subSectionName + "/Supporting\\ Text", supportingText);
         jsonManager.setValue(sectionName + "/" + subSectionName + "/Page\\/Line", pageLineText);
 
-        boolean success = jsonManager.writeoutJson();
+        boolean success = jsonManager.writeJson();
         if (success) {
             System.out.println("Successfully saved to " + jsonManager.getJsonFile().getAbsolutePath());
             resetBackgroundColorOfTAreasTFields();

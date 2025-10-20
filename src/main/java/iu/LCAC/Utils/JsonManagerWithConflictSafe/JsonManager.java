@@ -11,24 +11,28 @@ import java.nio.charset.StandardCharsets;
 
 public class JsonManager {
 
-    private File jsonFile;
-    private JsonObject jsonObject;
-    private Gson gson;
+    protected File jsonFile;
+    protected JsonObject jsonObject;
+    protected Gson gson;
 
     /**
      * コンストラクタ
      *
      * @param json_file JSONファイル
      */
-    public JsonManager(File json_file) {
-        this.jsonFile = json_file;
-        this.gson = new GsonBuilder().setPrettyPrinting().create();
-        this.jsonObject = loadJsonObject();
-    }
-
     public JsonManager(String json_file_path) {
         this(new File(json_file_path));
     }
+
+    public JsonManager(File json_file) {
+        this.jsonFile = json_file;
+        this.gson = new GsonBuilder().setPrettyPrinting().create();
+        this.jsonObject = loadJsonObject(this.jsonFile);
+        if(this.jsonObject == null){
+            System.err.println( "this.jsonObject is null.");
+        }
+    }
+
 
     /* **** Public Methods **** */
 
@@ -37,7 +41,7 @@ public class JsonManager {
      *
      * @return 成功した場合true
      */
-    public boolean writeoutJson() {
+    public boolean writeJson() {
         // 存在しない場合は作る
         boolean file_creation_rslt = createAFileAfterConfirmation(this.jsonFile.getAbsolutePath());
 
@@ -72,28 +76,45 @@ public class JsonManager {
      * @return 値（文字列）、見つからない場合はnull
      */
     public String getValue(String path_key) {
+        System.out.println("path_key: " + path_key);
         // エスケープされたスラッシュを一時的にプレースホルダーに置き換える
         String placeholder = "\u0000ESCAPED_SLASH\u0000";
         path_key = path_key.replace("\\/", placeholder);
 
         String[] keys = path_key.split("/");
+        System.out.println("keys.length: " + keys.length);
         JsonElement current = jsonObject;
 
         for (String key : keys) {
+            System.out.println("key: '"+ key + "'");
             // プレースホルダーを元のスラッシュに戻す
             key = key.replace(placeholder, "/");
             // エスケープされたスペースを通常のスペースに戻す
             key = key.replace("\\ ", " ");
 
+            // 空文字列のキーはスキップ
+            if (key.isEmpty()) {
+                System.out.println("Skipping empty key");
+                continue;
+            }
+
             if (current == null || !current.isJsonObject()) {
+               System.err.println("current is null or current is not json object. @ JsonManager.java");
                 return null;
             }
             current = current.getAsJsonObject().get(key);
         }
 
-        if (current != null && current.isJsonPrimitive()) {
+        if (current == null) {
+            System.err.println("Value not found for path: " + path_key);
+            return null;
+        }
+
+        if (current.isJsonPrimitive()) {
             return current.getAsString();
         }
+
+        System.err.println("Value is not a primitive type (found JsonObject or JsonArray) for path: " + path_key);
         return null;
     }
 
@@ -103,7 +124,7 @@ public class JsonManager {
      * @param path_key スラッシュ区切りのパス
      * @param value    設定する値
      */
-    public void setValue(String path_key, String value) {
+    public boolean setValue(String path_key, String value) {
         // エスケープされたスラッシュを一時的にプレースホルダーに置き換える
         String placeholder = "\u0000ESCAPED_SLASH\u0000";
         path_key = path_key.replace("\\/", placeholder);
@@ -113,6 +134,11 @@ public class JsonManager {
 
         for (int i = 0; i < keys.length - 1; i++) {
             String key = keys[i].replace(placeholder, "/").replace("\\ ", " ");
+
+            // 空文字列のキーはスキップ（getValueと同じ動作にする）
+            if (key.isEmpty()) {
+                continue;
+            }
 
             if (!current.has(key)) {
                 current.add(key, new JsonObject());
@@ -129,11 +155,28 @@ public class JsonManager {
         }
 
         String lastKey = keys[keys.length - 1].replace(placeholder, "/").replace("\\ ", " ");
+        // 最後のキーも空文字列でないことを確認
+        if (lastKey.isEmpty()) {
+            System.err.println("Last key is empty for path: " + path_key);
+            return false;
+        }
+
         current.addProperty(lastKey, value);
+
+        if( this.getValue(path_key).equals(value) ){
+            return true;
+        }else{
+            System.err.println("Setting a new value was failed." + "[" + path_key + "]");
+            return false;
+        }
     }
 
     public JsonObject getJsonObject() {
         return this.jsonObject;
+    }
+
+    public String getJsonAsText(){
+        return gson.toJson(this.jsonObject);
     }
 
     /* **** Private Method **** */
@@ -143,8 +186,8 @@ public class JsonManager {
      *
      * @return JsonObject
      */
-    private JsonObject loadJsonObject() {
-        if (jsonObject == null) {
+    public JsonObject loadJsonObject(File jsonFile) {
+        //if (jsonObject == null) {
             if (jsonFile.isFile()) {
                 // Objectはまだないが、Fileはある時
                 try (Reader reader =
@@ -169,8 +212,8 @@ public class JsonManager {
                 jsonObject = new JsonObject();
                 return jsonObject;
             }
-        }
-        return jsonObject;
+        //}
+        //return jsonObject;
     }
 
     /**
@@ -205,7 +248,7 @@ public class JsonManager {
         JsonManager jm = new JsonManager(new File("/tmp/test.json"));
         jm.setValue("test/key1", "value1");
         jm.setValue("test/key2", "value2");
-        jm.writeoutJson();
+        jm.writeJson();
 
         /** 読み込みテスト */
         JsonManager jm2 = new JsonManager(new File("/tmp/test.json"));

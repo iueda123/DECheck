@@ -83,7 +83,7 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
         //JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
         jsonManager.setValue(sectionName + "/" + subSectionName, answerText);
 
-        boolean success = jsonManager.writeoutJson();
+        boolean success = jsonManager.writeJson();
         if (success) {
             System.out.println("Successfully saved to " + jsonFilePath.toFile().getAbsolutePath());
             resetBackgroundColorOfTAreasTFields();
