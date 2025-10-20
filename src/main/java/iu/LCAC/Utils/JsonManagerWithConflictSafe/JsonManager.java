@@ -18,7 +18,7 @@ public class JsonManager {
     /**
      * コンストラクタ
      *
-     * @param json_file JSONファイル
+     * @param json_file_path JSONファイル
      */
     public JsonManager(String json_file_path) {
         this(new File(json_file_path));

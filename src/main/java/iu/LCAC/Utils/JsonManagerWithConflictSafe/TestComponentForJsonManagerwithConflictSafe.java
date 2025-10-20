@@ -7,9 +7,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.Instant;
 
-public class TestComponent extends JPanel implements JsonManagerCallback {
+public class TestComponentForJsonManagerwithConflictSafe extends JPanel implements JsonManagerCallback {
 
     private final JFrame frame = new JFrame("Over View of Json");
 
@@ -19,7 +18,7 @@ public class TestComponent extends JPanel implements JsonManagerCallback {
 
     private final JsonManagerWithConflictSafe jsonManagerWithConflictSafe;
 
-    public TestComponent() {
+    public TestComponentForJsonManagerwithConflictSafe() {
 
         // 基本的な使い方
         Path json_file_path = Paths.get("/home/iu/Downloads/test.json");
@@ -152,7 +151,7 @@ public class TestComponent extends JPanel implements JsonManagerCallback {
 
     public static void main(String[] args) {
 
-        TestComponent compWithReloadFunc = new TestComponent();
+        TestComponentForJsonManagerwithConflictSafe compWithReloadFunc = new TestComponentForJsonManagerwithConflictSafe();
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
