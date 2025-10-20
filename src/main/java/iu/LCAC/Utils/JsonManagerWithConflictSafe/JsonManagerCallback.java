@@ -3,13 +3,13 @@ package iu.LCAC.Utils.JsonManagerWithConflictSafe;
 import java.awt.*;
 import java.nio.file.Path;
 
-public interface Intrfc_CompWithReloadFunc {
+public interface JsonManagerCallback {
 
     Component getFrame();
-
-    void actionAfterReloading();
 
     void actionAfterOpeningJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe);
 
     void actionAfterSavingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe);
+
+    void actionAfterReloading(JsonManagerWithConflictSafe jsonManagerWithConflictSafe);
 }

@@ -9,18 +9,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Instant;
 
-public class TestComponent extends JPanel implements Intrfc_CompWithReloadFunc {
+public class TestComponent extends JPanel implements JsonManagerCallback {
 
     private final JFrame frame = new JFrame("Over View of Json");
 
     private final JTextField textField_1 = new JTextField();
     private final JTextField textField_2 = new JTextField();
-    private final JButton openBtn = new JButton("Open");
-    private final JButton saveBtn = new JButton("Save");
-    private final JButton saveAsBtn = new JButton("Save As");
     private final JLabel statusLbl = new JLabel("No file");
 
-    private JsonManagerWithConflictSafe jsonManagerWithConflictSafe;
+    private final JsonManagerWithConflictSafe jsonManagerWithConflictSafe;
 
     public TestComponent() {
 
@@ -42,8 +39,11 @@ public class TestComponent extends JPanel implements Intrfc_CompWithReloadFunc {
 
         // North Area
         JPanel top = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JButton openBtn = new JButton("Open");
         top.add(openBtn);
+        JButton saveBtn = new JButton("Save");
         top.add(saveBtn);
+        JButton saveAsBtn = new JButton("Save As");
         top.add(saveAsBtn);
         top.add(new JSeparator(SwingConstants.VERTICAL));
         top.add(statusLbl);
@@ -80,9 +80,9 @@ public class TestComponent extends JPanel implements Intrfc_CompWithReloadFunc {
 
     @Override
     public void actionAfterSavingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
-        long loadedMtime = jsonManagerWithConflictSafe.getLoadedMtime();
+        long loadedMtime = jsonManagerWithConflictSafe.getLastModifiedTime();
         setStatus("The values were saved \n" +
-                " at " + Instant.ofEpochMilli(loadedMtime) + "\n" +
+                " at " + JsonManagerWithConflictSafe.formatTimeInJST(loadedMtime) + "\n" +
                 " to " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
     }
 
@@ -108,17 +108,17 @@ public class TestComponent extends JPanel implements Intrfc_CompWithReloadFunc {
 
 
     @Override
-    public void actionAfterReloading() {
-        if (this.jsonManagerWithConflictSafe != null) {
-            String value1 = this.jsonManagerWithConflictSafe.getValue("/test/key1");
+    public void actionAfterReloading(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+        if (jsonManagerWithConflictSafe != null) {
+            String value1 = jsonManagerWithConflictSafe.getValue("/test/key1");
             //System.out.println("value1: " + value1);
             textField_1.setText(value1);
-            String value2 = this.jsonManagerWithConflictSafe.getValue("/test/key2");
+            String value2 = jsonManagerWithConflictSafe.getValue("/test/key2");
             //System.out.println("value2: " + value2);
 
             textField_2.setText(value2);
-            long loadedMtime = this.jsonManagerWithConflictSafe.getLoadedMtime();
-            setStatus("Reloaded from disk at " + Instant.ofEpochMilli(loadedMtime));
+            long loadedMtime = jsonManagerWithConflictSafe.getLastModifiedTime();
+            setStatus("Reloaded from disk at " + JsonManagerWithConflictSafe.formatTimeInJST(loadedMtime));
         } else {
             System.err.println("this.jsonManagerWithConflictSafe is null.");
         }
@@ -127,17 +127,17 @@ public class TestComponent extends JPanel implements Intrfc_CompWithReloadFunc {
 
     @Override
     public void actionAfterOpeningJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
-        if (this.jsonManagerWithConflictSafe != null) {
-            String value1 = this.jsonManagerWithConflictSafe.getValue("/test/key1");
-            System.out.println("value1: " + value1);
+        if (jsonManagerWithConflictSafe != null) {
+            String value1 = jsonManagerWithConflictSafe.getValue("/test/key1");
+            //System.out.println("value1: " + value1);
             textField_1.setText(value1);
-            String value2 = this.jsonManagerWithConflictSafe.getValue("/test/key2");
-            System.out.println("value2: " + value2);
+            String value2 = jsonManagerWithConflictSafe.getValue("/test/key2");
+            //System.out.println("value2: " + value2);
             textField_2.setText(value2);
 
-            long loadedMtime = this.jsonManagerWithConflictSafe.getLoadedMtime();
+            long loadedMtime = jsonManagerWithConflictSafe.getLastModifiedTime();
 
-            setStatus("Opened: " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath() + " (mtime=" + Instant.ofEpochMilli(loadedMtime) + ")");
+            setStatus("Opened: " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath() + " (mtime=" + JsonManagerWithConflictSafe.formatTimeInJST(loadedMtime) + ")");
         } else {
             System.err.println("this.jsonManagerWithConflictSafe2 is null.");
         }
@@ -160,29 +160,5 @@ public class TestComponent extends JPanel implements Intrfc_CompWithReloadFunc {
                 compWithReloadFunc.getFrame().setVisible(true);
             }
         });
-
-
-        /*
-        System.out.println("Json読み込み");
-        System.out.println("key1 = " + jm.getValue("test/key1"));
-        System.out.println("key2 = " + jm.getValue("test/key2"));
-
-        // 視覚的に確認用
-        jm.showLoadedContent();
-
-        System.out.println("15秒待機");
-        System.out.println("（この時間中に外部プログラムから内容を書き換えてみてください）");
-        try {
-            Thread.sleep(15000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("書き込みテスト");
-        jm.setValue("test/key1", "value1");
-        jm.setValue("test/key2", "value2");
-        jm.writeJson();
-        */
-
     }
 }

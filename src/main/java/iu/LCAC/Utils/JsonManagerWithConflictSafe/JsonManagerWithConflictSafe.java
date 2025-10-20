@@ -1,7 +1,5 @@
 package iu.LCAC.Utils.JsonManagerWithConflictSafe;
 
-import com.google.gson.GsonBuilder;
-
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +7,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * JsonManagerWithConflictSafe
@@ -34,37 +35,31 @@ import java.time.Instant;
 public class JsonManagerWithConflictSafe extends JsonManager {
 
 
+    private static final long UNINITIALIZED_MTIME = -1L;
+    private static final ZoneId JST = ZoneId.of("Asia/Tokyo");
+    private static final DateTimeFormatter JST_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z");
+
     //GUI
-    private final Intrfc_CompWithReloadFunc compWithReloadFunc;
+    private final JsonManagerCallback compWithReloadFunc;
 
-    //private Path currentPath = null;
-    private String content = "";
-    private volatile long loadedMtime = -1L;
-    private volatile String loadedHash = null;
+    private long loadedMtime = UNINITIALIZED_MTIME;
+    private String loadedHash = null;
 
 
-    public JsonManagerWithConflictSafe(String json_file_path, Intrfc_CompWithReloadFunc compWithReloadFunc) {
+    public JsonManagerWithConflictSafe(String json_file_path, JsonManagerCallback compWithReloadFunc) {
         this(new File(json_file_path), compWithReloadFunc);
     }
 
-    public JsonManagerWithConflictSafe(File jsonFile, Intrfc_CompWithReloadFunc compWithReloadFunc) {
+    public JsonManagerWithConflictSafe(File jsonFile, JsonManagerCallback compWithReloadFunc) {
         super(jsonFile);
-        //this.currentPath = jsonFile.toPath();
         this.compWithReloadFunc = compWithReloadFunc;
-        //openJson(jsonFile.toPath());
-        this.loadedMtime = this.getLoadedMtime();
-        this.loadedHash = this.getHashString();
-
+        initializeMetadata();
     }
 
     public void openJson(File jsonFile) {
         this.jsonFile = jsonFile;
-        this.gson = new GsonBuilder().setPrettyPrinting().create();
         this.jsonObject = loadJsonObject(this.jsonFile);
-
-        this.loadedMtime = this.getLoadedMtime();
-        this.loadedHash = this.getHashString();
-
+        initializeMetadata();
         compWithReloadFunc.actionAfterOpeningJson(this);
     }
 
@@ -72,66 +67,65 @@ public class JsonManagerWithConflictSafe extends JsonManager {
         JOptionPane.showMessageDialog(compWithReloadFunc.getFrame(), msg, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
+    private void initializeMetadata() {
+            this.loadedMtime = getLastModifiedTime();
+            this.loadedHash = getHashString();
+    }
 
     /**
      * Save current text. If forceOverwrite==false and disk mtime differs from loadedMtime,
      * show conflict dialog (Cancel/Overwrite/Reload/Save As).
      */
     public boolean doSave(boolean forceOverwrite) {
-
-        String currentHash = getHashString();
-
-        //System.out.println("doSave");
-        if (jsonFile.toPath() == null) {
-            System.err.println("currentPath is null.");
+        if (jsonFile == null) {
+            System.err.println("jsonFile is null.");
             return false;
         }
+
         try {
-            long diskMtime = Files.getLastModifiedTime(jsonFile.toPath()).toMillis();
-            //System.out.println("diskMtime: " + diskMtime);
-
-            if (!forceOverwrite &&
-                    loadedMtime != -1 &&
-                    diskMtime != loadedMtime) {
-                // Conflict
-                int choice = showConflictDialog(jsonFile.toPath(), diskMtime, loadedMtime);
-                switch (choice) {
-                    case 0: // Cancel
-                        //System.out.println("Cancel");
-                        return false;
-                    case 1: // Overwrite
-                        //System.out.println("Overwrite");
-                        writeJson();
-                        updateModifiedTimeAndContentHash();
-                        return true;
-                    case 2: // Reload
-                        //System.out.println("Reload");
-                        return reloadFromDisk();
-                    case 3: // Save As
-                        //System.out.println("Save As");
-                        return doSaveAs();
-                    default:
-                        //System.out.println("default");
-                        return false;
-                }
+            if (!forceOverwrite && hasConflict()) {
+                return handleConflict();
             }
-
-            //System.out.println("No conflict or force overwrite");
-            writeJson();
-            updateModifiedTimeAndContentHash();
-            compWithReloadFunc.actionAfterSavingJson(this);
-            return true;
+            return saveAndUpdateMetadata();
         } catch (IOException ex) {
             showError("Save failed: " + ex.getMessage());
             return false;
         }
     }
 
+    private boolean hasConflict() throws IOException {
+        if (loadedMtime == UNINITIALIZED_MTIME) {
+            return false;
+        }
+        long diskMtime = Files.getLastModifiedTime(jsonFile.toPath()).toMillis();
+        return diskMtime != loadedMtime;
+    }
+
+    private boolean handleConflict() throws IOException {
+        long diskMtime = Files.getLastModifiedTime(jsonFile.toPath()).toMillis();
+        int choice = showConflictDialog(jsonFile.toPath(), diskMtime, loadedMtime);
+
+        switch (choice) {
+            case 0: return false;  // Cancel
+            case 1: return saveAndUpdateMetadata();  // Overwrite
+            case 2: return reloadFromDisk();  // Reload
+            case 3: return doSaveAs();  // Save As
+            default: return false;
+        }
+    }
+
+    private boolean saveAndUpdateMetadata() throws IOException {
+        writeJson();
+        updateModifiedTimeAndContentHash();
+        compWithReloadFunc.actionAfterSavingJson(this);
+        return true;
+    }
+
     public boolean doSaveAs() {
-        if (jsonFile.toPath() == null && this.jsonObject.isEmpty()) return false;
+        if (jsonFile == null && this.jsonObject.isEmpty()) return false;
 
         JFileChooser fc = new JFileChooser();
-        if (jsonFile.toPath() != null) fc.setSelectedFile(jsonFile.toPath().toFile());
+        if (jsonFile != null) fc.setSelectedFile(jsonFile);
         if (fc.showSaveDialog(compWithReloadFunc.getFrame()) == JFileChooser.APPROVE_OPTION) {
             Path dest = fc.getSelectedFile().toPath();
             if (Files.exists(dest)) {
@@ -152,13 +146,8 @@ public class JsonManagerWithConflictSafe extends JsonManager {
         if (this.jsonFile == null) return false;
 
         this.jsonObject = loadJsonObject(this.jsonFile);
-
-        System.out.println(this.getJsonAsText());
-
-        this.loadedMtime = getLoadedMtime();
-        this.loadedHash = getHashString();
-
-        compWithReloadFunc.actionAfterReloading();
+        initializeMetadata();
+        compWithReloadFunc.actionAfterReloading(this);
 
         return true;
     }
@@ -166,35 +155,44 @@ public class JsonManagerWithConflictSafe extends JsonManager {
     private int showConflictDialog(Path p, long diskMtime, long myLoadedMtime) {
         String msg = "保存しようとしているファイルは、読み込み後に外部で更新されています。\n" +
                 "  ファイル: " + p.toAbsolutePath() + "\n" +
-                "  読み込み時刻: " + Instant.ofEpochMilli(myLoadedMtime) + "\n" +
-                "  ディスク上更新時刻: " + Instant.ofEpochMilli(diskMtime) + "\n" +
+                "  読み込み時刻: " + formatTimeInJST(myLoadedMtime) + "\n" +
+                "  ディスク上更新時刻: " + formatTimeInJST(diskMtime) + "\n" +
                 "  どうしますか？";
         String[] options = {"キャンセル", "上書き", "リロード", "別名保存"};
         return JOptionPane.showOptionDialog(compWithReloadFunc.getFrame(), msg, "競合の検出",
-                //return JOptionPane.showOptionDialog(null, msg, "競合の検出",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
                 null, options, options[0]);
     }
 
     private void updateModifiedTimeAndContentHash() throws IOException {
-        loadedMtime = getLoadedMtime();
+        loadedMtime = getLastModifiedTime();
         loadedHash = getHashString();
     }
 
-    public long getLoadedMtime() {
+    public long getLastModifiedTime()  {
         try {
             return Files.getLastModifiedTime(this.jsonFile.toPath()).toMillis();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.err.println("Failed to get the last modified time: " + e.getMessage());
+            return UNINITIALIZED_MTIME;
         }
     }
 
-    public String getHashString() {
+    private String getHashString() {
         return Hashes.sha256(gson.toJson(this.jsonObject));
     }
 
-    // ---- small hashing helper ----
-    static class Hashes {
+    /**
+     * Convert epoch milliseconds to JST (Japan Standard Time) formatted string
+     * @param epochMilli epoch time in milliseconds
+     * @return formatted time string in JST (e.g., "2025-10-20 15:30:45 JST")
+     */
+    public static String formatTimeInJST(long epochMilli) {
+        return ZonedDateTime.ofInstant(Instant.ofEpochMilli(epochMilli), JST)
+                .format(JST_FORMATTER);
+    }
+
+    private static class Hashes {
         static String sha256(String s) {
             try {
                 java.security.MessageDigest md = java.security.MessageDigest.getInstance("SHA-256");
@@ -212,34 +210,4 @@ public class JsonManagerWithConflictSafe extends JsonManager {
         SwingUtilities.invokeLater(() -> compWithReloadFunc.getFrame().setVisible(true));
     }
 
-    public static void main(String[] args) {
-
-        Intrfc_CompWithReloadFunc compWithReloadFunc = new TestComponent();
-
-        // 基本的な使い方
-        JsonManagerWithConflictSafe jm = new JsonManagerWithConflictSafe(
-                new File("/home/iu/Downloads/test.json"),
-                compWithReloadFunc);
-
-        System.out.println("Json読み込み");
-        System.out.println("key1 = " + jm.getValue("test/key1"));
-        System.out.println("key2 = " + jm.getValue("test/key2"));
-
-        // 視覚的に確認用
-        jm.showLoadedContent();
-
-        System.out.println("15秒待機");
-        System.out.println("（この時間中に外部プログラムから内容を書き換えてみてください）");
-        try {
-            Thread.sleep(15000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("書き込みテスト");
-        jm.setValue("test/key1", "value1");
-        jm.setValue("test/key2", "value2");
-        jm.writeJson();
-
-    }
 }
