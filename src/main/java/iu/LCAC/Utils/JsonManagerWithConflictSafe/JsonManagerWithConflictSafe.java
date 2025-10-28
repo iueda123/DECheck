@@ -53,14 +53,19 @@ public class JsonManagerWithConflictSafe extends JsonManager {
     public JsonManagerWithConflictSafe(File jsonFile, JsonManagerCallback compWithReloadFunc) {
         super(jsonFile);
         this.compWithReloadFunc = compWithReloadFunc;
-        initializeMetadata();
+        if (this.jsonObject != null) {
+            initializeMetadata();
+            compWithReloadFunc.actionAfterSuccessfullyOpeningJson(this);
+        } else {
+            compWithReloadFunc.actionAfterFailingToOpenJson(this);
+        }
     }
 
     public void openJson(File jsonFile) {
         this.jsonFile = jsonFile;
         this.jsonObject = loadJsonObject(this.jsonFile);
-        initializeMetadata();
         if (this.jsonObject != null) {
+            initializeMetadata();
             compWithReloadFunc.actionAfterSuccessfullyOpeningJson(this);
         } else {
             compWithReloadFunc.actionAfterFailingToOpenJson(this);
