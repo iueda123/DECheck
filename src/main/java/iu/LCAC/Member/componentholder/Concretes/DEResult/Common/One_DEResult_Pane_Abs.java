@@ -5,6 +5,8 @@ import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Utils.ColorChangeableTextField;
 import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManager;
+import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManagerCallback;
+import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManagerWithConflictSafe;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,12 +15,12 @@ import java.awt.event.ActionListener;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public abstract class One_DEResult_Pane_Abs extends JPanel {
+public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManagerCallback {
 
     final String jsonFolderPathStr;
     String jsonName;
-    JsonManager jsonManager;
-    //final JsonManagerWithConflictSafe jsonManager;
+    //JsonManager jsonManager;
+    JsonManagerWithConflictSafe jsonManager;
 
     final String sectionName;
     final String subSectionName;
@@ -61,8 +63,8 @@ public abstract class One_DEResult_Pane_Abs extends JPanel {
         // JComponent系へのリロード処理をどう結びつける？
         //JsonManagerWithConflictSafe()のコンストラクタに引数としてreload()メソッドをもつインターフェースを渡し、
         //そのインターフェースのreload()を呼び出すか？
-        //this.jsonManager = new JsonManagerWithConflictSafe(this.jsonFolderPathStr + "/" + jsonName);
-        this.jsonManager = new JsonManager(this.jsonFolderPathStr + "/" + jsonName);
+        //this.jsonManager = new JsonManager(this.jsonFolderPathStr + "/" + jsonName);
+        this.jsonManager = new JsonManagerWithConflictSafe(this.jsonFolderPathStr + "/" + jsonName, this);
 
         this.sectionName = sectionName;
         this.subSectionName = subSectionName;

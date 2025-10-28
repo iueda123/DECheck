@@ -7,9 +7,16 @@ public interface JsonManagerCallback {
 
     Component getFrame();
 
-    void actionAfterOpeningJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe);
 
-    void actionAfterSavingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe);
+    void actionAfterSuccessfullyOpeningJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe);
 
-    void actionAfterReloading(JsonManagerWithConflictSafe jsonManagerWithConflictSafe);
+    void actionAfterFailingToOpenJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe);
+
+    void actionAfterSuccessfullySavingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe);
+
+    void actionAfterFailingToSaveJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe);
+
+    void actionAfterSuccessfullyReloadingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe);
+
+    void actionAfterFailingToReloadJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe);
 }

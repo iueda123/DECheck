@@ -66,7 +66,7 @@ public class TestComponentForJsonManagerwithConflictSafe extends JPanel implemen
             }
         });
 
-        this.actionAfterOpeningJson(this.jsonManagerWithConflictSafe);
+        this.actionAfterSuccessfullyOpeningJson(this.jsonManagerWithConflictSafe);
     }
 
     private void doSave(boolean forceOverWrite) {
@@ -75,14 +75,6 @@ public class TestComponentForJsonManagerwithConflictSafe extends JPanel implemen
         boolean rslt_2 = this.jsonManagerWithConflictSafe.setValue("/test/key2", textField_2.getText());
         //if(rslt_2) System.out.println("The value of textField2 was successfully set.");
         this.jsonManagerWithConflictSafe.doSave(forceOverWrite);
-    }
-
-    @Override
-    public void actionAfterSavingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
-        long loadedMtime = jsonManagerWithConflictSafe.getLastModifiedTime();
-        setStatus("The values were saved \n" +
-                " at " + JsonManagerWithConflictSafe.formatTimeInJST(loadedMtime) + "\n" +
-                " to " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
     }
 
     private void doSaveAs() {
@@ -105,47 +97,63 @@ public class TestComponentForJsonManagerwithConflictSafe extends JPanel implemen
         statusLbl.setText(s);
     }
 
-
-    @Override
-    public void actionAfterReloading(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
-        if (jsonManagerWithConflictSafe != null) {
-            String value1 = jsonManagerWithConflictSafe.getValue("/test/key1");
-            //System.out.println("value1: " + value1);
-            textField_1.setText(value1);
-            String value2 = jsonManagerWithConflictSafe.getValue("/test/key2");
-            //System.out.println("value2: " + value2);
-
-            textField_2.setText(value2);
-            long loadedMtime = jsonManagerWithConflictSafe.getLastModifiedTime();
-            setStatus("Reloaded from disk at " + JsonManagerWithConflictSafe.formatTimeInJST(loadedMtime));
-        } else {
-            System.err.println("this.jsonManagerWithConflictSafe is null.");
-        }
-    }
-
-
-    @Override
-    public void actionAfterOpeningJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
-        if (jsonManagerWithConflictSafe != null) {
-            String value1 = jsonManagerWithConflictSafe.getValue("/test/key1");
-            //System.out.println("value1: " + value1);
-            textField_1.setText(value1);
-            String value2 = jsonManagerWithConflictSafe.getValue("/test/key2");
-            //System.out.println("value2: " + value2);
-            textField_2.setText(value2);
-
-            long loadedMtime = jsonManagerWithConflictSafe.getLastModifiedTime();
-
-            setStatus("Opened: " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath() + " (mtime=" + JsonManagerWithConflictSafe.formatTimeInJST(loadedMtime) + ")");
-        } else {
-            System.err.println("this.jsonManagerWithConflictSafe2 is null.");
-        }
-    }
-
     @Override
     public Component getFrame() {
         return frame;
         //return this;
+    }
+
+    @Override
+    public void actionAfterSuccessfullyOpeningJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+        System.out.println("Successfully open JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+        String value1 = jsonManagerWithConflictSafe.getValue("/test/key1");
+        //System.out.println("value1: " + value1);
+        textField_1.setText(value1);
+        String value2 = jsonManagerWithConflictSafe.getValue("/test/key2");
+        //System.out.println("value2: " + value2);
+        textField_2.setText(value2);
+
+        long loadedMtime = jsonManagerWithConflictSafe.getLastModifiedTime();
+
+        setStatus("Opened: " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath() + " (mtime=" + JsonManagerWithConflictSafe.formatTimeInJST(loadedMtime) + ")");
+    }
+
+    @Override
+    public void actionAfterFailingToOpenJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+        System.err.println("Failed to open JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+    }
+
+    @Override
+    public void actionAfterSuccessfullySavingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+        System.out.println("Successfully saved JSON to " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+        long loadedMtime = jsonManagerWithConflictSafe.getLastModifiedTime();
+        setStatus("The values were saved \n" +
+                " at " + JsonManagerWithConflictSafe.formatTimeInJST(loadedMtime) + "\n" +
+                " to " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+    }
+
+    @Override
+    public void actionAfterFailingToSaveJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+        System.err.println("Failed to save JSON to " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+    }
+
+    @Override
+    public void actionAfterSuccessfullyReloadingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+        System.out.println("Successfully loaded JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+        String value1 = jsonManagerWithConflictSafe.getValue("/test/key1");
+        //System.out.println("value1: " + value1);
+        textField_1.setText(value1);
+        String value2 = jsonManagerWithConflictSafe.getValue("/test/key2");
+        //System.out.println("value2: " + value2);
+
+        textField_2.setText(value2);
+        long loadedMtime = jsonManagerWithConflictSafe.getLastModifiedTime();
+        setStatus("Reloaded from disk at " + JsonManagerWithConflictSafe.formatTimeInJST(loadedMtime));
+    }
+
+    @Override
+    public void actionAfterFailingToReloadJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+        System.err.println("Failed to reload JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
     }
 
 

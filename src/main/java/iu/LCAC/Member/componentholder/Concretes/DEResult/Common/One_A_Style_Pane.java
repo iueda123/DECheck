@@ -4,13 +4,15 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Utils.ColorChangeableTextArea;
 import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManager;
+import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManagerCallback;
+import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManagerWithConflictSafe;
 
 import javax.swing.*;
 import java.awt.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
+public class One_A_Style_Pane extends One_DEResult_Pane_Abs  {
 
     ColorChangeableTextArea tArea_Answer = new ColorChangeableTextArea("Answer");
     private final String tooltipForAnswer = "This is the answer areae.";
@@ -70,52 +72,20 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
         // BoxLayoutで適切にスクロールするために、固定の高さを設定
         setPreferredSize(new Dimension(800, 400));
         setMaximumSize(new Dimension(Integer.MAX_VALUE, 400));
-
     }
 
 
     @Override
     public void saveJson() {
-        Path jsonFilePath = Paths.get(jsonFolderPathStr + "/" + jsonName);
         String answerText = tArea_Answer.getText();
-        System.out.println("answerText: " + answerText);
-        // JSONへ書き込み
-        //JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
+        //System.out.println("answerText: " + answerText);
         jsonManager.setValue(sectionName + "/" + subSectionName, answerText);
-
-        boolean success = jsonManager.writeJson();
-        if (success) {
-            System.out.println("Successfully saved to " + jsonFilePath.toFile().getAbsolutePath());
-            resetBackgroundColorOfTAreasTFields();
-        } else {
-            System.err.println("Failed to save to " + jsonFilePath.toFile().getAbsolutePath());
-        }
+        jsonManager.doSave(false);
     }
 
     @Override
     public void loadJson() {
-        Path jsonFilePath = Paths.get(jsonFolderPathStr + "/" + jsonName);
-        //System.out.println("jsonFilePath: " + jsonFilePath);
-
-        if (!jsonFilePath.toFile().exists()) {
-            System.err.println("JSON file not found: " + jsonFilePath.toFile().getAbsolutePath());
-            return;
-        }
-
-        // JSONから読み込み
-        jsonManager = new JsonManager(jsonFilePath.toFile());
-        //System.out.println("sectionName: " + sectionName);
-        //System.out.println("subSectionName: " + subSectionName);
-        //String answer = jsonManager.getValue(sectionName + "/" + subSectionName + "/study_id");
-        String answer = jsonManager.getValue(sectionName + "/" + subSectionName );
-        System.out.println("answer: " + answer);
-
-        // 各フィールドに値を設定
-        if (answer != null) tArea_Answer.setText(answer);
-
-        resetBackgroundColorOfTAreasTFields();
-
-        System.out.println("Successfully loaded from " + jsonFilePath.toFile().getAbsolutePath());
+        jsonManager.reloadFromDisk();
     }
 
     @Override
@@ -124,9 +94,43 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs {
         tArea_Answer.updateDefaultValue();
     }
 
-    public void setValTo_Answer(String value) {
-        tArea_Answer.setText(value);
+    @Override
+    public Component getFrame() {
+        return null;
     }
 
+    @Override
+    public void actionAfterSuccessfullyOpeningJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+        System.out.println("Successfully open JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+    }
 
+    @Override
+    public void actionAfterFailingToOpenJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+        System.err.println("Failed to open JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+    }
+
+    @Override
+    public void actionAfterSuccessfullySavingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+            System.out.println("Successfully saved JSON to " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+            resetBackgroundColorOfTAreasTFields();
+    }
+
+    @Override
+    public void actionAfterFailingToSaveJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+        System.err.println("Failed to save JSON to " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+    }
+
+    @Override
+    public void actionAfterSuccessfullyReloadingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+       String answer = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName );
+        //System.out.println("answer: " + answer);
+        if (answer != null) tArea_Answer.setText(answer);
+        resetBackgroundColorOfTAreasTFields();
+        System.out.println("Successfully loaded JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+    }
+
+    @Override
+    public void actionAfterFailingToReloadJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+        System.err.println("Failed to reload JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+    }
 }

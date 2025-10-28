@@ -60,7 +60,11 @@ public class JsonManagerWithConflictSafe extends JsonManager {
         this.jsonFile = jsonFile;
         this.jsonObject = loadJsonObject(this.jsonFile);
         initializeMetadata();
-        compWithReloadFunc.actionAfterOpeningJson(this);
+        if (this.jsonObject != null) {
+            compWithReloadFunc.actionAfterSuccessfullyOpeningJson(this);
+        } else {
+            compWithReloadFunc.actionAfterFailingToOpenJson(this);
+        }
     }
 
     private void showError(String msg) {
@@ -68,8 +72,8 @@ public class JsonManagerWithConflictSafe extends JsonManager {
     }
 
     private void initializeMetadata() {
-            this.loadedMtime = getLastModifiedTime();
-            this.loadedHash = getHashString();
+        this.loadedMtime = getLastModifiedTime();
+        this.loadedHash = getHashString();
     }
 
     /**
@@ -79,16 +83,33 @@ public class JsonManagerWithConflictSafe extends JsonManager {
     public boolean doSave(boolean forceOverwrite) {
         if (jsonFile == null) {
             System.err.println("jsonFile is null.");
+            compWithReloadFunc.actionAfterFailingToSaveJson(this);
             return false;
         }
 
         try {
             if (!forceOverwrite && hasConflict()) {
-                return handleConflict();
+                //return handleConflict();
+                if (handleConflict()) {
+                    compWithReloadFunc.actionAfterSuccessfullySavingJson(this);
+                    return true;
+                } else {
+                    compWithReloadFunc.actionAfterFailingToSaveJson(this);
+                    return false;
+                }
+
             }
-            return saveAndUpdateMetadata();
+            //return saveAndUpdateMetadata();
+            if (saveAndUpdateMetadata()) {
+                compWithReloadFunc.actionAfterSuccessfullySavingJson(this);
+                return true;
+            } else {
+                compWithReloadFunc.actionAfterFailingToSaveJson(this);
+                return false;
+            }
         } catch (IOException ex) {
             showError("Save failed: " + ex.getMessage());
+            compWithReloadFunc.actionAfterFailingToSaveJson(this);
             return false;
         }
     }
@@ -106,19 +127,27 @@ public class JsonManagerWithConflictSafe extends JsonManager {
         int choice = showConflictDialog(jsonFile.toPath(), diskMtime, loadedMtime);
 
         switch (choice) {
-            case 0: return false;  // Cancel
-            case 1: return saveAndUpdateMetadata();  // Overwrite
-            case 2: return reloadFromDisk();  // Reload
-            case 3: return doSaveAs();  // Save As
-            default: return false;
+            case 0:
+                return false;  // Cancel
+            case 1:
+                return saveAndUpdateMetadata();  // Overwrite
+            case 2:
+                return reloadFromDisk();  // Reload
+            case 3:
+                return doSaveAs();  // Save As
+            default:
+                return false;
         }
     }
 
     private boolean saveAndUpdateMetadata() throws IOException {
-        writeJson();
-        updateModifiedTimeAndContentHash();
-        compWithReloadFunc.actionAfterSavingJson(this);
-        return true;
+        if (writeJson()) {
+            loadedMtime = getLastModifiedTime();
+            loadedHash = getHashString();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean doSaveAs() {
@@ -136,20 +165,27 @@ public class JsonManagerWithConflictSafe extends JsonManager {
             }
             this.jsonFile = dest.toFile();
 
-
             return doSave(true);
         }
+
         return false;
     }
 
-    private boolean reloadFromDisk() {
-        if (this.jsonFile == null) return false;
+    public boolean reloadFromDisk() {
+        if (this.jsonFile == null) {
+            compWithReloadFunc.actionAfterFailingToReloadJson(this);
+            return false;
+        }
 
         this.jsonObject = loadJsonObject(this.jsonFile);
-        initializeMetadata();
-        compWithReloadFunc.actionAfterReloading(this);
-
-        return true;
+        if(this.jsonObject != null) {
+            initializeMetadata();
+            compWithReloadFunc.actionAfterSuccessfullyReloadingJson(this);
+            return true;
+        }else{
+            compWithReloadFunc.actionAfterFailingToReloadJson(this);
+            return false;
+        }
     }
 
     private int showConflictDialog(Path p, long diskMtime, long myLoadedMtime) {
@@ -164,12 +200,7 @@ public class JsonManagerWithConflictSafe extends JsonManager {
                 null, options, options[0]);
     }
 
-    private void updateModifiedTimeAndContentHash() throws IOException {
-        loadedMtime = getLastModifiedTime();
-        loadedHash = getHashString();
-    }
-
-    public long getLastModifiedTime()  {
+    public long getLastModifiedTime() {
         try {
             return Files.getLastModifiedTime(this.jsonFile.toPath()).toMillis();
         } catch (IOException e) {
@@ -184,6 +215,7 @@ public class JsonManagerWithConflictSafe extends JsonManager {
 
     /**
      * Convert epoch milliseconds to JST (Japan Standard Time) formatted string
+     *
      * @param epochMilli epoch time in milliseconds
      * @return formatted time string in JST (e.g., "2025-10-20 15:30:45 JST")
      */

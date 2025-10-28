@@ -2,6 +2,7 @@ package iu.LCAC.Member.componentholder.Concretes.DEResult.Common;
 
 import iu.LCAC.Utils.ColorChangeableTextArea;
 import iu.LCAC.Utils.ColorChangeableTextField;
+import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManagerWithConflictSafe;
 
 import javax.swing.*;
 import java.awt.*;
@@ -135,71 +136,11 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         setMaximumSize(new Dimension(Integer.MAX_VALUE, 400));
     }
 
-
-    public void setValTo_Answer(String value) {
-        tArea_Answer.setText(value);
-    }
-
-    public void setValTo_ConfidenceRating(String value) {
-        tFiled_ConfidenceRating.setText(value);
-    }
-
-    public void setValTo_NegativeAnswerCategory(String value) {
-        tField_NegativeAnswerCategory.setText(value);
-    }
-
-    public void setValTo_Reason(String value) {
-        tArea_Reason.setText(value);
-    }
-
-    public void setValTo_SupportingText(String value) {
-        tArea_SupportingText.setText(value);
-    }
-
-    public void setValTo_PageLine(String value) {
-        tArea_Location.setText(value);
-    }
-
-
     public void loadJson() {
-        Path jsonFilePath = Paths.get(jsonFolderPathStr + "/" + jsonName);
-        //System.out.println("jsonFilePath: " + jsonFilePath);
-
-        if (!jsonFilePath.toFile().exists()) {
-            System.err.println("JSON file not found: " + jsonFilePath.toFile().getAbsolutePath());
-            return;
-        }
-
-        // JSONから読み込み
-        //JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
-        System.out.println("sectionName: " + sectionName);
-        System.out.println("subSectionName: " + subSectionName);
-
-        String answer = jsonManager.getValue(sectionName + "/" + subSectionName + "/Answer");
-        String confidenceRating = jsonManager.getValue(sectionName + "/" + subSectionName + "/Confidence\\ Rating");
-        String negativeAnswerCategory = jsonManager.getValue(sectionName + "/" + subSectionName + "/Negative\\ Answer\\ Category");
-        String reason = jsonManager.getValue(sectionName + "/" + subSectionName + "/Reason");
-        String supportingText = jsonManager.getValue(sectionName + "/" + subSectionName + "/Supporting\\ Text");
-        String pageLine = jsonManager.getValue(sectionName + "/" + subSectionName + "/Page\\/Line");
-
-        // 各フィールドに値を設定
-        if (answer != null) tArea_Answer.setText(answer);
-        if (confidenceRating != null) tFiled_ConfidenceRating.setText(confidenceRating);
-        if (negativeAnswerCategory != null) tField_NegativeAnswerCategory.setText(negativeAnswerCategory);
-        if (reason != null) tArea_Reason.setText(reason);
-        if (supportingText != null) tArea_SupportingText.setText(supportingText);
-        if (pageLine != null) tArea_Location.setText(pageLine);
-
-        // set title border
-        setBorder(BorderFactory.createTitledBorder(jsonName));
-
-        resetBackgroundColorOfTAreasTFields();
-
-        System.out.println("Successfully loaded from " + jsonFilePath.toFile().getAbsolutePath());
+        jsonManager.reloadFromDisk();
     }
 
     public void saveJson() {
-        Path jsonFilePath = Paths.get(jsonFolderPathStr + "/" + jsonName);
         String answerText = tArea_Answer.getText();
         String confidenceRatingText = tFiled_ConfidenceRating.getText();
         String negativeAnswerCategoryText = tField_NegativeAnswerCategory.getText();
@@ -208,7 +149,6 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         String pageLineText = tArea_Location.getText();
 
         // JSONへ書き込み
-        //JsonManager jsonManager = new JsonManager(jsonFilePath.toFile());
         jsonManager.setValue(sectionName + "/" + subSectionName + "/Answer", answerText);
         jsonManager.setValue(sectionName + "/" + subSectionName + "/Confidence\\ Rating", confidenceRatingText);
         jsonManager.setValue(sectionName + "/" + subSectionName + "/Negative\\ Answer\\ Category", negativeAnswerCategoryText);
@@ -216,15 +156,8 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         jsonManager.setValue(sectionName + "/" + subSectionName + "/Supporting\\ Text", supportingText);
         jsonManager.setValue(sectionName + "/" + subSectionName + "/Page\\/Line", pageLineText);
 
-        boolean success = jsonManager.writeJson();
-        if (success) {
-            System.out.println("Successfully saved to " + jsonManager.getJsonFile().getAbsolutePath());
-            resetBackgroundColorOfTAreasTFields();
-        } else {
-            System.err.println("Failed to save to " +  jsonManager.getJsonFile().getAbsolutePath());
-        }
+        jsonManager.doSave(false);
 
-        //jsonManager.showLoadedContent();
     }
 
 
@@ -247,4 +180,59 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
     }
 
 
+    @Override
+    public Component getFrame() {
+        return null;
+    }
+
+    @Override
+    public void actionAfterSuccessfullyOpeningJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+        System.out.println("Successfully open JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+    }
+
+    @Override
+    public void actionAfterFailingToOpenJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+        System.err.println("Failed to open JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+    }
+
+    @Override
+    public void actionAfterSuccessfullySavingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+        System.out.println("Successfully saved JSON to " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+        resetBackgroundColorOfTAreasTFields();
+    }
+
+    @Override
+    public void actionAfterFailingToSaveJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+        System.err.println("Failed to save JSON to " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+    }
+
+    @Override
+    public void actionAfterSuccessfullyReloadingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+        String answer = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Answer");
+        String confidenceRating = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Confidence\\ Rating");
+        String negativeAnswerCategory = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Negative\\ Answer\\ Category");
+        String reason = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Reason");
+        String supportingText = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Supporting\\ Text");
+        String pageLine = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Page\\/Line");
+
+        // 各フィールドに値を設定
+        if (answer != null) tArea_Answer.setText(answer);
+        if (confidenceRating != null) tFiled_ConfidenceRating.setText(confidenceRating);
+        if (negativeAnswerCategory != null) tField_NegativeAnswerCategory.setText(negativeAnswerCategory);
+        if (reason != null) tArea_Reason.setText(reason);
+        if (supportingText != null) tArea_SupportingText.setText(supportingText);
+        if (pageLine != null) tArea_Location.setText(pageLine);
+
+        // set title border
+        setBorder(BorderFactory.createTitledBorder(jsonName));
+
+        resetBackgroundColorOfTAreasTFields();
+
+        System.out.println("Successfully loaded JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+    }
+
+    @Override
+    public void actionAfterFailingToReloadJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+        System.err.println("Failed to reload JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+    }
 }
