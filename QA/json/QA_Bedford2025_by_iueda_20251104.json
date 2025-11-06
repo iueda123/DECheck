@@ -1,0 +1,161 @@
+{
+  "study_identification": {
+    "study_id": "Bedford2025",
+    "reference_file_names": "Bedford2025.pdf.md; 1-s2.0-S0006322324015130-mmc2.pdf.md",
+    "author_journal_year": "Bedford et al., Biological Psychiatry, 2025",
+    "title": "Brain-Charting Autism and Attention-Deficit/Hyperactivity Disorder Reveals Distinct and Overlapping Neurobiology",
+    "doi": "10.1016/j.biopsych.2024.07.024"
+  },
+  "assessment_items_group_a": {
+    "clarity_of_research_objectives": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not negative answer",
+      "Reason": "",
+      "Supporting Text": " to quantify alterations related to autism and ADHD",
+      "Location": ""
+    },
+    "clear_definition_of_target_population": {
+      "Answer": "Partial",
+      "Confidence Rating": "Medium",
+      "Negative Answer Category": "Unclear/Incomplete",
+      "Reason": "どういう集団を対象としたか（どのような基準でデータセットを選んだか）ということに関して説明はない。データセットありき。",
+      "Supporting Text": "The final dataset after quality control (QC) included 4255 individuals (1869 typically developing control participants [687 female, 1182 male], 987 individuals with ADHD [270 female, 717 male], and 1399 autistic individuals [288 female, 1111 male], ages 2 -64 years [mean 14.0, median 12.4])... Individuals with magnetic resonance imaging data and a primary diagnosis of autism or ADHD or no diagnosis were included.\nBefore quality control, our sample included data from 4736 participants (2006 typically developing (TD) controls [1289 male/717 female], 1103 individuals with ADHD [809 male; 294 female], and 1627 autistic individuals [1296 male; 331 female]), with an age range of 2-64 (mean age \u003d 13.67; median age \u003d 11.98).",
+      "Location": ""
+    },
+    "clarity_of_inclusion_and_exclusion_criteria": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "　-",
+      "Reason": "QC を経て4255名となったことが書かれている。そのQCについても詳細が記述されている。",
+      "Supporting Text": "",
+      "Location": "",
+      "Page/Line": "Location"
+    },
+    "validity_of_normative_modeling_outcome_measures": {
+      "Answer": "Yes",
+      "Confidence Rating": "Medium (書いてあるが詳細が他文献)",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "  Out-of-sample centile scores for our study sample\nwere generated based on these reference models using\nBrent’s maximum likelihood estimation [Supplemental\nMethods Section 2 (98)]. Centile scores quantify variation in\nbrain development and range from 0 to 1, with 0.5 representing\nthe average of the reference sample.",
+      "Location": "518R-519L"
+    },
+    "handling_of_confounding_variables": {
+      "Answer": "Yes",
+      "Confidence Rating": "",
+      "Negative Answer Category": "",
+      "Reason": "Age and Sex",
+      "Supporting Text": "while accounting for effects of age, sex, and site/scanner.",
+      "Location": ""
+    },
+    "clarity_of_data_sources": {
+      "Answer": "Yes",
+      "Confidence Rating": "Hight",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "49 sites across 7 datasets, including the ABIDE (Autism Brain Imaging Data Exchange) (102,103), the POND (Province of Ontario Neurodevelopmental) Network, the HBN (Healthy Brain Network) at\nthe Child Mind Institute (104), the ADHD200 Consortium, the\nMultimodal Developmental Neurogenetics of Females with\nASD dataset from the National Institute of Mental Health Data\nArchive, the UK MRC-AIMS (Medical Research Council Autism\nImaging Multi-centre Study), and the University of California\nSan Diego Biomarkers of Autism study.  The final dataset after\nquality control (QC) included 4255 individuals (1869 typically\ndeveloping control participants [687 female, 1182 male], 987\nindividuals with ADHD [270 female, 717 male], and 1399\nautistic individuals [288 female, 1111 male], ages 2–64 years\n[mean 14.0, median 12.4]) (Figure 1). For details of each\ndataset, demographics before and after QC, and group differences, see Supplemental Methods Section 1. It is important\nto note the distinction between biological sex and gender\nidentity, both of which may influence presentation (12). Here,\nwe refer to sex assigned at birth, but we acknowledge the\noverlap with and influence of gender socialization and the lack\nof data available to examine gender identity effects. Individuals\nwith magnetic resonance imaging data and a primary diagnosis of autism or ADHD or no diagnosis were included. Individuals were initially included in the group of their primary\ndiagnosis. A subset of individuals with documented cooccurring autism and ADHD were examined in further analyses.",
+      "Location": ""
+    },
+    "description_of_image_acquisition_protocol": {
+      "Answer": "Partial",
+      "Confidence Rating": "Medium",
+      "Negative Answer Category": "",
+      "Reason": "文献を辿ればありそう。",
+      "Supporting Text": "",
+      "Location": ""
+    }
+  },
+  "assessment_items_group_b": {
+    "details_of_data_preprocessing": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "clarity_of_data_partitioning_methods": {
+      "Answer": "Patial",
+      "Confidence Rating": "Medium",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "details_of_normative_modeling_approach": {
+      "Answer": "Partial",
+      "Confidence Rating": "Medium",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "details_of_training_algorithm": {
+      "Answer": "Partial",
+      "Confidence Rating": "Medium",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "model_performance_evaluation_metrics": {
+      "Answer": "Partial",
+      "Confidence Rating": "Medium",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "implementation_of_internal_validation": {
+      "Answer": "Partial",
+      "Confidence Rating": "Medium",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "external_data_validation": {
+      "Answer": "Partial",
+      "Confidence Rating": "Medium",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "description_of_dataset_characteristics": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "performance_metrics_and_statistical_uncertainty": {
+      "Answer": "NA",
+      "Confidence Rating": "",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "consideration_for_reproducibility": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "",
+      "Reason": "使用したデータセットは本文中に明確に記述されている。Supplementary Information にSoftware等について記述あり。",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "interpretation_specific_to_normative_modeling": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "Out-of-sample centile scores for our study sample were generated based on these reference models using Brent’s maximum likelihood estimation [Supplemental Methods Section 2 (98)]. Centile scores quantify variation in brain development and range from 0 to 1, with 0.5 representing the average of the reference sample.",
+      "Location": ""
+    }
+  },
+  "additional_comments": {
+    "additional_comments": ""
+  }
+}

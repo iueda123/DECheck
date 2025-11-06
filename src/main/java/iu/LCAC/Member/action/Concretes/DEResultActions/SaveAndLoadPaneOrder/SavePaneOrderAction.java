@@ -4,17 +4,20 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.CAAA.CAAA_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.ManagerOfSubTabBasePane;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.One_DEResult_Pane_Abs;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.SubTabsHolderItrfc;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.GN.GN_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.SC.SC_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.SI.SI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.CAAA.CAAA_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.ManagerOfSubTabBasePane;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.One_DEResult_Pane_Abs;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.SubTabsHolderItrfc;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.GN.GN_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.NM.NM_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.RCAI.RCAI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.SC.SC_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.SI.SI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA1.QA1_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA2.QA2_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QAAC.QAAC_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QASI.QASI_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.StatusPanel.StatusPanelHolder;
-import iu.LCAC.Utils.CollapsiblePanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -51,6 +54,10 @@ public class SavePaneOrderAction extends AbstActionMember {
         savePaneOrder("CAAA", "./settings/PaneOrder/" + "clinical_application_and_analysis" + ".prop");
         savePaneOrder("GN", "./settings/PaneOrder/" + "general_notes" + ".prop");
 
+        savePaneOrder("QASI", "./settings/PaneOrder/" + "study_identification_of_qa" + ".prop");
+        savePaneOrder("QA1_v6", "./settings/PaneOrder/" + "quality_assessment_1_v6" + ".prop");
+        savePaneOrder("QA2_v6", "./settings/PaneOrder/" + "quality_assessment_2_v6" + ".prop");
+        savePaneOrder("QAAC", "./settings/PaneOrder/" + "additional_comments" + ".prop");
     }
 
     private void savePaneOrder(String member_name_key_word, String prop_file_path_str) {
@@ -81,8 +88,24 @@ public class SavePaneOrderAction extends AbstActionMember {
                 member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_GN");
                 subTabsHolder = (GN_SubTabsHolder) member;
                 break;
+            case "QASI":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QASI");
+                subTabsHolder = (QASI_SubTabsHolder) member;
+                break;
+            case "QA1_v6":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QA1_v6");
+                subTabsHolder = (QA1_SubTabsHolder) member;
+                break;
+            case "QA2_v6":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QA2_v6");
+                subTabsHolder = (QA2_SubTabsHolder) member;
+                break;
+            case "QAAC":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QAAC");
+                subTabsHolder = (QAAC_SubTabsHolder) member;
+                break;
             default:
-                System.err.println("未知のSection指定です@SavePaneOrderAction.java");
+                System.err.println("未知のSection指定です" + "@" + this.getClass());
                 return;
         }
 

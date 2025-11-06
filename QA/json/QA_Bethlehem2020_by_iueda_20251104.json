@@ -1,0 +1,160 @@
+{
+  "study_identification": {
+    "study_id": "Bethlehem2020",
+    "reference_file_names": "Bethlehem2020.pdf.md; Bethlehem2020_sup1.pdf.md",
+    "author_journal_year": "Bethlehem et al., Communications Biology, 2020",
+    "title": "A normative modelling approach reveals age-atypical cortical thickness in a subgroup of males with autism spectrum disorder",
+    "doi": "10.1038/s42003-020-01212-9"
+  },
+  "assessment_items_group_a": {
+    "clarity_of_research_objectives": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "clear_definition_of_target_population": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "",
+      "Reason": " we utilized the ABIDE datasets (ABIDE I and II; 15) ... After matching case and control groups and excluding scans of poorer quality",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "clarity_of_inclusion_and_exclusion_criteria": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "",
+      "Reason": "QAは考慮している。QAをInclusion&Exclusionの適切な考慮とするならばYesと考える。",
+      "Supporting Text": "With the inclusion of motion we also excluded individuals for which no resting-state fMRI was available. / Participants ... After matching case and control groups and excluding scans of poorer quality ... / We excluded the top 10% of subjects with an extreme Euler index (corresponding to a Euler index of ~300) and reran the Matchit genetic matching algorithm to check for matched samples.",
+      "Location": ""
+    },
+    "validity_of_normative_modeling_outcome_measures": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "handling_of_confounding_variables": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "clarity_of_data_sources": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "description_of_image_acquisition_protocol": {
+      "Answer": "Patial",
+      "Confidence Rating": "Medium",
+      "Negative Answer Category": "Unclear / Incomplete",
+      "Reason": "引用先を見れば詳細があるだろうが、本文や補助資料中には極簡単にしか記載がない。",
+      "Supporting Text": "Imaging processing and quantification. Cortical surface reconstruction was performed using the MPRAGE (T1) image of each participant with FreeSurfer ... The reconstruction pipeline ... involved intensity normalization, registration to Talairach space, skull stripping, WM segmentation ...",
+      "Location": "Methods/Imaging processing and quantification"
+    }
+  },
+  "assessment_items_group_b": {
+    "details_of_data_preprocessing": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": "Methods/Imaging processing and quantification"
+    },
+    "clarity_of_data_partitioning_methods": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": "SI/Bootstrapping"
+    },
+    "details_of_normative_modeling_approach": {
+      "Answer": "Yes",
+      "Confidence Rating": "Hight",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "Comparison to centile modelling of normative deviation",
+      "Location": ""
+    },
+    "details_of_training_algorithm": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": "Results/Age-related normative modeling"
+    },
+    "model_performance_evaluation_metrics": {
+      "Answer": "No",
+      "Confidence Rating": "Low",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "Normative modelling reliability. To assess the reliability of the normative w-score we permuted the normative sample (1000 bootstraps ...). ... The median number of brain regions per subject with a significant p-value in the normative sample was 1 (out of 308). / To assess the sensitivity of our approach ... we implemented the aforementioned bootstrapping procedure ... Both approaches showed high significant correlation ...",
+      "Location": ""
+    },
+    "implementation_of_internal_validation": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": "SI/Bootstrapping"
+    },
+    "external_data_validation": {
+      "Answer": "No",
+      "Confidence Rating": "Medium",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "description_of_dataset_characteristics": {
+      "Answer": "Partial",
+      "Confidence Rating": "Medium",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": "SI/Bootstrapping"
+    },
+    "performance_metrics_and_statistical_uncertainty": {
+      "Answer": "No",
+      "Confidence Rating": "Low",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "consideration_for_reproducibility": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "interpretation_specific_to_normative_modeling": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": "SI/Individual summary ratio"
+    }
+  },
+  "additional_comments": {
+    "additional_comments": ""
+  }
+}

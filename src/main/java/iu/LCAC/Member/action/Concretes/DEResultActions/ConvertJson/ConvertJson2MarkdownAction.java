@@ -3,7 +3,7 @@ package iu.LCAC.Member.action.Concretes.DEResultActions.ConvertJson;
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.SI.SI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.SI.SI_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.StatusPanel.StatusPanelHolder;
 
 import javax.swing.*;

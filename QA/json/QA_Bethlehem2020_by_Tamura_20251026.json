@@ -1,0 +1,160 @@
+{
+  "study_identification": {
+    "study_id": "Bethlehem2020",
+    "reference_file_names": "Bethlehem2020.pdf;Bethlehem2020_sup1.pdf",
+    "author_journal_year": "Bethlehem et al., Communication Biology, 2020",
+    "title": "A normative modelling approach reveals age-atypical cortical thickness in a subgroup of males with autism spectrum disorder",
+    "doi": "https://doi.org/10.1038/s42003-020-01212-9"
+  },
+  "assessment_items_group_a": {
+    "clarity_of_research_objectives": {
+      "Answer": "Yes",
+      "Confidence Rating": "High",
+      "Negative Answer Category": "Not Negative",
+      "Reason": "Application purposes of normative modeling are clearly stated throughout the paper. The study aims to employ normative modelling on age-related variability as a means to individualize our approach to isolate specific subsets of patients with very different neural fea- tures.\nThe PICO elements can be identified: Population (870 patients with autism, plus 870 TDs), Intervention/Exposure (normative modeling of cortical thickness (CT)), Comparator (traditional case-controll models), Outcome (age-related atypocality in CT, age-atypical CT-behavior associations).\nThe research question is explicitly stated as follows: (1) how a metric of continuous variability in age-related atypicality in CT is expressed across the cortex in autism. (2) whether age–atypical CT–behaviour associations identify similar or different regions than typical case-control analyses.",
+      "Supporting Text": "In the present study, we employ normative modelling on age-related variability as a means to individualize our approach to isolate specific subsets of patients with very different neural features.\nGiven our approach of age-related normative CT modelling, we first compare the utility of age-related normative modelling directly against more traditional case-control models. We then describe the prevalence of ASD cases that show meaningful age- related deviance in CT (i.e. >2 standard deviations from age-related norms or outside the 95% population confidence bounds) and show how a metric of continuous variability in age-related atypicality in CT is expressed across the cortex in autism. Finally, we explore age–atypical CT–behaviour associations and assess whether such dimensional analyses associated with behaviour identify similar or different regions than typical case-control analyses. To show applicability of this approach we also applied the same method to other measures of neuroanatomy; gyrification, volume and surface area.",
+      "Location": "Bethlehem2020.pdf, page 2, right column"
+    },
+    "clear_definition_of_target_population": {
+      "Answer": "",
+      "Confidence Rating": "",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "clarity_of_inclusion_and_exclusion_criteria": {
+      "Answer": "",
+      "Confidence Rating": "",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "validity_of_normative_modeling_outcome_measures": {
+      "Answer": "",
+      "Confidence Rating": "",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "handling_of_confounding_variables": {
+      "Answer": "",
+      "Confidence Rating": "",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "clarity_of_data_sources": {
+      "Answer": "",
+      "Confidence Rating": "",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "description_of_image_acquisition_protocol": {
+      "Answer": "",
+      "Confidence Rating": "",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    }
+  },
+  "assessment_items_group_b": {
+    "details_of_data_preprocessing": {
+      "Answer": "",
+      "Confidence Rating": "",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "clarity_of_data_partitioning_methods": {
+      "Answer": "",
+      "Confidence Rating": "",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "details_of_normative_modeling_approach": {
+      "Answer": "",
+      "Confidence Rating": "",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "details_of_training_algorithm": {
+      "Answer": "",
+      "Confidence Rating": "",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "model_performance_evaluation_metrics": {
+      "Answer": "",
+      "Confidence Rating": "",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "implementation_of_internal_validation": {
+      "Answer": "",
+      "Confidence Rating": "",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "external_data_validation": {
+      "Answer": "",
+      "Confidence Rating": "",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "description_of_dataset_characteristics": {
+      "Answer": "",
+      "Confidence Rating": "",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "performance_metrics_and_statistical_uncertainty": {
+      "Answer": "",
+      "Confidence Rating": "",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "consideration_for_reproducibility": {
+      "Answer": "",
+      "Confidence Rating": "",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    },
+    "interpretation_specific_to_normative_modeling": {
+      "Answer": "",
+      "Confidence Rating": "",
+      "Negative Answer Category": "",
+      "Reason": "",
+      "Supporting Text": "",
+      "Location": ""
+    }
+  },
+  "additional_comments": {
+    "additional_comments": ""
+  }
+}

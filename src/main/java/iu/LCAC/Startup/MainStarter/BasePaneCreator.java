@@ -53,10 +53,22 @@ public class BasePaneCreator {
     tabbedPane.add("6. GN", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_GN")).getBaseComponent());
     tabbedPane.setToolTipTextAt(5, "General Notes");
 
-    //tabbedPane.add("7. QA1", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
-    //tabbedPane.setToolTipTextAt(6, "Quality Check 1");
-    //tabbedPane.add("8. QA2", (cHolderMediator.getInstanceOfAMember("tab_of_reference_cohort_and_imaging_holder")).getBaseComponent());
-    //tabbedPane.setToolTipTextAt(7, "Quality Check 2");
+    //-----------------------
+
+    tabbedPane.add("7. QASI", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_QASI")).getBaseComponent());
+    tabbedPane.setToolTipTextAt(6, "Study Identification of QA");
+
+    tabbedPane.add("8. QA1_v6", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_QA1_v6")).getBaseComponent());
+    tabbedPane.setToolTipTextAt(7, "Quality Assessment Part 1 (v6)");
+
+    tabbedPane.add("9. QA2_v6", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_QA2_v6")).getBaseComponent());
+    tabbedPane.setToolTipTextAt(8, "Quality Assessment Part 2 (v6)");
+
+    tabbedPane.add("10. QAAC", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_QAAC")).getBaseComponent());
+    tabbedPane.setToolTipTextAt(9, "Additional Comment of QA");
+
+    //-----------------------
+
     JComponent explanationPanelHolder = (cHolderMediator.getInstanceOfAMember("explanation_panel_holder").getBaseComponent());
 
     CollapsiblePanel collapsiblePanel = new CollapsiblePanel(tabbedPane, explanationPanelHolder, new JLabel("West"), new JLabel("South"), new JLabel("North"));

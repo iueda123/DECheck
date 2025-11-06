@@ -4,15 +4,19 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.CAAA.CAAA_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.ManagerOfSubTabBasePane;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.NotePane;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.Common.SubTabsHolderItrfc;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.GN.GN_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.NM.NM_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.RCAI.RCAI_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.SC.SC_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEResult.SI.SI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.CAAA.CAAA_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.ManagerOfSubTabBasePane;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.NotePane;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.SubTabsHolderItrfc;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.GN.GN_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.NM.NM_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.RCAI.RCAI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.SC.SC_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.SI.SI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA1.QA1_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA2.QA2_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QAAC.QAAC_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QASI.QASI_SubTabsHolder;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -46,6 +50,11 @@ public class LoadNotePaneTextsAction extends AbstActionMember {
         loadNotePaneTexts("NM", "./settings/NotePane/" + "normative_modeling" + ".prop");
         loadNotePaneTexts("CAAA", "./settings/NotePane/" + "clinical_application_and_analysis" + ".prop");
         loadNotePaneTexts("GN", "./settings/NotePane/" + "general_notes" + ".prop");
+
+        loadNotePaneTexts("QASI", "./settings/NotePane/" + "study_identification_of_qa" + ".prop");
+        loadNotePaneTexts("QA1_v6", "./settings/NotePane/" + "quality_assessment_1_v6" + ".prop");
+        loadNotePaneTexts("QA2_v6", "./settings/NotePane/" + "quality_assessment_2_v6" + ".prop");
+        loadNotePaneTexts("QAAC", "./settings/NotePane/" + "additional_comments" + ".prop");
     }
 
     /**
@@ -80,8 +89,24 @@ public class LoadNotePaneTextsAction extends AbstActionMember {
                 member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_GN");
                 subTabsHolder = (GN_SubTabsHolder) member;
                 break;
+            case "QASI":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QASI");
+                subTabsHolder = (QASI_SubTabsHolder) member;
+                break;
+            case "QA1_v6":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QA1_v6");
+                subTabsHolder = (QA1_SubTabsHolder) member;
+                break;
+            case "QA2_v6":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QA2_v6");
+                subTabsHolder = (QA2_SubTabsHolder) member;
+                break;
+            case "QAAC":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QAAC");
+                subTabsHolder = (QAAC_SubTabsHolder) member;
+                break;
             default:
-                System.err.println("未知のSection指定です@LoadNotePaneTextsAction.java");
+                System.err.println("未知のSection指定です" + "@" + this.getClass());
         }
 
         String sectionName = subTabsHolder.getSectionName();
