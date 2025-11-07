@@ -154,6 +154,9 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
 
     @Override
     public void saveJson() {
+
+        //initializeJsonManager();
+
         String answerText = tArea_Answer.getText();
         String confidenceRatingText = tFiled_ConfidenceRating.getText();
         String negativeAnswerCategoryText = tField_NegativeAnswerCategory.getText();
@@ -162,12 +165,12 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         String pageLineText = tArea_Location.getText();
 
         // JSONへ書き込み
-        jsonManager.setValue(sectionName + "/" + subSectionName + "/Answer", answerText);
-        jsonManager.setValue(sectionName + "/" + subSectionName + "/Confidence\\ Rating", confidenceRatingText);
-        jsonManager.setValue(sectionName + "/" + subSectionName + "/Negative\\ Answer\\ Category", negativeAnswerCategoryText);
-        jsonManager.setValue(sectionName + "/" + subSectionName + "/Reason", reasonText);
-        jsonManager.setValue(sectionName + "/" + subSectionName + "/Supporting\\ Text", supportingText);
-        jsonManager.setValue(sectionName + "/" + subSectionName + "/Location", pageLineText);
+        jsonManager.setValue(sectionName + "/" + subSectionName + "/answer", answerText);
+        jsonManager.setValue(sectionName + "/" + subSectionName + "/confidence_rating", confidenceRatingText);
+        jsonManager.setValue(sectionName + "/" + subSectionName + "/negative_answer_category", negativeAnswerCategoryText);
+        jsonManager.setValue(sectionName + "/" + subSectionName + "/reason", reasonText);
+        jsonManager.setValue(sectionName + "/" + subSectionName + "/supporting_text", supportingText);
+        jsonManager.setValue(sectionName + "/" + subSectionName + "/location", pageLineText);
 
         jsonManager.doSave(false);
 
@@ -204,12 +207,12 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
 
     @Override
     public void actionAfterSuccessfullyOpeningJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
-        String answer = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Answer");
-        String confidenceRating = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Confidence\\ Rating");
-        String negativeAnswerCategory = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Negative\\ Answer\\ Category");
-        String reason = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Reason");
-        String supportingText = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Supporting\\ Text");
-        String pageLine = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Location");
+        String answer = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/answer");
+        String confidenceRating = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/confidence_rating");
+        String negativeAnswerCategory = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/negative_answer_category");
+        String reason = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/reason");
+        String supportingText = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/supporting_text");
+        String pageLine = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/location");
 
         // 各フィールドに値を設定
         if (answer != null) tArea_Answer.setText(answer);

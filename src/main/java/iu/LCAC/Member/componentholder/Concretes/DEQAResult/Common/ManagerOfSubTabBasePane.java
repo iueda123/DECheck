@@ -1,5 +1,7 @@
 package iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common;
 
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA1.QA1_SubTabsHolder;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ public class ManagerOfSubTabBasePane {
 
     final JTabbedPane tabbedPane;
     final NotePane notePane;
+    private SubTabsHolderItrfc subTabsHolder;
 
     public ManagerOfSubTabBasePane(String tabName, String sectionName, String subSectionName, JTabbedPane tabbedPane) {
         this.basePaneForDEResultPanes.setLayout(new BoxLayout(this.basePaneForDEResultPanes, BoxLayout.Y_AXIS));
@@ -29,6 +32,7 @@ public class ManagerOfSubTabBasePane {
 
     public void addToTheDePaneArray(One_DEResult_Pane_Abs oneDeResultPaneAbs) {
         this.dePaneArray.add(oneDeResultPaneAbs);
+        oneDeResultPaneAbs.registerManagerOfSubTabBasePane(this);
     }
 
     public void clearTheDePaneArray() {
@@ -37,8 +41,8 @@ public class ManagerOfSubTabBasePane {
 
     public JComponent constructBasePaneOfSubTab() {
 
-        if(subTabBasePane == null) {
-           subTabBasePane = new JPanel();
+        if (subTabBasePane == null) {
+            subTabBasePane = new JPanel();
             subTabBasePane.setLayout(new BoxLayout(subTabBasePane, BoxLayout.Y_AXIS));
 
             //subTabBasePane.setBackground(Color.YELLOW); //For debug
@@ -104,8 +108,15 @@ public class ManagerOfSubTabBasePane {
         return notePane;
     }
 
+    public SubTabsHolderItrfc getSubTabsHolder() {
+        return subTabsHolder;
+    };
 
     public void revalidateChildren() {
-       this.basePaneForDEResultPanes.revalidate();
+        this.basePaneForDEResultPanes.revalidate();
+    }
+
+    public void registerSubTansHolder(SubTabsHolderItrfc subTabsHolder) {
+        this.subTabsHolder = subTabsHolder;
     }
 }

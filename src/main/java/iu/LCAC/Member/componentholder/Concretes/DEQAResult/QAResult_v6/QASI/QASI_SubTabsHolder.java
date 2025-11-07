@@ -49,10 +49,15 @@ public class QASI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
         super(cholder_name, short_name);
 
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_1);
+        mngrOfSubTabBasePane_1.registerSubTansHolder(this);
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_2);
+        mngrOfSubTabBasePane_2.registerSubTansHolder(this);
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_3);
+        mngrOfSubTabBasePane_3.registerSubTansHolder(this);
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_4);
+        mngrOfSubTabBasePane_4.registerSubTansHolder(this);
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_5);
+        mngrOfSubTabBasePane_5.registerSubTansHolder(this);
 
         // ./json/ フォルダの確認
         File jsonDir = new File(jsonFolderPathStr);

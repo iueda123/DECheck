@@ -43,8 +43,11 @@ public class SC_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
         super(cholder_name, short_name);
 
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_1);
+        mngrOfSubTabBasePane_1.registerSubTansHolder(this);
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_2);
+        mngrOfSubTabBasePane_2.registerSubTansHolder(this);
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_3);
+        mngrOfSubTabBasePane_3.registerSubTansHolder(this);
 
         // ./json/ フォルダの確認
         File jsonDir = new File(jsonFolderPathStr);

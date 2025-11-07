@@ -475,7 +475,7 @@ For `3. Reference Cohort & Imaging` and `4. Normative Modeling`, follow the rule
 4. When selecting "Yes", "Partial", or "No", always include:
    - Reason: Step-by-step explanation of the judgment.
    - Supporting Text: Excerpts of the text used as evidence.
-   - Page/Line: Page and line numbers of the relevant location.
+   - Location: Page and line numbers of the relevant location.
 5. When descriptions are unclear or absent, take a conservative stance and, in many cases, select "No".
 
 ### Example
@@ -487,7 +487,7 @@ For `3. Reference Cohort & Imaging` and `4. Normative Modeling`, follow the rule
 - Negative Answer Category: 
 - Reason: 
 - Supporting Text:
-- Page/Line:
+- Location:
 ```
 
 -------------------

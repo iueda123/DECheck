@@ -8,7 +8,7 @@
   },
   "assessment_items_group_a": {
     "clarity_of_research_objectives": {
-      "Answer": "Yes",
+      "answer": "Yes",
       "confidence_rating": "High",
       "negative_answer_category": "Not Negative",
       "reason": "The research objectives are clearly stated in the abstract and introduction. The paper aims to propose and evaluate a hierarchical Bayesian modeling approach to account for site effects in multi-site neuroimaging data, particularly in the context of normative modeling.",
@@ -154,5 +154,7 @@
       "location": "Bayer2022.pdf.md, lines 543-547"
     }
   },
-  "additional_comments": ""
+  "additional_comments": {
+    "additional_comments": ""
+  }
 }

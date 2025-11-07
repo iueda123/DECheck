@@ -36,6 +36,7 @@ public class GN_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
         super(cholder_name, short_name);
 
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_1);
+        mngrOfSubTabBasePane_1.registerSubTansHolder(this);
 
         // ./json/ フォルダの確認
         File jsonDir = new File(jsonFolderPathStr);

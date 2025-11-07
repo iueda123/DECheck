@@ -475,7 +475,7 @@ PDHQ) and depression score (HADS).
 4. 「Yes」「Partial」「No」を選んだ場合は必ず以下を記載してください：
    - **Reason:** 判断の理由を段階的に説明
    - **Supporting Text:** 判断根拠とした原文の記述を抜粋
-   - **Page/Line:** 該当箇所のページ番号と行番号
+   - **Location:** 該当箇所のページ番号と行番号
 5. 記述が不明確または記載がない場合は、保守的に評価し、多くの場合「No」を選択してください。
 
 ### 例
@@ -487,7 +487,7 @@ PDHQ) and depression score (HADS).
 - Negative Answer Category: 
 - Reason: 
 - Supporting Text:
-- Page/Line:
+- Location:
 ```
 
 -------------------

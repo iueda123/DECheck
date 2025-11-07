@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManagerCallback {
 
@@ -27,7 +28,7 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
     final CHolderMediator cHolderMediator;
     final ActionMediator actionMediator;
 
-    JLabel  jsonNameLabel = new JLabel("JSON File Name");
+    JLabel jsonNameLabel = new JLabel("JSON File Name");
     //ColorChangeableTextField tField_jsonName = new ColorChangeableTextField("JSON File Name");
     String tooltipForJsonName = "JSON File Name";
 
@@ -36,6 +37,7 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
     JButton jsonFileNameEditButton = new JButton("edit json name");
     JButton convertJson2MarkdownButton = new JButton("2MD");
     JButton convertJson2TsvButton = new JButton("2TSV");
+    private ManagerOfSubTabBasePane managerOfSubTabBasePane;
 
 
     public One_DEResult_Pane_Abs(
@@ -165,14 +167,14 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
         return sectionName;
     }
 
-    public void updateRegisteredJsonName(String value) {
-        //tField_jsonName.setText(value);
-        jsonNameLabel.setText(value);
-        //setBorder(BorderFactory.createTitledBorder(value));
-    }
-
 
     protected abstract void resetBackgroundColorOfTAreasTFields();
+
+    public void registerManagerOfSubTabBasePane(ManagerOfSubTabBasePane managerOfSubTabBasePane) {
+        this.managerOfSubTabBasePane = managerOfSubTabBasePane;
+    }
+
+    ;
 
     protected class PanelMoverPane extends JPanel {
 
@@ -308,6 +310,8 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
     protected void changeJsonFileName() {
         System.out.println("Start editing JSON file name");
 
+        String oldJsonName = jsonName;
+
         String newJsonName = (String) JOptionPane.showInputDialog(
                 this,
                 "JSONファイル名を入力してください:",
@@ -347,18 +351,20 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
 
         try {
             java.nio.file.Files.move(oldFilePath, newFilePath);
-            jsonName = newJsonName;
-            //tField_jsonName.setText(jsonName);
-            jsonNameLabel.setText(jsonName);
-            updateRegisteredJsonName(jsonName);
-            //tField_jsonName.updateDefaultValue();
+
+            updateJsonName(newJsonName);//このDEパネルにおける登録Jsonの更新
+
+            updateRegisteredJsonNamesOfAllOtherPane(oldJsonName, newJsonName);//すべての同胞パネルにおける登録Jsonを更新
+
             JOptionPane.showMessageDialog(
                     this,
                     "JSONファイル名を変更しました: " + newJsonName,
                     "成功",
                     JOptionPane.INFORMATION_MESSAGE
             );
+
             System.out.println("Successfully renamed to " + newFilePath.toAbsolutePath());
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(
                     this,
@@ -367,6 +373,31 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
                     JOptionPane.ERROR_MESSAGE
             );
             e.printStackTrace();
+        }
+    }
+
+    public void updateJsonName(String newJsonName) {
+        jsonName = newJsonName;
+        jsonNameLabel.setText(newJsonName);
+        initializeJsonManager();
+    }
+
+    private void updateRegisteredJsonNamesOfAllOtherPane(String oldJsonName, String newJsonName) {
+
+        System.out.println("★");
+
+        ArrayList<ManagerOfSubTabBasePane> managerOfSubTabBasePanes = managerOfSubTabBasePane.getSubTabsHolder().getArrayList_of_ManagerOfSubTabBasePane();
+        for (ManagerOfSubTabBasePane managerOfSubTabBasePane : managerOfSubTabBasePanes) {
+
+            ArrayList<One_DEResult_Pane_Abs> oneDeResultPaneAbsArray =    managerOfSubTabBasePane.getDePaneArray();
+            for (One_DEResult_Pane_Abs oneDeResultPane : oneDeResultPaneAbsArray) {
+
+                //他のサブパネル下にあるすべてのDEパネルを参照してもし旧JSON名を保持するものがあれば更新操作を施す。
+                if(oneDeResultPane.getJsonName().equals(oldJsonName)){
+                    oneDeResultPane.updateJsonName(newJsonName);
+                }
+
+            }
         }
     }
 
