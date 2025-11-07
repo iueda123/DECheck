@@ -295,12 +295,12 @@ public final class CollapsiblePanel extends JPanel {
 
             if (animator.isRunning()) {
                 if (isHidden) {
-                    controlsWidth = Math.min(defaultWidth, controlsWidth + 5);
+                    controlsWidth = Math.min(defaultWidth, controlsWidth + 20);
                     if (controlsWidth >= defaultWidth) {
                         animator.stop();
                     }
                 } else {
-                    controlsWidth = Math.max(0, controlsWidth - 5);
+                    controlsWidth = Math.max(0, controlsWidth - 20);
                     if (controlsWidth <= 0) {
                         animator.stop();
                     }

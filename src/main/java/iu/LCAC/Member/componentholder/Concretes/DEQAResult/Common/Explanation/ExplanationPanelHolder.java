@@ -9,25 +9,40 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class ExplanationPanelHolder extends AbstCHolderMember {
 
-  JPanel panel = new JPanel(new BorderLayout());
-  JTextArea explanationTextArea = new JTextArea("EXPLANATION");
+  private Path guideFilePath_of_DE = Paths.get("./settings/Guides/DE_Guide_v9_jp.md");
+  private Path guideFilePath_of_QA = Paths.get("./settings/Guides/QA_Guide_v6_jp.md");
+
+  JPanel basePanel = new JPanel(new BorderLayout());
+  JTabbedPane tabbedPane = new JTabbedPane();
+  JTextArea explanationTextArea_for_DE = new JTextArea("DE EXPLANATION");
+  JTextArea explanationTextArea_for_QA = new JTextArea("QA EXPLANATION");
 
   public ExplanationPanelHolder(String cholder_name, String short_name) {
     super(cholder_name, short_name);
 
-    JScrollPane scrollPane = new JScrollPane(explanationTextArea);
+    // DE
+    JScrollPane scrollPane_for_DE = new JScrollPane(explanationTextArea_for_DE);
+    explanationTextArea_for_DE.setEditable(false);
+    scrollPane_for_DE.setPreferredSize(new Dimension(500, 9000));
+    scrollPane_for_DE.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+    scrollPane_for_DE.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    tabbedPane.add(guideFilePath_of_DE.toFile().getName(), scrollPane_for_DE);
 
-    scrollPane.setPreferredSize(new Dimension(500, 9000));
-    //scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-    scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-    scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    // QA
+    JScrollPane scrollPane_for_QA = new JScrollPane(explanationTextArea_for_QA);
+    explanationTextArea_for_QA.setEditable(false);
+    scrollPane_for_QA.setPreferredSize(new Dimension(500, 9000));
+    scrollPane_for_QA.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+    scrollPane_for_QA.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    tabbedPane.add(guideFilePath_of_QA.toFile().getName(), scrollPane_for_QA);
 
-    panel.add(scrollPane, BorderLayout.EAST);
-    //explanationTextArea.addPropertyChangeListener(new SamplePropertyChangeListener());
-    explanationTextArea.setEditable(false);
+    // Finalize
+    basePanel.add(tabbedPane, BorderLayout.EAST);
   }
 
 
@@ -35,38 +50,54 @@ public class ExplanationPanelHolder extends AbstCHolderMember {
 
   @Override
   public JComponent getBaseComponent() {
-    return this.panel;
+    return this.basePanel;
   }
 
   @Override
   public void postInitialize() {
 
-    // 説明文を書き込む
-
+    /* ** 説明文を書き込む ** */
+    // DE Guide
     try {
-      String guideFilePath = "./settings/Guides/DE_Guide_v9_jp.md";
       StringBuilder content = new StringBuilder();
-
       try (java.io.BufferedReader reader = new java.io.BufferedReader(
           new java.io.InputStreamReader(
-              new java.io.FileInputStream(guideFilePath),
+              new java.io.FileInputStream(guideFilePath_of_DE.toFile()),
               java.nio.charset.StandardCharsets.UTF_8))) {
         String line;
         while ((line = reader.readLine()) != null) {
           content.append(line).append("\n");
         }
       }
-
-      explanationTextArea.setText(content.toString());
-      explanationTextArea.setCaretPosition(0);
+      explanationTextArea_for_DE.setText(content.toString());
+      explanationTextArea_for_DE.setCaretPosition(0);
     } catch (java.io.IOException e) {
-      explanationTextArea.setText("Error loading guide file: " + e.getMessage());
+      explanationTextArea_for_DE.setText("Error loading guide file: " + e.getMessage());
+      e.printStackTrace();
+    }
+
+    // QA Guide
+    try {
+      StringBuilder content = new StringBuilder();
+      try (java.io.BufferedReader reader = new java.io.BufferedReader(
+              new java.io.InputStreamReader(
+                      new java.io.FileInputStream(guideFilePath_of_QA.toFile()),
+                      java.nio.charset.StandardCharsets.UTF_8))) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+          content.append(line).append("\n");
+        }
+      }
+      explanationTextArea_for_QA.setText(content.toString());
+      explanationTextArea_for_QA.setCaretPosition(0);
+    } catch (java.io.IOException e) {
+      explanationTextArea_for_QA.setText("Error loading guide file: " + e.getMessage());
       e.printStackTrace();
     }
   }
 
   public void setText(String text) {
-    explanationTextArea.setText(text);
+    explanationTextArea_for_DE.setText(text);
   }
 
   @Override

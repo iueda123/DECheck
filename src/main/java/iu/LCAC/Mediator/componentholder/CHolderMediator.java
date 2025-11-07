@@ -176,7 +176,7 @@ public class CHolderMediator implements MediatorIntrfc {
         /* Explanation Text Field */
         chMemberFactory =
                 MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.Explanation.ExplanationPanelHolderFactory",
+                        "iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.Explanation.ExplanationPanelHolderFactory",
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember explanationPanelHolderFactory =
                 chMemberFactory.createCHolder("explanation_panel_holder", "explanation panel holder");
