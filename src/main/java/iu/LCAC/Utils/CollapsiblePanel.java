@@ -25,6 +25,12 @@ public final class CollapsiblePanel extends JPanel {
     JLabel showHideSouthLabel = null;
     JLabel showHideWestLabel = null;
 
+    JComponent centerComponent;
+    JComponent eastComponent;
+    JComponent westComponent;
+    JComponent southComponent;
+    JComponent northComponent;
+
     public CollapsiblePanel(JComponent center_comp,
                             JComponent east_comp,
                             JComponent west_comp,
@@ -42,6 +48,12 @@ public final class CollapsiblePanel extends JPanel {
 
         super(new BorderLayout());
 
+        this.centerComponent = center_comp;
+        this.eastComponent = east_comp;
+        this.westComponent = west_comp;
+        this.southComponent = south_comp;
+        this.northComponent = north_comp;
+
         JPanel outerBasePanel = new JPanel(new BorderLayout());
 
         /* **** NORTH **** */
@@ -56,7 +68,9 @@ public final class CollapsiblePanel extends JPanel {
             showHideNorthLabel = new JLabel("^");
         }
         JPanel northBasePane = new JPanel(north_layout);
-        northBasePane.add(north_comp);
+        if(northComponent != null) {
+            northBasePane.add(northComponent);
+        }
         animator_for_north.addActionListener(e -> northBasePane.revalidate());
         northShowHideBar.addMouseListener(new MouseAdapter() {
             @Override
@@ -84,7 +98,9 @@ public final class CollapsiblePanel extends JPanel {
             showHideSouthLabel = new JLabel("v");
         }
         JPanel southBasePane = new JPanel(south_layout);
-        southBasePane.add(south_comp);
+        if(southComponent != null) {
+            southBasePane.add(southComponent);
+        }
         animator_for_south.addActionListener(e -> southBasePane.revalidate());
         southShowHideBar.addMouseListener(new MouseAdapter() {
             @Override
@@ -112,7 +128,9 @@ public final class CollapsiblePanel extends JPanel {
             showHideEastLabel = new JLabel(">");
         }
         JPanel eastBasePane = new JPanel(east_layout);
-        eastBasePane.add(east_comp);
+        if(eastComponent != null) {
+            eastBasePane.add(eastComponent);
+        }
         animator_for_east.addActionListener(e -> eastBasePane.revalidate());
         eastShowHideBar.addMouseListener(new MouseAdapter() {
             @Override
@@ -140,7 +158,9 @@ public final class CollapsiblePanel extends JPanel {
             showHideWestLabel = new JLabel("<");
         }
         JPanel westBasePane = new JPanel(west_layout);
-        westBasePane.add(west_comp);
+        if(westComponent != null) {
+            westBasePane.add(westComponent);
+        }
         animator_for_west.addActionListener(e -> westBasePane.revalidate());
         westShowHideBar.addMouseListener(new MouseAdapter() {
             @Override
@@ -156,55 +176,17 @@ public final class CollapsiblePanel extends JPanel {
         westShowHideBar.setFocusable(false);
         outerBasePanel.add(westBasePane, BorderLayout.WEST);
 
-        outerBasePanel.add(new InnerBasePane(new JScrollPane(center_comp)));
+        //中心部をスクロールパネルにしたい場合
+        //outerBasePanel.add(new InnerBasePane(new JScrollPane(center_comp)), BorderLayout.CENTER);
+
+        //中心部をスクロールパネルにしたくない場合
+        outerBasePanel.add(new InnerBasePane(centerComponent), BorderLayout.CENTER);
+
 
         add(outerBasePanel);
     }
 
-    public static void main(String[] args) {
-        EventQueue.invokeLater(CollapsiblePanel::createAndShowGui);
-    }
 
-    private static void createAndShowGui() {
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (UnsupportedLookAndFeelException ignored) {
-            Toolkit.getDefaultToolkit().beep();
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-            Logger.getGlobal().severe(ex::getMessage);
-            return;
-        }
-        JFrame frame = new JFrame("CollapsiblePanel Demo");
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-        JPanel east_pane = new JPanel();
-        east_pane.add(new JLabel("EAST"));
-
-        JPanel west_pane = new JPanel();
-        west_pane.add(new JLabel("WEST"));
-
-        JPanel center_pane = new JPanel();
-        center_pane.setLayout(new BoxLayout(center_pane, BoxLayout.Y_AXIS));
-        JTextArea textArea = new JTextArea("CENTER");
-        textArea.setToolTipText("This is a tooltip text");
-        center_pane.add(new JScrollPane(textArea));
-
-        JPanel south_pane = new JPanel();
-        south_pane.add(new JLabel("SOUTH"));
-
-        JPanel north_pane = new JPanel();
-        north_pane.add(new JLabel("NORTH"));
-
-        frame.getContentPane().add(new CollapsiblePanel(center_pane,
-                east_pane, true,
-                west_pane, true,
-                south_pane, false,
-                north_pane, true));
-
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-    }
 
 
     class InnerBasePane extends JPanel {
@@ -216,28 +198,36 @@ public final class CollapsiblePanel extends JPanel {
             CollapsiblePanel.this.northShowHideBar.add(Box.createHorizontalGlue());
             CollapsiblePanel.this.northShowHideBar.add(CollapsiblePanel.this.showHideNorthLabel);
             CollapsiblePanel.this.northShowHideBar.add(Box.createHorizontalGlue());
-            add(CollapsiblePanel.this.northShowHideBar, BorderLayout.NORTH);
+            if (northComponent != null) {
+                add(CollapsiblePanel.this.northShowHideBar, BorderLayout.NORTH);
+            }
 
             CollapsiblePanel.this.southShowHideBar.setBackground(Color.LIGHT_GRAY);
             CollapsiblePanel.this.southShowHideBar.setOpaque(true);
             CollapsiblePanel.this.southShowHideBar.add(Box.createHorizontalGlue());
             CollapsiblePanel.this.southShowHideBar.add(CollapsiblePanel.this.showHideSouthLabel);
             CollapsiblePanel.this.southShowHideBar.add(Box.createHorizontalGlue());
-            add(CollapsiblePanel.this.southShowHideBar, BorderLayout.SOUTH);
+            if (southComponent != null) {
+                add(CollapsiblePanel.this.southShowHideBar, BorderLayout.SOUTH);
+            }
 
             CollapsiblePanel.this.eastShowHideBar.setBackground(Color.LIGHT_GRAY);
             CollapsiblePanel.this.eastShowHideBar.setOpaque(true);
             CollapsiblePanel.this.eastShowHideBar.add(Box.createVerticalGlue());
             CollapsiblePanel.this.eastShowHideBar.add(CollapsiblePanel.this.showHideEastLabel);
             CollapsiblePanel.this.eastShowHideBar.add(Box.createVerticalGlue());
-            add(CollapsiblePanel.this.eastShowHideBar, BorderLayout.EAST);
+            if (eastComponent != null) {
+                add(CollapsiblePanel.this.eastShowHideBar, BorderLayout.EAST);
+            }
 
             CollapsiblePanel.this.westShowHideBar.setBackground(Color.LIGHT_GRAY);
             CollapsiblePanel.this.westShowHideBar.setOpaque(true);
             CollapsiblePanel.this.westShowHideBar.add(Box.createVerticalGlue());
             CollapsiblePanel.this.westShowHideBar.add(CollapsiblePanel.this.showHideWestLabel);
             CollapsiblePanel.this.westShowHideBar.add(Box.createVerticalGlue());
-            add(CollapsiblePanel.this.westShowHideBar, BorderLayout.WEST);
+            if (westComponent != null) {
+                add(CollapsiblePanel.this.westShowHideBar, BorderLayout.WEST);
+            }
 
 
             add(comp, BorderLayout.CENTER);
@@ -322,6 +312,53 @@ public final class CollapsiblePanel extends JPanel {
             ps.width = controlsWidth;
             return ps;
         }
+    }
+
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(CollapsiblePanel::createAndShowGui);
+    }
+
+    private static void createAndShowGui() {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (UnsupportedLookAndFeelException ignored) {
+            Toolkit.getDefaultToolkit().beep();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+            Logger.getGlobal().severe(ex::getMessage);
+            return;
+        }
+        JFrame frame = new JFrame("CollapsiblePanel Demo");
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        JPanel east_pane = new JPanel();
+        east_pane.add(new JLabel("EAST"));
+
+        JPanel west_pane = new JPanel();
+        west_pane.add(new JLabel("WEST"));
+
+        JPanel center_pane = new JPanel();
+        center_pane.setLayout(new BoxLayout(center_pane, BoxLayout.Y_AXIS));
+        JTextArea textArea = new JTextArea("CENTER");
+        textArea.setToolTipText("This is a tooltip text");
+        center_pane.add(new JScrollPane(textArea));
+
+        JPanel south_pane = new JPanel();
+        south_pane.add(new JLabel("SOUTH"));
+
+        JPanel north_pane = new JPanel();
+        north_pane.add(new JLabel("NORTH"));
+
+        frame.getContentPane().add(new CollapsiblePanel(center_pane,
+                east_pane, true,
+                //west_pane, true,
+                null, true,
+                south_pane, false,
+                north_pane, true));
+
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 
 }

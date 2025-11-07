@@ -1,4 +1,4 @@
-package iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.Explanation;
+package iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.Explanation;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;

@@ -71,7 +71,12 @@ public class BasePaneCreator {
 
     JComponent explanationPanelHolder = (cHolderMediator.getInstanceOfAMember("explanation_panel_holder").getBaseComponent());
 
-    CollapsiblePanel collapsiblePanel = new CollapsiblePanel(tabbedPane, explanationPanelHolder, new JLabel("West"), new JLabel("South"), new JLabel("North"));
+    CollapsiblePanel collapsiblePanel = new CollapsiblePanel(
+            tabbedPane,
+            explanationPanelHolder,
+            null,
+            null,
+            null);
 
     collapsiblePanel.setPreferredSize(new Dimension(900, 900));
 

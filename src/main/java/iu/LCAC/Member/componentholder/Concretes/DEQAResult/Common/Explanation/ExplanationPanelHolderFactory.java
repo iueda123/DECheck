@@ -1,4 +1,4 @@
-package iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.Explanation;
+package iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.Explanation;
 
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMemberFactory;

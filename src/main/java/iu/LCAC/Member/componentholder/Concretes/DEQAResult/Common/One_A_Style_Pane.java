@@ -10,7 +10,8 @@ import java.awt.*;
 
 public class One_A_Style_Pane extends One_DEResult_Pane_Abs  {
 
-    ColorChangeableTextArea tArea_Answer = new ColorChangeableTextArea("Answer");
+    private ColorChangeableTextArea tArea_Answer = new ColorChangeableTextArea("Answer");
+
     private final String tooltipForAnswer = "This is the answer areae.";
 
 
@@ -40,6 +41,8 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs  {
 
         Box northSubPanel_1 = Box.createHorizontalBox();
         northSubPanel_1.add(Box.createHorizontalGlue());
+        northSubPanel_1.add(jsonNameLabel);
+        northSubPanel_1.add(Box.createHorizontalGlue());
         northSubPanel_1.add(saveButton);
         //northSubBox1.add(convertJson2MarkdownButton);
         //northSubBox1.add(convertJson2TsvButton);
@@ -64,10 +67,14 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs  {
         /* Setup Center Area */
 
         /* Finalization */
-        setBorder(BorderFactory.createTitledBorder(jsonName));
+        setBorder(BorderFactory.createEtchedBorder());
+        //setBorder(BorderFactory.createTitledBorder(jsonName));
         // BoxLayoutで適切にスクロールするために、固定の高さを設定
         setPreferredSize(new Dimension(800, 200));
         setMaximumSize(new Dimension(Integer.MAX_VALUE, 200));
+
+        // 全フィールドの初期化が完了した後にJsonManagerを初期化
+        initializeJsonManager();
     }
 
 
@@ -97,6 +104,15 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs  {
 
     @Override
     public void actionAfterSuccessfullyOpeningJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+
+        String answer = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Answer");
+        if (answer != null) tArea_Answer.setText(answer);
+
+        // update jsonNameLabel
+        jsonNameLabel.setText(jsonName);
+
+        resetBackgroundColorOfTAreasTFields();
+
         System.out.println("Successfully open JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
     }
 

@@ -27,11 +27,12 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
     final CHolderMediator cHolderMediator;
     final ActionMediator actionMediator;
 
-    ColorChangeableTextField tField_jsonName = new ColorChangeableTextField("JSON File Name");
+    JLabel  jsonNameLabel = new JLabel("JSON File Name");
+    //ColorChangeableTextField tField_jsonName = new ColorChangeableTextField("JSON File Name");
     String tooltipForJsonName = "JSON File Name";
 
-    JButton loadButton = new JButton("load");
     JButton saveButton = new JButton("save");
+    JButton loadButton = new JButton("load");
     JButton jsonFileNameEditButton = new JButton("edit json name");
     JButton convertJson2MarkdownButton = new JButton("2MD");
     JButton convertJson2TsvButton = new JButton("2TSV");
@@ -63,7 +64,9 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
         //JsonManagerWithConflictSafe()のコンストラクタに引数としてreload()メソッドをもつインターフェースを渡し、
         //そのインターフェースのreload()を呼び出すか？
         //this.jsonManager = new JsonManager(this.jsonFolderPathStr + "/" + jsonName);
-        this.jsonManager = new JsonManagerWithConflictSafe(this.jsonFolderPathStr + "/" + jsonName, this);
+
+        // JsonManagerの初期化は子クラスのフィールド初期化後に行う必要があるため、ここでは行わない
+        // 子クラスのコンストラクタの最後でinitializeJsonManager()を呼び出すこと
 
         this.sectionName = sectionName;
         this.subSectionName = subSectionName;
@@ -137,6 +140,15 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
 
     public abstract void loadJson();
 
+    /**
+     * JsonManagerを初期化する。
+     * 子クラスのコンストラクタの最後で呼び出すこと。
+     * 子クラスのフィールドが初期化された後に呼び出す必要がある。
+     */
+    protected void initializeJsonManager() {
+        this.jsonManager = new JsonManagerWithConflictSafe(this.jsonFolderPathStr + "/" + jsonName, this);
+    }
+
     public String getJsonFolderPathStr() {
         return jsonFolderPathStr;
     }
@@ -154,8 +166,9 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
     }
 
     public void updateRegisteredJsonName(String value) {
-        tField_jsonName.setText(value);
-        setBorder(BorderFactory.createTitledBorder(value));
+        //tField_jsonName.setText(value);
+        jsonNameLabel.setText(value);
+        //setBorder(BorderFactory.createTitledBorder(value));
     }
 
 
@@ -335,9 +348,10 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
         try {
             java.nio.file.Files.move(oldFilePath, newFilePath);
             jsonName = newJsonName;
-            tField_jsonName.setText(jsonName);
+            //tField_jsonName.setText(jsonName);
+            jsonNameLabel.setText(jsonName);
             updateRegisteredJsonName(jsonName);
-            tField_jsonName.updateDefaultValue();
+            //tField_jsonName.updateDefaultValue();
             JOptionPane.showMessageDialog(
                     this,
                     "JSONファイル名を変更しました: " + newJsonName,

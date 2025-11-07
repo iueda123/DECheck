@@ -22,10 +22,10 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
     ColorChangeableTextArea tArea_Reason = new ColorChangeableTextArea("Reason");
     private final String tooltipForReason = "Reason";
 
-    ColorChangeableTextArea tArea_SupportingText = new ColorChangeableTextArea("Supporting Text");
+    ColorChangeableTextArea tArea_SupportingText = new ColorChangeableTextArea("Before Loading");
     private final String tooltipForSupportingText = "Supporting Text";
 
-    ColorChangeableTextArea tArea_Location = new ColorChangeableTextArea("Location");
+    ColorChangeableTextArea tArea_Location = new ColorChangeableTextArea("Before Loading");
     private final String tooltip_Location = "Source file, page, or/and line of the information.";
 
     public One_ARSL_Style_Pane(String jsonFolderPathStr, String jsonName, String sectionName, String subSectionName) {
@@ -67,23 +67,30 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         //JPanel baseOfNorth = new JPanel(new BorderLayout());
         Box baseOfNorth = Box.createVerticalBox();
 
-        // The 1st Box
-        Box the1stBaseOfNorth = Box.createHorizontalBox(); the1stBaseOfNorth.add(Box.createHorizontalGlue());
+        // The 1st Box of North
+        Box the1stBaseOfNorth = Box.createHorizontalBox();
+        the1stBaseOfNorth.add(Box.createHorizontalGlue());
+        the1stBaseOfNorth.add(jsonNameLabel);
+        //the1stBaseOfNorth.add(tField_jsonName);
+        the1stBaseOfNorth.add(Box.createHorizontalGlue());
+
         the1stBaseOfNorth.add(saveButton);
         the1stBaseOfNorth.add(loadButton);
         the1stBaseOfNorth.add(jsonFileNameEditButton);
         the1stBaseOfNorth.add(new PanelMoverPane());
+        the1stBaseOfNorth.setPreferredSize(new Dimension(800, 67));
         baseOfNorth.add(the1stBaseOfNorth);
         //baseOfNorth.add(upperBaseOfNorth, BorderLayout.NORTH);
 
-        // The 2nd Box
+        // The 2nd Box of North
         Box the2ndBaseOfNorth = Box.createHorizontalBox();
         the2ndBaseOfNorth.add(tFiled_ConfidenceRating);
         the2ndBaseOfNorth.add(tField_NegativeAnswerCategory);
+        the2ndBaseOfNorth.setPreferredSize(new Dimension(800, 33));
         baseOfNorth.add(the2ndBaseOfNorth);
         //northArea.add(lowerBaseOfNorth, BorderLayout.SOUTH);
 
-        // The 3rd Box
+        // The 3rd Box of North
         Box the3rdBaseOfNorth = Box.createHorizontalBox();
         JScrollPane scrollPane_Answer = new JScrollPane(tArea_Answer);
         scrollPane_Answer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -92,7 +99,7 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         the3rdBaseOfNorth.setPreferredSize(new Dimension(800, 100));
         baseOfNorth.add(the3rdBaseOfNorth);
 
-        // The 4th Box
+        // The 4th Box of North
         Box the4thBaseOfNorth = Box.createHorizontalBox();
 
         JScrollPane scrollPane_Reason = new JScrollPane(tArea_Reason);
@@ -114,6 +121,13 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         the4thBaseOfNorth.setPreferredSize(new Dimension(800, 300));
         baseOfNorth.add(the4thBaseOfNorth);
 
+        // The 5th Box
+        //Box the5thBaseOfNorth = Box.createHorizontalBox();
+        //the5thBaseOfNorth.add(new JLabel("あ"));
+        //the5thBaseOfNorth.setPreferredSize(new Dimension(800, 33));
+        //baseOfNorth.add(the5thBaseOfNorth);
+
+        // Finalization of North
         add(baseOfNorth, BorderLayout.NORTH);
 
         /* South Area */
@@ -121,23 +135,24 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         southBox.add(new JLabel(" "));
 
         //SouthSubPane2
-        Box southSubBox2 = Box.createHorizontalBox();
-        southSubBox2.add(new JLabel(" "));
-        southBox.add(southSubBox2);
+        //Box southSubBox2 = Box.createHorizontalBox();
+        //southSubBox2.add(new JLabel(" "));
+        //southBox.add(southSubBox2);
 
         add(southBox, BorderLayout.SOUTH);
 
         /* Finalization */
-        setBorder(BorderFactory.createTitledBorder("A ACNRSL Panel"));
+        setBorder(BorderFactory.createEtchedBorder());
+        //setBorder(BorderFactory.createTitledBorder("A ACNRSL Panel"));
         // BoxLayoutで適切にスクロールするために、固定の高さを設定
-        setPreferredSize(new Dimension(800, 400));
-        setMaximumSize(new Dimension(Integer.MAX_VALUE, 400));
+        setPreferredSize(new Dimension(800, 533));
+        setMaximumSize(new Dimension(Integer.MAX_VALUE, 533));
+
+        // 全フィールドの初期化が完了した後にJsonManagerを初期化
+        initializeJsonManager();
     }
 
-    public void loadJson() {
-        jsonManager.reloadFromDisk();
-    }
-
+    @Override
     public void saveJson() {
         String answerText = tArea_Answer.getText();
         String confidenceRatingText = tFiled_ConfidenceRating.getText();
@@ -152,17 +167,21 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         jsonManager.setValue(sectionName + "/" + subSectionName + "/Negative\\ Answer\\ Category", negativeAnswerCategoryText);
         jsonManager.setValue(sectionName + "/" + subSectionName + "/Reason", reasonText);
         jsonManager.setValue(sectionName + "/" + subSectionName + "/Supporting\\ Text", supportingText);
-        jsonManager.setValue(sectionName + "/" + subSectionName + "/Page\\/Line", pageLineText);
+        jsonManager.setValue(sectionName + "/" + subSectionName + "/Location", pageLineText);
 
         jsonManager.doSave(false);
 
     }
 
+    @Override
+    public void loadJson() {
+        jsonManager.reloadFromDisk();
+    }
 
     @Override
     public void resetBackgroundColorOfTAreasTFields() {
-        tField_jsonName.resetBackgroundColor();
-        tField_jsonName.updateDefaultValue();
+        //tField_jsonName.resetBackgroundColor();
+        //tField_jsonName.updateDefaultValue();
         tField_NegativeAnswerCategory.resetBackgroundColor();
         tField_NegativeAnswerCategory.updateDefaultValue();
         tFiled_ConfidenceRating.resetBackgroundColor();
@@ -185,7 +204,32 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
 
     @Override
     public void actionAfterSuccessfullyOpeningJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+        String answer = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Answer");
+        String confidenceRating = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Confidence\\ Rating");
+        String negativeAnswerCategory = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Negative\\ Answer\\ Category");
+        String reason = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Reason");
+        String supportingText = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Supporting\\ Text");
+        String pageLine = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Location");
+
+        // 各フィールドに値を設定
+        if (answer != null) tArea_Answer.setText(answer);
+        if (confidenceRating != null) tFiled_ConfidenceRating.setText(confidenceRating);
+        if (negativeAnswerCategory != null) tField_NegativeAnswerCategory.setText(negativeAnswerCategory);
+        if (reason != null) tArea_Reason.setText(reason);
+        if (supportingText != null) tArea_SupportingText.setText(supportingText);
+        if (pageLine != null) tArea_Location.setText(pageLine);
+
+        // update jsonNameLabel
+        jsonNameLabel.setText(jsonName);
+
+        resetBackgroundColorOfTAreasTFields();
+
         System.out.println("Successfully open JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+    }
+
+    @Override
+    public void actionAfterSuccessfullyReloadingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
+        actionAfterSuccessfullyOpeningJson(jsonManagerWithConflictSafe);
     }
 
     @Override
@@ -204,30 +248,7 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         System.err.println("Failed to save JSON to " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
     }
 
-    @Override
-    public void actionAfterSuccessfullyReloadingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
-        String answer = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Answer");
-        String confidenceRating = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Confidence\\ Rating");
-        String negativeAnswerCategory = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Negative\\ Answer\\ Category");
-        String reason = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Reason");
-        String supportingText = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Supporting\\ Text");
-        String pageLine = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Page\\/Line");
 
-        // 各フィールドに値を設定
-        if (answer != null) tArea_Answer.setText(answer);
-        if (confidenceRating != null) tFiled_ConfidenceRating.setText(confidenceRating);
-        if (negativeAnswerCategory != null) tField_NegativeAnswerCategory.setText(negativeAnswerCategory);
-        if (reason != null) tArea_Reason.setText(reason);
-        if (supportingText != null) tArea_SupportingText.setText(supportingText);
-        if (pageLine != null) tArea_Location.setText(pageLine);
-
-        // set title border
-        setBorder(BorderFactory.createTitledBorder(jsonName));
-
-        resetBackgroundColorOfTAreasTFields();
-
-        System.out.println("Successfully loaded JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
-    }
 
     @Override
     public void actionAfterFailingToReloadJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
