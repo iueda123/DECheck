@@ -2,8 +2,7 @@ package iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
-import iu.LCAC.Member.action.Abstract.AbstActionMember;
-import iu.LCAC.Utils.ColorChangeableTextField;
+import iu.LCAC.Member.componentholder.Concretes.StatusPanel.StatusPanelHolder;
 import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManagerCallback;
 import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManagerWithConflictSafe;
 
@@ -15,7 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManagerCallback {
+public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonManagerCallback {
 
     final String jsonFolderPathStr;
     String jsonName;
@@ -25,36 +24,21 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
     final String sectionName;
     final String subSectionName;
 
-    final CHolderMediator cHolderMediator;
-    final ActionMediator actionMediator;
-
     JLabel jsonNameLabel = new JLabel("JSON File Name");
     //ColorChangeableTextField tField_jsonName = new ColorChangeableTextField("JSON File Name");
     String tooltipForJsonName = "JSON File Name";
 
     JButton saveButton = new JButton("save");
+    JButton openButton = new JButton("open");
     JButton loadButton = new JButton("load");
     JButton jsonFileNameEditButton = new JButton("edit json name");
-    JButton convertJson2MarkdownButton = new JButton("2MD");
     JButton convertJson2TsvButton = new JButton("2TSV");
     private ManagerOfSubTabBasePane managerOfSubTabBasePane;
 
 
-    public One_DEResult_Pane_Abs(
+    public One_DEQAResult_Pane_Abs(
             String jsonFolderPathStr,
             String jsonName, String sectionName, String subSectionName) {
-        this(jsonFolderPathStr, jsonName, sectionName, subSectionName, null, null);
-    }
-
-    public One_DEResult_Pane_Abs(
-            String jsonFolderPathStr, String jsonName, String sectionName, String subSectionName,
-            CHolderMediator cHolderMediator, ActionMediator actionMediator) {
-
-        // BashScriptを呼び出すActionMemberを利用すべく
-        // CHolderMediator や ActionMediator を このクラス内に保持したいと
-        // このコンストラクタを作った。しかし、どうやって CHolderMediatorやActionMediatorを
-        // nullじゃない状態で持ってくるかの良い方法を思いつけず。
-        //　ひとまずこのコンストラクタを残しておく。
 
         this.jsonFolderPathStr = jsonFolderPathStr;
         this.jsonName = jsonName;
@@ -73,9 +57,6 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
         this.sectionName = sectionName;
         this.subSectionName = subSectionName;
 
-        this.cHolderMediator = cHolderMediator;
-        this.actionMediator = actionMediator;
-
         saveButton.addActionListener(
                 new AbstractAction() {
                     @Override
@@ -83,6 +64,13 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
                         saveJson();
                     }
                 });
+
+        openButton.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                openJsonFile();
+            }
+        });
 
         loadButton.addActionListener(new AbstractAction() {
             @Override
@@ -98,47 +86,48 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
             }
         });
 
-        convertJson2MarkdownButton.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                convertJson2Markdown();
-            }
-        });
 
     }
 
-    private void convertJson2Markdown() {
-
-        if (cHolderMediator != null) {
-            System.err.println("The cHolderMediator is not null.");
-        } else {
-            System.err.println("The cHolderMediator is null.");
-        }
-
-        if (this.actionMediator != null) {
-            System.err.println("The actionMediator is not null.");
-
-            // 何かしらの文字列を引数として渡すには以下のようにしてActionEventを作成
-            AbstActionMember abstActionMember = actionMediator.getInstanceOfAMember("run_a_bash_script");
-            ActionEvent customEvent_with_ActionNameAndArgs = new ActionEvent(
-                    this,
-                    ActionEvent.ACTION_PERFORMED,
-                    "DummyActionName RunBashPanelHolderから渡した引数1 " + "RunBashPanelHolderから渡した引数2 "
-
-                    // AbstrActionMember#getActionCommandAndArgs()の自分が決めた仕様で、
-                    // ActionEventオブジェクトに格納された文字列の１つ目の要素はアクション名、
-                    // ２つ目以降の要素は引数扱い。
-                    // なので ここでは１つ目を DummyActionName としている。
-
-            );
-            abstActionMember.perform(customEvent_with_ActionNameAndArgs);
-
-        } else {
-            System.err.println("The actionMediator is null @ One_DEResult_Pane_Abs.java.");
-        }
-    }
 
     public abstract void saveJson();
+
+    public void openJsonFile() {
+
+        Path jsonFilePath = Paths.get( this.getJsonFolderPathStr() + "/" + this.getJsonName() ) ;
+
+        try {
+            if (Desktop.isDesktopSupported()) {
+                Desktop desktop = Desktop.getDesktop();
+                if (jsonFilePath.toFile().exists()) {
+                    desktop.open(jsonFilePath.toFile());
+                } else {
+                    JOptionPane.showMessageDialog(
+                        this,
+                        "JSONファイルが見つかりません: " + jsonFilePath.toAbsolutePath(),
+                        "エラー",
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                }
+            } else {
+                JOptionPane.showMessageDialog(
+                    this,
+                    "このシステムではファイルを開く機能がサポートされていません。",
+                    "エラー",
+                    JOptionPane.ERROR_MESSAGE
+                );
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(
+                this,
+                "ファイルを開く際にエラーが発生しました: " + e.getMessage(),
+                "エラー",
+                JOptionPane.ERROR_MESSAGE
+            );
+            e.printStackTrace();
+        }
+
+    }
 
     public abstract void loadJson();
 
@@ -202,7 +191,7 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
 
 
         private void movePaneUp() {
-            Container parent = One_DEResult_Pane_Abs.this.getParent();
+            Container parent = One_DEQAResult_Pane_Abs.this.getParent();
             if (parent == null) {
                 return;
             }
@@ -210,7 +199,7 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
             Component[] components = parent.getComponents();
             int paneIndex = -1;
             for (int i = 0; i < components.length; i++) {
-                if (components[i] == One_DEResult_Pane_Abs.this) {
+                if (components[i] == One_DEQAResult_Pane_Abs.this) {
                     paneIndex = i;
                     break;
                 }
@@ -222,7 +211,7 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
 
             Component previousPane = null;
             for (int i = paneIndex - 1; i >= 0; i--) {
-                if (components[i] instanceof One_DEResult_Pane_Abs) {
+                if (components[i] instanceof One_DEQAResult_Pane_Abs) {
                     previousPane = components[i];
                     break;
                 }
@@ -240,21 +229,21 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
             if (spacerBefore != null) {
                 parent.remove(spacerBefore);
             }
-            parent.remove(One_DEResult_Pane_Abs.this);
+            parent.remove(One_DEQAResult_Pane_Abs.this);
 
             int insertionIndex = parent.getComponentZOrder(previousPane);
             if (spacerBefore != null) {
                 parent.add(spacerBefore, insertionIndex);
                 insertionIndex++;
             }
-            parent.add(One_DEResult_Pane_Abs.this, insertionIndex);
+            parent.add(One_DEQAResult_Pane_Abs.this, insertionIndex);
 
             parent.revalidate();
             parent.repaint();
         }
 
         private void movePaneDown() {
-            Container parent = One_DEResult_Pane_Abs.this.getParent();
+            Container parent = One_DEQAResult_Pane_Abs.this.getParent();
             if (parent == null) {
                 return;
             }
@@ -262,7 +251,7 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
             Component[] components = parent.getComponents();
             int paneIndex = -1;
             for (int i = 0; i < components.length; i++) {
-                if (components[i] == One_DEResult_Pane_Abs.this) {
+                if (components[i] == One_DEQAResult_Pane_Abs.this) {
                     paneIndex = i;
                     break;
                 }
@@ -274,7 +263,7 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
 
             Component nextPane = null;
             for (int i = paneIndex + 1; i < components.length; i++) {
-                if (components[i] instanceof One_DEResult_Pane_Abs) {
+                if (components[i] instanceof One_DEQAResult_Pane_Abs) {
                     nextPane = components[i];
                     break;
                 }
@@ -292,14 +281,14 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
             if (spacerBefore != null) {
                 parent.remove(spacerBefore);
             }
-            parent.remove(One_DEResult_Pane_Abs.this);
+            parent.remove(One_DEQAResult_Pane_Abs.this);
 
             int insertionIndex = parent.getComponentZOrder(nextPane) + 1;
             if (spacerBefore != null) {
                 parent.add(spacerBefore, insertionIndex);
                 insertionIndex++;
             }
-            parent.add(One_DEResult_Pane_Abs.this, insertionIndex);
+            parent.add(One_DEQAResult_Pane_Abs.this, insertionIndex);
 
             parent.revalidate();
             parent.repaint();
@@ -354,7 +343,8 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
 
             updateJsonName(newJsonName);//このDEパネルにおける登録Jsonの更新
 
-            updateRegisteredJsonNamesOfAllOtherPane(oldJsonName, newJsonName);//すべての同胞パネルにおける登録Jsonを更新
+            //すべての同胞パネルにおける登録Jsonを更新
+            updateRegisteredJsonNamesOfAllOtherPane(oldJsonName, newJsonName);
 
             JOptionPane.showMessageDialog(
                     this,
@@ -384,16 +374,16 @@ public abstract class One_DEResult_Pane_Abs extends JPanel implements JsonManage
 
     private void updateRegisteredJsonNamesOfAllOtherPane(String oldJsonName, String newJsonName) {
 
-        System.out.println("★");
+        //System.out.println("★");
 
         ArrayList<ManagerOfSubTabBasePane> managerOfSubTabBasePanes = managerOfSubTabBasePane.getSubTabsHolder().getArrayList_of_ManagerOfSubTabBasePane();
         for (ManagerOfSubTabBasePane managerOfSubTabBasePane : managerOfSubTabBasePanes) {
 
-            ArrayList<One_DEResult_Pane_Abs> oneDeResultPaneAbsArray =    managerOfSubTabBasePane.getDePaneArray();
-            for (One_DEResult_Pane_Abs oneDeResultPane : oneDeResultPaneAbsArray) {
+            ArrayList<One_DEQAResult_Pane_Abs> oneDeqaResultPaneAbsArray = managerOfSubTabBasePane.getDePaneArray();
+            for (One_DEQAResult_Pane_Abs oneDeResultPane : oneDeqaResultPaneAbsArray) {
 
-                //他のサブパネル下にあるすべてのDEパネルを参照してもし旧JSON名を保持するものがあれば更新操作を施す。
-                if(oneDeResultPane.getJsonName().equals(oldJsonName)){
+                //他のサブサブパネル下にあるすべてのDEパネルを参照してもし旧JSON名を保持するものがあれば更新操作を施す。
+                if (oneDeResultPane.getJsonName().equals(oldJsonName)) {
                     oneDeResultPane.updateJsonName(newJsonName);
                 }
 

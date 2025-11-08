@@ -2,13 +2,14 @@ package iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
+import iu.LCAC.Member.componentholder.Concretes.StatusPanel.StatusPanelHolder;
 import iu.LCAC.Utils.ColorChangeableTextArea;
 import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManagerWithConflictSafe;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class One_A_Style_Pane extends One_DEResult_Pane_Abs  {
+public class One_A_Style_Pane extends One_DEQAResult_Pane_Abs {
 
     private ColorChangeableTextArea tArea_Answer = new ColorChangeableTextArea("Answer");
 
@@ -16,12 +17,8 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs  {
 
 
     public One_A_Style_Pane(String jsonFolderPathStr, String jsonName, String sectionName, String subSectionName) {
-        this(jsonFolderPathStr, jsonName, sectionName, subSectionName, null, null);
-    }
 
-    public One_A_Style_Pane(String jsonFolderPathStr, String jsonName, String sectionName, String subSectionName, CHolderMediator cHolderMediator, ActionMediator actionMediator) {
-
-        super(jsonFolderPathStr, jsonName, sectionName, subSectionName, cHolderMediator, actionMediator);
+        super(jsonFolderPathStr, jsonName, sectionName, subSectionName);
 
         // BashScriptを呼び出すActionMemberを利用すべく
         // CHolderMediator や ActionMediator を このクラス内に保持したいと
@@ -39,26 +36,29 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs  {
         /* Setup North Area */
         Box northBox = Box.createVerticalBox();
 
-        Box northSubPanel_1 = Box.createHorizontalBox();
-        northSubPanel_1.add(Box.createHorizontalGlue());
-        northSubPanel_1.add(jsonNameLabel);
-        northSubPanel_1.add(Box.createHorizontalGlue());
-        northSubPanel_1.add(saveButton);
-        northSubPanel_1.add(loadButton);
-        northSubPanel_1.add(jsonFileNameEditButton);
-        northSubPanel_1.add(new PanelMoverPane());
-        //northBox.add(northSubPanel_1);
-        add(northSubPanel_1, BorderLayout.NORTH);
+        Box the1stBaseOfNorth = Box.createHorizontalBox();
+        the1stBaseOfNorth.add(Box.createHorizontalGlue());
+        the1stBaseOfNorth.add(jsonNameLabel);
+        the1stBaseOfNorth.add(Box.createHorizontalGlue());
+        the1stBaseOfNorth.add(saveButton);
+        the1stBaseOfNorth.add(openButton);
+        the1stBaseOfNorth.add(loadButton);
+        the1stBaseOfNorth.add(jsonFileNameEditButton);
+        the1stBaseOfNorth.add(new PanelMoverPane());
+        the1stBaseOfNorth.setPreferredSize(new Dimension(800, 34));
+        add(the1stBaseOfNorth, BorderLayout.NORTH);
 
         /* Setup Center Area */
-        JPanel northSubPanel_2 = new JPanel(new BorderLayout());
-        northSubPanel_2.setPreferredSize(new Dimension(800, 150));
+        JPanel the1stBaseOfCenter = new JPanel(new BorderLayout());
+        the1stBaseOfCenter.setPreferredSize(new Dimension(800, 150));
         JScrollPane scrollPane_Answer = new JScrollPane(tArea_Answer);
         scrollPane_Answer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane_Answer.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        northSubPanel_2.add(scrollPane_Answer, BorderLayout.CENTER);
-        northBox.add(northSubPanel_2);
-        add(northSubPanel_2, BorderLayout.CENTER);
+        the1stBaseOfCenter.add(scrollPane_Answer, BorderLayout.CENTER);
+
+        northBox.add(the1stBaseOfCenter);
+
+        add(the1stBaseOfCenter, BorderLayout.CENTER);
 
         //add(northBox, BorderLayout.NORTH);
 
@@ -83,6 +83,8 @@ public class One_A_Style_Pane extends One_DEResult_Pane_Abs  {
         jsonManager.setValue(sectionName + "/" + subSectionName, answerText);
         jsonManager.doSave(false);
     }
+
+
 
     @Override
     public void loadJson() {

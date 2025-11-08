@@ -1,27 +1,25 @@
 package iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common;
 
-import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA1.QA1_SubTabsHolder;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
 public class ManagerOfSubTabBasePane {
-    JPanel basePaneForDEResultPanes = new JPanel();
+    JPanel basePaneForDEQAResultPanes = new JPanel();
     JPanel subTabBasePane;
     final String tabName;
 
     final String sectionName;
     final String subSectionName;
 
-    ArrayList<One_DEResult_Pane_Abs> dePaneArray = new ArrayList<>();
+    ArrayList<One_DEQAResult_Pane_Abs> dePaneArray = new ArrayList<>();
 
     final JTabbedPane tabbedPane;
     final NotePane notePane;
     private SubTabsHolderItrfc subTabsHolder;
 
     public ManagerOfSubTabBasePane(String tabName, String sectionName, String subSectionName, JTabbedPane tabbedPane) {
-        this.basePaneForDEResultPanes.setLayout(new BoxLayout(this.basePaneForDEResultPanes, BoxLayout.Y_AXIS));
+        this.basePaneForDEQAResultPanes.setLayout(new BoxLayout(this.basePaneForDEQAResultPanes, BoxLayout.Y_AXIS));
         this.tabName = tabName;
         this.sectionName = sectionName;
         this.subSectionName = subSectionName;
@@ -30,7 +28,7 @@ public class ManagerOfSubTabBasePane {
     }
 
 
-    public void addToTheDePaneArray(One_DEResult_Pane_Abs oneDeResultPaneAbs) {
+    public void addToTheDePaneArray(One_DEQAResult_Pane_Abs oneDeResultPaneAbs) {
         this.dePaneArray.add(oneDeResultPaneAbs);
         oneDeResultPaneAbs.registerManagerOfSubTabBasePane(this);
     }
@@ -53,23 +51,23 @@ public class ManagerOfSubTabBasePane {
             // OneDEResultPane たちを配置
             for (int i = 0; i < dePaneArray.size(); i++) {
                 //basePanel.add(new JLabel(" ")); // Separator
-                One_DEResult_Pane_Abs pane = dePaneArray.get(i);
+                One_DEQAResult_Pane_Abs pane = dePaneArray.get(i);
                 pane.setMaximumSize(new Dimension(Integer.MAX_VALUE, pane.getPreferredSize().height));
                 pane.setAlignmentX(Component.LEFT_ALIGNMENT);
-                basePaneForDEResultPanes.add(pane);
+                basePaneForDEQAResultPanes.add(pane);
             }
             // DEResult Pane 達を置くパネルの全体のPreferredSizeを明示的に計算
             int totalHeight = dePaneArray.stream().mapToInt(p -> p.getPreferredSize().height).sum();
             //totalHeight += 100; // NotePane分足す
             totalHeight = Math.max(totalHeight, 1000);
 
-            basePaneForDEResultPanes.setPreferredSize(new Dimension(800, totalHeight));
+            basePaneForDEQAResultPanes.setPreferredSize(new Dimension(800, totalHeight));
 
 
-            subTabBasePane.add(basePaneForDEResultPanes);
+            subTabBasePane.add(basePaneForDEQAResultPanes);
 
             // スクロールパネルを用意
-            JScrollPane scrollPane = new JScrollPane(basePaneForDEResultPanes,
+            JScrollPane scrollPane = new JScrollPane(basePaneForDEQAResultPanes,
                     JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                     JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             scrollPane.getVerticalScrollBar().setUnitIncrement(16);
@@ -84,7 +82,7 @@ public class ManagerOfSubTabBasePane {
 
     }
 
-    public ArrayList<One_DEResult_Pane_Abs> getDePaneArray() {
+    public ArrayList<One_DEQAResult_Pane_Abs> getDePaneArray() {
         return dePaneArray;
     }
 
@@ -92,8 +90,8 @@ public class ManagerOfSubTabBasePane {
         return this.tabName;
     }
 
-    public JPanel getBasePaneForDEResultPanes() {
-        return basePaneForDEResultPanes;
+    public JPanel getBasePaneForDEQAResultPanes() {
+        return basePaneForDEQAResultPanes;
     }
 
     public String getSectionName() {
@@ -113,7 +111,7 @@ public class ManagerOfSubTabBasePane {
     };
 
     public void revalidateChildren() {
-        this.basePaneForDEResultPanes.revalidate();
+        this.basePaneForDEQAResultPanes.revalidate();
     }
 
     public void registerSubTansHolder(SubTabsHolderItrfc subTabsHolder) {

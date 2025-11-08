@@ -5,7 +5,7 @@ import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.ManagerOfSubTabBasePane;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.One_A_Style_Pane;
-import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.One_DEResult_Pane_Abs;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.One_DEQAResult_Pane_Abs;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.SubTabsHolderItrfc;
 
 import javax.swing.*;
@@ -96,11 +96,11 @@ public class QASI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
                     System.err.println("The actionMediator is null. @ " + this.getClass());
                 }
 
-                mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_1_Name, this.cholderMediator, this.actionMediator));
-                mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_2_Name, this.cholderMediator, this.actionMediator));
-                mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_3_Name, this.cholderMediator, this.actionMediator));
-                mngrOfSubTabBasePane_4.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(),  jsonFileName, sectionName, subSection_4_Name, this.cholderMediator, this.actionMediator));
-                mngrOfSubTabBasePane_5.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_5_Name, this.cholderMediator, this.actionMediator));
+                mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_1_Name));
+                mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_2_Name));
+                mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_3_Name));
+                mngrOfSubTabBasePane_4.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(),  jsonFileName, sectionName, subSection_4_Name));
+                mngrOfSubTabBasePane_5.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_5_Name));
             }
         }
 
@@ -111,7 +111,7 @@ public class QASI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
         panel.add(baseTabPane, BorderLayout.CENTER);
     }
 
-    public One_DEResult_Pane_Abs getTheFirstJsonPanel(){
+    public One_DEQAResult_Pane_Abs getTheFirstJsonPanel(){
         //panel の baseTabPane の 0 番目 の 中で一番上に配置されている OneDEResult_Pane_Abs クラスオブジェクトを取得する
         if (baseTabPane.getTabCount() == 0) {
             return null;
@@ -126,7 +126,7 @@ public class QASI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
         // そのタブに対応する ManagerOfSubTabBasePane を検索
         ManagerOfSubTabBasePane targetManager = null;
         for (ManagerOfSubTabBasePane manager : arrayList_of_ManagerOfSubTabBasePane) {
-            JPanel basePaneForDEResultPanes = manager.getBasePaneForDEResultPanes();
+            JPanel basePaneForDEResultPanes = manager.getBasePaneForDEQAResultPanes();
             // basePaneForDEResultPanes が firstTabComponent の子孫かどうかを確認
             Container parent = basePaneForDEResultPanes.getParent();
             while (parent != null) {
@@ -146,12 +146,12 @@ public class QASI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
         }
 
         // basePaneForDEResultPanes から実際の表示順序で一番上の One_DEResult_Pane_Abs を取得
-        JPanel basePaneForDEResultPanes = targetManager.getBasePaneForDEResultPanes();
+        JPanel basePaneForDEResultPanes = targetManager.getBasePaneForDEQAResultPanes();
         Component[] components = basePaneForDEResultPanes.getComponents();
 
         for (Component component : components) {
-            if (component instanceof One_DEResult_Pane_Abs) {
-                return (One_DEResult_Pane_Abs) component;
+            if (component instanceof One_DEQAResult_Pane_Abs) {
+                return (One_DEQAResult_Pane_Abs) component;
             }
         }
 
@@ -164,23 +164,23 @@ public class QASI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
         if (actionMediator != null) {
 
             /* 値を流し込む */
-            for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_1.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_1.getDePaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
-            for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_2.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_2.getDePaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
-            for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_3.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_3.getDePaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
-            for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_4.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_4.getDePaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
-            for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_5.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_5.getDePaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
@@ -218,7 +218,7 @@ public class QASI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
      * すべての paneArray の要素の中から、
      * jsonName, sectionName, subSectionName が一致するものを返す。
      */
-    public One_DEResult_Pane_Abs getResultPane(String jsonName, String sectionName, String subSectionName) {
+    public One_DEQAResult_Pane_Abs getResultPane(String jsonName, String sectionName, String subSectionName) {
         //System.out.println("Start searching the DEResultPane with following: ");
         //System.out.println("  JSON Name: " + jsonName);
         //System.out.println("  Section Name: " + sectionName);
@@ -226,7 +226,7 @@ public class QASI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
 
         //System.out.println(mngrOfSubTabBasePane_1.getDePaneArray().size());
 
-        for (One_DEResult_Pane_Abs pane : mngrOfSubTabBasePane_1.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_1.getDePaneArray()) {
             //System.out.println("Candidate Info: ");
             //System.out.println("  JSON Name: " + pane.getJsonName());
             //System.out.println("  Section Name: " + pane.getSectionName());
@@ -238,7 +238,7 @@ public class QASI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
             }
         }
 
-        for (One_DEResult_Pane_Abs pane : mngrOfSubTabBasePane_2.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_2.getDePaneArray()) {
             //System.out.println("Candidate Info: ");
             //System.out.println("  JSON Name: " + pane.getJsonName());
             //System.out.println("  Section Name: " + pane.getSectionName());
@@ -250,7 +250,7 @@ public class QASI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
             }
         }
 
-        for (One_DEResult_Pane_Abs pane : mngrOfSubTabBasePane_3.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_3.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -258,7 +258,7 @@ public class QASI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
             }
         }
 
-        for (One_DEResult_Pane_Abs pane : mngrOfSubTabBasePane_4.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_4.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -266,7 +266,7 @@ public class QASI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
             }
         }
 
-        for (One_DEResult_Pane_Abs pane : mngrOfSubTabBasePane_5.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_5.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {

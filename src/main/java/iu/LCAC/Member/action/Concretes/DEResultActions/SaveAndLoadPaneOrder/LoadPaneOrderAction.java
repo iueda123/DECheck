@@ -6,7 +6,7 @@ import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.CAAA.CAAA_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.ManagerOfSubTabBasePane;
-import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.One_DEResult_Pane_Abs;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.One_DEQAResult_Pane_Abs;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.SubTabsHolderItrfc;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.GN.GN_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.NM.NM_SubTabsHolder;
@@ -124,7 +124,7 @@ public class LoadPaneOrderAction extends AbstActionMember {
         for (ManagerOfSubTabBasePane managerOfSubTabBasePane : subTabsHolder.getArrayList_of_ManagerOfSubTabBasePane()) {
             String subSectionName = managerOfSubTabBasePane.getSubSectionName();
 
-            JPanel subSectionPanel = managerOfSubTabBasePane.getBasePaneForDEResultPanes();
+            JPanel subSectionPanel = managerOfSubTabBasePane.getBasePaneForDEQAResultPanes();
             Component[] components = subSectionPanel.getComponents();
 
             // リストに変換して任意の順序付け
@@ -144,7 +144,7 @@ public class LoadPaneOrderAction extends AbstActionMember {
             ArrayList<Component> newlyOrderedComponents = new ArrayList<>();
             for (String orderedJsonName : newlyOrderedJsonNameArray) {
                 for (Component comp : currentComponentArray) {
-                    One_DEResult_Pane_Abs oneDEResultPane = (One_DEResult_Pane_Abs) comp;
+                    One_DEQAResult_Pane_Abs oneDEResultPane = (One_DEQAResult_Pane_Abs) comp;
                     String jsonName_of_checking_comp = oneDEResultPane.getJsonName();
                     //System.out.println("  Now checking '" + jsonName_of_checking_comp + "'");
                     if (orderedJsonName.equals(jsonName_of_checking_comp)) {

@@ -5,7 +5,7 @@ import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.ManagerOfSubTabBasePane;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.One_A_Style_Pane;
-import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.One_DEResult_Pane_Abs;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.One_DEQAResult_Pane_Abs;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.SubTabsHolderItrfc;
 
 import javax.swing.*;
@@ -85,9 +85,9 @@ public class SC_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
                     System.err.println("The actionMediator is null. @ SC_SubTabsHolder.java");
                 }
 
-                mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_1_Name, this.cholderMediator, this.actionMediator));
-                mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_2_Name, this.cholderMediator, this.actionMediator));
-                mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_3_Name, this.cholderMediator, this.actionMediator));
+                mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_1_Name));
+                mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_2_Name));
+                mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_3_Name));
             }
         }
 
@@ -104,15 +104,15 @@ public class SC_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
         if (actionMediator != null) {
 
             /* 値を流し込む */
-            for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_1.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_1.getDePaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
-            for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_2.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_2.getDePaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
-            for (One_DEResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_3.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_3.getDePaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
@@ -150,7 +150,7 @@ public class SC_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
      * すべての paneArray の要素の中から、
      * jsonName, sectionName, subSectionName が一致するものを返す。
      */
-    public One_DEResult_Pane_Abs getResultPane(String jsonName, String sectionName, String subSectionName) {
+    public One_DEQAResult_Pane_Abs getResultPane(String jsonName, String sectionName, String subSectionName) {
         //System.out.println("Start searching the DEResultPane with following: ");
         //System.out.println("  JSON Name: " + jsonName);
         //System.out.println("  Section Name: " + sectionName);
@@ -158,7 +158,7 @@ public class SC_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
 
         //System.out.println(mngrOfSubTabBasePane_1.getDePaneArray().size());
 
-        for (One_DEResult_Pane_Abs pane : mngrOfSubTabBasePane_1.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_1.getDePaneArray()) {
             //System.out.println("Candidate Info: ");
             //System.out.println("  JSON Name: " + pane.getJsonName());
             //System.out.println("  Section Name: " + pane.getSectionName());
@@ -170,7 +170,7 @@ public class SC_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
             }
         }
 
-        for (One_DEResult_Pane_Abs pane : mngrOfSubTabBasePane_2.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_2.getDePaneArray()) {
             //System.out.println("Candidate Info: ");
             //System.out.println("  JSON Name: " + pane.getJsonName());
             //System.out.println("  Section Name: " + pane.getSectionName());
@@ -182,7 +182,7 @@ public class SC_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
             }
         }
 
-        for (One_DEResult_Pane_Abs pane : mngrOfSubTabBasePane_3.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_3.getDePaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -199,7 +199,7 @@ public class SC_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
     }
 
     @Override
-    public One_DEResult_Pane_Abs getTheFirstJsonPanel() {
+    public One_DEQAResult_Pane_Abs getTheFirstJsonPanel() {
         return null;
     }
 

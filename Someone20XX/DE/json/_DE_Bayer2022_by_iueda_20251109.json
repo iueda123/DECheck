@@ -247,6 +247,6 @@
     "application_notes": ""
   },
   "general_notes": {
-    "general_notes": "Single-site 3.0T GE Signa HDx; CAT12/SPM12 preprocessing with DARTEL; DK-68 ROI summarization; TIV used as covariate in analyses; no site harmonization needed due to single-site design."
+    "general_notes": "ABIDE aggregated 20 samples from 17 sites (3T scanners) with varying sequence parameters; site heterogeneity documented (Table 1). Site-specific sample sizes, sex ratios, and age ranges are listed (see Table 1 excerpt). Overall HC age statistics computed from sex-stratified means/SDs and counts."
   }
 }
