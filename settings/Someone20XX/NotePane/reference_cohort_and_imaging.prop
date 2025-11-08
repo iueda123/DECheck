@@ -1,17 +1,17 @@
 #no comment.
-#Sat Nov 08 17:48:15 JST 2025
-dataset_name.status=★huhuih
-analysis_level.status=ゔぇｗ
+#Sat Nov 08 21:06:07 JST 2025
+dataset_name.status=
+analysis_level.status=
 quality_checking.status=
 quality_checking_detail.note=
-preprocessing_pipeline.status=未処
+preprocessing_pipeline.status=
 quality_checking_detail.status=
-imaging_modality.status=hu
+imaging_modality.status=
 imaging_modality.note=
-hc_sex.note=wefw
+hc_sex.note=
 site_effect_handling.status=
 hc_age.status=
-dataset_name.note=wevwe
+dataset_name.note=
 quality_checking.note=
 hc_n.note=
 hc_n.status=
@@ -21,4 +21,4 @@ site_effect_handling_detail.status=
 hc_age.note=
 analysis_level.note=
 site_effect_handling.note=
-hc_sex.status=wevw
+hc_sex.status=

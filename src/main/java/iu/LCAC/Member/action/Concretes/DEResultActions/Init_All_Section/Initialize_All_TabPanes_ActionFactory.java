@@ -8,7 +8,7 @@ public class Initialize_All_TabPanes_ActionFactory extends AbstActionMemberFacto
   private AbstActionMember action;
 
   @Override
-  protected AbstActionMember createInstance(String action_name, String short_name) {
+  protected AbstActionMember createInstance(String action_name, String short_name, String... args) {
     if (action == null) {
       action = new Initialize_All_TabPanes_Action(action_name, short_name);
     }

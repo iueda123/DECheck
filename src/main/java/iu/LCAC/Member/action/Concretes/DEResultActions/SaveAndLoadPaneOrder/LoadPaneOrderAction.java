@@ -27,9 +27,11 @@ import java.util.*;
 
 public class LoadPaneOrderAction extends AbstActionMember {
 
+    String authorYear = "Someone20XX";
 
-    public LoadPaneOrderAction(String action_name, String short_name) {
+    public LoadPaneOrderAction(String action_name, String short_name, String authorYear) {
         super(action_name, short_name);
+        this.authorYear = authorYear;
     }
 
     @Override
@@ -46,24 +48,24 @@ public class LoadPaneOrderAction extends AbstActionMember {
         System.out.println("");
         System.out.println("perform() in " + this.getClass().toString() + " was called.");
 
-        loadPaneOrder("SI",  "./settings/PaneOrder/" + "study_identification" + ".prop" );
-        loadPaneOrder("SC",  "./settings/PaneOrder/" + "study_characteristics" + ".prop" );
-        loadPaneOrder("RCAI",  "./settings/PaneOrder/" + "reference_cohort_and_imaging" + ".prop" );
-        loadPaneOrder("NM", "./settings/PaneOrder/" + "normative_modeling" + ".prop");
-        loadPaneOrder("CAAA", "./settings/PaneOrder/" + "clinical_application_and_analysis" + ".prop");
-        loadPaneOrder("GN", "./settings/PaneOrder/" + "general_notes" + ".prop");
+        loadPaneOrder("SI", "./settings/" + authorYear + "/PaneOrder/" + "study_identification" + ".prop");
+        loadPaneOrder("SC", "./settings/" + authorYear + "/PaneOrder/" + "study_characteristics" + ".prop");
+        loadPaneOrder("RCAI", "./settings/" + authorYear + "/PaneOrder/" + "reference_cohort_and_imaging" + ".prop");
+        loadPaneOrder("NM", "./settings/" + authorYear + "/PaneOrder/" + "normative_modeling" + ".prop");
+        loadPaneOrder("CAAA", "./settings/" + authorYear + "/PaneOrder/" + "clinical_application_and_analysis" + ".prop");
+        loadPaneOrder("GN", "./settings/" + authorYear + "/PaneOrder/" + "general_notes" + ".prop");
 
-        loadPaneOrder("QASI", "./settings/PaneOrder/" + "study_identification_of_qa" + ".prop");
-        loadPaneOrder("QA1_v6", "./settings/PaneOrder/" + "quality_assessment_1_v6" + ".prop");
-        loadPaneOrder("QA2_v6", "./settings/PaneOrder/" + "quality_assessment_2_v6" + ".prop");
-        loadPaneOrder("QAAC", "./settings/PaneOrder/" + "additional_comments" + ".prop");
+        loadPaneOrder("QASI", "./settings/" + authorYear + "/PaneOrder/" + "study_identification_of_qa" + ".prop");
+        loadPaneOrder("QA1_v6", "./settings/" + authorYear + "/PaneOrder/" + "quality_assessment_1_v6" + ".prop");
+        loadPaneOrder("QA2_v6", "./settings/" + authorYear + "/PaneOrder/" + "quality_assessment_2_v6" + ".prop");
+        loadPaneOrder("QAAC", "./settings/" + authorYear + "/PaneOrder/" + "additional_comments" + ".prop");
 
     }
 
     /**
      * Loads pane order for a specific section keyed by member name.
      */
-    private void loadPaneOrder(String member_name_key_word, String prop_file_path_str ) {
+    private void loadPaneOrder(String member_name_key_word, String prop_file_path_str) {
         AbstCHolderMember member;
         SubTabsHolderItrfc subTabsHolder;
         switch (member_name_key_word) {

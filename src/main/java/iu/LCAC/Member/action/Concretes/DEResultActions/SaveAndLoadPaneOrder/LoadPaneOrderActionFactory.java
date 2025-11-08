@@ -5,13 +5,13 @@ import iu.LCAC.Member.action.Abstract.AbstActionMemberFactory;
 
 public class LoadPaneOrderActionFactory extends AbstActionMemberFactory {
 
-  private AbstActionMember action;
+    private AbstActionMember action;
 
-  @Override
-  protected AbstActionMember createInstance(String action_name, String short_name) {
-    if (action == null) {
-      action = new LoadPaneOrderAction(action_name, short_name);
+    @Override
+    protected AbstActionMember createInstance(String action_name, String short_name, String... args) {
+        if (action == null) {
+            action = new LoadPaneOrderAction(action_name, short_name, args[0]);
+        }
+        return action;
     }
-    return action;
-  }
 }

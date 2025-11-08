@@ -17,9 +17,13 @@ public class MainWindowHolder extends AbstCHolderMember {
 
     private JFrame mainWindow = new JFrame();
     private Box southBox = Box.createVerticalBox();
+    private String authorYear = "Someone20XX";
 
-    public MainWindowHolder(String cholder_name, String short_name) throws HeadlessException {
+    public MainWindowHolder(String cholder_name, String short_name, String authorYear) throws HeadlessException {
         super(cholder_name, short_name);
+
+        this.authorYear = authorYear;
+
         mainWindow.addWindowListener(
                 new WindowAdapter() {
 
@@ -60,9 +64,8 @@ public class MainWindowHolder extends AbstCHolderMember {
         Path currentPath = Paths.get("./").toAbsolutePath().normalize();
         String currentDirName = currentPath.getFileName().toString();
         String parentDirName = currentPath.getParent().getFileName().toString();
-        String windowTitle = parentDirName + "-" + currentDirName;
+        String windowTitle = parentDirName + " / " + currentDirName + " / " + authorYear;
         mainWindow.setTitle(windowTitle);
-
 
     }
 

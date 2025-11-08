@@ -3,7 +3,7 @@ package iu.LCAC.Member.componentholder.Abstract;
 public abstract class AbstCHolderMemberFactory {
 
   /**
-   * Create or return a component holder instance. Subclasses implement {@link #createInstance()} to
+   * Create or return a component holder instance. Subclasses implement {@link #createInstance(String, String, String...)} to
    * provide the actual holder instance.
    * Note: postInitialize() is called later by CHolderMediator.postInitializeEachMember()
    * after actionMediator is registered.

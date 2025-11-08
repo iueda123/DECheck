@@ -28,9 +28,11 @@ import java.util.ArrayList;
 
 public class SavePaneOrderAction extends AbstActionMember {
 
+    String authorYear = "Someone20XX";
 
-    public SavePaneOrderAction(String action_name, String short_name) {
+    public SavePaneOrderAction(String action_name, String short_name, String authorYear) {
         super(action_name, short_name);
+        this.authorYear = authorYear;
     }
 
     @Override
@@ -47,17 +49,17 @@ public class SavePaneOrderAction extends AbstActionMember {
         System.out.println("perform() in " + this.getClass().toString() + " was called.");
 
         // 全セクションに拡張可能
-        savePaneOrder("SI", "./settings/PaneOrder/" + "study_identification" + ".prop");
-        savePaneOrder("SC", "./settings/PaneOrder/" + "study_characteristics" + ".prop");
-        savePaneOrder("RCAI", "./settings/PaneOrder/" + "reference_cohort_and_imaging" + ".prop");
-        savePaneOrder("NM", "./settings/PaneOrder/" + "normative_modeling" + ".prop");
-        savePaneOrder("CAAA", "./settings/PaneOrder/" + "clinical_application_and_analysis" + ".prop");
-        savePaneOrder("GN", "./settings/PaneOrder/" + "general_notes" + ".prop");
+        savePaneOrder("SI", "./settings/" + authorYear + "/PaneOrder/" + "study_identification" + ".prop");
+        savePaneOrder("SC", "./settings/" + authorYear + "/PaneOrder/" + "study_characteristics" + ".prop");
+        savePaneOrder("RCAI", "./settings/" + authorYear + "/PaneOrder/" + "reference_cohort_and_imaging" + ".prop");
+        savePaneOrder("NM", "./settings/" + authorYear + "/PaneOrder/" + "normative_modeling" + ".prop");
+        savePaneOrder("CAAA", "./settings/" + authorYear + "/PaneOrder/" + "clinical_application_and_analysis" + ".prop");
+        savePaneOrder("GN", "./settings/" + authorYear + "/PaneOrder/" + "general_notes" + ".prop");
 
-        savePaneOrder("QASI", "./settings/PaneOrder/" + "study_identification_of_qa" + ".prop");
-        savePaneOrder("QA1_v6", "./settings/PaneOrder/" + "quality_assessment_1_v6" + ".prop");
-        savePaneOrder("QA2_v6", "./settings/PaneOrder/" + "quality_assessment_2_v6" + ".prop");
-        savePaneOrder("QAAC", "./settings/PaneOrder/" + "additional_comments" + ".prop");
+        savePaneOrder("QASI", "./settings/" + authorYear + "/PaneOrder/" + "study_identification_of_qa" + ".prop");
+        savePaneOrder("QA1_v6", "./settings/" + authorYear + "/PaneOrder/" + "quality_assessment_1_v6" + ".prop");
+        savePaneOrder("QA2_v6", "./settings/" + authorYear + "/PaneOrder/" + "quality_assessment_2_v6" + ".prop");
+        savePaneOrder("QAAC", "./settings/" + authorYear + "/PaneOrder/" + "additional_comments" + ".prop");
     }
 
     private void savePaneOrder(String member_name_key_word, String prop_file_path_str) {

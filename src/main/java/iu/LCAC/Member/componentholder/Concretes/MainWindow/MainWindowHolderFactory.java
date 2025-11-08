@@ -9,7 +9,7 @@ public class MainWindowHolderFactory extends AbstCHolderMemberFactory {
   @Override
   protected AbstCHolderMember createInstance(String cholder_name, String short_name, String... args) {
     if (mainWindow == null) {
-      mainWindow = new MainWindowHolder(cholder_name, short_name);
+      mainWindow = new MainWindowHolder(cholder_name, short_name, args[0]);
     }
     return mainWindow;
   }

@@ -8,7 +8,7 @@ public class SaveAcceleratorSettingsActionFactory extends AbstActionMemberFactor
   private AbstActionMember action;
 
   @Override
-  protected AbstActionMember createInstance(String action_name, String short_name) {
+  protected AbstActionMember createInstance(String action_name, String short_name, String... args) {
     if (action == null) {
       action = new SaveAcceleratorSettingsAction(action_name, short_name);
     }

@@ -31,10 +31,6 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
     public One_ARSL_Style_Pane(String jsonFolderPathStr, String jsonName, String sectionName, String subSectionName) {
         super(jsonFolderPathStr, jsonName, sectionName, subSectionName);
 
-        //this.jsonName = jsonName;
-        //this.sectionName = sectionName;
-        //this.subSectionName = subSectionName;
-
         // Answer Sub Sub Section
         tArea_Answer.setLineWrap(true);
         tArea_Answer.setWrapStyleWord(true);
@@ -64,23 +60,19 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         setLayout(new BorderLayout());
 
         /* Setup North Area */
-        //JPanel baseOfNorth = new JPanel(new BorderLayout());
         Box baseOfNorth = Box.createVerticalBox();
 
         // The 1st Box of North
         Box the1stBaseOfNorth = Box.createHorizontalBox();
         the1stBaseOfNorth.add(Box.createHorizontalGlue());
         the1stBaseOfNorth.add(jsonNameLabel);
-        //the1stBaseOfNorth.add(tField_jsonName);
         the1stBaseOfNorth.add(Box.createHorizontalGlue());
-
         the1stBaseOfNorth.add(saveButton);
         the1stBaseOfNorth.add(loadButton);
         the1stBaseOfNorth.add(jsonFileNameEditButton);
         the1stBaseOfNorth.add(new PanelMoverPane());
-        the1stBaseOfNorth.setPreferredSize(new Dimension(800, 67));
+        the1stBaseOfNorth.setPreferredSize(new Dimension(800, 34));
         baseOfNorth.add(the1stBaseOfNorth);
-        //baseOfNorth.add(upperBaseOfNorth, BorderLayout.NORTH);
 
         // The 2nd Box of North
         Box the2ndBaseOfNorth = Box.createHorizontalBox();
@@ -88,7 +80,6 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         the2ndBaseOfNorth.add(tField_NegativeAnswerCategory);
         the2ndBaseOfNorth.setPreferredSize(new Dimension(800, 33));
         baseOfNorth.add(the2ndBaseOfNorth);
-        //northArea.add(lowerBaseOfNorth, BorderLayout.SOUTH);
 
         // The 3rd Box of North
         Box the3rdBaseOfNorth = Box.createHorizontalBox();
@@ -96,7 +87,7 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         scrollPane_Answer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane_Answer.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         the3rdBaseOfNorth.add(scrollPane_Answer);
-        the3rdBaseOfNorth.setPreferredSize(new Dimension(800, 100));
+        the3rdBaseOfNorth.setPreferredSize(new Dimension(800, 75));
         baseOfNorth.add(the3rdBaseOfNorth);
 
         // The 4th Box of North
@@ -118,7 +109,7 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         the4thBaseOfNorth.add(scrollPane_SupportingText);
         the4thBaseOfNorth.add(scrollPane_PageLine);
 
-        the4thBaseOfNorth.setPreferredSize(new Dimension(800, 300));
+        the4thBaseOfNorth.setPreferredSize(new Dimension(800, 200));
         baseOfNorth.add(the4thBaseOfNorth);
 
         // The 5th Box
@@ -145,8 +136,8 @@ public class One_ARSL_Style_Pane extends One_DEResult_Pane_Abs {
         setBorder(BorderFactory.createEtchedBorder());
         //setBorder(BorderFactory.createTitledBorder("A ACNRSL Panel"));
         // BoxLayoutで適切にスクロールするために、固定の高さを設定
-        setPreferredSize(new Dimension(800, 533));
-        setMaximumSize(new Dimension(Integer.MAX_VALUE, 533));
+        setPreferredSize(new Dimension(800, 375));
+        setMaximumSize(new Dimension(Integer.MAX_VALUE, 375));
 
         // 全フィールドの初期化が完了した後にJsonManagerを初期化
         initializeJsonManager();

@@ -8,7 +8,7 @@ public class SetAcceleratorOnNextClickActionFactory extends AbstActionMemberFact
   private AbstActionMember action;
 
   @Override
-  protected AbstActionMember createInstance(String action_name, String short_name) {
+  protected AbstActionMember createInstance(String action_name, String short_name, String... args) {
     if (action == null) {
       action = new SetAcceleratorOnNextClickAction(action_name, short_name);
     }

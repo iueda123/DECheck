@@ -25,8 +25,11 @@ import java.awt.event.KeyEvent;
 
 public class LoadNotePaneTextsAction extends AbstActionMember {
 
-    public LoadNotePaneTextsAction(String action_name, String short_name) {
+    String authorYear = "Someone20XX";
+
+    public LoadNotePaneTextsAction(String action_name, String short_name, String authorYear) {
         super(action_name, short_name);
+        this.authorYear = authorYear;
     }
 
     @Override
@@ -44,21 +47,21 @@ public class LoadNotePaneTextsAction extends AbstActionMember {
         System.out.println("perform() in " + this.getClass().toString() + " was called.");
 
         // 全セクションに拡張可能
-        loadNotePaneTexts("SI", "./settings/NotePane/" + "study_identification" + ".prop");
-        loadNotePaneTexts("SC", "./settings/NotePane/" + "study_characteristics" + ".prop");
-        loadNotePaneTexts("RCAI", "./settings/NotePane/" + "reference_cohort_and_imaging" + ".prop");
-        loadNotePaneTexts("NM", "./settings/NotePane/" + "normative_modeling" + ".prop");
-        loadNotePaneTexts("CAAA", "./settings/NotePane/" + "clinical_application_and_analysis" + ".prop");
-        loadNotePaneTexts("GN", "./settings/NotePane/" + "general_notes" + ".prop");
+        loadNotePaneTexts("SI", "./settings/" + authorYear + "/NotePane/" + "study_identification" + ".prop");
+        loadNotePaneTexts("SC", "./settings/" + authorYear + "/NotePane/" + "study_characteristics" + ".prop");
+        loadNotePaneTexts("RCAI", "./settings/" + authorYear + "/NotePane/" + "reference_cohort_and_imaging" + ".prop");
+        loadNotePaneTexts("NM", "./settings/" + authorYear + "/NotePane/" + "normative_modeling" + ".prop");
+        loadNotePaneTexts("CAAA", "./settings/" + authorYear + "/NotePane/" + "clinical_application_and_analysis" + ".prop");
+        loadNotePaneTexts("GN", "./settings/" + authorYear + "/NotePane/" + "general_notes" + ".prop");
 
-        loadNotePaneTexts("QASI", "./settings/NotePane/" + "study_identification_of_qa" + ".prop");
-        loadNotePaneTexts("QA1_v6", "./settings/NotePane/" + "quality_assessment_1_v6" + ".prop");
-        loadNotePaneTexts("QA2_v6", "./settings/NotePane/" + "quality_assessment_2_v6" + ".prop");
-        loadNotePaneTexts("QAAC", "./settings/NotePane/" + "additional_comments" + ".prop");
+        loadNotePaneTexts("QASI", "./settings/" + authorYear + "/NotePane/" + "study_identification_of_qa" + ".prop");
+        loadNotePaneTexts("QA1_v6", "./settings/" + authorYear + "/NotePane/" + "quality_assessment_1_v6" + ".prop");
+        loadNotePaneTexts("QA2_v6", "./settings/" + authorYear + "/NotePane/" + "quality_assessment_2_v6" + ".prop");
+        loadNotePaneTexts("QAAC", "./settings/" + authorYear + "/NotePane/" + "additional_comments" + ".prop");
     }
 
     /**
-     *  REFERENCE COHORT AND IMAGING
+     * REFERENCE COHORT AND IMAGING
      */
     private void loadNotePaneTexts(String member_name_key_word, String prop_file_path_str) {
 
@@ -118,15 +121,15 @@ public class LoadNotePaneTextsAction extends AbstActionMember {
 
         String loaded_text = "";
         for (ManagerOfSubTabBasePane managerOfSubTabBasePane : subTabsHolder.getArrayList_of_ManagerOfSubTabBasePane()) {
-             String subSectionName = managerOfSubTabBasePane.getSubSectionName();
+            String subSectionName = managerOfSubTabBasePane.getSubSectionName();
             //System.out.println("Now registering NotePane of  '" + subSectionName + "'");
             NotePane notePane = managerOfSubTabBasePane.getNotePane();
 
             for (String property_name : propManager.stringPropertyNames()) {
-                loaded_text =  propManager.getValueOrCreateNew(property_name);
-                if( property_name.equals( subSectionName + "." + "status" ) ){
+                loaded_text = propManager.getValueOrCreateNew(property_name);
+                if (property_name.equals(subSectionName + "." + "status")) {
                     notePane.setStatusText(loaded_text);
-                }else if( property_name.equals( subSectionName + "." + "note")){
+                } else if (property_name.equals(subSectionName + "." + "note")) {
                     notePane.setNoteText(loaded_text);
                 }
             }
@@ -136,8 +139,6 @@ public class LoadNotePaneTextsAction extends AbstActionMember {
         }
         propManager = null; //Propの外部更新時のため（毎回新しいPropを呼ぶため）dispose
     }
-
-
 
 
     @Override

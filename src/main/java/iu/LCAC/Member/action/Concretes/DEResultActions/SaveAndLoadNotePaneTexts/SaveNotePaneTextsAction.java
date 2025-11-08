@@ -25,9 +25,11 @@ import java.awt.event.KeyEvent;
 
 public class SaveNotePaneTextsAction extends AbstActionMember {
 
+    String authorYear = "Someone20XX";
 
-    public SaveNotePaneTextsAction(String action_name, String short_name) {
+    public SaveNotePaneTextsAction(String action_name, String short_name, String authorYear) {
         super(action_name, short_name);
+        this.authorYear = authorYear;
     }
 
     @Override
@@ -44,17 +46,17 @@ public class SaveNotePaneTextsAction extends AbstActionMember {
         System.out.println("perform() in " + this.getClass().toString() + " was called.");
 
         // 全セクションに拡張可能
-        saveNotePaneState("SI", "./settings/NotePane/" + "study_identification" + ".prop");
-        saveNotePaneState("SC", "./settings/NotePane/" + "study_characteristics" + ".prop");
-        saveNotePaneState("RCAI", "./settings/NotePane/" + "reference_cohort_and_imaging" + ".prop");
-        saveNotePaneState("NM", "./settings/NotePane/" + "normative_modeling" + ".prop");
-        saveNotePaneState("CAAA", "./settings/NotePane/" + "clinical_application_and_analysis" + ".prop");
-        saveNotePaneState("GN", "./settings/NotePane/" + "general_notes" + ".prop");
+        saveNotePaneState("SI", "./settings/" + authorYear + "/NotePane/" + "study_identification" + ".prop");
+        saveNotePaneState("SC", "./settings/" + authorYear + "/NotePane/" + "study_characteristics" + ".prop");
+        saveNotePaneState("RCAI", "./settings/" + authorYear + "/NotePane/" + "reference_cohort_and_imaging" + ".prop");
+        saveNotePaneState("NM", "./settings/" + authorYear + "/NotePane/" + "normative_modeling" + ".prop");
+        saveNotePaneState("CAAA", "./settings/" + authorYear + "/NotePane/" + "clinical_application_and_analysis" + ".prop");
+        saveNotePaneState("GN", "./settings/" + authorYear + "/NotePane/" + "general_notes" + ".prop");
 
-        saveNotePaneState("QASI", "./settings/NotePane/" + "study_identification_of_qa" + ".prop");
-        saveNotePaneState("QA1_v6", "./settings/NotePane/" + "quality_assessment_1_v6" + ".prop");
-        saveNotePaneState("QA2_v6", "./settings/NotePane/" + "quality_assessment_2_v6" + ".prop");
-        saveNotePaneState("QAAC", "./settings/NotePane/" + "additional_comments" + ".prop");
+        saveNotePaneState("QASI", "./settings/" + authorYear + "/NotePane/" + "study_identification_of_qa" + ".prop");
+        saveNotePaneState("QA1_v6", "./settings/" + authorYear + "/NotePane/" + "quality_assessment_1_v6" + ".prop");
+        saveNotePaneState("QA2_v6", "./settings/" + authorYear + "/NotePane/" + "quality_assessment_2_v6" + ".prop");
+        saveNotePaneState("QAAC", "./settings/" + authorYear + "/NotePane/" + "additional_comments" + ".prop");
     }
 
     private void saveNotePaneState(String member_name_key_word, String prop_file_path_str) {
