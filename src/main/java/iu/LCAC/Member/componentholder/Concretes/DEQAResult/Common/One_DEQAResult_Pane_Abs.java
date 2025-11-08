@@ -4,11 +4,9 @@ import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManagerCallback;
 import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManagerWithConflictSafe;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -26,14 +24,14 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
 
     JLabel jsonNameLabel = new JLabel("JSON File Name");
     //ColorChangeableTextField tField_jsonName = new ColorChangeableTextField("JSON File Name");
-    String tooltipForJsonName = "JSON File Name";
 
     JButton saveButton = new JButton("save");
     JButton loadButton = new JButton("load");
     JButton openJsonFileButton; //= new JButton("open json");
     JButton openJsonFolderButton; //= new JButton("open folder");
     JButton jsonFileNameEditButton = new JButton("edit json name");
-    private ManagerOfSubTabBasePane managerOfSubTabBasePane;
+    JButton copyToTheHumanPanelButton = new JButton("C");
+    protected ManagerOfSubTabBasePane managerOfSubTabBasePane;
 
 
     public One_DEQAResult_Pane_Abs(
@@ -42,22 +40,31 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
 
         this.jsonFolderPathStr = jsonFolderPathStr;
         this.jsonName = jsonName;
+        this.sectionName = sectionName;
+        this.subSectionName = subSectionName;
 
-        // アイコンを取得しボタンを作る
-        // システムから読み込む方式
-        //Icon folderIcon = FileSystemView.getFileSystemView().getSystemIcon(new File(System.getProperty("user.home")));
-        //Icon jsonIcon = FileSystemView.getFileSystemView().getSystemIcon(new File("dummy.txt"));
+        // JsonManagerの初期化は子クラスのフィールド初期化後に行う必要があるため、ここでは行わない
+        // 子クラスのコンストラクタの最後でinitializeJsonManager()を呼び出すこと
 
-        // resources/icons/json_file.png をクラスパスから読み込む方式
-        URL folderIconUrl = One_DEQAResult_Pane_Abs.class.getResource("/icons/folder.png");
-        if (folderIconUrl == null) {
-            System.err.println("JSONアイコンが見つかりません。パスを確認してください。");
-            openJsonFolderButton = new JButton("open folder");
-        }else {
-            ImageIcon folderIcon = new ImageIcon(folderIconUrl);
-            openJsonFolderButton = new JButton("", folderIcon);
-        }
-        openJsonFolderButton.setToolTipText("open json folder");
+        /* ** saveButton と loadButton のセットアップ ** */
+        saveButton.setToolTipText("JSONファイルへ書き込み");
+        saveButton.addActionListener(
+                new AbstractAction() {
+                    @Override
+                    public void actionPerformed(ActionEvent actionEvent) {
+                        saveJson();
+                    }
+                });
+        loadButton.setToolTipText("JSONファイルから読み直し");
+        loadButton.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loadJson();
+            }
+        });
+
+        /* ** openJsonFileButton と openJsonFolderButton のセットアップ ** */
+
         URL jsonIconUrl = One_DEQAResult_Pane_Abs.class.getResource("/icons/json_file.png");
         if (jsonIconUrl == null) {
             System.err.println("JSONアイコンが見つかりません。パスを確認してください。");
@@ -67,29 +74,6 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
             openJsonFileButton = new JButton("", jsonIcon);
         }
         openJsonFileButton.setToolTipText("open json file");
-
-        // JsonManagerの初期化は子クラスのフィールド初期化後に行う必要があるため、ここでは行わない
-        // 子クラスのコンストラクタの最後でinitializeJsonManager()を呼び出すこと
-
-        this.sectionName = sectionName;
-        this.subSectionName = subSectionName;
-
-        saveButton.addActionListener(
-                new AbstractAction() {
-                    @Override
-                    public void actionPerformed(ActionEvent actionEvent) {
-                        saveJson();
-                    }
-                });
-
-
-        loadButton.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                loadJson();
-            }
-        });
-
         openJsonFileButton.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -97,6 +81,15 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
             }
         });
 
+        URL folderIconUrl = One_DEQAResult_Pane_Abs.class.getResource("/icons/folder.png");
+        if (folderIconUrl == null) {
+            System.err.println("JSONアイコンが見つかりません。パスを確認してください。");
+            openJsonFolderButton = new JButton("open folder");
+        }else {
+            ImageIcon folderIcon = new ImageIcon(folderIconUrl);
+            openJsonFolderButton = new JButton("", folderIcon);
+        }
+        openJsonFolderButton.setToolTipText("open json folder");
         openJsonFolderButton.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -105,14 +98,24 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
         });
 
 
+        /* ** copyToTheTopButton のセットアップ ** */
+        copyToTheHumanPanelButton.setToolTipText("HumanのDEQAResultパネルに値を複製");
+        copyToTheHumanPanelButton.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                copyToTheHumanDEQAResultPane();
+            }
+        });
+
+
+
+        /* ** jsonFileNameEditButton のセットアップ ** */
         jsonFileNameEditButton.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 changeJsonFileName();
             }
         });
-
-
     }
 
 
@@ -161,6 +164,7 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
 
     }
 
+    public abstract void copyToTheHumanDEQAResultPane();
 
     /**
      * JsonManagerを初期化する。
@@ -410,7 +414,7 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
         ArrayList<ManagerOfSubTabBasePane> managerOfSubTabBasePanes = managerOfSubTabBasePane.getSubTabsHolder().getArrayList_of_ManagerOfSubTabBasePane();
         for (ManagerOfSubTabBasePane managerOfSubTabBasePane : managerOfSubTabBasePanes) {
 
-            ArrayList<One_DEQAResult_Pane_Abs> oneDeqaResultPaneAbsArray = managerOfSubTabBasePane.getDePaneArray();
+            ArrayList<One_DEQAResult_Pane_Abs> oneDeqaResultPaneAbsArray = managerOfSubTabBasePane.getDeqaPaneArray();
             for (One_DEQAResult_Pane_Abs oneDeResultPane : oneDeqaResultPaneAbsArray) {
 
                 //他のサブサブパネル下にあるすべてのDEパネルを参照してもし旧JSON名を保持するものがあれば更新操作を施す。

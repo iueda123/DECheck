@@ -82,7 +82,7 @@ public class ManagerOfSubTabBasePane {
 
     }
 
-    public ArrayList<One_DEQAResult_Pane_Abs> getDePaneArray() {
+    public ArrayList<One_DEQAResult_Pane_Abs> getDeqaPaneArray() {
         return dePaneArray;
     }
 

@@ -5,10 +5,12 @@ import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManagerWithConflictSafe;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class One_A_Style_Pane extends One_DEQAResult_Pane_Abs {
 
     private ColorChangeableTextArea tArea_Answer = new ColorChangeableTextArea("Answer");
+
 
     private final String tooltipForAnswer = "This is the answer areae.";
 
@@ -41,6 +43,8 @@ public class One_A_Style_Pane extends One_DEQAResult_Pane_Abs {
         the1stBaseOfNorth.add(loadButton);
         the1stBaseOfNorth.add(openJsonFileButton);
         the1stBaseOfNorth.add(openJsonFolderButton);
+        the1stBaseOfNorth.add(copyToTheHumanPanelButton);
+
         //the1stBaseOfNorth.add(jsonFileNameEditButton);
         the1stBaseOfNorth.add(new PanelMoverPane());
         the1stBaseOfNorth.setPreferredSize(new Dimension(800, 34));
@@ -82,11 +86,29 @@ public class One_A_Style_Pane extends One_DEQAResult_Pane_Abs {
         jsonManager.doSave(false);
     }
 
-
-
     @Override
     public void loadJson() {
         jsonManager.reloadFromDisk();
+    }
+
+    @Override
+    public void copyToTheHumanDEQAResultPane() {
+
+        // このDEQAResultパネルにおける値を取得
+        String answerOfThisPanel = tArea_Answer.getText();
+
+        ArrayList<One_DEQAResult_Pane_Abs> deqaPanes = managerOfSubTabBasePane.getDeqaPaneArray();
+        for( One_DEQAResult_Pane_Abs one_deqaResult_pane_abs : deqaPanes ) {
+
+            //「human」というキーワードを含むJSONに相当するDEQAResultパネルに値を複製
+            if(one_deqaResult_pane_abs.getJsonName().toLowerCase().contains("human")){
+                ((One_A_Style_Pane)one_deqaResult_pane_abs).gettArea_Answer().setText(answerOfThisPanel);
+            }
+        }
+    }
+
+    public ColorChangeableTextArea gettArea_Answer() {
+        return tArea_Answer;
     }
 
     @Override
@@ -99,6 +121,9 @@ public class One_A_Style_Pane extends One_DEQAResult_Pane_Abs {
     public Component getFrame() {
         return null;
     }
+
+
+
 
     @Override
     public void actionAfterSuccessfullyOpeningJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
@@ -121,8 +146,8 @@ public class One_A_Style_Pane extends One_DEQAResult_Pane_Abs {
 
     @Override
     public void actionAfterSuccessfullySavingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
-            System.out.println("Successfully saved JSON to " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
-            resetBackgroundColorOfTAreasTFields();
+        System.out.println("Successfully saved JSON to " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+        resetBackgroundColorOfTAreasTFields();
     }
 
     @Override
@@ -132,7 +157,7 @@ public class One_A_Style_Pane extends One_DEQAResult_Pane_Abs {
 
     @Override
     public void actionAfterSuccessfullyReloadingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
-       String answer = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName );
+        String answer = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName);
         //System.out.println("answer: " + answer);
         if (answer != null) tArea_Answer.setText(answer);
         resetBackgroundColorOfTAreasTFields();

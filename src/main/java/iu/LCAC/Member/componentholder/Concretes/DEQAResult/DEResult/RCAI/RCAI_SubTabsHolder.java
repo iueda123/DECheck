@@ -146,47 +146,47 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
         if (actionMediator != null) {
 
             /* 値を流し込む */
-            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_1.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_1.getDeqaPaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
-            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_2.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_2.getDeqaPaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
-            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_3.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_3.getDeqaPaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
-            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_4.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_4.getDeqaPaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
-            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_5.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_5.getDeqaPaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
-            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_6.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_6.getDeqaPaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
-            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_7.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_7.getDeqaPaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
-            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_8.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_8.getDeqaPaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
-            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_9.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_9.getDeqaPaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
-            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_10.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_10.getDeqaPaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
-            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_11.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_11.getDeqaPaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
@@ -232,7 +232,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
 
         //System.out.println(mngrOfSubTabBasePane_1.getDePaneArray().size());
 
-        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_1.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_1.getDeqaPaneArray()) {
             //System.out.println("Candidate Info: ");
             //System.out.println("  JSON Name: " + pane.getJsonName());
             //System.out.println("  Section Name: " + pane.getSectionName());
@@ -244,7 +244,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
             }
         }
 
-        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_2.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_2.getDeqaPaneArray()) {
             //System.out.println("Candidate Info: ");
             //System.out.println("  JSON Name: " + pane.getJsonName());
             //System.out.println("  Section Name: " + pane.getSectionName());
@@ -256,7 +256,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
             }
         }
 
-        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_3.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_3.getDeqaPaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -264,7 +264,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
             }
         }
 
-        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_4.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_4.getDeqaPaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -272,7 +272,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
             }
         }
 
-        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_5.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_5.getDeqaPaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -280,7 +280,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
             }
         }
 
-        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_6.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_6.getDeqaPaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -288,7 +288,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
             }
         }
 
-        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_7.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_7.getDeqaPaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -296,7 +296,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
             }
         }
 
-        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_8.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_8.getDeqaPaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -304,7 +304,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
             }
         }
 
-        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_9.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_9.getDeqaPaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -312,7 +312,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
             }
         }
 
-        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_10.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_10.getDeqaPaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {
@@ -320,7 +320,7 @@ public class RCAI_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
             }
         }
 
-        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_11.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_11.getDeqaPaneArray()) {
             if (pane.getJsonName().equals(jsonName) &&
                     pane.getSectionName().equals(sectionName) &&
                     pane.getSubSectionName().equals(subSectionName)) {

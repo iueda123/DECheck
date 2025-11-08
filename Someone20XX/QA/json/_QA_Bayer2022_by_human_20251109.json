@@ -8,12 +8,12 @@
   },
   "assessment_items_group_a": {
     "clarity_of_research_objectives": {
-      "answer": "Yes",
-      "confidence_rating": "High",
-      "negative_answer_category": "Not Negative",
-      "reason": "The research objectives are clearly stated. The paper aims to develop and evaluate hierarchical Bayesian models for accommodating site effects in multi-site neuroimaging data within a normative modeling framework. The specific purpose is to compare the performance of hierarchical Bayesian models (linear and non-linear) against traditional harmonization methods (ComBat, regression). The application purpose is clearly stated as addressing site effects in normative modeling while retaining clinically useful information. The paper also validates the models on autism data to test their ability to preserve clinical variance.",
-      "supporting_text": "In this study, we suggest accommodating for these site effects by including them as random effects in a hierarchical Bayesian model. We compared the performance of a linear and a non-linear hierarchical Bayesian model in modeling the effect of age on cortical thickness... We compared the proposed single stage hierarchical Bayesian method to several harmonization techniques commonly used to deal with additive and multiplicative site effects using a two stage regression... Our results show the value of hierarchical Bayesian regression...",
-      "location": "Bayer2022.pdf.md, lines 60-73"
+      "answer": "YES",
+      "confidence_rating": "high",
+      "negative_answer_category": "-",
+      "reason": "-",
+      "supporting_text": "\n1)In this study, we suggest accommodating for these site effects by including them as random effects in a hierarchical Bayesian model. We compared the performance of a linear and a non-linear hierarchical Bayesian model in modeling the effect of age on cortical thickness.\n2)We show that the hierarchical Bayesian models including a site parameter perform better than existing methods for dealing with additive and multiplicative site effects, including ComBat and regressing out site. Subsequently, we validate the hierarchical Bayesian models in the autism sample of the ABIDE data set and test their ability to retain clinically useful variance while correcting for site effects. We discuss the normative hierarchical Bayesian methods with regard to their implications for neuroimaging data-sharing initiatives and their use as general technique to correct for site effects.",
+      "location": "\n1)Abstract, \n2)Introduction"
     },
     "clear_definition_of_target_population": {
       "answer": "",

@@ -87,7 +87,7 @@ public class QAAC_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
         if (actionMediator != null) {
 
             /* 値を流し込む */
-            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_1.getDePaneArray()) {
+            for (One_DEQAResult_Pane_Abs oneDEResultPane : mngrOfSubTabBasePane_1.getDeqaPaneArray()) {
                 oneDEResultPane.loadJson();
             }
 
@@ -133,7 +133,7 @@ public class QAAC_SubTabsHolder extends AbstCHolderMember implements SubTabsHold
 
         //System.out.println(mngrOfSubTabBasePane_1.getDePaneArray().size());
 
-        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_1.getDePaneArray()) {
+        for (One_DEQAResult_Pane_Abs pane : mngrOfSubTabBasePane_1.getDeqaPaneArray()) {
             //System.out.println("Candidate Info: ");
             //System.out.println("  JSON Name: " + pane.getJsonName());
             //System.out.println("  Section Name: " + pane.getSectionName());

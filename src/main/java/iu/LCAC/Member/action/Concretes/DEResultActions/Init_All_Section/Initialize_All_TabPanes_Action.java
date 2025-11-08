@@ -38,7 +38,7 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         if (subTabsHolder_SI != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_SI.getArrayList_of_ManagerOfSubTabBasePane();
             for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
-                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDePaneArray()){
+                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()){
                     de_result_pane.loadJson();
                 }
             }
@@ -51,7 +51,7 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         if (subTabsHolder_SC != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_SC.getArrayList_of_ManagerOfSubTabBasePane();
             for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
-                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDePaneArray()){
+                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()){
                     de_result_pane.loadJson();
                 }
             }
@@ -64,7 +64,7 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         if (subTabsHolder_RCAI != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_RCAI.getArrayList_of_ManagerOfSubTabBasePane();
             for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
-                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDePaneArray()){
+                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()){
                     de_result_pane.loadJson();
                 }
             }
@@ -77,7 +77,7 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         if (subTabsHolder_NM != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_NM.getArrayList_of_ManagerOfSubTabBasePane();
             for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
-                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDePaneArray()){
+                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()){
                     de_result_pane.loadJson();
                 }
             }
@@ -90,7 +90,7 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         if (subTabsHolder_CAAA != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_CAAA.getArrayList_of_ManagerOfSubTabBasePane();
             for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
-                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDePaneArray()){
+                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()){
                     de_result_pane.loadJson();
                 }
             }
@@ -103,7 +103,7 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         if (subTabsHolder_GN != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_GN.getArrayList_of_ManagerOfSubTabBasePane();
             for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
-                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDePaneArray()){
+                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()){
                     de_result_pane.loadJson();
                 }
             }
@@ -118,7 +118,7 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         if (subTabsHolder_QASI != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_QASI.getArrayList_of_ManagerOfSubTabBasePane();
             for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
-                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDePaneArray()){
+                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()){
                     de_result_pane.loadJson();
                 }
             }
@@ -131,7 +131,7 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         if (subTabsHolder_QA1 != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_QA1.getArrayList_of_ManagerOfSubTabBasePane();
             for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
-                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDePaneArray()){
+                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()){
                     de_result_pane.loadJson();
                 }
             }
@@ -144,7 +144,7 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         if (subTabsHolder_QA2 != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_QA2.getArrayList_of_ManagerOfSubTabBasePane();
             for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
-                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDePaneArray()){
+                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()){
                     de_result_pane.loadJson();
                 }
             }
@@ -157,7 +157,7 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         if (subTabsHolder_QAAC != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_QAAC.getArrayList_of_ManagerOfSubTabBasePane();
             for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
-                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDePaneArray()){
+                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()){
                     de_result_pane.loadJson();
                 }
             }
