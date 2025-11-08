@@ -11,12 +11,13 @@ import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.SubTabsHolderI
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class SI_SubTabsHolder extends AbstCHolderMember implements SubTabsHolderItrfc {
 
-    static final String jsonFolderPathStr = "./DE/json";
 
     static String sectionName = "study_identification";
 
@@ -45,7 +46,7 @@ public class SI_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
 
     ArrayList<ManagerOfSubTabBasePane> arrayList_of_ManagerOfSubTabBasePane = new ArrayList<>();
 
-    public SI_SubTabsHolder(String cholder_name, String short_name) {
+    public SI_SubTabsHolder(String cholder_name, String short_name, String authorYear) {
         super(cholder_name, short_name);
 
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_1);
@@ -60,12 +61,15 @@ public class SI_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
         mngrOfSubTabBasePane_5.registerSubTansHolder(this);
 
         // ./json/ フォルダの確認
-        File jsonDir = new File(jsonFolderPathStr);
+        Path jsonFolderPathString = Paths.get("./DE/json");
+        jsonFolderPathString = Paths.get("./" + authorYear + "/").resolve(jsonFolderPathString);
+        File jsonDir = jsonFolderPathString.toFile();
+
         // jsonディレクトリが存在しない、またはディレクトリではない場合
         if (!jsonDir.exists() || !jsonDir.isDirectory()) {
             JOptionPane.showMessageDialog(
                     null,
-                    "json/フォルダが見つかりません。\n" + jsonFolderPathStr + "/フォルダを作成し、JSONファイルを格納してください。",
+                    "json/フォルダが見つかりません。\n" + jsonFolderPathString + "/フォルダを作成し、JSONファイルを格納してください。",
                     "エラー",
                     JOptionPane.ERROR_MESSAGE
             );
@@ -92,11 +96,11 @@ public class SI_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
                     System.err.println("The actionMediator is null. @ SI_SubTabsHolder.java");
                 }
 
-                mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_1_Name, this.cholderMediator, this.actionMediator));
-                mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_2_Name, this.cholderMediator, this.actionMediator));
-                mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_3_Name, this.cholderMediator, this.actionMediator));
-                mngrOfSubTabBasePane_4.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr,  jsonFileName, sectionName, subSection_4_Name, this.cholderMediator, this.actionMediator));
-                mngrOfSubTabBasePane_5.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathStr, jsonFileName, sectionName, subSection_5_Name, this.cholderMediator, this.actionMediator));
+                mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_1_Name, this.cholderMediator, this.actionMediator));
+                mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_2_Name, this.cholderMediator, this.actionMediator));
+                mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_3_Name, this.cholderMediator, this.actionMediator));
+                mngrOfSubTabBasePane_4.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(),  jsonFileName, sectionName, subSection_4_Name, this.cholderMediator, this.actionMediator));
+                mngrOfSubTabBasePane_5.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_5_Name, this.cholderMediator, this.actionMediator));
             }
         }
 

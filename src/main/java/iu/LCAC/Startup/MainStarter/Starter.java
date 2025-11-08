@@ -12,64 +12,75 @@ import java.awt.*;
 import java.util.Enumeration;
 
 public class Starter {
-  /**
-   * ショートカット制御機構を備えたメニューバー付きSwingFrameWork
-   *
-   * <p>TODO: - adjustable border area - status area - terminal - logging
-   *
-   * @param args
-   */
-  public static void main(String[] args) {
+    /**
+     * ショートカット制御機構を備えたメニューバー付きSwingFrameWork
+     *
+     * <p>TODO: - adjustable border area - status area - terminal - logging
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
 
-    /* **** フォントサイズを1.25倍に設定 **** */
-    setUIFont(new FontUIResource("SansSerif", Font.PLAIN, 15)); // 標準12pt → 15pt (1.25倍)
+        /* **** フォントサイズを1.25倍に設定 **** */
+        setUIFont(new FontUIResource("SansSerif", Font.PLAIN, 15)); // 標準12pt → 15pt (1.25倍)
 
-    /* **** 新しい ActionMediator を作る **** */
-    ActionMediator actionMediator = ActionMediatorFactory.create();
-    // Actionの生成と登録はここで完了している。
+        /* **** 新しい ActionMediator を作る **** */
+        ActionMediator actionMediator;
+        if (args.length == 1) {
+            actionMediator = ActionMediatorFactory.create(args[0]);
+        } else {
+            actionMediator = ActionMediatorFactory.create("Someone20XX");
+        }
+        // Actionの生成と登録はここで完了している。
 
-    /* **** CHolderMediator を作る **** */
-    CHolderMediator cholderMediator = CHolderMediatorFactory.create();
-    // Componentの生成と登録はここで完了している。
+        /* **** CHolderMediator を作る **** */
+        CHolderMediator cholderMediator;
+        if (args.length == 1) {
+            cholderMediator = CHolderMediatorFactory.create(args[0]);
+        } else {
+            cholderMediator = CHolderMediatorFactory.create("Someone20XX");
 
-    /* **** Component-holders と Actions を連携させる **** */
-    actionMediator.registerCHolderMediatorToEachMember(cholderMediator);
-    cholderMediator.registerActionMediatorToEachMember(actionMediator);
+        }
+        // Componentの生成と登録はここで完了している。
 
-    /* **** Widowを作る **** */
+        /* **** Component-holders と Actions を連携させる **** */
+        actionMediator.registerCHolderMediatorToEachMember(cholderMediator);
+        cholderMediator.registerActionMediatorToEachMember(actionMediator);
 
-    /* **** 各種コンポーネントをMainWindowに埋め込む **** */
-    BasePaneCreator basePaneCreator = new BasePaneCreator(cholderMediator);
-    basePaneCreator.addBasePaneToMainFrame();
+        /* **** Widowを作る **** */
 
-    /* **** メニューバー を作り、MainWindowにはめ込む **** */
-    MenuBarCreator menuBarCreator = new MenuBarCreator(actionMediator, cholderMediator);
-    menuBarCreator.addMenuBarToMainFrame();
+        /* **** 各種コンポーネントをMainWindowに埋め込む **** */
+        BasePaneCreator basePaneCreator = new BasePaneCreator(cholderMediator);
+        basePaneCreator.addBasePaneToMainFrame();
 
-    /* **** Command Executor を作り MainWindowにはめ込む **** */
-    CmdExecutorCreator cmdExecutorCreator = new CmdExecutorCreator(actionMediator, cholderMediator);
-    cmdExecutorCreator.addCmdExecutorToMainFrame();
+        /* **** メニューバー を作り、MainWindowにはめ込む **** */
+        MenuBarCreator menuBarCreator = new MenuBarCreator(actionMediator, cholderMediator);
+        menuBarCreator.addMenuBarToMainFrame();
 
-    /* **** Status Area を作り MainWindowにはめ込む **** */
-    StatusPanelCreator statusPanelCreator = new StatusPanelCreator(actionMediator, cholderMediator);
-    statusPanelCreator.addStatusAreaToMainFrame();
+        /* **** Command Executor を作り MainWindowにはめ込む **** */
+        CmdExecutorCreator cmdExecutorCreator = new CmdExecutorCreator(actionMediator, cholderMediator);
+        cmdExecutorCreator.addCmdExecutorToMainFrame();
 
-    /* **** 表示 **** */
-    ((MainWindowHolder) cholderMediator.getInstanceOfAMember("main_window_holder"))
-        .displayAndInitialize();
+        /* **** Status Area を作り MainWindowにはめ込む **** */
+        StatusPanelCreator statusPanelCreator = new StatusPanelCreator(actionMediator, cholderMediator);
+        statusPanelCreator.addStatusAreaToMainFrame();
 
-    /* **** 表示後の初期化 **** */
-    cholderMediator.postInitializeEachMember();
-  }
+        /* **** 表示 **** */
+        ((MainWindowHolder) cholderMediator.getInstanceOfAMember("main_window_holder"))
+                .displayAndInitialize();
 
-  private static void setUIFont(FontUIResource font) {
-    Enumeration<Object> keys = UIManager.getDefaults().keys();
-    while (keys.hasMoreElements()) {
-      Object key = keys.nextElement();
-      Object value = UIManager.get(key);
-      if (value instanceof FontUIResource) {
-        UIManager.put(key, font);
-      }
+        /* **** 表示後の初期化 **** */
+        cholderMediator.postInitializeEachMember();
     }
-  }
+
+    private static void setUIFont(FontUIResource font) {
+        Enumeration<Object> keys = UIManager.getDefaults().keys();
+        while (keys.hasMoreElements()) {
+            Object key = keys.nextElement();
+            Object value = UIManager.get(key);
+            if (value instanceof FontUIResource) {
+                UIManager.put(key, font);
+            }
+        }
+    }
 }

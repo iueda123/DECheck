@@ -8,13 +8,13 @@ public abstract class AbstCHolderMemberFactory {
    * Note: postInitialize() is called later by CHolderMediator.postInitializeEachMember()
    * after actionMediator is registered.
    */
-  public AbstCHolderMember createCHolder(String cholder_name, String short_name) {
-    AbstCHolderMember component_holder = createInstance(cholder_name, short_name);
+  public AbstCHolderMember createCHolder(String cholder_name, String short_name, String... args) {
+    AbstCHolderMember component_holder = createInstance(cholder_name, short_name, args);
 
     //postInitialize() is called later after actionMediator is set
 
     return component_holder;
   }
 
-  protected abstract AbstCHolderMember createInstance(String cholder_name, String short_name);
+  protected abstract AbstCHolderMember createInstance(String cholder_name, String short_name, String... args);
 }

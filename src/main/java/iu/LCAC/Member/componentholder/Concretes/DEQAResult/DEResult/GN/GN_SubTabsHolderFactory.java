@@ -8,9 +8,9 @@ public class GN_SubTabsHolderFactory extends AbstCHolderMemberFactory {
   private GN_SubTabsHolder gn_SubTabsHolder;
 
   @Override
-  protected AbstCHolderMember createInstance(String cholder_name, String short_name) {
+  protected AbstCHolderMember createInstance(String cholder_name, String short_name, String... args) {
     if (this.gn_SubTabsHolder == null) {
-      this.gn_SubTabsHolder = new GN_SubTabsHolder(cholder_name, short_name);
+      this.gn_SubTabsHolder = new GN_SubTabsHolder(cholder_name, short_name, args[0]);
     }
     return gn_SubTabsHolder;
   }

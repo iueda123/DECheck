@@ -4,9 +4,9 @@ public class CHolderMediatorFactory {
 
   private static CHolderMediator cholderMediator;
 
-  public static CHolderMediator create() {
+  public static CHolderMediator create(String authorYear) {
     if (cholderMediator == null) {
-      cholderMediator = new CHolderMediator();
+      cholderMediator = new CHolderMediator(authorYear);
     }
     return cholderMediator;
   }

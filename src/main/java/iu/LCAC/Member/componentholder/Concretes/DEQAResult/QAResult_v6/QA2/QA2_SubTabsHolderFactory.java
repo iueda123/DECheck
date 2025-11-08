@@ -6,13 +6,13 @@ import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.NM.NM_SubTab
 
 public class QA2_SubTabsHolderFactory extends AbstCHolderMemberFactory {
 
-  private QA2_SubTabsHolder qa2_SubTabsHolder;
+    private QA2_SubTabsHolder qa2_SubTabsHolder;
 
-  @Override
-  protected AbstCHolderMember createInstance(String cholder_name, String short_name) {
-    if (this.qa2_SubTabsHolder == null) {
-      this.qa2_SubTabsHolder = new QA2_SubTabsHolder(cholder_name, short_name);
+    @Override
+    protected AbstCHolderMember createInstance(String cholder_name, String short_name, String... args) {
+        if (this.qa2_SubTabsHolder == null) {
+            this.qa2_SubTabsHolder = new QA2_SubTabsHolder(cholder_name, short_name, args[0]);
+        }
+        return qa2_SubTabsHolder;
     }
-    return qa2_SubTabsHolder;
-  }
 }

@@ -23,12 +23,18 @@ public class CHolderMediator implements MediatorIntrfc {
     // これは文字列からComponentのインスタンスを取り出すために必要
     private final HashMap<String, MemberIntrfc> memberMap = new HashMap<>();
 
-    public CHolderMediator() {
-        createMembers();
+    public CHolderMediator(String authorYear) {
+        createMembers(authorYear);
     }
 
     @Override
     public void createMembers() {
+        createMembers("");
+    }
+
+
+        @Override
+    public void createMembers(String... authorYears) {
 
         //------------------------------------------
         /* **** Core **** */
@@ -41,7 +47,7 @@ public class CHolderMediator implements MediatorIntrfc {
                         "iu.LCAC.Member.componentholder.Concretes.MainWindow.MainWindowHolderFactory",
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember mainWindowHolder =
-                chMemberFactory.createCHolder("main_window_holder", "main window");
+                chMemberFactory.createCHolder("main_window_holder", "main window", authorYears[0]);
         mainWindowHolder.setCHolderMediator(this);
         mainWindowHolder.initialize();
         registerMemberToMap(mainWindowHolder);
@@ -51,7 +57,7 @@ public class CHolderMediator implements MediatorIntrfc {
                         "iu.LCAC.Member.componentholder.Concretes.StatusPanel.StatusPanelHolderFactory",
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember statusPanelHolder =
-                chMemberFactory.createCHolder("status_panel_holder", "Status Panel Holder");
+                chMemberFactory.createCHolder("status_panel_holder", "Status Panel Holder", authorYears[0]);
         statusPanelHolder.setCHolderMediator(this);
         statusPanelHolder.initialize();
         registerMemberToMap(statusPanelHolder);
@@ -65,7 +71,7 @@ public class CHolderMediator implements MediatorIntrfc {
                         "iu.LCAC.Member.componentholder.Concretes.Sample.ButtonPanel.ButtonPanelHolderFactory",
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember buttonPanelHolder =
-                chMemberFactory.createCHolder("button_panel_holder", "Button Panel Holder");
+                chMemberFactory.createCHolder("button_panel_holder", "Button Panel Holder", authorYears[0]);
         buttonPanelHolder.setCHolderMediator(this);
         buttonPanelHolder.initialize();
         registerMemberToMap(buttonPanelHolder);
@@ -76,7 +82,7 @@ public class CHolderMediator implements MediatorIntrfc {
                         "iu.LCAC.Member.componentholder.Concretes.Sample.CheckboxPanel.CheckboxPanelHolderFactory",
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember checkboxPanelHolder =
-                chMemberFactory.createCHolder("checkbox_panel_holder", "Checkbox Panel Holder");
+                chMemberFactory.createCHolder("checkbox_panel_holder", "Checkbox Panel Holder", authorYears[0]);
         checkboxPanelHolder.setCHolderMediator(this);
         checkboxPanelHolder.initialize();
         registerMemberToMap(checkboxPanelHolder);
@@ -87,7 +93,7 @@ public class CHolderMediator implements MediatorIntrfc {
                         "iu.LCAC.Member.componentholder.Concretes.Sample.TextField.TextFieldPanelHolderFactory",
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember textFieldPanelHolder =
-                chMemberFactory.createCHolder("text_field_panel_holder", "Checkbox Panel Holder");
+                chMemberFactory.createCHolder("text_field_panel_holder", "Checkbox Panel Holder", authorYears[0]);
         textFieldPanelHolder.setCHolderMediator(this);
         textFieldPanelHolder.initialize();
         registerMemberToMap(textFieldPanelHolder);
@@ -98,7 +104,7 @@ public class CHolderMediator implements MediatorIntrfc {
                         "iu.LCAC.Member.componentholder.Concretes.Sample.RunBashPanel.RunBashPanelHolderFactory",
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember runBashPanelHolder =
-                chMemberFactory.createCHolder("run_bash_panel_holder", "Run Bash Panel Holder");
+                chMemberFactory.createCHolder("run_bash_panel_holder", "Run Bash Panel Holder", authorYears[0]);
         runBashPanelHolder.setCHolderMediator(this);
         runBashPanelHolder.initialize();
         registerMemberToMap(runBashPanelHolder);
@@ -111,7 +117,7 @@ public class CHolderMediator implements MediatorIntrfc {
                         "iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.SI.SI_SubTabsHolderFactory",
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember subTabsHoldFactory_SI =
-                chMemberFactory.createCHolder("sub_tabs_holder_SI", "sub_tabs_holder_SI");
+                chMemberFactory.createCHolder("sub_tabs_holder_SI", "sub_tabs_holder_SI", authorYears[0]);
         subTabsHoldFactory_SI .setCHolderMediator(this);
         subTabsHoldFactory_SI .initialize();
         registerMemberToMap(subTabsHoldFactory_SI );
@@ -122,7 +128,7 @@ public class CHolderMediator implements MediatorIntrfc {
                         "iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.SC.SC_SubTabsHolderFactory",
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember subTabsHoldFactory_SC =
-                chMemberFactory.createCHolder("sub_tabs_holder_SC", "sub_tabs_holder_SC");
+                chMemberFactory.createCHolder("sub_tabs_holder_SC", "sub_tabs_holder_SC", authorYears[0]);
         subTabsHoldFactory_SC .setCHolderMediator(this);
         subTabsHoldFactory_SC .initialize();
         registerMemberToMap(subTabsHoldFactory_SC );
@@ -133,7 +139,7 @@ public class CHolderMediator implements MediatorIntrfc {
                         "iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.RCAI.RCAI_SubTabsHolderFactory",
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember subTabsHoldFactory_RCAI =
-                chMemberFactory.createCHolder("sub_tabs_holder_RCAI", "sub_tabs_holder_RCAI");
+                chMemberFactory.createCHolder("sub_tabs_holder_RCAI", "sub_tabs_holder_RCAI", authorYears[0]);
         subTabsHoldFactory_RCAI .setCHolderMediator(this);
         subTabsHoldFactory_RCAI .initialize();
         registerMemberToMap(subTabsHoldFactory_RCAI );
@@ -144,7 +150,7 @@ public class CHolderMediator implements MediatorIntrfc {
                         "iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.NM.NM_SubTabsHolderFactory",
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember subTabsHoldFactory_NM =
-                chMemberFactory.createCHolder("sub_tabs_holder_NM", "sub_tabs_holder_NM");
+                chMemberFactory.createCHolder("sub_tabs_holder_NM", "sub_tabs_holder_NM", authorYears[0]);
         subTabsHoldFactory_NM.setCHolderMediator(this);
         subTabsHoldFactory_NM.initialize();
         registerMemberToMap(subTabsHoldFactory_NM);
@@ -155,7 +161,7 @@ public class CHolderMediator implements MediatorIntrfc {
                         "iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.CAAA.CAAA_SubTabsHolderFactory",
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember subTabsHoldFactory_CAAA =
-                chMemberFactory.createCHolder("sub_tabs_holder_CAAA", "sub_tabs_holder_CAAA");
+                chMemberFactory.createCHolder("sub_tabs_holder_CAAA", "sub_tabs_holder_CAAA", authorYears[0]);
         subTabsHoldFactory_CAAA.setCHolderMediator(this);
         subTabsHoldFactory_CAAA.initialize();
         registerMemberToMap(subTabsHoldFactory_CAAA);
@@ -166,7 +172,7 @@ public class CHolderMediator implements MediatorIntrfc {
                         "iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.GN.GN_SubTabsHolderFactory",
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember subTabsHoldFactory_GN =
-                chMemberFactory.createCHolder("sub_tabs_holder_GN", "sub_tabs_holder_GN");
+                chMemberFactory.createCHolder("sub_tabs_holder_GN", "sub_tabs_holder_GN", authorYears[0]);
         subTabsHoldFactory_GN.setCHolderMediator(this);
         subTabsHoldFactory_GN.initialize();
         registerMemberToMap(subTabsHoldFactory_GN);
@@ -179,7 +185,7 @@ public class CHolderMediator implements MediatorIntrfc {
                         "iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.Explanation.ExplanationPanelHolderFactory",
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember explanationPanelHolderFactory =
-                chMemberFactory.createCHolder("explanation_panel_holder", "explanation panel holder");
+                chMemberFactory.createCHolder("explanation_panel_holder", "explanation panel holder", authorYears[0]);
         explanationPanelHolderFactory.setCHolderMediator(this);
         explanationPanelHolderFactory.initialize();
         registerMemberToMap(explanationPanelHolderFactory);
@@ -192,7 +198,7 @@ public class CHolderMediator implements MediatorIntrfc {
                         "iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QASI.QASI_SubTabsHolderFactory",
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember subTabsHoldFactory_QASI =
-                chMemberFactory.createCHolder("sub_tabs_holder_QASI", "sub_tabs_holder_QASI");
+                chMemberFactory.createCHolder("sub_tabs_holder_QASI", "sub_tabs_holder_QASI", authorYears[0]);
         subTabsHoldFactory_QASI.setCHolderMediator(this);
         subTabsHoldFactory_QASI.initialize();
         registerMemberToMap(subTabsHoldFactory_QASI);
@@ -204,7 +210,7 @@ public class CHolderMediator implements MediatorIntrfc {
                         "iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA1.QA1_SubTabsHolderFactory",
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember subTabsHoldFactory_QA1_v6 =
-                chMemberFactory.createCHolder("sub_tabs_holder_QA1_v6", "sub_tabs_holder_QA1_v6");
+                chMemberFactory.createCHolder("sub_tabs_holder_QA1_v6", "sub_tabs_holder_QA1_v6", authorYears[0]);
         subTabsHoldFactory_QA1_v6.setCHolderMediator(this);
         subTabsHoldFactory_QA1_v6.initialize();
         registerMemberToMap(subTabsHoldFactory_QA1_v6);
@@ -215,7 +221,7 @@ public class CHolderMediator implements MediatorIntrfc {
                         "iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA2.QA2_SubTabsHolderFactory",
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember subTabsHoldFactory_QA2_v6 =
-                chMemberFactory.createCHolder("sub_tabs_holder_QA2_v6", "sub_tabs_holder_QA2_v6");
+                chMemberFactory.createCHolder("sub_tabs_holder_QA2_v6", "sub_tabs_holder_QA2_v6", authorYears[0]);
         subTabsHoldFactory_QA2_v6.setCHolderMediator(this);
         subTabsHoldFactory_QA2_v6.initialize();
         registerMemberToMap(subTabsHoldFactory_QA2_v6);
@@ -226,7 +232,7 @@ public class CHolderMediator implements MediatorIntrfc {
                         "iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QAAC.QAAC_SubTabsHolderFactory",
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember subTabsHoldFactory_QAAC =
-                chMemberFactory.createCHolder("sub_tabs_holder_QAAC", "sub_tabs_holder_QAAC");
+                chMemberFactory.createCHolder("sub_tabs_holder_QAAC", "sub_tabs_holder_QAAC", authorYears[0]);
         subTabsHoldFactory_QAAC.setCHolderMediator(this);
         subTabsHoldFactory_QAAC.initialize();
         registerMemberToMap(subTabsHoldFactory_QAAC);

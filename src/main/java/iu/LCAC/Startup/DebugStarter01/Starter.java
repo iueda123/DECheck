@@ -25,11 +25,11 @@ public class Starter {
     setUIFont(new FontUIResource("SansSerif", Font.PLAIN, 15)); // 標準12pt → 15pt (1.25倍)
 
     /* **** 新しい ActionMediator を作る **** */
-    ActionMediator actionMediator = ActionMediatorFactory.create();
+    ActionMediator actionMediator = ActionMediatorFactory.create("test");
     // Actionの生成と登録はここで完了している。
 
     /* **** CHolderMediator を作る **** */
-    CHolderMediator cholderMediator = CHolderMediatorFactory.create();
+    CHolderMediator cholderMediator = CHolderMediatorFactory.create("authorYear");
     // Componentの生成と登録はここで完了している。
 
     /* **** Component-holders と Actions を連携させる **** */

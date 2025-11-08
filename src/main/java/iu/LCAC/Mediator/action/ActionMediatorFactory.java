@@ -4,9 +4,9 @@ public class ActionMediatorFactory {
 
   private static ActionMediator actionMediator;
 
-  public static ActionMediator create() {
+  public static ActionMediator create(String authorYear) {
     if (actionMediator == null) {
-      actionMediator = new ActionMediator();
+      actionMediator = new ActionMediator(authorYear);
     }
     return actionMediator;
   }

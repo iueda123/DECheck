@@ -9,9 +9,9 @@ public class QAAC_SubTabsHolderFactory extends AbstCHolderMemberFactory {
   private QAAC_SubTabsHolder qaac_SubTabsHolder;
 
   @Override
-  protected AbstCHolderMember createInstance(String cholder_name, String short_name) {
+  protected AbstCHolderMember createInstance(String cholder_name, String short_name, String... args) {
     if (this.qaac_SubTabsHolder == null) {
-      this.qaac_SubTabsHolder = new QAAC_SubTabsHolder(cholder_name, short_name);
+      this.qaac_SubTabsHolder = new QAAC_SubTabsHolder(cholder_name, short_name, args[0]);
     }
     return qaac_SubTabsHolder;
   }

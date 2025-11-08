@@ -16,8 +16,8 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
 
     public HashMap<String, MemberIntrfc> memberMap = new HashMap<>();
 
-    public ActionMediator() {
-        this.createMembers();
+    public ActionMediator(String authorYear) {
+        this.createMembers(authorYear);
     }
 
     /* *** Variables and Methods for AcceleratorSetupMode *** */
@@ -55,7 +55,12 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
     }
 
     @Override
-    public void createMembers() {
+    public void createMembers(){
+        createMembers("");
+    }
+
+    @Override
+    public void createMembers(String... authorYears) {
         /* *** children of main_menu_1 *** */
         AbstActionMemberFactory actionMemberFactory;
 
