@@ -1,15 +1,15 @@
 package iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common;
 
-import iu.LCAC.Mediator.action.ActionMediator;
-import iu.LCAC.Mediator.componentholder.CHolderMediator;
-import iu.LCAC.Member.componentholder.Concretes.StatusPanel.StatusPanelHolder;
 import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManagerCallback;
 import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManagerWithConflictSafe;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -29,10 +29,10 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
     String tooltipForJsonName = "JSON File Name";
 
     JButton saveButton = new JButton("save");
-    JButton openButton = new JButton("open");
     JButton loadButton = new JButton("load");
+    JButton openJsonFileButton; //= new JButton("open json");
+    JButton openJsonFolderButton; //= new JButton("open folder");
     JButton jsonFileNameEditButton = new JButton("edit json name");
-    JButton convertJson2TsvButton = new JButton("2TSV");
     private ManagerOfSubTabBasePane managerOfSubTabBasePane;
 
 
@@ -43,13 +43,30 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
         this.jsonFolderPathStr = jsonFolderPathStr;
         this.jsonName = jsonName;
 
-        //ToDo: JsonManagerWithConflictSafe() を使いたい。
-        // 問題は、reloadが選択されたときにどのようにコンポーネントに反映させるか
-        // JsonManagerWithConfilictSafe() という JsonManagerの一種と
-        // JComponent系へのリロード処理をどう結びつける？
-        //JsonManagerWithConflictSafe()のコンストラクタに引数としてreload()メソッドをもつインターフェースを渡し、
-        //そのインターフェースのreload()を呼び出すか？
-        //this.jsonManager = new JsonManager(this.jsonFolderPathStr + "/" + jsonName);
+        // アイコンを取得しボタンを作る
+        // システムから読み込む方式
+        //Icon folderIcon = FileSystemView.getFileSystemView().getSystemIcon(new File(System.getProperty("user.home")));
+        //Icon jsonIcon = FileSystemView.getFileSystemView().getSystemIcon(new File("dummy.txt"));
+
+        // resources/icons/json_file.png をクラスパスから読み込む方式
+        URL folderIconUrl = One_DEQAResult_Pane_Abs.class.getResource("/icons/folder.png");
+        if (folderIconUrl == null) {
+            System.err.println("JSONアイコンが見つかりません。パスを確認してください。");
+            openJsonFolderButton = new JButton("open folder");
+        }else {
+            ImageIcon folderIcon = new ImageIcon(folderIconUrl);
+            openJsonFolderButton = new JButton("", folderIcon);
+        }
+        openJsonFolderButton.setToolTipText("open json folder");
+        URL jsonIconUrl = One_DEQAResult_Pane_Abs.class.getResource("/icons/json_file.png");
+        if (jsonIconUrl == null) {
+            System.err.println("JSONアイコンが見つかりません。パスを確認してください。");
+            openJsonFolderButton = new JButton("open json");
+        }else{
+            ImageIcon jsonIcon = new ImageIcon(jsonIconUrl);
+            openJsonFileButton = new JButton("", jsonIcon);
+        }
+        openJsonFileButton.setToolTipText("open json file");
 
         // JsonManagerの初期化は子クラスのフィールド初期化後に行う必要があるため、ここでは行わない
         // 子クラスのコンストラクタの最後でinitializeJsonManager()を呼び出すこと
@@ -65,12 +82,6 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
                     }
                 });
 
-        openButton.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                openJsonFile();
-            }
-        });
 
         loadButton.addActionListener(new AbstractAction() {
             @Override
@@ -78,6 +89,21 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
                 loadJson();
             }
         });
+
+        openJsonFileButton.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                openJsonFile(false);
+            }
+        });
+
+        openJsonFolderButton.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                openJsonFile(true);
+            }
+        });
+
 
         jsonFileNameEditButton.addActionListener(new AbstractAction() {
             @Override
@@ -92,44 +118,49 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
 
     public abstract void saveJson();
 
-    public void openJsonFile() {
+    public abstract void loadJson();
 
-        Path jsonFilePath = Paths.get( this.getJsonFolderPathStr() + "/" + this.getJsonName() ) ;
+    public void openJsonFile(boolean shouldOpenParent) {
 
+        Path targetPath = null;
+        if (shouldOpenParent) {
+            targetPath = Paths.get(this.getJsonFolderPathStr() + "/");
+        } else {
+            targetPath = Paths.get(this.getJsonFolderPathStr() + "/" + this.getJsonName());
+        }
         try {
             if (Desktop.isDesktopSupported()) {
                 Desktop desktop = Desktop.getDesktop();
-                if (jsonFilePath.toFile().exists()) {
-                    desktop.open(jsonFilePath.toFile());
+                if (targetPath.toFile().exists()) {
+                    desktop.open(targetPath.toFile());
                 } else {
                     JOptionPane.showMessageDialog(
-                        this,
-                        "JSONファイルが見つかりません: " + jsonFilePath.toAbsolutePath(),
-                        "エラー",
-                        JOptionPane.ERROR_MESSAGE
+                            this,
+                            "JSONファイルが見つかりません: " + targetPath.toAbsolutePath(),
+                            "エラー",
+                            JOptionPane.ERROR_MESSAGE
                     );
                 }
             } else {
                 JOptionPane.showMessageDialog(
-                    this,
-                    "このシステムではファイルを開く機能がサポートされていません。",
-                    "エラー",
-                    JOptionPane.ERROR_MESSAGE
+                        this,
+                        "このシステムではファイルを開く機能がサポートされていません。",
+                        "エラー",
+                        JOptionPane.ERROR_MESSAGE
                 );
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(
-                this,
-                "ファイルを開く際にエラーが発生しました: " + e.getMessage(),
-                "エラー",
-                JOptionPane.ERROR_MESSAGE
+                    this,
+                    "ファイルを開く際にエラーが発生しました: " + e.getMessage(),
+                    "エラー",
+                    JOptionPane.ERROR_MESSAGE
             );
             e.printStackTrace();
         }
 
     }
 
-    public abstract void loadJson();
 
     /**
      * JsonManagerを初期化する。

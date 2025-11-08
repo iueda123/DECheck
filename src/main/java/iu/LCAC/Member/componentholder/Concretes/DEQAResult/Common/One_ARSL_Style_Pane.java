@@ -1,7 +1,5 @@
 package iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common;
 
-import iu.LCAC.Mediator.action.ActionMediator;
-import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Utils.ColorChangeableTextArea;
 import iu.LCAC.Utils.ColorChangeableTextField;
 import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManagerWithConflictSafe;
@@ -70,9 +68,10 @@ public class One_ARSL_Style_Pane extends One_DEQAResult_Pane_Abs {
         the1stBaseOfNorth.add(jsonNameLabel);
         the1stBaseOfNorth.add(Box.createHorizontalGlue());
         the1stBaseOfNorth.add(saveButton);
-        the1stBaseOfNorth.add(openButton);
         the1stBaseOfNorth.add(loadButton);
-        the1stBaseOfNorth.add(jsonFileNameEditButton);
+        the1stBaseOfNorth.add(openJsonFileButton);
+        the1stBaseOfNorth.add(openJsonFolderButton);
+        //the1stBaseOfNorth.add(jsonFileNameEditButton);
         the1stBaseOfNorth.add(new PanelMoverPane());
         the1stBaseOfNorth.setPreferredSize(new Dimension(800, 34));
         baseOfNorth.add(the1stBaseOfNorth);

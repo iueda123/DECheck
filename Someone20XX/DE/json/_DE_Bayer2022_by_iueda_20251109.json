@@ -7,7 +7,7 @@
     "doi": "10.1017/S0033291724000886"
   },
   "study_characteristics": {
-    "study_objective": "To quantify brain morphological heterogeneity in mood disorders (MDD and BD) by mapping individual-level gray matter volume (GMV) deviations using normative modeling, identify subtypes through unsupervised clustering, and characterize these subtypes using clinical behaviors, cell-specific transcriptomic profiles, and polygenic risk scores.",
+    "study_objective": "To develop and validate hierarchical Bayesian normative models that accommodate site effects in multi-site neuroimaging data by including site as a random effect predictor, comparing linear and non-linear (Gaussian Process) versions against traditional harmonization methods including ComBat and regression-based approaches.",
     "study_design": "Cross-sectional",
     "study_design_other": "-"
   },
