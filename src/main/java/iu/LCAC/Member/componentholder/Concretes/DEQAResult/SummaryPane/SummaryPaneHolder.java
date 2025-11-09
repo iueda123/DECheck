@@ -18,7 +18,7 @@ public class SummaryPaneHolder extends AbstCHolderMember {
         super(cholder_name, short_name);
 
         //AbstActionMember abstActionMember = actionMediator.getInstanceOfAMember("run_a_bash_script");
-        AbstActionMember abstActionMember = actionMediator.getInstanceOfAMember("run_a_bash_script");
+        //AbstActionMember abstActionMember = actionMediator.getInstanceOfAMember("run_a_bash_script");
 
 
         panel.add(runScriptButton);
