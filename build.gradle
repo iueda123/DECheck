@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'com.org-he'
-version 'v20251106'
+version 'v20251109'
 
 repositories {
     mavenCentral()
