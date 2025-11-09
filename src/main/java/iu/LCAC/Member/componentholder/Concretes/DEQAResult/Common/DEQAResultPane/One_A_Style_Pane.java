@@ -1,4 +1,4 @@
-package iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common;
+package iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.DEQAResultPane;
 
 import iu.LCAC.Utils.ColorChangeableTextArea;
 import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManagerWithConflictSafe;
@@ -39,8 +39,8 @@ public class One_A_Style_Pane extends One_DEQAResult_Pane_Abs {
         the1stBaseOfNorth.add(Box.createHorizontalGlue());
         the1stBaseOfNorth.add(jsonNameLabel);
         the1stBaseOfNorth.add(Box.createHorizontalGlue());
-        the1stBaseOfNorth.add(saveButton);
         the1stBaseOfNorth.add(loadButton);
+        the1stBaseOfNorth.add(saveButton);
         the1stBaseOfNorth.add(openJsonFileButton);
         the1stBaseOfNorth.add(openJsonFolderButton);
         the1stBaseOfNorth.add(copyToTheHumanPanelButton);

@@ -1,5 +1,6 @@
-package iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common;
+package iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.DEQAResultPane;
 
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.ManagerOfSubTabBasePane;
 import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManagerCallback;
 import iu.LCAC.Utils.JsonManagerWithConflictSafe.JsonManagerWithConflictSafe;
 
@@ -30,7 +31,7 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
     JButton openJsonFileButton; //= new JButton("open json");
     JButton openJsonFolderButton; //= new JButton("open folder");
     JButton jsonFileNameEditButton = new JButton("edit json name");
-    JButton copyToTheHumanPanelButton = new JButton("C");
+    JButton copyToTheHumanPanelButton = new JButton("CtoH");
     protected ManagerOfSubTabBasePane managerOfSubTabBasePane;
 
 

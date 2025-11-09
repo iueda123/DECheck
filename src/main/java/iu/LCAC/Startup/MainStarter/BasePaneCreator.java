@@ -69,6 +69,10 @@ public class BasePaneCreator {
 
     //-----------------------
 
+    tabbedPane.add("99. SMRRY", (cHolderMediator.getInstanceOfAMember("summary_pane_holder")).getBaseComponent());
+    tabbedPane.setToolTipTextAt(10, "Summary Pane");
+    //-----------------------
+
     JComponent explanationPanelHolder = (cHolderMediator.getInstanceOfAMember("explanation_panel_holder").getBaseComponent());
 
     CollapsiblePanel collapsiblePanel = new CollapsiblePanel(

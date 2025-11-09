@@ -4,8 +4,8 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.ManagerOfSubTabBasePane;
-import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.One_ARSL_Style_Pane;
-import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.One_DEQAResult_Pane_Abs;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.DEQAResultPane.One_ARSL_Style_Pane;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.DEQAResultPane.One_DEQAResult_Pane_Abs;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.SubTabsHolderItrfc;
 
 import javax.swing.*;

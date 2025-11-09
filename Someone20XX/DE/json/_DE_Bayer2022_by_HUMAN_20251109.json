@@ -172,7 +172,13 @@
       "Negative Answer Category": "",
       "Reason": "",
       "Supporting Text": "",
-      "Location": ""
+      "Location": "",
+      "answer": "No",
+      "confidence_rating": "High",
+      "negative_answer_category": "Not Negative",
+      "reason": "Validation used an explicit held-out test set; not a non-independent reuse of training data.",
+      "supporting_text": "... split ... into a training set (70%) and a test set (30%) ... training and test sets contained individuals from the same sites (\u0027within-site-split\u0027).",
+      "location": "materials/Bayer2022.pdf.md:L153-L159"
     },
     "nm_vldtn_same_domain_indep": {
       "Answer": "",

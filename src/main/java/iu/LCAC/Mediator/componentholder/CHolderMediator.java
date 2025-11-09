@@ -33,7 +33,7 @@ public class CHolderMediator implements MediatorIntrfc {
     }
 
 
-        @Override
+    @Override
     public void createMembers(String... authorYears) {
 
         //------------------------------------------
@@ -118,9 +118,9 @@ public class CHolderMediator implements MediatorIntrfc {
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember subTabsHoldFactory_SI =
                 chMemberFactory.createCHolder("sub_tabs_holder_SI", "sub_tabs_holder_SI", authorYears[0]);
-        subTabsHoldFactory_SI .setCHolderMediator(this);
-        subTabsHoldFactory_SI .initialize();
-        registerMemberToMap(subTabsHoldFactory_SI );
+        subTabsHoldFactory_SI.setCHolderMediator(this);
+        subTabsHoldFactory_SI.initialize();
+        registerMemberToMap(subTabsHoldFactory_SI);
 
         /* 2. Study Characteristics */
         chMemberFactory =
@@ -129,9 +129,9 @@ public class CHolderMediator implements MediatorIntrfc {
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember subTabsHoldFactory_SC =
                 chMemberFactory.createCHolder("sub_tabs_holder_SC", "sub_tabs_holder_SC", authorYears[0]);
-        subTabsHoldFactory_SC .setCHolderMediator(this);
-        subTabsHoldFactory_SC .initialize();
-        registerMemberToMap(subTabsHoldFactory_SC );
+        subTabsHoldFactory_SC.setCHolderMediator(this);
+        subTabsHoldFactory_SC.initialize();
+        registerMemberToMap(subTabsHoldFactory_SC);
 
         /* 3. Reference Cohort and Imaging */
         chMemberFactory =
@@ -140,9 +140,9 @@ public class CHolderMediator implements MediatorIntrfc {
                         AbstCHolderMemberFactory.class);
         AbstCHolderMember subTabsHoldFactory_RCAI =
                 chMemberFactory.createCHolder("sub_tabs_holder_RCAI", "sub_tabs_holder_RCAI", authorYears[0]);
-        subTabsHoldFactory_RCAI .setCHolderMediator(this);
-        subTabsHoldFactory_RCAI .initialize();
-        registerMemberToMap(subTabsHoldFactory_RCAI );
+        subTabsHoldFactory_RCAI.setCHolderMediator(this);
+        subTabsHoldFactory_RCAI.initialize();
+        registerMemberToMap(subTabsHoldFactory_RCAI);
 
         /* 4. Normative Modeling */
         chMemberFactory =
@@ -236,6 +236,19 @@ public class CHolderMediator implements MediatorIntrfc {
         subTabsHoldFactory_QAAC.setCHolderMediator(this);
         subTabsHoldFactory_QAAC.initialize();
         registerMemberToMap(subTabsHoldFactory_QAAC);
+
+        //------------------------------------------
+
+        /* 11. Summary Pane */
+        chMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.componentholder.Concretes.DEQAResult.SummaryPane.SummaryPaneHolderFactory",
+                        AbstCHolderMemberFactory.class);
+        AbstCHolderMember summaryPaneHoldFactory =
+                chMemberFactory.createCHolder("summary_pane_holder", "summary pane holder", authorYears[0]);
+        summaryPaneHoldFactory.setCHolderMediator(this);
+        summaryPaneHoldFactory.initialize();
+        registerMemberToMap(summaryPaneHoldFactory);
 
     }
 

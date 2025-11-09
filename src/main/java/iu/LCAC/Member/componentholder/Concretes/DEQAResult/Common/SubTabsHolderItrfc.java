@@ -1,5 +1,7 @@
 package iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common;
 
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.DEQAResultPane.One_DEQAResult_Pane_Abs;
+
 import java.util.ArrayList;
 
 public interface SubTabsHolderItrfc {
