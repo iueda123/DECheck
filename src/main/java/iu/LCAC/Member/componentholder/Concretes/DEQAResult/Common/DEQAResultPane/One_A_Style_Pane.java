@@ -102,6 +102,9 @@ public class One_A_Style_Pane extends One_DEQAResult_Pane_Abs {
 
             //「human」というキーワードを含むJSONに相当するDEQAResultパネルに値を複製
             if(one_deqaResult_pane_abs.getJsonName().toLowerCase().contains("human")){
+
+                ((One_A_Style_Pane) one_deqaResult_pane_abs).loadJson(); //これがないと他のSubSectionPanelで変更が加えられた後に一度loadボタンを押さなくてはならなくなる。
+
                 ((One_A_Style_Pane)one_deqaResult_pane_abs).gettArea_Answer().setText(answerOfThisPanel);
             }
         }

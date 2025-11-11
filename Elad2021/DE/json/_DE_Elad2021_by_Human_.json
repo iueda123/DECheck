@@ -1,0 +1,252 @@
+{
+  "study_identification": {
+    "study_id": "Elad2021",
+    "reference_file_names": "Elad2021.pdf.md; HBM-42-4658-s002.docx.md; Supplementary Materials.md",
+    "author_journal_year": "Elad et al., Human Brain Mapping, 2021",
+    "title": "Improving the predictive potential of diffusion MRI in schizophrenia using normative models -Towards subject-level classification",
+    "doi": "10.1002/hbm.25574"
+  },
+  "study_characteristics": {
+    "study_objective": "To evaluate whether normative modeling can improve subject-level predictions for schizophrenia classification by generating age- and sex-adjusted z-scores from standard (FA) and advanced (free-water) dMRI measures in 18 white matter ROIs, and to test whether combining deviations across multiple imaging measures and tracts improves binary classifier performance compared to raw dMRI values.",
+    "study_design": "Cross-sectional",
+    "study_design_other": "-"
+  },
+  "reference_cohort_and_imaging": {
+    "dataset_name": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "hc_n": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "hc_age": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "hc_sex": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "imaging_modality": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "analysis_level": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "preprocessing_pipeline": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "quality_checking": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "quality_checking_detail": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "site_effect_handling": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "site_effect_handling_detail": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    }
+  },
+  "normative_modeling": {
+    "model_origin": {
+      "answer": "New",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "model_origin_detail": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "modeling_method": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "software_tool": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "response_variable": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "predictor_variables": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "predictor_effects": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "nm_vldtn_handle_ns": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "nm_vldtn_same_domain_nonindep": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "nm_vldtn_same_domain_indep": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "nm_vldtn_diff_domain": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    }
+  },
+  "clinical_application_and_analysis": {
+    "clinical_dataset": {
+      "answer": "Multi-site aggregated dataset (13 sites; coinciding with Cetin-Karayumak et al., 2020 schizophrenia cohort)",
+      "confidence_rating": "High",
+      "negative_answer_category": "Not Negative",
+      "reason": "The schizophrenia cohort comes from the same 13-site dataset as the healthy controls, as described in Cetin-Karayumak et al. (2020).",
+      "supporting_text": "The dataset used in this study coincides with the dataset utilized in the published work by (Cetin-Karayumak et al., 2020), which includes 601 individuals diagnosed with schizophrenia-spectrum disorder across multiple illness stages (mean [SD] age, 31.46 [12.31] years; 380 [63.23%] male), and 512 healthy controls",
+      "location": "Elad2021.pdf.md:60-61"
+    },
+    "diseases_studied": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "clinical_groups_n": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "clinical_groups_age": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "clinical_groups_sex": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "deviation_metric": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "association_analysis": "",
+    "key_findings_brief": "",
+    "key_findings_detailed": "",
+    "key_limitations": "",
+    "application_notes": ""
+  },
+  "general_notes": {
+    "general_notes": ""
+  }
+}

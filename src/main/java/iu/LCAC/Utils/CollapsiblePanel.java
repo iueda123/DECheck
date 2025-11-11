@@ -255,12 +255,12 @@ public final class CollapsiblePanel extends JPanel {
 
             if (animator.isRunning()) {
                 if (isHidden) {
-                    controlsHeight = Math.min(defaultHeight, controlsHeight + 5);
+                    controlsHeight = Math.min(defaultHeight, controlsHeight + 20);
                     if (controlsHeight >= defaultHeight) {
                         animator.stop();
                     }
                 } else {
-                    controlsHeight = Math.max(0, controlsHeight - 5);
+                    controlsHeight = Math.max(0, controlsHeight - 20);
                     if (controlsHeight <= 0) {
                         animator.stop();
                     }

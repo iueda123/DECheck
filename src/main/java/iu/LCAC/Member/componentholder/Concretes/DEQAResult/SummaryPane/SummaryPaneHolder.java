@@ -4,26 +4,62 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.DEQAResultPane.One_ARSL_Style_Pane;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.DEQAResultPane.One_A_Style_Pane;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.DEQAResultPane.One_DEQAResult_Pane_Abs;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.ManagerOfSubTabBasePane;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.SubTabsHolderItrfc;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.CAAA.CAAA_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.GN.GN_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.NM.NM_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.RCAI.RCAI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.SC.SC_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.SI.SI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA1.QA1_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA2.QA2_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QAAC.QAAC_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QASI.QASI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.SummaryPane.units.SummaryBoxUnit;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.TreeMap;
 
 public class SummaryPaneHolder extends AbstCHolderMember {
 
-    JPanel panel = new JPanel();
+    String[] memberNames = {"sub_tabs_holder_SI", "sub_tabs_holder_SC", "sub_tabs_holder_RCAI", "sub_tabs_holder_NM",
+            "sub_tabs_holder_CAAA", "sub_tabs_holder_GN", "sub_tabs_holder_QASI", "sub_tabs_holder_QA1_v6",
+            "sub_tabs_holder_QA2_v6", "sub_tabs_holder_QAAC"};
+
+    JPanel basePane = new JPanel();
+    Box baseOfNorth = Box.createHorizontalBox();
+    Box baseOfCenter = Box.createVerticalBox();
+
+    Box box_NM = Box.createVerticalBox();
+    private TreeMap<String, SummaryBoxUnit> summaryBoxUnitTreeMap = new TreeMap<>();
+
+    JButton checkProgressButton = new JButton("check progress");
 
     JButton runScriptButton = new JButton("Run A Script");
+
+    SubTabsHolderItrfc subTabsHolder;
+
 
     public SummaryPaneHolder(String cholder_name, String short_name) {
         super(cholder_name, short_name);
 
-        //AbstActionMember abstActionMember = actionMediator.getInstanceOfAMember("run_a_bash_script");
-        //AbstActionMember abstActionMember = actionMediator.getInstanceOfAMember("run_a_bash_script");
 
+        baseOfNorth.add(checkProgressButton);
+        checkProgressButton.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                checkProgress();
+            }
+        });
 
-        panel.add(runScriptButton);
-
-
+        //baseOfNorth.add(runScriptButton);
         runScriptButton.addActionListener(
                 new AbstractAction() {
                     @Override
@@ -54,15 +90,74 @@ public class SummaryPaneHolder extends AbstCHolderMember {
                     }
                 });
 
+        baseOfCenter.add(box_NM);
+
+        // Finalization
+        basePane.setLayout(new BorderLayout());
+        basePane.add(baseOfNorth, BorderLayout.NORTH);
+        basePane.add(baseOfCenter, BorderLayout.CENTER);
+
     }
+
+    private void checkProgress() {
+        for (String memberName : memberNames) {
+
+            if (cholderMediator != null) {
+                subTabsHolder = (SubTabsHolderItrfc) cholderMediator.getInstanceOfAMember(memberName);
+
+                ArrayList<ManagerOfSubTabBasePane> arrayListOfManagerOfSubTabBasePane_NM = subTabsHolder.getArrayList_of_ManagerOfSubTabBasePane();
+                for (ManagerOfSubTabBasePane managerOfSubTabBasePane : arrayListOfManagerOfSubTabBasePane_NM) {
+                    String subSectionName = managerOfSubTabBasePane.getSubSectionName();
+
+                    ArrayList<One_DEQAResult_Pane_Abs> arrayOf_one_deqaResult_pane = managerOfSubTabBasePane.getDeqaPaneArray();
+                    for (One_DEQAResult_Pane_Abs one_deqaResult_pane : arrayOf_one_deqaResult_pane) {
+                        if (one_deqaResult_pane.getJsonName().toLowerCase().contains("human")) {
+                            //String value = ((One_ARSL_Style_Pane) one_deqaResult_pane).gettArea_Answer().getText();
+
+                            String value ="";
+                            if( one_deqaResult_pane instanceof One_A_Style_Pane ) {
+                                value = ((One_A_Style_Pane) one_deqaResult_pane).gettArea_Answer().getText();
+                            } else if ( one_deqaResult_pane instanceof One_ARSL_Style_Pane) {
+                                value = ((One_ARSL_Style_Pane) one_deqaResult_pane).gettArea_Answer().getText();
+                            }
+
+                            SummaryBoxUnit summaryBoxUnit=null;
+                            if (value.equals("")) {
+                                summaryBoxUnitTreeMap.get(memberName).setStatus(subSectionName, "□", "");
+                            } else {
+                                summaryBoxUnitTreeMap.get(memberName).setStatus(subSectionName, "■", value);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
 
     @Override
     public void postInitialize() {
+
+        for (String memberName : memberNames) {
+
+            if (cholderMediator != null) {
+               ArrayList<ManagerOfSubTabBasePane> arrayListOfManagerOfSubTabBasePane = ((SubTabsHolderItrfc)cholderMediator.getInstanceOfAMember(memberName)).getArrayList_of_ManagerOfSubTabBasePane();
+
+                SummaryBoxUnit summaryBox = new SummaryBoxUnit(arrayListOfManagerOfSubTabBasePane);
+                summaryBoxUnitTreeMap.put(memberName, summaryBox);
+                baseOfCenter.add(summaryBox);
+            }
+
+        }
+
+        checkProgress();
+
     }
 
     @Override
     public JComponent getBaseComponent() {
-        return this.panel;
+        return this.basePane;
     }
 
     public void setTextToTheButton(String text) {

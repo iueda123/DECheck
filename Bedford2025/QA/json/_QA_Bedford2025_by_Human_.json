@@ -1,0 +1,160 @@
+{
+  "study_identification": {
+    "study_id": "",
+    "reference_file_names": "",
+    "author_journal_year": "",
+    "title": "",
+    "doi": ""
+  },
+  "assessment_items_group_a": {
+    "clarity_of_research_objectives": {
+      "answer": "Yes",
+      "confidence_rating": "High",
+      "negative_answer_category": "Not Negative",
+      "reason": "The paper clearly states its aims to use population (normative) modeling to characterize cortical anatomy associated with autism and ADHD, examine effects of sex and age, investigate relationships with autistic/ADHD traits, and explore co-occurrence.",
+      "supporting_text": "METHODS: Here, we used population modeling and a large, multisite neuroimaging dataset ... We also examined sex and age differences and relationship with autistic traits and explored the co-occurrence of autism and ADHD. ... Population modeling ... provides a unified framework for studying age-specific and sex-specific divergences in brain development.",
+      "location": "materials/Bedford2025.pdf.md:L9-L15, L33-L36"
+    },
+    "clear_definition_of_target_population": {
+      "answer": "Partial",
+      "confidence_rating": "Medium",
+      "negative_answer_category": "Unclear/Incomplete",
+      "reason": "Diagnostic groups (autism, ADHD, TD controls), sex, and age ranges are clearly described. However, uniform diagnostic criteria (e.g., DSM/ICD) are not specified across datasets in this manuscript.",
+      "supporting_text": "T1-weighted scans were combined from 49 sites across 7 datasets ... final dataset after quality control (QC) included 4255 individuals ... ages 2–64 years ... Individuals with MRI data and a primary diagnosis of autism or ADHD or no diagnosis were included. ... For details of each dataset, demographics before and after QC, and group differences, see Supplemental Methods Section 1.",
+      "location": "materials/Bedford2025.pdf.md:L41-L45; materials/1-s2.0-S0006322324015130-mmc2.pdf.md:L71-L107"
+    },
+    "clarity_of_inclusion_and_exclusion_criteria": {
+      "answer": "Partial",
+      "confidence_rating": "Medium",
+      "negative_answer_category": "Unclear/Incomplete",
+      "reason": "QC-based exclusion is described with explicit FSQC threshold and Euler covariate. Sample attrition before/after QC is tabulated. Beyond QC-related criteria, uniform inclusion/exclusion standards across studies are not fully specified.",
+      "supporting_text": "All scans underwent manual QC ... FSQC tool ... A cutoff of 2.5 was used for FSQC. ... Sample demographics and N before and after quality control (QC).",
+      "location": "materials/Bedford2025.pdf.md:L51; materials/1-s2.0-S0006322324015130-mmc2.pdf.md:L105-L116, L156-L166"
+    },
+    "validity_of_normative_modeling_outcome_measures": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "handling_of_confounding_variables": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "clarity_of_data_sources": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "description_of_image_acquisition_protocol": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    }
+  },
+  "assessment_items_group_b": {
+    "details_of_data_preprocessing": {
+      "answer": "Yes",
+      "confidence_rating": "High",
+      "negative_answer_category": "Not Negative",
+      "reason": "Preprocessing is described: FreeSurfer v6.0.1; DK atlas parcellation; hemisphere averaging; manual QC with FSQC (cutoff 2.5); Euler number included as covariate.",
+      "supporting_text": "T1 images ... processed using FreeSurfer, version 6.0.1 ... Desikan-Killiany atlas ... measures were averaged across hemispheres ... All scans underwent manual QC ... FSQC ... cutoff of 2.5 ... included Euler number as a covariate.",
+      "location": "materials/Bedford2025.pdf.md:L49-L51"
+    },
+    "clarity_of_data_partitioning_methods": {
+      "answer": "NA",
+      "confidence_rating": "High",
+      "negative_answer_category": "Not Negative",
+      "reason": "No train/validation/test split was used for this study dataset; out-of-sample centile scores were computed using pre-trained reference models.",
+      "supporting_text": "Out-of-sample centile scores for our study sample were generated based on these reference models using Brent\u0027s maximum likelihood estimation.",
+      "location": "materials/Bedford2025.pdf.md:L61"
+    },
+    "details_of_normative_modeling_approach": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "details_of_training_algorithm": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "model_performance_evaluation_metrics": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "implementation_of_internal_validation": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "external_data_validation": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "description_of_dataset_characteristics": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "performance_metrics_and_statistical_uncertainty": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "consideration_for_reproducibility": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    },
+    "interpretation_specific_to_normative_modeling": {
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
+    }
+  },
+  "additional_comments": {
+    "additional_comments": ""
+  }
+}
