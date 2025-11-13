@@ -104,35 +104,35 @@
   "normative_modeling": {
     "model_origin": {
       "answer": "New",
-      "confidence_rating": "",
-      "negative_answer_category": "",
-      "reason": "",
-      "supporting_text": "",
-      "location": ""
+      "confidence_rating": "High",
+      "negative_answer_category": "Not Negative",
+      "reason": "The paper describes constructing a new normative model from the healthy controls in the current dataset using Nadaraya-Watson estimators.",
+      "supporting_text": "The normative model represents the distribution of the normative range within each ROI in the healthy controls using the sample mean and standard deviation. To control for confounding factors resulting from age and sex differences, we represented the normative range in each ROI by an age specific weighted mean, c mh , and standard deviation, b σ 2 h , for each sex separately. To do so, we used the NadarayaWatson (NW) estimator (Nadaraya, 1964; Watson, 1964) with a Gaussian kernel",
+      "location": "Elad2021.pdf.md:73"
     },
     "model_origin_detail": {
-      "answer": "",
-      "confidence_rating": "",
-      "negative_answer_category": "",
-      "reason": "",
-      "supporting_text": "",
-      "location": ""
+      "answer": "Within-study HC reference; sex-stratified Nadaraya–Watson kernel estimators for age-specific mean and variance; bandwidth via cross-validation.",
+      "confidence_rating": "High",
+      "negative_answer_category": "Not Negative",
+      "reason": "Describes sex-specific, age-weighted NW estimation and bandwidth selection.",
+      "supporting_text": "...age specific weighted mean ... and standard deviation ... for each sex separately. ... Nadaraya-Watson (NW) estimator ... bandwidth parameter ... minimized the cross-validation function...",
+      "location": "materials/Elad2021.pdf.md L73-L89"
     },
     "modeling_method": {
-      "answer": "",
-      "confidence_rating": "",
-      "negative_answer_category": "",
-      "reason": "",
-      "supporting_text": "",
-      "location": ""
+      "answer": "Nonparametric kernel regression (Nadaraya–Watson) for normative means/SDs; z-score deviations; Ridge logistic regression for classification",
+      "confidence_rating": "High",
+      "negative_answer_category": "Not Negative",
+      "reason": "NW estimator used to derive age/sex adjusted z-scores; ridge logistic used for classification.",
+      "supporting_text": "...Nadaraya-Watson (NW) estimator ... z-score ... We chose logistic regression with ridge regularization ...",
+      "location": "materials/Elad2021.pdf.md L73-L74; L91-L99; L120-L121"
     },
     "software_tool": {
-      "answer": "",
-      "confidence_rating": "",
-      "negative_answer_category": "",
-      "reason": "",
-      "supporting_text": "",
-      "location": ""
+      "answer": "Custom implementation (Nadaraya-Watson estimator with cross-validation for bandwidth selection)",
+      "confidence_rating": "High",
+      "negative_answer_category": "Not Negative",
+      "reason": "The paper describes implementing the NW estimator with custom cross-validation for bandwidth selection, but does not specify a particular software package.",
+      "supporting_text": "To do so, we used the NadarayaWatson (NW) estimator (Nadaraya, 1964; Watson, 1964) with a Gaussian kernel [...] To set h for every ROI, and every dMRI modality (FA, FAt, or FW), we minimized the cross-validation function",
+      "location": "Elad2021.pdf.md:73-82"
     },
     "response_variable": {
       "answer": "",
@@ -193,12 +193,12 @@
   },
   "clinical_application_and_analysis": {
     "clinical_dataset": {
-      "answer": "Multi-site aggregated dataset (13 sites; coinciding with Cetin-Karayumak et al., 2020 schizophrenia cohort)",
-      "confidence_rating": "High",
-      "negative_answer_category": "Not Negative",
-      "reason": "The schizophrenia cohort comes from the same 13-site dataset as the healthy controls, as described in Cetin-Karayumak et al. (2020).",
-      "supporting_text": "The dataset used in this study coincides with the dataset utilized in the published work by (Cetin-Karayumak et al., 2020), which includes 601 individuals diagnosed with schizophrenia-spectrum disorder across multiple illness stages (mean [SD] age, 31.46 [12.31] years; 380 [63.23%] male), and 512 healthy controls",
-      "location": "Elad2021.pdf.md:60-61"
+      "answer": "",
+      "confidence_rating": "",
+      "negative_answer_category": "",
+      "reason": "",
+      "supporting_text": "",
+      "location": ""
     },
     "diseases_studied": {
       "answer": "",

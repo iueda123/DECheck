@@ -519,4 +519,3 @@ PDHQ) and depression score (HADS).
   - `./DECheck/json/`
 
 - 既に類似のファイルが出力先にあったとしても、その類似ファイルは参照せずに新たに生成してください。
-

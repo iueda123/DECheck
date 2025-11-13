@@ -3,12 +3,16 @@ package iu.LCAC.Member.componentholder.Concretes.DEQAResult.SummaryPane.units;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.ManagerOfSubTabBasePane;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class SummaryBoxUnit extends JPanel {
+
+    JLabel sectionNameLabel = new JLabel();
+
     ArrayList<ManagerOfSubTabBasePane> arrayOf_ManagerOfSubTabBasePane;
-    ArrayList<String> subSectionnames = new ArrayList<>();
+    ArrayList<String> subSectionNames = new ArrayList<>();
     TreeMap<String, JLabel> statusSquares = new TreeMap<>();
 
     public SummaryBoxUnit(ArrayList<ManagerOfSubTabBasePane> arrayOf_ManagerOfSubTabBasePane) {
@@ -17,19 +21,27 @@ public class SummaryBoxUnit extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
         String sectionName = this.arrayOf_ManagerOfSubTabBasePane.get(0).getSectionName();
-        add(new JLabel(sectionName + ": "));
 
+
+        //JLabel幅を固定し、表示文字列を右寄せにする
+        sectionNameLabel.setText(sectionName + ": ");
+        sectionNameLabel.setPreferredSize(new Dimension(300, 25));
+        sectionNameLabel.setMinimumSize(new Dimension(300, 25));
+        sectionNameLabel.setMaximumSize(new Dimension(300, 25));
+        sectionNameLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+        add(sectionNameLabel);
 
         for (ManagerOfSubTabBasePane managerOfSubTabBasePane : this.arrayOf_ManagerOfSubTabBasePane) {
             //System.out.println("★");
-            subSectionnames.add(managerOfSubTabBasePane.getSectionName() + "_" + managerOfSubTabBasePane.getSubSectionName());
+            //subSectionNames.add(managerOfSubTabBasePane.getSectionName() + "_" + managerOfSubTabBasePane.getSubSectionName());
+            subSectionNames.add(managerOfSubTabBasePane.getSubSectionName());
             statusSquares.put(managerOfSubTabBasePane.getSubSectionName(), new JLabel("□"));
 
         }
 
         //JOptionPane.showMessageDialog(null, this.arrayOf_ManagerOfSubTabBasePane.size());
 
-        for (String key : statusSquares.keySet()) {
+        for (String key : subSectionNames) {
             JLabel label = statusSquares.get(key);
             add(label);
         }

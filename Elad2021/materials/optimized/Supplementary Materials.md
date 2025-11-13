@@ -16,22 +16,22 @@ Supplementary Figure S1 Effect sizes (in absolute values) obtained when testing 
 
 *.01 < p < .05, **.001 < p < .01, ***p < .001
 
-[Click here for additional data file. (63.8KB, png)](./HBM-42-4658-s001.png)
+[Click here for additional data file. (63.8KB, png)](HBM-42-4658-s001.png)
 
 ------
 
 Supplementary Figure S2 Area under the receiver–operator curves (AUC), averaged over the cross‐validations, in each of the ROIs, for FA (green bars), FAt (red bars), and FW (blue bars)
 
-[Click here for additional data file. (46.9KB, png)](./HBM-42-4658-s004.png)
+[Click here for additional data file. (46.9KB, png)](HBM-42-4658-s004.png)
 
 ------
 
 Supplementary Figure S3 Box plot of the logistic regression coefficients, across the cross‐validations, obtained when the FAt and FW z‐scores in all ROIs are inserted simultaneously as an input
 
-[Click here for additional data file. (634.2KB, tif)](./HBM-42-4658-s005.tif)
+[Click here for additional data file. (634.2KB, tif)](HBM-42-4658-s005.tif)
 
 ------
 
 Supplementary Figure S4 Area under the receiver–operator curves (AUC), averaged over the cross‐validations, obtained when inputting the values in all ROIs simultaneously into the classifier, for each sex separately
 
-[Click here for additional data file. (18.9KB, png)](./HBM-42-4658-s003.png)
+[Click here for additional data file. (18.9KB, png)](HBM-42-4658-s003.png)

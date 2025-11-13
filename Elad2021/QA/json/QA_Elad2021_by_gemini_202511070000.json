@@ -36,7 +36,7 @@
       "confidence_rating": "High",
       "negative_answer_category": "Not Negative",
       "reason": "The paper clearly defines the brain measures used (FA, FAt, and FW in 18 white matter ROIs). It details the method for quantifying individual-level deviations using z-scores based on a normative model derived from the healthy control group. The characteristics of the normative reference population (healthy controls) are specified in terms of sample size, age, and sex. The interpretation of deviation scores (z-scores) is also clearly defined, with a specific threshold for abnormality.",
-      "supporting_text": "The harmonized data were fitted using FSL's DTIFIT (Behrens et al., 2003) to the DTI model, from which FA was derived. The data were also fitted to the two-compartments Free-water imaging model... In this process, the fractional volume of the free-water compartment (FW) as well as the FA of the tissue compartment (FAt) were estimated... The deviation of every individual diagnosed with schizophrenia from the normative atlas, in each ROI, was captured by a z -score... To define abnormal z -scores we used the threshold of j z j > 2.999...",
+      "supporting_text": "The harmonized data were fitted using FSL\u0027s DTIFIT (Behrens et al., 2003) to the DTI model, from which FA was derived. The data were also fitted to the two-compartments Free-water imaging model... In this process, the fractional volume of the free-water compartment (FW) as well as the FA of the tissue compartment (FAt) were estimated... The deviation of every individual diagnosed with schizophrenia from the normative atlas, in each ROI, was captured by a z -score... To define abnormal z -scores we used the threshold of j z j \u003e 2.999...",
       "location": "Elad2021.pdf.md, page 2, lines 137-143, 161-164, 125-126, 189-191."
     },
     "handling_of_confounding_variables": {
@@ -69,8 +69,8 @@
       "answer": "Partial",
       "confidence_rating": "High",
       "negative_answer_category": "Unclear/Incomplete",
-      "reason": "The paper mentions some of the software used for post-harmonization processing (FSL's DTIFIT, ANTs). However, it does not provide details of the main preprocessing pipeline, instead referring to a previous publication (Cetin-Karayumak et al., 2020) for the \"standardized preprocessing protocol\" and \"harmonization procedures\". Quality control procedures are not described.",
-      "supporting_text": "The single shell dMRI data followed a standardized preprocessing protocol and were harmonized across sites... A complete account of... preprocessing and harmonization procedures can be found in Cetin-Karayumak et al. (2020). The harmonized data were fitted using FSL's DTIFIT... The FA image of each subject was registered to the FA IIT template using ANTs registration...",
+      "reason": "The paper mentions some of the software used for post-harmonization processing (FSL\u0027s DTIFIT, ANTs). However, it does not provide details of the main preprocessing pipeline, instead referring to a previous publication (Cetin-Karayumak et al., 2020) for the \"standardized preprocessing protocol\" and \"harmonization procedures\". Quality control procedures are not described.",
+      "supporting_text": "The single shell dMRI data followed a standardized preprocessing protocol and were harmonized across sites... A complete account of... preprocessing and harmonization procedures can be found in Cetin-Karayumak et al. (2020). The harmonized data were fitted using FSL\u0027s DTIFIT... The FA image of each subject was registered to the FA IIT template using ANTs registration...",
       "location": "Elad2021.pdf.md, page 2, lines 126-130, 137-145."
     },
     "clarity_of_data_partitioning_methods": {
@@ -85,8 +85,8 @@
       "answer": "Yes",
       "confidence_rating": "High",
       "negative_answer_category": "Not Negative",
-      "reason": "The paper provides a detailed description of the normative modeling approach. It specifies the use of the Nadaraya-Watson estimator with a Gaussian kernel to create age-specific and sex-specific normative models. It also details the hyperparameter (bandwidth 'h') and the method used to optimize it (leave-one-out cross-validation). The chosen bandwidths are reported in the supplementary material.",
-      "supporting_text": "To control for confounding factors resulting from age and sex differences, we represented the normative range in each ROI by an age specific weighted mean, c mh , and standard deviation, b σ 2 h , for each sex separately. To do so, we used the NadarayaWatson (NW) estimator (Nadaraya, 1964; Watson, 1964) with a Gaussian kernel... h >0 is a bandwidth parameter. To set h for every ROI, and every dMRI modality (FA, FAt, or FW), we minimized the cross-validation function... The chosen bandwidths are reported in Table S1.",
+      "reason": "The paper provides a detailed description of the normative modeling approach. It specifies the use of the Nadaraya-Watson estimator with a Gaussian kernel to create age-specific and sex-specific normative models. It also details the hyperparameter (bandwidth \u0027h\u0027) and the method used to optimize it (leave-one-out cross-validation). The chosen bandwidths are reported in the supplementary material.",
+      "supporting_text": "To control for confounding factors resulting from age and sex differences, we represented the normative range in each ROI by an age specific weighted mean, c mh , and standard deviation, b σ 2 h , for each sex separately. To do so, we used the NadarayaWatson (NW) estimator (Nadaraya, 1964; Watson, 1964) with a Gaussian kernel... h \u003e0 is a bandwidth parameter. To set h for every ROI, and every dMRI modality (FA, FAt, or FW), we minimized the cross-validation function... The chosen bandwidths are reported in Table S1.",
       "location": "Elad2021.pdf.md, page 2, lines 150-160."
     },
     "details_of_training_algorithm": {
@@ -101,8 +101,8 @@
       "answer": "Yes",
       "confidence_rating": "High",
       "negative_answer_category": "Not Negative",
-      "reason": "The paper clearly specifies the performance metrics used. For the classification models, the Area Under the Curve (AUC) was the primary evaluation metric. For group comparisons, Welch's t-test, Wilcoxon rank-sum tests were used, and Cohen's d and Cliff's delta were reported as effect sizes. The meaning of these metrics is standard in the field.",
-      "supporting_text": "The average of the area under the receiver operator curve (AUC), across the 10 test sets, was the evaluation metric. We also report Cohen's d effect size (Cohen, 2013) for every hypothesis test. We also report Cliff's delta effect size (Cliff, 1993) for every hypothesis test.",
+      "reason": "The paper clearly specifies the performance metrics used. For the classification models, the Area Under the Curve (AUC) was the primary evaluation metric. For group comparisons, Welch\u0027s t-test, Wilcoxon rank-sum tests were used, and Cohen\u0027s d and Cliff\u0027s delta were reported as effect sizes. The meaning of these metrics is standard in the field.",
+      "supporting_text": "The average of the area under the receiver operator curve (AUC), across the 10 test sets, was the evaluation metric. We also report Cohen\u0027s d effect size (Cohen, 2013) for every hypothesis test. We also report Cliff\u0027s delta effect size (Cliff, 1993) for every hypothesis test.",
       "location": "Elad2021.pdf.md, page 3, line 224; page 2, line 182; page 2, line 199."
     },
     "implementation_of_internal_validation": {
@@ -133,8 +133,8 @@
       "answer": "Partial",
       "confidence_rating": "High",
       "negative_answer_category": "Unclear/Incomplete",
-      "reason": "The paper reports point estimates for its key performance metrics (AUC, Cohen's d, Cliff's delta) and provides p-values for statistical significance. It also reports confidence intervals for the effect sizes (Cohen's d). However, it fails to report any measure of statistical uncertainty (e.g., confidence intervals or standard deviation) for its primary classification performance metric, the AUC, reporting only the average AUC across cross-validation folds.",
-      "supporting_text": "yielding an AUC of 0.67. Error bars represent 95% confidence interval for Cohen's d effect size.",
+      "reason": "The paper reports point estimates for its key performance metrics (AUC, Cohen\u0027s d, Cliff\u0027s delta) and provides p-values for statistical significance. It also reports confidence intervals for the effect sizes (Cohen\u0027s d). However, it fails to report any measure of statistical uncertainty (e.g., confidence intervals or standard deviation) for its primary classification performance metric, the AUC, reporting only the average AUC across cross-validation folds.",
+      "supporting_text": "yielding an AUC of 0.67. Error bars represent 95% confidence interval for Cohen\u0027s d effect size.",
       "location": "Elad2021.pdf.md, page 4, line 251 and page 3, Figure 2 caption."
     },
     "consideration_for_reproducibility": {
@@ -155,6 +155,6 @@
     }
   },
   "additional_comments": {
-    "additional_comments": "A major limitation of this paper is its heavy reliance on a previous publication (Cetin-Karayumak et al., 2020) for critical methodological details, including participant inclusion/exclusion criteria, image acquisition protocols, and data preprocessing. This makes it impossible to fully evaluate the study's quality based on this article alone. Furthermore, the authors explicitly state that the data and code are not available, which severely limits the reproducibility of the findings."
+    "additional_comments": "A major limitation of this paper is its heavy reliance on a previous publication (Cetin-Karayumak et al., 2020) for critical methodological details, including participant inclusion/exclusion criteria, image acquisition protocols, and data preprocessing. This makes it impossible to fully evaluate the study\u0027s quality based on this article alone. Furthermore, the authors explicitly state that the data and code are not available, which severely limits the reproducibility of the findings."
   }
 }
