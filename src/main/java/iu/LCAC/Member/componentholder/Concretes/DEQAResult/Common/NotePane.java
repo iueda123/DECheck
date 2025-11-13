@@ -13,9 +13,6 @@ public class NotePane extends JPanel {
     final String sectionName;
     final String subSectionName;
 
-    JButton updateTabTitleButton = new JButton("update tab title");//For debug
-    final String tooltipForConvertJsonToTscButton = "最上段のjsonファイルをtsvへ出力する";
-
     JTabbedPane parentTabbedPanel;
 
     ColorChangeableTextField tFiled_Status = new ColorChangeableTextField("");

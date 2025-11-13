@@ -188,13 +188,7 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
     public abstract void copyToTheHumanDEQAResultPane();
 
     public void openPdf() {
-        String jsonFileNameWithoutExtension = jsonName.contains(".")
-                ? jsonName.substring(0, jsonName.lastIndexOf('.'))
-                : jsonName;
-        System.out.println(jsonFileNameWithoutExtension);
-
         String authorYear = managerOfSubTabBasePane.getAuthorYear();
-
         String currentWorkingDirectoryPathStr = System.getProperty("user.dir");
 
         // authorYearFolder 下にある authorYear+".pdf" という名前の（例えば、Bedford2025.pdf）PDFを検索して、最初に見つかったものを開こうとする
@@ -264,12 +258,10 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
     }
 
     public void openMaterialsFolder() {
-        String jsonFileNameWithoutExtension = jsonName.contains(".")
-                ? jsonName.substring(0, jsonName.lastIndexOf('.'))
-                : jsonName;
-
+        String authorYear = managerOfSubTabBasePane.getAuthorYear();
         String currentWorkingDirectoryPathStr = System.getProperty("user.dir");
-        Path materialsPath = Paths.get(currentWorkingDirectoryPathStr, "materials", jsonFileNameWithoutExtension);
+
+        Path materialsPath = Paths.get(currentWorkingDirectoryPathStr,authorYear, "/materials/");
 
         try {
             if (Desktop.isDesktopSupported()) {
