@@ -43,6 +43,7 @@ public class QA2_SubTabsHolder extends AbstCHolderMember implements SubTabsHolde
     static String subSection_9_TabName = "PM and SU";
     static String subSection_10_TabName = "Reproducibility";
     static String subSection_11_TabName = "NM Interpretation";
+    private final String authorYear;
 
     JPanel panel = new JPanel(new BorderLayout());
     JTabbedPane baseTabPane = new JTabbedPane();
@@ -64,6 +65,8 @@ public class QA2_SubTabsHolder extends AbstCHolderMember implements SubTabsHolde
 
     public QA2_SubTabsHolder(String cholder_name, String short_name, String authorYear) {
         super(cholder_name, short_name);
+
+        this.authorYear = authorYear;
 
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_1);
         mngrOfSubTabBasePane_1.registerSubTansHolder(this);
@@ -90,7 +93,7 @@ public class QA2_SubTabsHolder extends AbstCHolderMember implements SubTabsHolde
 
         // ./json/ フォルダの確認
         Path jsonFolderPathString = Paths.get("./QA/json");
-        jsonFolderPathString = Paths.get("./" + authorYear + "/").resolve(jsonFolderPathString);
+        jsonFolderPathString = Paths.get("./" + this.authorYear + "/").resolve(jsonFolderPathString);
         File jsonDir = jsonFolderPathString.toFile();
 
         // jsonディレクトリが存在しない、またはディレクトリではない場合
@@ -116,7 +119,7 @@ public class QA2_SubTabsHolder extends AbstCHolderMember implements SubTabsHolde
 
         for (File jsonFile : jsonFiles) {
             String jsonFileName = jsonFile.getName();
-            System.out.println("jsonFileName: " + jsonFileName);
+            //System.out.println("jsonFileName: " + jsonFileName);
             mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_1_Name));
             mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_2_Name));
             mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_3_Name));
@@ -342,6 +345,11 @@ public class QA2_SubTabsHolder extends AbstCHolderMember implements SubTabsHolde
     @Override
     public One_DEQAResult_Pane_Abs getTheFirstJsonPanel() {
         return null;
+    }
+
+    @Override
+    public String getAuthorYear() {
+        return this.authorYear;
     }
 
     public String getSectionName() {

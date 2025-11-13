@@ -32,9 +32,12 @@ public class GN_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
     ManagerOfSubTabBasePane mngrOfSubTabBasePane_1 = new ManagerOfSubTabBasePane(subSection_1_TabName, sectionName, subSection_1_Name, baseTabPane);
 
     ArrayList<ManagerOfSubTabBasePane> arrayList_of_ManagerOfSubTabBasePane = new ArrayList<>();
+    private final String authorYear;
 
     public GN_SubTabsHolder(String cholder_name, String short_name, String authorYear) {
         super(cholder_name, short_name);
+
+        this.authorYear = authorYear;
 
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_1);
         mngrOfSubTabBasePane_1.registerSubTansHolder(this);
@@ -157,6 +160,11 @@ public class GN_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
     @Override
     public One_DEQAResult_Pane_Abs getTheFirstJsonPanel() {
         return null;
+    }
+
+    @Override
+    public String getAuthorYear() {
+        return this.authorYear;
     }
 
     public String getSectionName() {

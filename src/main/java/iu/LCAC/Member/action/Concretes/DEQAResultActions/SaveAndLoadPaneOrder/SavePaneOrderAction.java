@@ -1,4 +1,4 @@
-package iu.LCAC.Member.action.Concretes.DEResultActions.SaveAndLoadNotePaneTexts;
+package iu.LCAC.Member.action.Concretes.DEQAResultActions.SaveAndLoadPaneOrder;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
@@ -6,7 +6,7 @@ import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.CAAA.CAAA_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.ManagerOfSubTabBasePane;
-import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.NotePane;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.DEQAResultPane.One_DEQAResult_Pane_Abs;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.SubTabsHolderItrfc;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.GN.GN_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.NM.NM_SubTabsHolder;
@@ -17,17 +17,20 @@ import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA1.QA1_S
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA2.QA2_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QAAC.QAAC_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QASI.QASI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.StatusPanel.StatusPanelHolder;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
-public class SaveNotePaneTextsAction extends AbstActionMember {
+public class SavePaneOrderAction extends AbstActionMember {
 
     String authorYear = "Someone20XX";
 
-    public SaveNotePaneTextsAction(String action_name, String short_name, String authorYear) {
+    public SavePaneOrderAction(String action_name, String short_name, String authorYear) {
         super(action_name, short_name);
         this.authorYear = authorYear;
     }
@@ -38,7 +41,7 @@ public class SaveNotePaneTextsAction extends AbstActionMember {
                 .setAccelerator(
                         KeyStroke.getKeyStroke(
                                 KeyEvent.VK_S,
-                                InputEvent.CTRL_DOWN_MASK));
+                                InputEvent.CTRL_DOWN_MASK + InputEvent.SHIFT_DOWN_MASK));
     }
 
     @Override
@@ -46,22 +49,22 @@ public class SaveNotePaneTextsAction extends AbstActionMember {
         System.out.println("perform() in " + this.getClass().toString() + " was called.");
 
         // 全セクションに拡張可能
-        saveNotePaneState("SI", "./settings/" + authorYear + "/NotePane/" + "study_identification" + ".prop");
-        saveNotePaneState("SC", "./settings/" + authorYear + "/NotePane/" + "study_characteristics" + ".prop");
-        saveNotePaneState("RCAI", "./settings/" + authorYear + "/NotePane/" + "reference_cohort_and_imaging" + ".prop");
-        saveNotePaneState("NM", "./settings/" + authorYear + "/NotePane/" + "normative_modeling" + ".prop");
-        saveNotePaneState("CAAA", "./settings/" + authorYear + "/NotePane/" + "clinical_application_and_analysis" + ".prop");
-        saveNotePaneState("GN", "./settings/" + authorYear + "/NotePane/" + "general_notes" + ".prop");
+        savePaneOrder("SI", "./settings/" + authorYear + "/PaneOrder/" + "study_identification" + ".prop");
+        savePaneOrder("SC", "./settings/" + authorYear + "/PaneOrder/" + "study_characteristics" + ".prop");
+        savePaneOrder("RCAI", "./settings/" + authorYear + "/PaneOrder/" + "reference_cohort_and_imaging" + ".prop");
+        savePaneOrder("NM", "./settings/" + authorYear + "/PaneOrder/" + "normative_modeling" + ".prop");
+        savePaneOrder("CAAA", "./settings/" + authorYear + "/PaneOrder/" + "clinical_application_and_analysis" + ".prop");
+        savePaneOrder("GN", "./settings/" + authorYear + "/PaneOrder/" + "general_notes" + ".prop");
 
-        saveNotePaneState("QASI", "./settings/" + authorYear + "/NotePane/" + "study_identification_of_qa" + ".prop");
-        saveNotePaneState("QA1_v6", "./settings/" + authorYear + "/NotePane/" + "quality_assessment_1_v6" + ".prop");
-        saveNotePaneState("QA2_v6", "./settings/" + authorYear + "/NotePane/" + "quality_assessment_2_v6" + ".prop");
-        saveNotePaneState("QAAC", "./settings/" + authorYear + "/NotePane/" + "additional_comments" + ".prop");
+        savePaneOrder("QASI", "./settings/" + authorYear + "/PaneOrder/" + "study_identification_of_qa" + ".prop");
+        savePaneOrder("QA1_v6", "./settings/" + authorYear + "/PaneOrder/" + "quality_assessment_1_v6" + ".prop");
+        savePaneOrder("QA2_v6", "./settings/" + authorYear + "/PaneOrder/" + "quality_assessment_2_v6" + ".prop");
+        savePaneOrder("QAAC", "./settings/" + authorYear + "/PaneOrder/" + "additional_comments" + ".prop");
     }
 
-    private void saveNotePaneState(String member_name_key_word, String prop_file_path_str) {
-        AbstCHolderMember member = null;
-        SubTabsHolderItrfc subTabsHolder = null;
+    private void savePaneOrder(String member_name_key_word, String prop_file_path_str) {
+        AbstCHolderMember member;
+        SubTabsHolderItrfc subTabsHolder;
         switch (member_name_key_word) {
             case "SI":
                 member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_SI");
@@ -105,25 +108,43 @@ public class SaveNotePaneTextsAction extends AbstActionMember {
                 break;
             default:
                 System.err.println("未知のSection指定です" + "@" + this.getClass());
+                return;
         }
 
         String sectionName = subTabsHolder.getSectionName();
-        System.out.println("----- Save texts on NotePanes of '" + sectionName + "' section -----");
+        System.out.println("----- Save pane order of '" + sectionName + "' section -----");
 
         // 全タブ（SubSectionに相当）配置されているコンポーネントの順番を把握し、propertyへ書き込む
         propManager = createPropertyManager(prop_file_path_str);
+        ArrayList<String> arrayList_PanelOrder = new ArrayList<>();
         for (ManagerOfSubTabBasePane managerOfSubTabBasePane : subTabsHolder.getArrayList_of_ManagerOfSubTabBasePane()) {
             String subSectionName = managerOfSubTabBasePane.getSubSectionName();
-            //System.out.println("Now registering NotePane of  '" + subSectionName + "'");
-            NotePane notePane = managerOfSubTabBasePane.getNotePane();
-            propManager.setProperty(subSectionName + ".status", notePane.getStatusText());
-            propManager.setProperty(subSectionName + ".note", notePane.getNoteText());
-            notePane.resetBackgroundColors();
-            notePane.updateDefaultValues();
-            notePane.updateTabTitle();
+            //System.out.println("subSectionName: " + subSectionName);
+            JPanel subSectionPanel = managerOfSubTabBasePane.getBasePaneForDEQAResultPanes();
+            Component[] components = subSectionPanel.getComponents();
+            for (int i = 0; i < components.length; i++) {
+                Object component = components[i];
+                if (component instanceof One_DEQAResult_Pane_Abs) {
+                    One_DEQAResult_Pane_Abs oneDEResultPane = (One_DEQAResult_Pane_Abs) component;
+                    String jsonName = oneDEResultPane.getJsonName();
+                    //System.out.println("  DEResultPane No. " + i + ": " + jsonName);
+                    arrayList_PanelOrder.add(jsonName);
+                }
+            }
+            propManager.setProperty(subSectionName, joinWithSemicolon(arrayList_PanelOrder));
+            arrayList_PanelOrder.clear();
         }
-        propManager.writeoutProperties();
+        boolean property_save_result = propManager.writeoutProperties();
         propManager = null;
+
+        //保存が完了したことをフィードバック
+        member = this.cholderMediator.getInstanceOfAMember("status_panel_holder");
+        StatusPanelHolder statusPanelHolder = (StatusPanelHolder) member;
+        if (property_save_result) {
+            statusPanelHolder.showAMessageForWhile("The current panel order was saved.", 5000);
+        } else {
+            statusPanelHolder.showAMessageForWhile("★Saving the current panel order failed★", 5000);
+        }
     }
 
 
@@ -142,6 +163,11 @@ public class SaveNotePaneTextsAction extends AbstActionMember {
 
     @Override
     public void doWorkAsMember() {
+    }
+
+
+    public static String joinWithSemicolon(ArrayList<String> list) {
+        return String.join(";", list);
     }
 
 }

@@ -98,7 +98,7 @@ public class NotePane extends JPanel {
                 if (!text.isEmpty()) {
                     baseTitle += " - " + text.charAt(0);
                 }
-                System.out.println(idx + " - " + baseTitle);
+                //System.out.println(idx + " - " + baseTitle);
                 parentTabbedPanel.setTitleAt(idx, baseTitle);
             }
         }

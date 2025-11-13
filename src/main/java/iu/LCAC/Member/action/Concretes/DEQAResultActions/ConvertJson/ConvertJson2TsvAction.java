@@ -1,4 +1,4 @@
-package iu.LCAC.Member.action.Concretes.DEResultActions.ConvertJson;
+package iu.LCAC.Member.action.Concretes.DEQAResultActions.ConvertJson;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
@@ -17,18 +17,18 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConvertJson2MarkdownAction extends AbstActionMember {
+public class ConvertJson2TsvAction extends AbstActionMember {
 
-    private final String scriptFilePathStr = "settings/sh/convertJson2Markdown.sh";
+    private final String scriptFilePathStr = "settings/sh/convertJson2Tsv.sh";
 
-    public ConvertJson2MarkdownAction(String action_name, String short_name) {
+    public ConvertJson2TsvAction(String action_name, String short_name) {
         super(action_name, short_name);
     }
 
     @Override
     protected void setAcceleratorKeyStroke() {
         this.getMenuItem()
-                .setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.CTRL_DOWN_MASK));
+                .setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, InputEvent.CTRL_DOWN_MASK));
     }
 
     @Override
@@ -142,6 +142,7 @@ public class ConvertJson2MarkdownAction extends AbstActionMember {
 
         @Override
         protected Integer doInBackground() {
+
             // コマンドリストを構築: /bin/bash, scriptPath, args[1], args[2], ...
             List<String> command = new ArrayList<>();
             command.add("/bin/bash");

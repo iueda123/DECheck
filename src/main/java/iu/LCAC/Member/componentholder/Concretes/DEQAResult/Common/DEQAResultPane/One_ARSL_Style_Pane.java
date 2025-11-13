@@ -71,6 +71,8 @@ public class One_ARSL_Style_Pane extends One_DEQAResult_Pane_Abs {
         the1stBaseOfNorth.add(saveButton);
         the1stBaseOfNorth.add(openJsonFileButton);
         the1stBaseOfNorth.add(openJsonFolderButton);
+        the1stBaseOfNorth.add(openPdfButton);
+        the1stBaseOfNorth.add(openMaterialsFolderButton);
         the1stBaseOfNorth.add(copyToTheHumanPanelButton);
         //the1stBaseOfNorth.add(jsonFileNameEditButton);
         the1stBaseOfNorth.add(new PanelMoverPane());
@@ -274,7 +276,7 @@ public class One_ARSL_Style_Pane extends One_DEQAResult_Pane_Abs {
 
         resetBackgroundColorOfTAreasTFields();
 
-        System.out.println("Successfully open JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+        //System.out.println("Successfully open JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
     }
 
     @Override

@@ -1,4 +1,4 @@
-package iu.LCAC.Member.action.Concretes.DEResultActions.Init_All_Section;
+package iu.LCAC.Member.action.Concretes.DEQAResultActions.Init_All_Section;
 
 import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;

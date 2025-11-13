@@ -76,18 +76,18 @@ public class PropertyManager_v5 {
   }
 
   public void listUpProperty() {
-    System.out.println("");
+    //System.out.println("");
     Set<String> property_names = this.PropertiesObject.stringPropertyNames();
     String value = "";
-    System.out.println("    ================================");
-    System.out.println("    property_name -> property_value");
-    System.out.println("    --------------------------------");
+    //System.out.println("    ================================");
+    //System.out.println("    property_name -> property_value");
+    //System.out.println("    --------------------------------");
     for (String property_name : property_names) {
       value = (String) this.PropertiesObject.get(property_name);
-      System.out.println("    " + property_name + " -> " + value);
+      //System.out.println("    " + property_name + " -> " + value);
     }
-    System.out.println("    ================================");
-    System.out.println("");
+    //System.out.println("    ================================");
+    //System.out.println("");
   }
 
   /* **** Private Method **** */

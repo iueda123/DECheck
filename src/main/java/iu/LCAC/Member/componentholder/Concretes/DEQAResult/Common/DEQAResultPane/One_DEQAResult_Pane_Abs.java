@@ -8,10 +8,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonManagerCallback {
 
@@ -28,10 +32,12 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
 
     JButton saveButton = new JButton("save");
     JButton loadButton = new JButton("load");
-    JButton openJsonFileButton; //= new JButton("open json");
-    JButton openJsonFolderButton; //= new JButton("open folder");
+    JButton openJsonFileButton = new JButton("json");
+    JButton openJsonFolderButton = new JButton("json/");
     JButton jsonFileNameEditButton = new JButton("edit json name");
     JButton copyToTheHumanPanelButton = new JButton("CtoH");
+    JButton openPdfButton = new JButton("PDF");
+    JButton openMaterialsFolderButton = new JButton("materials/");
     protected ManagerOfSubTabBasePane managerOfSubTabBasePane;
 
 
@@ -48,7 +54,7 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
         // 子クラスのコンストラクタの最後でinitializeJsonManager()を呼び出すこと
 
         /* ** saveButton と loadButton のセットアップ ** */
-        saveButton.setToolTipText("JSONファイルへ書き込み");
+        setupButton(saveButton, "/icons/save.png", "save", "JSONファイルへ書き込み");
         saveButton.addActionListener(
                 new AbstractAction() {
                     @Override
@@ -56,7 +62,7 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
                         saveJson();
                     }
                 });
-        loadButton.setToolTipText("JSONファイルから読み直し");
+        setupButton(loadButton, "/icons/reload.png", "save", "JSONファイルから読み直し");
         loadButton.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -65,39 +71,20 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
         });
 
         /* ** openJsonFileButton と openJsonFolderButton のセットアップ ** */
-
-        URL jsonIconUrl = One_DEQAResult_Pane_Abs.class.getResource("/icons/json_file.png");
-        if (jsonIconUrl == null) {
-            System.err.println("JSONアイコンが見つかりません。パスを確認してください。");
-            openJsonFolderButton = new JButton("open json");
-        }else{
-            ImageIcon jsonIcon = new ImageIcon(jsonIconUrl);
-            openJsonFileButton = new JButton("", jsonIcon);
-        }
-        openJsonFileButton.setToolTipText("open json file");
+        setupButton(openJsonFileButton, "/icons/json_file.png", "json", "open json file");
         openJsonFileButton.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 openJsonFile(false);
             }
         });
-
-        URL folderIconUrl = One_DEQAResult_Pane_Abs.class.getResource("/icons/folder.png");
-        if (folderIconUrl == null) {
-            System.err.println("JSONアイコンが見つかりません。パスを確認してください。");
-            openJsonFolderButton = new JButton("open folder");
-        }else {
-            ImageIcon folderIcon = new ImageIcon(folderIconUrl);
-            openJsonFolderButton = new JButton("", folderIcon);
-        }
-        openJsonFolderButton.setToolTipText("open json folder");
+        setupButton(openJsonFolderButton, "/icons/folder_white.png", "json/", "open json folder");
         openJsonFolderButton.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 openJsonFile(true);
             }
         });
-
 
         /* ** copyToTheTopButton のセットアップ ** */
         copyToTheHumanPanelButton.setToolTipText("HumanのDEQAResultパネルに値を複製");
@@ -108,6 +95,21 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
             }
         });
 
+        /* ** openPdfButton と openMaterialsFolderButton のセットアップ ** */
+        setupButton(openPdfButton, "/icons/pdf.png", "pdf", "materials下のメインPDFを開く");
+        openPdfButton.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                openPdf();
+            }
+        });
+        setupButton(openMaterialsFolderButton, "/icons/folder_gray.png", "materials/", "materialsフォルダを開く");
+        openMaterialsFolderButton.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                openMaterialsFolder();
+            }
+        });
 
 
         /* ** jsonFileNameEditButton のセットアップ ** */
@@ -117,6 +119,24 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
                 changeJsonFileName();
             }
         });
+    }
+
+
+    /**
+     * @param icon_location   : /icons/folder_icon.png などを渡す
+     * @param alternative_str
+     * @param tooltip
+     */
+    protected void setupButton(JButton setupTargetButton, String icon_location, String alternative_str, String tooltip) {
+        URL icon_url = One_DEQAResult_Pane_Abs.class.getResource(icon_location);
+        if (icon_url == null) {
+            System.err.println("JSONアイコンが見つかりません。パスを確認してください: " + icon_url);
+            setupTargetButton.setText(alternative_str);
+        } else {
+            setupTargetButton.setText("");
+            setupTargetButton.setIcon(new ImageIcon(icon_url));
+        }
+        setupTargetButton.setToolTipText(tooltip);
     }
 
 
@@ -166,6 +186,123 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
     }
 
     public abstract void copyToTheHumanDEQAResultPane();
+
+    public void openPdf() {
+        String jsonFileNameWithoutExtension = jsonName.contains(".")
+                ? jsonName.substring(0, jsonName.lastIndexOf('.'))
+                : jsonName;
+        System.out.println(jsonFileNameWithoutExtension);
+
+        String authorYear = managerOfSubTabBasePane.getAuthorYear();
+
+        String currentWorkingDirectoryPathStr = System.getProperty("user.dir");
+
+        // authorYearFolder 下にある authorYear+".pdf" という名前の（例えば、Bedford2025.pdf）PDFを検索して、最初に見つかったものを開こうとする
+        Path authorYearFolderPath = Paths.get(currentWorkingDirectoryPathStr, authorYear);
+        try {
+            if (!authorYearFolderPath.toFile().exists()) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "フォルダが見つかりません: " + authorYearFolderPath.toAbsolutePath(),
+                        "エラー",
+                        JOptionPane.ERROR_MESSAGE
+                );
+                return;
+            }
+
+            // authorYearFolder 配下を再帰的に検索して、authorYear+".pdf" を探す
+            String targetPdfName = authorYear + ".pdf";
+            Optional<Path> foundPdfPath;
+
+            try (Stream<Path> pathStream = Files.walk(authorYearFolderPath)) {
+                foundPdfPath = pathStream
+                        .filter(Files::isRegularFile)
+                        .filter(p -> p.getFileName().toString().equals(targetPdfName))
+                        .findFirst();
+            }
+
+            if (foundPdfPath.isPresent()) {
+                Path pdfPath = foundPdfPath.get();
+                System.out.println("Found PDF: " + pdfPath.toAbsolutePath());
+
+                if (Desktop.isDesktopSupported()) {
+                    Desktop desktop = Desktop.getDesktop();
+                    desktop.open(pdfPath.toFile());
+                } else {
+                    JOptionPane.showMessageDialog(
+                            this,
+                            "このシステムではファイルを開く機能がサポートされていません。",
+                            "エラー",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                }
+            } else {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "PDFファイルが見つかりません: " + targetPdfName + " in " + authorYearFolderPath.toAbsolutePath(),
+                        "エラー",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "ファイル検索中にエラーが発生しました: " + e.getMessage(),
+                    "エラー",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            e.printStackTrace();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "ファイルを開く際にエラーが発生しました: " + e.getMessage(),
+                    "エラー",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            e.printStackTrace();
+        }
+    }
+
+    public void openMaterialsFolder() {
+        String jsonFileNameWithoutExtension = jsonName.contains(".")
+                ? jsonName.substring(0, jsonName.lastIndexOf('.'))
+                : jsonName;
+
+        String currentWorkingDirectoryPathStr = System.getProperty("user.dir");
+        Path materialsPath = Paths.get(currentWorkingDirectoryPathStr, "materials", jsonFileNameWithoutExtension);
+
+        try {
+            if (Desktop.isDesktopSupported()) {
+                Desktop desktop = Desktop.getDesktop();
+
+                if (materialsPath.toFile().exists()) {
+                    desktop.open(materialsPath.toFile());
+                } else {
+                    JOptionPane.showMessageDialog(
+                            this,
+                            "Materialsフォルダが見つかりません: " + materialsPath.toAbsolutePath(),
+                            "エラー",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                }
+            } else {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "このシステムではフォルダを開く機能がサポートされていません。",
+                        "エラー",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "フォルダを開く際にエラーが発生しました: " + e.getMessage(),
+                    "エラー",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            e.printStackTrace();
+        }
+    }
 
     /**
      * JsonManagerを初期化する。

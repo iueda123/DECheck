@@ -26,7 +26,7 @@ public class ManagerOfSubTabBasePane {
         this.sectionName = sectionName;
         this.subSectionName = subSectionName;
         this.tabbedPane = tabbedPane;
-        notePane = new NotePane(sectionName, subSectionName, this.tabbedPane);
+        this.notePane = new NotePane(sectionName, subSectionName, this.tabbedPane);
     }
 
 
@@ -110,7 +110,7 @@ public class ManagerOfSubTabBasePane {
 
     public SubTabsHolderItrfc getSubTabsHolder() {
         return subTabsHolder;
-    };
+    }
 
     public void revalidateChildren() {
         this.basePaneForDEQAResultPanes.revalidate();
@@ -118,5 +118,9 @@ public class ManagerOfSubTabBasePane {
 
     public void registerSubTansHolder(SubTabsHolderItrfc subTabsHolder) {
         this.subTabsHolder = subTabsHolder;
+    }
+
+    public String getAuthorYear() {
+        return this.subTabsHolder.getAuthorYear();
     }
 }

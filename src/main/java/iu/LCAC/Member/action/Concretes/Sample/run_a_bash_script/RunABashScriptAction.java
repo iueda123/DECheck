@@ -34,8 +34,8 @@ public class RunABashScriptAction extends AbstActionMember {
 
     @Override
     public void perform(ActionEvent action_event) {
-        System.out.println("");
-        System.out.println("---- perform() in " + this.getClass().toString() + " was called. ----");
+        //System.out.println("");
+        //System.out.println("---- perform() in " + this.getClass().toString() + " was called. ----");
 
         String[] strings_passed_from_action_event = getActionCommandAndArgs(action_event, false);
         String cmd_and_args_in_a_line = strings_passed_from_action_event[0];

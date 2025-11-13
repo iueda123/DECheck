@@ -47,7 +47,7 @@ public abstract class AbstCHolderMember implements MemberIntrfc {
       propManager = new PropertyManager_v5(new File(property_file_path));
     }
 
-    System.out.println("    Properties file '" + setting_file_path.getFileName() + "' was loaded.");
+    //System.out.println("    Properties file '" + setting_file_path.getFileName() + "' was loaded.");
 
     // List up
     propManager.listUpProperty();

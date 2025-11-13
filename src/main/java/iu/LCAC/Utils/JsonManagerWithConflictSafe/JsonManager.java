@@ -76,17 +76,17 @@ public class JsonManager {
      * @return 値（文字列）、見つからない場合はnull
      */
     public String getValue(String path_key) {
-        System.out.println("path_key: " + path_key);
+        //System.out.println("path_key: " + path_key);
         // エスケープされたスラッシュを一時的にプレースホルダーに置き換える
         String placeholder = "\u0000ESCAPED_SLASH\u0000";
         path_key = path_key.replace("\\/", placeholder);
 
         String[] keys = path_key.split("/");
-        System.out.println("keys.length: " + keys.length);
+        //System.out.println("keys.length: " + keys.length);
         JsonElement current = jsonObject;
 
         for (String key : keys) {
-            System.out.println("key: '"+ key + "'");
+            //System.out.println("key: '"+ key + "'");
             // プレースホルダーを元のスラッシュに戻す
             key = key.replace(placeholder, "/");
             // エスケープされたスペースを通常のスペースに戻す
@@ -94,12 +94,12 @@ public class JsonManager {
 
             // 空文字列のキーはスキップ
             if (key.isEmpty()) {
-                System.out.println("Skipping empty key");
+                //System.out.println("Skipping empty key");
                 continue;
             }
 
             if (current == null || !current.isJsonObject()) {
-               System.err.println("current is null or current is not json object. @ JsonManager.java");
+               //System.err.println("current is null or current is not json object. @ JsonManager.java");
                 return null;
             }
             current = current.getAsJsonObject().get(key);

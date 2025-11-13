@@ -174,7 +174,7 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.Init_All_Section.Initialize_All_TabPanes_ActionFactory",
+                        "iu.LCAC.Member.action.Concretes.DEQAResultActions.Init_All_Section.Initialize_All_TabPanes_ActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember ititialize_All_TabPanes_Action =
                 actionMemberFactory.createAction("initialize_all_tabpanes", "Init All");
@@ -188,7 +188,7 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.SaveAndLoadPaneOrder.SavePaneOrderActionFactory",
+                        "iu.LCAC.Member.action.Concretes.DEQAResultActions.SaveAndLoadPaneOrder.SavePaneOrderActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember savePaneOrderAction =
                 actionMemberFactory.createAction("save_pane_order", "save pane order", args[0]);
@@ -198,7 +198,7 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.SaveAndLoadPaneOrder.LoadPaneOrderActionFactory",
+                        "iu.LCAC.Member.action.Concretes.DEQAResultActions.SaveAndLoadPaneOrder.LoadPaneOrderActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember loadPaneOrderAction =
                 actionMemberFactory.createAction("load_pane_order", "load pane order", args[0]);
@@ -211,7 +211,7 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.SaveAndLoadNotePaneTexts.SaveNotePaneTextsActionFactory",
+                        "iu.LCAC.Member.action.Concretes.DEQAResultActions.SaveAndLoadNotePaneTexts.SaveNotePaneTextsActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember saveNotePaneAction =
                 actionMemberFactory.createAction("save_note_pane", "save note pane texts", args[0]);
@@ -222,7 +222,7 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.SaveAndLoadNotePaneTexts.LoadNotePaneTextsActionFactory",
+                        "iu.LCAC.Member.action.Concretes.DEQAResultActions.SaveAndLoadNotePaneTexts.LoadNotePaneTextsActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember loadNotePaneAction =
                 actionMemberFactory.createAction("load_note_pane", "load note pane texts", args[0]);
@@ -234,7 +234,7 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.ConvertJson.ConvertJson2MarkdownActionFactory",
+                        "iu.LCAC.Member.action.Concretes.DEQAResultActions.ConvertJson.ConvertJson2MarkdownActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember convertJson2MarkdownAction =
                 actionMemberFactory.createAction("convert_json_2_markdown", "Convert JSON 2 Markdown");
@@ -244,7 +244,7 @@ public class ActionMediator implements ActionListener, MediatorIntrfc {
 
         actionMemberFactory =
                 MemberFactoryLoader.loadFactory(
-                        "iu.LCAC.Member.action.Concretes.DEResultActions.ConvertJson.ConvertJson2TsvActionFactory",
+                        "iu.LCAC.Member.action.Concretes.DEQAResultActions.ConvertJson.ConvertJson2TsvActionFactory",
                         AbstActionMemberFactory.class);
         AbstActionMember convertJson2TsvAction =
                 actionMemberFactory.createAction("convert_json_2_tsv", "Convert JSON 2 TSV");

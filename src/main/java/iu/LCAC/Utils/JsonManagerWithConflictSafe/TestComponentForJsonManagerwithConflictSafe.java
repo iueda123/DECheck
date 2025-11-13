@@ -105,7 +105,7 @@ public class TestComponentForJsonManagerwithConflictSafe extends JPanel implemen
 
     @Override
     public void actionAfterSuccessfullyOpeningJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
-        System.out.println("Successfully open JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+        //System.out.println("Successfully open JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
         String value1 = jsonManagerWithConflictSafe.getValue("/test/key1");
         //System.out.println("value1: " + value1);
         textField_1.setText(value1);
@@ -125,7 +125,7 @@ public class TestComponentForJsonManagerwithConflictSafe extends JPanel implemen
 
     @Override
     public void actionAfterSuccessfullySavingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
-        System.out.println("Successfully saved JSON to " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+        //System.out.println("Successfully saved JSON to " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
         long loadedMtime = jsonManagerWithConflictSafe.getLastModifiedTime();
         setStatus("The values were saved \n" +
                 " at " + JsonManagerWithConflictSafe.formatTimeInJST(loadedMtime) + "\n" +
@@ -139,7 +139,7 @@ public class TestComponentForJsonManagerwithConflictSafe extends JPanel implemen
 
     @Override
     public void actionAfterSuccessfullyReloadingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
-        System.out.println("Successfully loaded JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+        //System.out.println("Successfully loaded JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
         String value1 = jsonManagerWithConflictSafe.getValue("/test/key1");
         //System.out.println("value1: " + value1);
         textField_1.setText(value1);

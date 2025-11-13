@@ -39,7 +39,7 @@ public class PropertyIOHelper {
             BufferedWriter bfwriter = new BufferedWriter(osw);
             properties.store(bfwriter, "no comment.");
             bfwriter.close();
-            System.out.println("Properties were exported to " + new_property_file_path.toString() + ".");
+            //System.out.println("Properties were exported to " + new_property_file_path.toString() + ".");
             return true;
         } catch (FileNotFoundException fne) {
             fne.printStackTrace();

@@ -38,9 +38,12 @@ public class SC_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
     ManagerOfSubTabBasePane mngrOfSubTabBasePane_3 = new ManagerOfSubTabBasePane(subSection_3_TabName, sectionName, subSection_3_Name, baseTabPane);
 
     ArrayList<ManagerOfSubTabBasePane> arrayList_of_ManagerOfSubTabBasePane = new ArrayList<>();
+    private final String authorYear;
 
     public SC_SubTabsHolder(String cholder_name, String short_name, String authorYear) {
         super(cholder_name, short_name);
+
+        this.authorYear=authorYear;
 
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_1);
         mngrOfSubTabBasePane_1.registerSubTansHolder(this);
@@ -79,11 +82,11 @@ public class SC_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
             for (File jsonFile : jsonFiles) {
                 String jsonFileName = jsonFile.getName();
 
-                if (this.actionMediator != null) {
-                    System.err.println("The actionMediator is not null.");
-                } else {
-                    System.err.println("The actionMediator is null. @ SC_SubTabsHolder.java");
-                }
+                //if (this.actionMediator != null) {
+                //    System.err.println("The actionMediator is not null.");
+                //} else {
+                //    System.err.println("The actionMediator is null. @ SC_SubTabsHolder.java");
+                //}
 
                 mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_1_Name));
                 mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_A_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_2_Name));
@@ -201,6 +204,11 @@ public class SC_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
     @Override
     public One_DEQAResult_Pane_Abs getTheFirstJsonPanel() {
         return null;
+    }
+
+    @Override
+    public String getAuthorYear() {
+        return this.authorYear;
     }
 
     public String getSectionName() {

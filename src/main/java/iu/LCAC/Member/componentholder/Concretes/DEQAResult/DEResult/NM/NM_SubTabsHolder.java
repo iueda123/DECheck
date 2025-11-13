@@ -62,9 +62,12 @@ public class NM_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
     ManagerOfSubTabBasePane mngrOfSubTabBasePane_11 = new ManagerOfSubTabBasePane(subSection_11_TabName, sectionName, subSection_11_Name, baseTabPane);
 
     ArrayList<ManagerOfSubTabBasePane> arrayList_of_ManagerOfSubTabBasePane = new ArrayList<>();
+    private final String authorYear;
 
     public NM_SubTabsHolder(String cholder_name, String short_name, String authorYear) {
         super(cholder_name, short_name);
+
+        this.authorYear = authorYear;
 
         arrayList_of_ManagerOfSubTabBasePane.add(mngrOfSubTabBasePane_1);
         mngrOfSubTabBasePane_1.registerSubTansHolder(this);
@@ -118,7 +121,7 @@ public class NM_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
 
         for (File jsonFile : jsonFiles) {
             String jsonFileName = jsonFile.getName();
-            System.out.println("jsonFileName: " + jsonFileName);
+            //System.out.println("jsonFileName: " + jsonFileName);
             mngrOfSubTabBasePane_1.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_1_Name));
             mngrOfSubTabBasePane_2.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_2_Name));
             mngrOfSubTabBasePane_3.addToTheDePaneArray(new One_ARSL_Style_Pane(jsonFolderPathString.toString(), jsonFileName, sectionName, subSection_3_Name));
@@ -344,6 +347,11 @@ public class NM_SubTabsHolder extends AbstCHolderMember implements SubTabsHolder
     @Override
     public One_DEQAResult_Pane_Abs getTheFirstJsonPanel() {
         return null;
+    }
+
+    @Override
+    public String getAuthorYear() {
+        return this.authorYear;
     }
 
     public String getSectionName() {

@@ -43,6 +43,8 @@ public class One_A_Style_Pane extends One_DEQAResult_Pane_Abs {
         the1stBaseOfNorth.add(saveButton);
         the1stBaseOfNorth.add(openJsonFileButton);
         the1stBaseOfNorth.add(openJsonFolderButton);
+        the1stBaseOfNorth.add(openPdfButton);
+        the1stBaseOfNorth.add(openMaterialsFolderButton);
         the1stBaseOfNorth.add(copyToTheHumanPanelButton);
 
         //the1stBaseOfNorth.add(jsonFileNameEditButton);
@@ -139,7 +141,7 @@ public class One_A_Style_Pane extends One_DEQAResult_Pane_Abs {
 
         resetBackgroundColorOfTAreasTFields();
 
-        System.out.println("Successfully open JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+        //System.out.println("Successfully open JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
     }
 
     @Override
@@ -149,7 +151,7 @@ public class One_A_Style_Pane extends One_DEQAResult_Pane_Abs {
 
     @Override
     public void actionAfterSuccessfullySavingJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
-        System.out.println("Successfully saved JSON to " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+        //System.out.println("Successfully saved JSON to " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
         resetBackgroundColorOfTAreasTFields();
     }
 
@@ -164,7 +166,7 @@ public class One_A_Style_Pane extends One_DEQAResult_Pane_Abs {
         //System.out.println("answer: " + answer);
         if (answer != null) tArea_Answer.setText(answer);
         resetBackgroundColorOfTAreasTFields();
-        System.out.println("Successfully loaded JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
+        //System.out.println("Successfully loaded JSON from " + jsonManagerWithConflictSafe.getJsonFile().getAbsolutePath());
     }
 
     @Override
