@@ -93,7 +93,9 @@ public class NotePane extends JPanel {
                 //String baseTitle = "タブ" + (idx + 1);
                 String baseTitle = subSectionName;
                 if (!text.isEmpty()) {
-                    baseTitle += " - " + text.charAt(0);
+                    // 最大4文字まで表示（4文字未満の場合は存在する文字数だけ表示）
+                    int displayLength = Math.min(4, text.length());
+                    baseTitle += " - " + text.substring(0, displayLength);
                 }
                 //System.out.println(idx + " - " + baseTitle);
                 parentTabbedPanel.setTitleAt(idx, baseTitle);
@@ -127,6 +129,7 @@ public class NotePane extends JPanel {
         tArea_Note.updateDefaultValue();
     }
 
+    /*
     private class CustomDocumentListener implements DocumentListener {
         final JTabbedPane tabbedPane;
 
@@ -172,5 +175,6 @@ public class NotePane extends JPanel {
 
         }
     }
+    */
 }
 
