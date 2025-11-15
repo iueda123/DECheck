@@ -12,6 +12,7 @@ public class NotePane extends JPanel {
 
     final String sectionName;
     final String subSectionName;
+    final String tabName;
 
     JTabbedPane parentTabbedPanel;
 
@@ -20,11 +21,12 @@ public class NotePane extends JPanel {
     ColorChangeableTextArea tArea_Note = new ColorChangeableTextArea("");
     final String tooltipForNoteArea = "自由記載ノート。";
 
-    public NotePane(String sectionName, String subSectionName, JTabbedPane parentTabbedPanel) {
+    public NotePane(String tabName, String sectionName, String subSectionName, JTabbedPane parentTabbedPanel) {
 
         this.setBackground(Color.YELLOW);  //For debug
 
         // Initialization
+        this.tabName = tabName;
         this.sectionName = sectionName;
         this.subSectionName = subSectionName;
         this.parentTabbedPanel = parentTabbedPanel;
@@ -91,7 +93,7 @@ public class NotePane extends JPanel {
             int idx = parentTabbedPanel.indexOfComponent(tabComponent);
             if (idx != -1) {
                 //String baseTitle = "タブ" + (idx + 1);
-                String baseTitle = subSectionName;
+                String baseTitle = tabName;
                 if (!text.isEmpty()) {
                     // 最大4文字まで表示（4文字未満の場合は存在する文字数だけ表示）
                     int displayLength = Math.min(4, text.length());

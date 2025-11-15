@@ -15,7 +15,7 @@ import java.nio.file.Paths;
 public class ExplanationPanelHolder extends AbstCHolderMember {
 
   private Path guideFilePath_of_DE = Paths.get("./settings/Guides/DE_Guide_v9_jp.md");
-  private Path guideFilePath_of_QA = Paths.get("./settings/Guides/QA_Guide_v6_jp.md");
+  private Path guideFilePath_of_QA = Paths.get("./settings/Guides/QA_Guide_v7_2.md");
 
   JPanel basePanel = new JPanel(new BorderLayout());
   JTabbedPane tabbedPane = new JTabbedPane();

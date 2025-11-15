@@ -26,7 +26,7 @@ public class ManagerOfSubTabBasePane {
         this.sectionName = sectionName;
         this.subSectionName = subSectionName;
         this.tabbedPane = tabbedPane;
-        this.notePane = new NotePane(sectionName, subSectionName, this.tabbedPane);
+        this.notePane = new NotePane(tabName, sectionName, subSectionName, this.tabbedPane);
     }
 
 
