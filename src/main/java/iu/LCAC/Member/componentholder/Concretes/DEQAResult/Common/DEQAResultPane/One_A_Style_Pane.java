@@ -12,7 +12,7 @@ public class One_A_Style_Pane extends One_DEQAResult_Pane_Abs {
     private ColorChangeableTextArea tArea_Answer = new ColorChangeableTextArea("Answer");
 
 
-    private final String tooltipForAnswer = "This is the answer areae.";
+    private final String tooltipForAnswer = "This is the answer.";
 
 
     public One_A_Style_Pane(String jsonFolderPathStr, String jsonName, String sectionName, String subSectionName) {
@@ -133,7 +133,7 @@ public class One_A_Style_Pane extends One_DEQAResult_Pane_Abs {
     @Override
     public void actionAfterSuccessfullyOpeningJson(JsonManagerWithConflictSafe jsonManagerWithConflictSafe) {
 
-        String answer = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/Answer");
+        String answer = jsonManagerWithConflictSafe.getValue(sectionName + "/" + subSectionName + "/answer");
         if (answer != null) tArea_Answer.setText(answer);
 
         // update jsonNameLabel

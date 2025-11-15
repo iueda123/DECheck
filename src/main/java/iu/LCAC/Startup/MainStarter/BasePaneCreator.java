@@ -55,22 +55,31 @@ public class BasePaneCreator {
 
     //-----------------------
 
-    tabbedPane.add("7. QASI", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_QASI")).getBaseComponent());
-    tabbedPane.setToolTipTextAt(6, "Study Identification of QA");
+    tabbedPane.add("7. QA-CM", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_QACM")).getBaseComponent());
+    tabbedPane.setToolTipTextAt(6, "Common Part of QA");
 
-    tabbedPane.add("8. QA1_v6", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_QA1_v6")).getBaseComponent());
-    tabbedPane.setToolTipTextAt(7, "Quality Assessment Part 1 (v6)");
+    tabbedPane.add("8. QA-NM", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_QANM")).getBaseComponent());
+    tabbedPane.setToolTipTextAt(7, "Normative Modeling Part of QA");
 
-    tabbedPane.add("9. QA2_v6", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_QA2_v6")).getBaseComponent());
-    tabbedPane.setToolTipTextAt(8, "Quality Assessment Part 2 (v6)");
+    tabbedPane.add("9. QA-CR", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_QACR")).getBaseComponent());
+    tabbedPane.setToolTipTextAt(8, "Clinical Research Part of QA");
 
-    tabbedPane.add("10. QAAC", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_QAAC")).getBaseComponent());
-    tabbedPane.setToolTipTextAt(9, "Additional Comment of QA");
+    //tabbedPane.add("7. QASI", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_QASI")).getBaseComponent());
+    //tabbedPane.setToolTipTextAt(6, "Study Identification of QA");
+
+    //tabbedPane.add("8. QA1_v6", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_QA1_v6")).getBaseComponent());
+    //tabbedPane.setToolTipTextAt(7, "Quality Assessment Part 1 (v6)");
+
+    //tabbedPane.add("9. QA2_v6", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_QA2_v6")).getBaseComponent());
+    //tabbedPane.setToolTipTextAt(8, "Quality Assessment Part 2 (v6)");
+
+    //tabbedPane.add("10. QAAC", (cHolderMediator.getInstanceOfAMember("sub_tabs_holder_QAAC")).getBaseComponent());
+    //tabbedPane.setToolTipTextAt(9, "Additional Comment of QA");
 
     //-----------------------
 
     tabbedPane.add("99. SMRRY", (cHolderMediator.getInstanceOfAMember("summary_pane_holder")).getBaseComponent());
-    tabbedPane.setToolTipTextAt(10, "Summary Pane");
+    tabbedPane.setToolTipTextAt(9, "Summary Pane");
     //-----------------------
 
     JComponent explanationPanelHolder = (cHolderMediator.getInstanceOfAMember("explanation_panel_holder").getBaseComponent());

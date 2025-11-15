@@ -192,7 +192,42 @@ public class CHolderMediator implements MediatorIntrfc {
 
         //------------------------------------------
 
+        /* 7. Common Part of QA */
+        chMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v7.QACM.QACM_SubTabsHolderFactory",
+                        AbstCHolderMemberFactory.class);
+        AbstCHolderMember subTabsHoldFactory_QACM =
+                chMemberFactory.createCHolder("sub_tabs_holder_QACM", "sub_tabs_holder_QADM", authorYears[0]);
+        subTabsHoldFactory_QACM.setCHolderMediator(this);
+        subTabsHoldFactory_QACM.initialize();
+        registerMemberToMap(subTabsHoldFactory_QACM);
+
+        /* 8. Normative Modeling Part of QA */
+        chMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v7.QANM.QANM_SubTabsHolderFactory",
+                        AbstCHolderMemberFactory.class);
+        AbstCHolderMember subTabsHoldFactory_QANM =
+                chMemberFactory.createCHolder("sub_tabs_holder_QANM", "sub_tabs_holder_QANM", authorYears[0]);
+        subTabsHoldFactory_QANM.setCHolderMediator(this);
+        subTabsHoldFactory_QANM.initialize();
+        registerMemberToMap(subTabsHoldFactory_QANM);
+
+        /* 9. Clinical Research Part of QA */
+        chMemberFactory =
+                MemberFactoryLoader.loadFactory(
+                        "iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v7.QACR.QACR_SubTabsHolderFactory",
+                        AbstCHolderMemberFactory.class);
+        AbstCHolderMember subTabsHoldFactory_QACR =
+                chMemberFactory.createCHolder("sub_tabs_holder_QACR", "sub_tabs_holder_QACR", authorYears[0]);
+        subTabsHoldFactory_QACR.setCHolderMediator(this);
+        subTabsHoldFactory_QACR.initialize();
+        registerMemberToMap(subTabsHoldFactory_QACR);
+
+
         /* 7. Study Identification of QA */
+        /*
         chMemberFactory =
                 MemberFactoryLoader.loadFactory(
                         "iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QASI.QASI_SubTabsHolderFactory",
@@ -202,9 +237,11 @@ public class CHolderMediator implements MediatorIntrfc {
         subTabsHoldFactory_QASI.setCHolderMediator(this);
         subTabsHoldFactory_QASI.initialize();
         registerMemberToMap(subTabsHoldFactory_QASI);
+        */
 
 
         /* 8. Quality Assessment Part 1 (v6) */
+        /*
         chMemberFactory =
                 MemberFactoryLoader.loadFactory(
                         "iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA1.QA1_SubTabsHolderFactory",
@@ -214,8 +251,10 @@ public class CHolderMediator implements MediatorIntrfc {
         subTabsHoldFactory_QA1_v6.setCHolderMediator(this);
         subTabsHoldFactory_QA1_v6.initialize();
         registerMemberToMap(subTabsHoldFactory_QA1_v6);
+        */
 
         /* 9. Quality Assessment Part 2 (v6) */
+        /*
         chMemberFactory =
                 MemberFactoryLoader.loadFactory(
                         "iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA2.QA2_SubTabsHolderFactory",
@@ -225,8 +264,10 @@ public class CHolderMediator implements MediatorIntrfc {
         subTabsHoldFactory_QA2_v6.setCHolderMediator(this);
         subTabsHoldFactory_QA2_v6.initialize();
         registerMemberToMap(subTabsHoldFactory_QA2_v6);
+        */
 
         /* 10. Additional Comment of QA */
+        /*
         chMemberFactory =
                 MemberFactoryLoader.loadFactory(
                         "iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QAAC.QAAC_SubTabsHolderFactory",
@@ -236,6 +277,7 @@ public class CHolderMediator implements MediatorIntrfc {
         subTabsHoldFactory_QAAC.setCHolderMediator(this);
         subTabsHoldFactory_QAAC.initialize();
         registerMemberToMap(subTabsHoldFactory_QAAC);
+        */
 
         //------------------------------------------
 

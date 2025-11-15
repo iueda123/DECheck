@@ -17,6 +17,9 @@ import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA1.QA1_S
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA2.QA2_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QAAC.QAAC_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QASI.QASI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v7.QACM.QACM_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v7.QACR.QACR_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v7.QANM.QANM_SubTabsHolder;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -53,10 +56,14 @@ public class SaveNotePaneTextsAction extends AbstActionMember {
         saveNotePaneState("CAAA", "./settings/" + authorYear + "/NotePane/" + "clinical_application_and_analysis" + ".prop");
         saveNotePaneState("GN", "./settings/" + authorYear + "/NotePane/" + "general_notes" + ".prop");
 
-        saveNotePaneState("QASI", "./settings/" + authorYear + "/NotePane/" + "study_identification_of_qa" + ".prop");
-        saveNotePaneState("QA1_v6", "./settings/" + authorYear + "/NotePane/" + "quality_assessment_1_v6" + ".prop");
-        saveNotePaneState("QA2_v6", "./settings/" + authorYear + "/NotePane/" + "quality_assessment_2_v6" + ".prop");
-        saveNotePaneState("QAAC", "./settings/" + authorYear + "/NotePane/" + "additional_comments" + ".prop");
+        saveNotePaneState("QACM", "./settings/" + authorYear + "/NotePane/" + "common_part_of_qa" + ".prop");
+        saveNotePaneState("QANM", "./settings/" + authorYear + "/NotePane/" + "normative_modeling_part_of_qa" + ".prop");
+        saveNotePaneState("QACR", "./settings/" + authorYear + "/NotePane/" + "clinical_research_part_of_qa" + ".prop");
+
+        //saveNotePaneState("QASI", "./settings/" + authorYear + "/NotePane/" + "study_identification_of_qa" + ".prop");
+        //saveNotePaneState("QA1_v6", "./settings/" + authorYear + "/NotePane/" + "quality_assessment_1_v6" + ".prop");
+        //saveNotePaneState("QA2_v6", "./settings/" + authorYear + "/NotePane/" + "quality_assessment_2_v6" + ".prop");
+        //saveNotePaneState("QAAC", "./settings/" + authorYear + "/NotePane/" + "additional_comments" + ".prop");
     }
 
     private void saveNotePaneState(String member_name_key_word, String prop_file_path_str) {
@@ -87,22 +94,34 @@ public class SaveNotePaneTextsAction extends AbstActionMember {
                 member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_GN");
                 subTabsHolder = (GN_SubTabsHolder) member;
                 break;
-            case "QASI":
-                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QASI");
-                subTabsHolder = (QASI_SubTabsHolder) member;
+            case "QACM":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QACM");
+                subTabsHolder = (QACM_SubTabsHolder) member;
                 break;
-            case "QA1_v6":
-                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QA1_v6");
-                subTabsHolder = (QA1_SubTabsHolder) member;
+            case "QANM":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QANM");
+                subTabsHolder = (QANM_SubTabsHolder) member;
                 break;
-            case "QA2_v6":
-                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QA2_v6");
-                subTabsHolder = (QA2_SubTabsHolder) member;
+            case "QACR":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QACR");
+                subTabsHolder = (QACR_SubTabsHolder) member;
                 break;
-            case "QAAC":
-                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QAAC");
-                subTabsHolder = (QAAC_SubTabsHolder) member;
-                break;
+            //case "QASI":
+            //    member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QASI");
+            //    subTabsHolder = (QASI_SubTabsHolder) member;
+            //    break;
+            //case "QA1_v6":
+            //    member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QA1_v6");
+            //    subTabsHolder = (QA1_SubTabsHolder) member;
+            //    break;
+            //case "QA2_v6":
+            //    member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QA2_v6");
+            //    subTabsHolder = (QA2_SubTabsHolder) member;
+            //    break;
+            //case "QAAC":
+            //    member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QAAC");
+            //    subTabsHolder = (QAAC_SubTabsHolder) member;
+            //    break;
             default:
                 System.err.println("未知のSection指定です" + "@" + this.getClass());
         }

@@ -17,6 +17,9 @@ import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA1.QA1_S
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA2.QA2_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QAAC.QAAC_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QASI.QASI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v7.QACM.QACM_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v7.QACR.QACR_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v7.QANM.QANM_SubTabsHolder;
 
 import javax.swing.*;
 import java.awt.*;
@@ -55,10 +58,14 @@ public class LoadPaneOrderAction extends AbstActionMember {
         loadPaneOrder("CAAA", "./settings/" + authorYear + "/PaneOrder/" + "clinical_application_and_analysis" + ".prop");
         loadPaneOrder("GN", "./settings/" + authorYear + "/PaneOrder/" + "general_notes" + ".prop");
 
-        loadPaneOrder("QASI", "./settings/" + authorYear + "/PaneOrder/" + "study_identification_of_qa" + ".prop");
-        loadPaneOrder("QA1_v6", "./settings/" + authorYear + "/PaneOrder/" + "quality_assessment_1_v6" + ".prop");
-        loadPaneOrder("QA2_v6", "./settings/" + authorYear + "/PaneOrder/" + "quality_assessment_2_v6" + ".prop");
-        loadPaneOrder("QAAC", "./settings/" + authorYear + "/PaneOrder/" + "additional_comments" + ".prop");
+        loadPaneOrder("QACM", "./settings/" + authorYear + "/PaneOrder/" + "common_part_of_qa" + ".prop");
+        loadPaneOrder("QANM", "./settings/" + authorYear + "/PaneOrder/" + "normative_modeling_part_of_qa" + ".prop");
+        loadPaneOrder("QACR", "./settings/" + authorYear + "/PaneOrder/" + "clinical_research_part_of_qa" + ".prop");
+
+        //loadPaneOrder("QASI", "./settings/" + authorYear + "/PaneOrder/" + "study_identification_of_qa" + ".prop");
+        //loadPaneOrder("QA1_v6", "./settings/" + authorYear + "/PaneOrder/" + "quality_assessment_1_v6" + ".prop");
+        //loadPaneOrder("QA2_v6", "./settings/" + authorYear + "/PaneOrder/" + "quality_assessment_2_v6" + ".prop");
+        //loadPaneOrder("QAAC", "./settings/" + authorYear + "/PaneOrder/" + "additional_comments" + ".prop");
 
     }
 
@@ -93,22 +100,34 @@ public class LoadPaneOrderAction extends AbstActionMember {
                 member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_GN");
                 subTabsHolder = (GN_SubTabsHolder) member;
                 break;
-            case "QASI":
-                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QASI");
-                subTabsHolder = (QASI_SubTabsHolder) member;
+            case "QACM":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QACM");
+                subTabsHolder = (QACM_SubTabsHolder) member;
                 break;
-            case "QA1_v6":
-                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QA1_v6");
-                subTabsHolder = (QA1_SubTabsHolder) member;
+            case "QANM":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QANM");
+                subTabsHolder = (QANM_SubTabsHolder) member;
                 break;
-            case "QA2_v6":
-                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QA2_v6");
-                subTabsHolder = (QA2_SubTabsHolder) member;
+            case "QACR":
+                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QACR");
+                subTabsHolder = (QACR_SubTabsHolder) member;
                 break;
-            case "QAAC":
-                member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QAAC");
-                subTabsHolder = (QAAC_SubTabsHolder) member;
-                break;
+            //case "QASI":
+            //    member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QASI");
+            //    subTabsHolder = (QASI_SubTabsHolder) member;
+            //    break;
+            //case "QA1_v6":
+            //    member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QA1_v6");
+            //    subTabsHolder = (QA1_SubTabsHolder) member;
+            //    break;
+            //case "QA2_v6":
+            //    member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QA2_v6");
+            //    subTabsHolder = (QA2_SubTabsHolder) member;
+            //    break;
+            //case "QAAC":
+            //    member = this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QAAC");
+            //    subTabsHolder = (QAAC_SubTabsHolder) member;
+            //    break;
             default:
                 System.err.println("未知のSection指定です" + "@" + this.getClass());
                 return;

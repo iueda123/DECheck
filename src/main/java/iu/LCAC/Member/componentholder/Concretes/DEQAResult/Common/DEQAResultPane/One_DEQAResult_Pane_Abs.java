@@ -96,7 +96,7 @@ public abstract class One_DEQAResult_Pane_Abs extends JPanel implements JsonMana
         });
 
         /* ** openPdfButton と openMaterialsFolderButton のセットアップ ** */
-        setupButton(openPdfButton, "/icons/pdf.png", "pdf", "materials下のメインPDFを開く");
+        setupButton(openPdfButton, "/icons/pdf.png", "pdf", "メインPDFを開く");
         openPdfButton.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {

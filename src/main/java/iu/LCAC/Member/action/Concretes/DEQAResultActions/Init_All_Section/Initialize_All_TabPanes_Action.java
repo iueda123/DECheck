@@ -15,6 +15,9 @@ import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA1.QA1_S
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA2.QA2_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QAAC.QAAC_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QASI.QASI_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v7.QACM.QACM_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v7.QACR.QACR_SubTabsHolder;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v7.QANM.QANM_SubTabsHolder;
 
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -37,8 +40,8 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         SI_SubTabsHolder subTabsHolder_SI = (SI_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_SI");
         if (subTabsHolder_SI != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_SI.getArrayList_of_ManagerOfSubTabBasePane();
-            for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
-                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()){
+            for (ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane) {
+                for (One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()) {
                     de_result_pane.loadJson();
                 }
             }
@@ -50,8 +53,8 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         SC_SubTabsHolder subTabsHolder_SC = (SC_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_SC");
         if (subTabsHolder_SC != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_SC.getArrayList_of_ManagerOfSubTabBasePane();
-            for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
-                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()){
+            for (ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane) {
+                for (One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()) {
                     de_result_pane.loadJson();
                 }
             }
@@ -63,8 +66,8 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         RCAI_SubTabsHolder subTabsHolder_RCAI = (RCAI_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_RCAI");
         if (subTabsHolder_RCAI != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_RCAI.getArrayList_of_ManagerOfSubTabBasePane();
-            for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
-                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()){
+            for (ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane) {
+                for (One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()) {
                     de_result_pane.loadJson();
                 }
             }
@@ -76,8 +79,8 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         NM_SubTabsHolder subTabsHolder_NM = (NM_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_NM");
         if (subTabsHolder_NM != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_NM.getArrayList_of_ManagerOfSubTabBasePane();
-            for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
-                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()){
+            for (ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane) {
+                for (One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()) {
                     de_result_pane.loadJson();
                 }
             }
@@ -89,8 +92,8 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         CAAA_SubTabsHolder subTabsHolder_CAAA = (CAAA_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_CAAA");
         if (subTabsHolder_CAAA != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_CAAA.getArrayList_of_ManagerOfSubTabBasePane();
-            for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
-                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()){
+            for (ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane) {
+                for (One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()) {
                     de_result_pane.loadJson();
                 }
             }
@@ -102,8 +105,8 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         GN_SubTabsHolder subTabsHolder_GN = (GN_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_GN");
         if (subTabsHolder_GN != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_GN.getArrayList_of_ManagerOfSubTabBasePane();
-            for(ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane){
-                for(One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()){
+            for (ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane) {
+                for (One_DEQAResult_Pane_Abs de_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()) {
                     de_result_pane.loadJson();
                 }
             }
@@ -113,7 +116,59 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
 
         //--------------------------
 
+        /* 7. Common Part of QA */
+        QACM_SubTabsHolder subTabsHolder_QACM = (QACM_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QACM");
+        if (subTabsHolder_QACM != null) {
+            ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_QACM.getArrayList_of_ManagerOfSubTabBasePane();
+            for (ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane) {
+                for (One_DEQAResult_Pane_Abs deqa_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()) {
+                    deqa_result_pane.loadJson();
+                }
+            }
+        } else {
+            System.err.println("subTabsHolder_QACM is null.");
+        }
+
+        /* 8. Normative Modeling Part of QA */
+        QANM_SubTabsHolder subTabsHolder_QANM = (QANM_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QANM");
+        if (subTabsHolder_QANM != null) {
+            ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_QANM.getArrayList_of_ManagerOfSubTabBasePane();
+            for (ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane) {
+                for (One_DEQAResult_Pane_Abs deqa_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()) {
+                    deqa_result_pane.loadJson();
+                }
+            }
+        } else {
+            System.err.println("subTabsHolder_QANM is null.");
+        }
+
+        /* 9. Clinical Research Part of QA */
+        QACR_SubTabsHolder subTabsHolder_QACR = (QACR_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QACR");
+        if (subTabsHolder_QACR != null) {
+            ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_QACR.getArrayList_of_ManagerOfSubTabBasePane();
+            for (ManagerOfSubTabBasePane managerOfSubTabBasePane : managersOfSubTabBasePane) {
+                for (One_DEQAResult_Pane_Abs deqa_result_pane : managerOfSubTabBasePane.getDeqaPaneArray()) {
+                    deqa_result_pane.loadJson();
+                }
+            }
+        } else {
+            System.err.println("subTabsHolder_QACR is null.");
+        }
+
+        /* 99 Update summary pane after all data is loaded */
+        //if (this.cholderMediator != null) {
+        Object summaryPaneHolder = this.cholderMediator.getInstanceOfAMember("summary_pane_holder");
+        if (summaryPaneHolder != null) {
+            try {
+                summaryPaneHolder.getClass().getMethod("checkProgress").invoke(summaryPaneHolder);
+            } catch (Exception e) {
+                System.err.println("Failed to call checkProgress(): " + e.getMessage());
+            }
+        }
+        //}
+
         /* 7. Study Identification of QA */
+        /*
         QASI_SubTabsHolder subTabsHolder_QASI = (QASI_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QASI");
         if (subTabsHolder_QASI != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_QASI.getArrayList_of_ManagerOfSubTabBasePane();
@@ -125,8 +180,11 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         } else {
             System.err.println("subTabsHolder_QASI is null.");
         }
+        */
+
 
         /* 8. Quality Assessment Part 1 (v6) */
+        /*
         QA1_SubTabsHolder subTabsHolder_QA1 = (QA1_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QA1_v6");
         if (subTabsHolder_QA1 != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_QA1.getArrayList_of_ManagerOfSubTabBasePane();
@@ -138,8 +196,10 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         } else {
             System.err.println("subTabsHolder_QA1 is null.");
         }
+        */
 
         /* 9. Quality Assessment Part 2 (v6) */
+        /*
         QA2_SubTabsHolder subTabsHolder_QA2 = (QA2_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QA2_v6");
         if (subTabsHolder_QA2 != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_QA2.getArrayList_of_ManagerOfSubTabBasePane();
@@ -151,8 +211,10 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         } else {
             System.err.println("subTabsHolder_QA2 is null.");
         }
+        */
 
         /* 10. Additional Comment of QA */
+        /*
         QAAC_SubTabsHolder subTabsHolder_QAAC = (QAAC_SubTabsHolder) this.cholderMediator.getInstanceOfAMember("sub_tabs_holder_QAAC");
         if (subTabsHolder_QAAC != null) {
             ArrayList<ManagerOfSubTabBasePane> managersOfSubTabBasePane = subTabsHolder_QAAC.getArrayList_of_ManagerOfSubTabBasePane();
@@ -164,6 +226,7 @@ public class Initialize_All_TabPanes_Action extends AbstActionMember {
         } else {
             System.err.println("subTabsHolder_QAAC is null.");
         }
+        */
     }
 
     @Override

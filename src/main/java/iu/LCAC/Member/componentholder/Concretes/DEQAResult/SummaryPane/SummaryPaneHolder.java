@@ -4,21 +4,12 @@ import iu.LCAC.Mediator.action.ActionMediator;
 import iu.LCAC.Mediator.componentholder.CHolderMediator;
 import iu.LCAC.Member.action.Abstract.AbstActionMember;
 import iu.LCAC.Member.componentholder.Abstract.AbstCHolderMember;
-import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.DEQAResultPane.One_ARSL_Style_Pane;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.DEQAResultPane.One_ACRSL_Style_Pane;
+import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.DEQAResultPane.One_ARNSL_Style_Pane;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.DEQAResultPane.One_A_Style_Pane;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.DEQAResultPane.One_DEQAResult_Pane_Abs;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.ManagerOfSubTabBasePane;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.Common.SubTabsHolderItrfc;
-import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.CAAA.CAAA_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.GN.GN_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.NM.NM_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.RCAI.RCAI_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.SC.SC_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEQAResult.DEResult.SI.SI_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA1.QA1_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QA2.QA2_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QAAC.QAAC_SubTabsHolder;
-import iu.LCAC.Member.componentholder.Concretes.DEQAResult.QAResult_v6.QASI.QASI_SubTabsHolder;
 import iu.LCAC.Member.componentholder.Concretes.DEQAResult.SummaryPane.units.SummaryBoxUnit;
 
 import javax.swing.*;
@@ -30,8 +21,15 @@ import java.util.TreeMap;
 public class SummaryPaneHolder extends AbstCHolderMember {
 
     String[] memberNames = {"sub_tabs_holder_SI", "sub_tabs_holder_SC", "sub_tabs_holder_RCAI", "sub_tabs_holder_NM",
-            "sub_tabs_holder_CAAA", "sub_tabs_holder_GN", "sub_tabs_holder_QASI", "sub_tabs_holder_QA1_v6",
-            "sub_tabs_holder_QA2_v6", "sub_tabs_holder_QAAC"};
+            "sub_tabs_holder_CAAA", "sub_tabs_holder_GN",
+            //"sub_tabs_holder_QASI",
+            //"sub_tabs_holder_QA1_v6",
+            //"sub_tabs_holder_QA2_v6",
+            //"sub_tabs_holder_QAAC",
+            "sub_tabs_holder_QACM",
+            "sub_tabs_holder_QANM",
+            "sub_tabs_holder_QACR"
+    };
 
     JPanel basePane = new JPanel();
     Box baseOfNorth = Box.createHorizontalBox();
@@ -112,13 +110,14 @@ public class SummaryPaneHolder extends AbstCHolderMember {
                     ArrayList<One_DEQAResult_Pane_Abs> arrayOf_one_deqaResult_pane = managerOfSubTabBasePane.getDeqaPaneArray();
                     for (One_DEQAResult_Pane_Abs one_deqaResult_pane : arrayOf_one_deqaResult_pane) {
                         if (one_deqaResult_pane.getJsonName().toLowerCase().contains("human")) {
-                            //String value = ((One_ARSL_Style_Pane) one_deqaResult_pane).gettArea_Answer().getText();
 
                             String value ="";
                             if( one_deqaResult_pane instanceof One_A_Style_Pane ) {
                                 value = ((One_A_Style_Pane) one_deqaResult_pane).gettArea_Answer().getText();
-                            } else if ( one_deqaResult_pane instanceof One_ARSL_Style_Pane) {
-                                value = ((One_ARSL_Style_Pane) one_deqaResult_pane).gettArea_Answer().getText();
+                            } else if ( one_deqaResult_pane instanceof One_ARNSL_Style_Pane) {
+                                value = ((One_ARNSL_Style_Pane) one_deqaResult_pane).gettArea_Answer().getText();
+                            } else if ( one_deqaResult_pane instanceof One_ACRSL_Style_Pane) {
+                                value = ((One_ACRSL_Style_Pane) one_deqaResult_pane).gettArea_Answer().getText();
                             }
 
                             SummaryBoxUnit summaryBoxUnit=null;
@@ -151,7 +150,8 @@ public class SummaryPaneHolder extends AbstCHolderMember {
 
         }
 
-        checkProgress();
+        // checkProgress() is now called from Initialize_All_TabPanes_Action after all data is loaded
+        // checkProgress();
 
     }
 
